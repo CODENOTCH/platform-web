@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractSCSS = new ExtractTextPlugin("assets/css/[name].css");
 
 
 module.exports = {
@@ -8,7 +10,7 @@ module.exports = {
   entry: './index.js',
   output: {
     path: path.resolve(__dirname, './public'),
-    filename: 'build.js'
+    filename: 'assets/js/build.js'
   },
   module: {
     rules: [
@@ -21,6 +23,21 @@ module.exports = {
             'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
           }
         }
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractSCSS.extract({
+            fallback: "style-loader",
+            use: ["css-loader", "sass-loader"]
+        })
+      },
+      {
+        test: /\.styl$/,
+        use: ExtractSCSS.extract({
+          fallback: "style-loader",
+          use: ["css-loader", "sass-loader"]
+        })
+        //loader: ['style-loader', 'css-loader', 'stylus-loader']
       },
       {
         test: /\.js$/,
@@ -42,6 +59,7 @@ module.exports = {
     ]
   },
   plugins: [
+    ExtractSCSS,
     new HtmlWebpackPlugin({
         title: 'Codenotch',
         filename: './index.html',

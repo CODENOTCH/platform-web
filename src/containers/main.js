@@ -1,7 +1,10 @@
 import Vue from 'vue';
 import App from '../components/App.vue';
+import Vuetify from 'vuetify';
 
-const appInstance = new Vue({
+Vue.use(Vuetify);
+
+new Vue({
     el: '#app',
     render: h => h(App)
 });
