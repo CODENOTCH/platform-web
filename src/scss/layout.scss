@@ -1,13 +1,54 @@
+body{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+}
+
 #login{
   width: 100%;
   height: 100vh;
   background: $darkWhite;
+  color: $grey;
+  @include flexContainer();
+}
+
+.form-container{
+  .row{
+    &:first-of-type(){
+      margin-bottom: 3vh;
+      @media (min-width: 768px){
+        margin-bottom: 1.5vh;
+      }
+    }
+  }
 }
 
 .logo-container{
   h1{
     @include flexContainer();
+    margin-bottom: 2.5vh;
+    img{
+      width: 44vh;
+      @media (min-width: 768px){
+        width: 34vh;
+      }
+    }
   }
+}
+
+.btn-codenotch{
+  background: $grey;
+  color: $white;
+  box-shadow: none !important;
+  line-height: 0;
+  width: 100%;
+  height: 44px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1.3em !important;
+  @include transition(all,.5s,ease-out,0);
+  &:hover{
+    background: $purple;
+  } 
 }
 
 #footer{
