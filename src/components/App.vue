@@ -1,37 +1,30 @@
 <template>
-    <v-app light>
-        <v-footer id="footer">
-            <template>
-                <v-breadcrumbs divider="/">
-                <v-breadcrumbs-item
-                    v-for="item in breadcrumbs"
-                    :key="item.text"
-                    :disabled="item.disabled">
-                    {{ item.text }}
-                </v-breadcrumbs-item>
-                </v-breadcrumbs>
-            </template>
-        </v-footer>
-    </v-app>   
+    <main id="app-container">
+      <Login></Login>
+    </main>
 </template>
 
 <script>
+    import Login from './Login.vue';
+    import Footer from './Footer.vue';
 
     export default {
         name:'app',
+
+        components: {
+            Login: Login,
+            Footer: Footer
+        },
+
         data () {
             return {
-                breadcrumbs: [
-                    {text:'Prehome',disabled: false},
-                    {text:'Home',disabled: false},
-                    {text:'Temario',disabled: true}
-                ]
+
             }
         }
     }
 </script>
 
-<style lang="stylus">
-  @import '../stylus/main'
+<style lang="scss">
+    @import "../scss/styles";
 </style>
 

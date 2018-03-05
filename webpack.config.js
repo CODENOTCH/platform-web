@@ -4,13 +4,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const ExtractSCSS = new ExtractTextPlugin("assets/css/[name].css");
 
+const PATHS = {
+  build: path.join(__dirname, './src/public')
+};
+
 
 module.exports = {
   context: path.resolve(__dirname, './src'),
   entry: './index.js',
   output: {
-    path: path.resolve(__dirname, './public'),
-    filename: 'assets/js/build.js'
+    path:  path.resolve(__dirname, './src'),
+    filename: 'assets/js/build.js',
   },
   module: {
     rules: [
