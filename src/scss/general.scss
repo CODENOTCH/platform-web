@@ -23,10 +23,16 @@ p{
   @include transition(color,.4s,ease-out,0);
   &:hover{
     color: $purple;
+  }
+  &.disabled{
+    color: $black;
+    font-weight: 400;
+    pointer-events: none;
   } 
 }
 
 .list-links{
+  line-height: 2;
   li{
     display: inline-block;
     margin-right: 1em;
@@ -82,17 +88,4 @@ p{
   &:hover{
     background: $purple;
   } 
-}
-
-/* FOOTER */ 
-
-#footer{
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  border-top: 0.5px solid #C2C2C2;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
 }
