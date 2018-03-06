@@ -1,11 +1,13 @@
 <template>
     <main id="app-container">
-      <Login></Login>
+      <!--Login></Login-->
+      <AlumnoHome></AlumnoHome>
     </main>
 </template>
 
 <script>
     import Login from './Login.vue';
+    import AlumnoHome from './alumno/AlumnoHome.vue';
     import Footer from './Footer.vue';
 
     export default {
@@ -13,6 +15,7 @@
 
         components: {
             Login: Login,
+            AlumnoHome: AlumnoHome,
             Footer: Footer
         },
 

@@ -3,12 +3,12 @@
         <v-footer id="footer">
             <template>
                 <v-breadcrumbs divider="/">
-                <v-breadcrumbs-item
-                    v-for="item in breadcrumbs"
-                    :key="item.text"
-                    :disabled="item.disabled">
-                    {{ item.text }}
-                </v-breadcrumbs-item>
+                    <v-breadcrumbs-item
+                        v-for="item in breadcrumbs"
+                        :key="item.text"
+                        :disabled="item.disabled">
+                        {{ item.text }}
+                    </v-breadcrumbs-item>
                 </v-breadcrumbs>
             </template>
         </v-footer>

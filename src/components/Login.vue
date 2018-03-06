@@ -2,10 +2,10 @@
     <div id="login">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 col-xl-4 offset-xl-4">
+                <div class="col-12">
                     <div class="logo-container">
                         <h1>
-                            <img :src="config.imgPath.logo" alt="">
+                            <img :src="config.imgPath.logo" alt="logo Codenotch">
                         </h1>
                     </div>
                 </div>

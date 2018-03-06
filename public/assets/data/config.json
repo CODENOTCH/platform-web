@@ -1,6 +1,7 @@
 {
     "imgPath":{
-        "logo": "./public/assets/img/logo.svg"
+        "logo": "./public/assets/img/logo.svg",
+        "alumno": "./public/assets/img/alumno.jpg"
     }
 }
   
