@@ -6,6 +6,11 @@
     background: $darkWhite;
     color: $grey;
     @include flexContainer($rowAlign:flex-start,$direction:column);
+    .logo-container{
+        h1{
+          margin-bottom: 2.5vh;
+        }
+    }
     .container-fluid{
         &:first-of-type{
             margin-top: 10vh;
@@ -15,6 +20,9 @@
                 margin-bottom: 6vh;
             }
             @media (min-width: 1200px){
+                margin-bottom: 8vh;
+            }
+            @media (min-width: 1440px){
                 margin-top: 10vh;
                 margin-bottom: 14vh;
             }

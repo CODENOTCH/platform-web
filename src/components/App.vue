@@ -3,12 +3,14 @@
       <!--Login></Login-->
       <AlumnoHome></AlumnoHome>
       <FooterPlatform></FooterPlatform>
+      <!--AlumnoPrograma></AlumnoPrograma-->
     </main>
 </template>
 
 <script>
     import Login from './Login.vue';
     import AlumnoHome from './alumno/AlumnoHome.vue';
+    import AlumnoPrograma from './alumno/AlumnoPrograma.vue';
     import FooterPlatform from './FooterPlatform.vue';
 
     export default {
@@ -17,6 +19,7 @@
         components: {
             Login: Login,
             AlumnoHome: AlumnoHome,
+            AlumnoPrograma: AlumnoPrograma,
             FooterPlatform: FooterPlatform
         },
 

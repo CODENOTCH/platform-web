@@ -1,20 +1,25 @@
 /* LOGIN */
 
 #login{
-    width: 100%;
-    height: 100vh;
-    background: $darkWhite;
-    color: $grey;
-    @include flexContainer();
+  width: 100%;
+  height: 100vh;
+  background: $darkWhite;
+  color: $grey;
+  @include flexContainer();
+  .logo-container{
+    h1{
+      margin-bottom: 2.5vh;
+    }
   }
+}
   
-  .form-container{
-    .row{
-      &:first-of-type(){
-        margin-bottom: 3vh;
-        @media (min-width: 768px){
-          margin-bottom: 1.5vh;
-        }
+.form-container{
+  .row{
+    &:first-of-type(){
+      margin-bottom: 3vh;
+      @media (min-width: 768px){
+        margin-bottom: 1.5vh;
       }
     }
   }
+}

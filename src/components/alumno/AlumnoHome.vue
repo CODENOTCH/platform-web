@@ -34,7 +34,7 @@
             </div>
             <div class="row">
                 <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-2 offset-xl-5">
-                    <v-btn class="btn-codenotch">TEMARIO</v-btn>
+                    <v-btn class="btn-codenotch">PROGRAMA</v-btn>
                 </div>
             </div>
         </div>

@@ -61,13 +61,18 @@ p{
 .logo-container{
   h1{
     @include flexContainer();
-    margin-bottom: 2.5vh;
     img{
       width: 44vh;
       @media (min-width: 567px) and (orientation:landscape){
         width: 70vh;
       }
       @media (min-width: 768px){
+        width: 34vh;
+      }
+      @media (min-width: 1200px){
+        width: 37vh;
+      }
+      @media (min-width: 1440px){
         width: 34vh;
       }
     }
