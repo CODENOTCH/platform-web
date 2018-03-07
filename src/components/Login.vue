@@ -5,7 +5,7 @@
                 <div class="col-12">
                     <div class="logo-container">
                         <h1>
-                            <img :src="config.imgPath.logo" alt="logo Codenotch">
+                            <img :src="setPathLogo" alt="logo Codenotch">
                         </h1>
                     </div>
                 </div>
@@ -47,9 +47,14 @@
 
     export default {
         name:'login',
-        computed: mapGetters({
-            config: 'getConfigData'
-        }),
+        computed: {
+            ...mapGetters({
+                config: 'getConfigData',
+            }),
+            setPathLogo: function() {
+                return process.env.NODE_ENV === 'production' ? this.config.imgPathProduction.logo : this.config.imgPathDevelopment.logo
+            }
+        },
         data: () => ({
             valid: true,
             name: '',

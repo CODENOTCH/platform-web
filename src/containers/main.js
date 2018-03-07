@@ -6,7 +6,11 @@ import Axios from 'axios';
 
 Vue.use(Vuetify);
 
-const configPath = './public/assets/data/config.json';
+console.log('main');
+console.log(process.env.NODE_ENV);
+
+
+const configPath = process.env.NODE_ENV === 'production' ? './assets/data/config.json' : './public/assets/data/config.json';
 var configData = null;
 
 const getJsonData = ()=> {

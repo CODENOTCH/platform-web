@@ -1,7 +1,11 @@
 {
-    "imgPath":{
+    "imgPathDevelopment":{
         "logo": "./public/assets/img/logo.svg",
-        "alumno": "./public/assets/img/alumno.jpg"
+        "fotoAlumno": "./public/assets/img/alumno.jpg"
+    },
+    "imgPathProduction":{
+        "logo": "./assets/img/logo.svg",
+        "fotoAlumno": "./assets/img/alumno.jpg"
     }
 }
   
