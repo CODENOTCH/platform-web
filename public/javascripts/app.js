@@ -153,9 +153,18 @@ function setAnimation(){
 
 function endAnimation(){
   document.body.classList.remove('mask');
+  document.body.removeEventListener('touchmove',removeScroll);
+}
+
+function removeScroll(e){
+    e.preventDefault();
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
-    icon.style.opacity = 1;
+  icon.style.opacity = 1;
   setAnimation();
 });
+
+window.onload = function(){
+    document.body.addEventListener('touchmove',removeScroll);
+}
