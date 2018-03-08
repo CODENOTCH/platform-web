@@ -99,10 +99,6 @@ export default {
       });
   },
 
-  created(){
-      console.log(this.indexDataModules);
-  },
-
   methods: {
     setIndexProgramData() {
       this.$store.commit("setIndexProgramData", this.indexData);

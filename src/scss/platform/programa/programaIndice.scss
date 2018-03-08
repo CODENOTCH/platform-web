@@ -58,8 +58,8 @@
     border-bottom: 1px solid $softGrey;
     padding-top: 1em;
     padding-bottom: 1em;
-    padding-left: 2.5em;
-    padding-right: 1.5em;
+    padding-left: 2em;
+    padding-right: 1em;
     width: 100%;
     min-height: 36px;
     @include flexContainer(flex-start);
@@ -77,5 +77,5 @@
 
 .modulo-subtema{
     @extend .modulo-tema;
-    padding-left: 4.5em;
+    padding-left: 3.5em;
 }
