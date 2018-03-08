@@ -8,10 +8,10 @@
 </template>
 
 <script>
-    import Login from './Login.vue';
-    import AlumnoHome from './alumno/AlumnoHome.vue';
-    import Programa from './programa/Programa.vue';
-    import FooterPlatform from './FooterPlatform.vue';
+    import Login from './platform/Login.vue';
+    import AlumnoHome from './platform/alumno/AlumnoHome.vue';
+    import Programa from './platform/programa/Programa.vue';
+    import FooterPlatform from './platform/FooterPlatform.vue';
 
     export default {
         name:'app',
