@@ -1,11 +1,15 @@
 {
     "imgPathDevelopment":{
         "logo": "./public/assets/img/logo.svg",
-        "fotoAlumno": "./public/assets/img/alumno.jpg"
+        "fotoAlumno": "./public/assets/img/alumno.jpg",
+        "iconTema": "./public/assets/img/icon-tema.svg",
+        "iconSubtema": "./public/assets/img/icon-subtema.svg"
     },
     "imgPathProduction":{
         "logo": "./assets/img/logo.svg",
-        "fotoAlumno": "./assets/img/alumno.jpg"
+        "fotoAlumno": "./assets/img/alumno.jpg",
+        "iconTema": "./assets/img/icon-tema.svg",
+        "iconSubtema": "./assets/img/icon-subtema.svg"
     }
 }
   

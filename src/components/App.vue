@@ -1,16 +1,16 @@
 <template>
     <main id="app-container">
-      <!--Login></Login-->
-      <AlumnoHome></AlumnoHome>
+      <!--Login></Login>
+      <AlumnoHome></AlumnoHome-->
+      <Programa></Programa>
       <FooterPlatform></FooterPlatform>
-      <!--AlumnoPrograma></AlumnoPrograma-->
     </main>
 </template>
 
 <script>
     import Login from './Login.vue';
     import AlumnoHome from './alumno/AlumnoHome.vue';
-    import AlumnoPrograma from './alumno/AlumnoPrograma.vue';
+    import Programa from './programa/Programa.vue';
     import FooterPlatform from './FooterPlatform.vue';
 
     export default {
@@ -19,14 +19,8 @@
         components: {
             Login: Login,
             AlumnoHome: AlumnoHome,
-            AlumnoPrograma: AlumnoPrograma,
+            Programa: Programa,
             FooterPlatform: FooterPlatform
-        },
-
-        data () {
-            return {
-
-            }
         }
     }
 </script>

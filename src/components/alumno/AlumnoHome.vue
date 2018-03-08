@@ -48,6 +48,17 @@
 
     export default {
         name:'alumnoHome',
+
+        data(){
+            return{
+                links: [
+                        {text:'Github',disabled: false},
+                        {text:'Linkedin',disabled: false},
+                        {text:'Twitter',disabled: true}
+                ]
+            }
+        },
+        
         computed: {
             ...mapGetters({
                 config: 'getConfigData',
@@ -57,15 +68,6 @@
             },
             setPathFotoAlumno: function() {
                 return process.env.NODE_ENV === 'production' ? this.config.imgPathProduction.fotoAlumno : this.config.imgPathDevelopment.fotoAlumno
-            }
-        },        
-        data(){
-            return{
-                links: [
-                        {text:'Github',disabled: false},
-                        {text:'Linkedin',disabled: false},
-                        {text:'Twitter',disabled: true}
-                ]
             }
         }
     }

@@ -22,6 +22,7 @@
 
     export default {
         name:'footerPlatform',
+        
         data () {
             return {
                 breadcrumbs: [

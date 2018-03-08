@@ -6,8 +6,8 @@ import Axios from 'axios';
 
 Vue.use(Vuetify);
 
-console.log('main');
-console.log(process.env.NODE_ENV);
+/*console.log('main');
+console.log(process.env.NODE_ENV);*/
 
 
 const configPath = process.env.NODE_ENV === 'production' ? './assets/data/config.json' : './public/assets/data/config.json';
@@ -15,11 +15,11 @@ var configData = null;
 
 const getJsonData = ()=> {
     Axios.get(configPath)
-        .then(function (response) {
+        .then( (response) => {
             configData = response.data;
             createAppVue();
         })
-        .catch(function (error) {
+        .catch( (error) => {
             console.log(error);
         });
 }

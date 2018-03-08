@@ -11,6 +11,7 @@ const debug = process.env.NODE_ENV !== 'production';
 const state = {
     versionIE: undefined,
     configData: '',
+    indexProgramData: '',
     isOnlyMobile: false,
     isMobileOrTable: false,
     isOpenMobileMenu: false,

@@ -2,6 +2,10 @@ export const getConfigData = state => {
     return state.configData;
 };
 
+export const getIndexProgramData = state => {
+    return state.indexProgramData;
+};
+
 export const getIsOnlyMobile = state => {
     return state.isOnlyMobile;
 };

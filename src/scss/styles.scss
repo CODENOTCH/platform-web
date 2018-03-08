@@ -4,8 +4,9 @@
 //@import 'fonts';
 @import 'mixins';
 @import 'general';
-@import 'footerPlatform';
-@import 'login';
-@import 'alumnoHome';
-@import 'alumnoPrograma';
-@import 'alumnoIndice';
+@import 'platform/footer/footerPlatform';
+@import 'platform/login/login';
+@import 'platform/alumno/alumnoHome';
+@import 'platform/programa/programa';
+@import 'platform/programa/programaIndice';
+@import 'platform/programa/programaContenido';

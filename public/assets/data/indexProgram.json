@@ -1,0 +1,112 @@
+{
+    "module1": [
+        {
+            "text": "Introducción al funcionamiento de Internet",
+            "type": "tema"
+        },
+        {
+            "text": "Editor de código Visual Studio Code",
+            "type": "tema"
+        },
+        {
+            "text": "Ventajas de usar Visual Studio Code",
+            "type": "subtema"
+        },
+        {
+            "text": "Instalación",
+            "type": "subtema"
+        },
+        {
+            "text": "Interfaz de usuario",
+            "type": "subtema"
+        },
+        {
+            "text": "Personalización del editor",
+            "type": "subtema"
+        },
+        {
+            "text": "Extensiones",
+            "type": "subtema"
+        },
+        {
+            "text": "Control de versiones GIT",
+            "type": "tema"
+        },
+        {
+            "text": "Instalación de GIT",
+            "type": "subtema"
+        },
+        {
+            "text": "Introducción a GIT",
+            "type": "subtema"
+        },
+        {
+            "text": "Trabajando con GIT en local",
+            "type": "subtema"
+        },
+        {
+            "text": "Trabajando con GIT en remoto",
+            "type": "subtema"
+        },
+        {
+            "text": "Desarrollo Frontend",
+            "type": "tema"
+        }
+    ],
+    "module2": [
+        {
+            "text": "Introduccion al desarrollo Backend",
+            "type": "tema"
+        },
+        {
+            "text": "Express",
+            "type": "tema"
+        },
+        {
+            "text": "Introducción",
+            "type": "subtema"
+        },
+        {
+            "text": "MongoDB",
+            "type": "tema"
+        },
+        {
+            "text": "Introducción",
+            "type": "subtema"
+        },
+        {
+            "text": "Instalación",
+            "type": "subtema"
+        },
+        {
+            "text": "Desarrollo de bases de datos no relacionales",
+            "type": "subtema"
+        }
+    ],
+    "module3": [
+        {
+            "text": "Introducción al desarrollo móvil",
+            "type": "tema"
+        },
+        {
+            "text": "Angular",
+            "type": "tema"
+        },
+        {
+            "text": "Typescript",
+            "type": "subtema"
+        },
+        {
+            "text": "Ionic",
+            "type": "tema"
+        },
+        {
+            "text": "Instalación",
+            "type": "subtema"
+        },
+        {
+            "text": "Desarrollo",
+            "type": "subtema"
+        }
+    ]
+}

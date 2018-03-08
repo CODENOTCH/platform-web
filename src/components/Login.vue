@@ -47,14 +47,7 @@
 
     export default {
         name:'login',
-        computed: {
-            ...mapGetters({
-                config: 'getConfigData',
-            }),
-            setPathLogo: function() {
-                return process.env.NODE_ENV === 'production' ? this.config.imgPathProduction.logo : this.config.imgPathDevelopment.logo
-            }
-        },
+        
         data: () => ({
             valid: true,
             name: '',
@@ -68,6 +61,16 @@
                 v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'Debe ser un formato de email válido'
             ],
         }),
+
+        computed: {
+            ...mapGetters({
+                config: 'getConfigData',
+            }),
+            setPathLogo: function() {
+                return process.env.NODE_ENV === 'production' ? this.config.imgPathProduction.logo : this.config.imgPathDevelopment.logo
+            }
+        },
+
         methods: {
             submit () {
                 if (this.$refs.form.validate()) {
