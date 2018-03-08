@@ -19,7 +19,3 @@
     }
 </script>
 
-<style lang="scss">
-    @import "../../scss/styles";
-</style>
-
