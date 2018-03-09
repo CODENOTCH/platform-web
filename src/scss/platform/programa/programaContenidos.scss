@@ -1,7 +1,7 @@
 /* PROGRAMA CONTENIDO */
 
 .programa-contenido{
-    padding-top: 10vh;
+    padding-top: 14vh;
     padding-bottom: 20vh;
     @media (min-width: 480px){
         padding-bottom: 19vh;
@@ -17,10 +17,12 @@
     }
     h2{
         margin-bottom: 3vh;
-        text-align: center;
-        @media (min-width: 992px){
-            text-align: left;
-        }
+    }
+    h3{
+        margin-bottom: 3vh;
+    }
+    h4{
+        margin-bottom: 3vh;
     }
     p{
         margin-bottom: 3vh;
