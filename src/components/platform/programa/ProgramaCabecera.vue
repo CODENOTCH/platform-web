@@ -63,12 +63,14 @@
 
         methods: {
             clickHandler(i){
-                //console.log(this.$store.getters.getStateIndexProgram);
+                //console.log( this.props.onClickProgramCabecera);
+
+                //this.props.onClickProgramCabecera;
+
+                this.$emit('clicked',i);
 
                 if(i === 0) this.$store.commit('setStateIndexProgram');
                 if(i > 0 && this.$store.getters.getStateIndexProgram) this.$store.commit('setStateIndexProgram');
-
-                
 
                 //if(this.$store.getters.getStateIndexProgram) this.$store.commit('setStateIndexProgram');
 
