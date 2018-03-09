@@ -3,13 +3,21 @@
         "logo": "./public/assets/img/logo.svg",
         "fotoAlumno": "./public/assets/img/alumno.jpg",
         "iconTema": "./public/assets/img/icon-tema.svg",
-        "iconSubtema": "./public/assets/img/icon-subtema.svg"
+        "iconSubtema": "./public/assets/img/icon-subtema.svg",
+        "iconIndice": "./public/assets/img/icon-indice.svg",
+        "iconContenidos": "./public/assets/img/icon-contenidos.svg",
+        "iconSlides": "./public/assets/img/icon-slides.svg",
+        "iconDesarrollos": "./public/assets/img/icon-desarrollos.svg"
     },
     "imgPathProduction":{
         "logo": "./assets/img/logo.svg",
         "fotoAlumno": "./assets/img/alumno.jpg",
         "iconTema": "./assets/img/icon-tema.svg",
-        "iconSubtema": "./assets/img/icon-subtema.svg"
+        "iconSubtema": "./assets/img/icon-subtema.svg",
+        "iconIndice": "./assets/img/icon-indice.svg",
+        "iconContenidos": "./assets/img/icon-contenidos.svg",
+        "iconSlides": "./assets/img/icon-slides.svg",
+        "iconDesarrollos": "./assets/img/icon-desarrollos.svg"
     }
 }
   

@@ -3,7 +3,7 @@
 .programa-indice{
     position: absolute;
     left: 0;
-    top: 0;
+    top: 46px;
     transform: translateX(-100%);
     z-index: 1;
     width: 100%;
@@ -12,7 +12,12 @@
     border-right: 1px solid $softGrey;
     height: 100% !important;
     overflow: scroll !important;
+    @include transition(all,.35s,ease-out,0);
+    &.active{
+        transform: translateX(0); 
+    }
     @media (min-width: 992px){
+        top: 0;
         transform: translateX(0);
         width: 350px;
     }

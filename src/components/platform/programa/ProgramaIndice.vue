@@ -1,8 +1,8 @@
 <template>
-    <div class="programa-indice">
+    <div class="programa-indice" :class="{active:isOpen}">
         <div class="logo-container">
             <h1>
-                <img :src="setPathLogo" alt="logo Codenotch">
+                <img :src="setPathLogo" alt="logo Codenotch"/>
             </h1>
         </div>
         <div class="indice-container">
@@ -16,8 +16,8 @@
                             <ul>
                                 <li v-for='(item,i) of indexDataModules[i]' v-bind:key="i">
                                     <ProgramaItemIndice :type="item.type">
-                                        <img v-if="item.type == 'tema'" slot="icon" :src="setPathIconTema" alt="icono documento">
-                                        <img v-else slot="icon" :src="setPathIconSubtema" alt="icono documento">
+                                        <img v-if="item.type == 'tema'" slot="icon" :src="setPathIconTema" alt="icono documento"/>
+                                        <img v-else slot="icon" :src="setPathIconSubtema" alt="icono documento"/>
                                         <span slot="text">{{item.text}}</span>
                                     </ProgramaItemIndice>
                                 </li>
@@ -56,7 +56,8 @@ export default {
 
   computed: {
     ...mapGetters({
-      config: "getConfigData"
+      config: "getConfigData",
+      isOpen: 'getStateIndexProgram'
     }),
 
     setPathLogo() {

@@ -18,8 +18,8 @@ export const setLogged = (state,isLogged) => {
     state.logged = isLogged;
 };
 
-export const setStateMenuMobile = state => {
-    state.isOpenMobileMenu = !state.isOpenMobileMenu;
+export const setStateIndexProgram = state => {
+    state.isOpenIndexProgram = !state.isOpenIndexProgram;
 };
 
 export const setVersionIE = (state) => {

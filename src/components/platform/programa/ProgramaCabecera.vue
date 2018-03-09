@@ -2,13 +2,20 @@
     <div class="programa-cabecera">
          <ul>
             <li v-for='(item,i) of listItemsCabecera' v-bind:key="i">
-                <a href="#" :class={active:item.active} @click=changeSectionHandler(i)>{{ item.name }}</a>
+                <a href="#" :class={active:item.active} @click=clickHandler(i)>
+                    <img v-if="item.name == 'menu'" :src="setPathIconIndice" alt="icono índice"/>
+                    <img v-else-if="item.name == 'contenidos'" :src="setPathIconContenidos" alt="icono documento"/>
+                    <img v-else-if="item.name == 'slides'" :src="setPathIconSlides" alt="icono slides"/>
+                    <img v-else :src="setPathIconDesarrollos" alt="icono desarrollos"/>
+                    <span>{{ item.name }}</span>
+                </a>
             </li>
         </ul>
     </div>
 </template>
 
 <script>
+    import { mapGetters } from "vuex";
 
     export default {
         name: 'programaCabecera',
@@ -24,8 +31,47 @@
             }
         },
 
+        computed: {
+            ...mapGetters({
+                config: "getConfigData"
+            }),
+
+            setPathIconIndice() {
+                return process.env.NODE_ENV === "production"
+                    ? this.config.imgPathProduction.iconIndice
+                    : this.config.imgPathDevelopment.iconIndice;
+            },
+
+            setPathIconContenidos() {
+                return process.env.NODE_ENV === "production"
+                    ? this.config.imgPathProduction.iconContenidos
+                    : this.config.imgPathDevelopment.iconContenidos;
+            },
+
+            setPathIconSlides() {
+                return process.env.NODE_ENV === "production"
+                    ? this.config.imgPathProduction.iconSlides
+                    : this.config.imgPathDevelopment.iconSlides;
+            },
+
+            setPathIconDesarrollos() {
+                return process.env.NODE_ENV === "production"
+                    ? this.config.imgPathProduction.iconDesarrollos
+                    : this.config.imgPathDevelopment.iconDesarrollos;
+            }
+        },    
+
         methods: {
-            changeSectionHandler(i){
+            clickHandler(i){
+                //console.log(this.$store.getters.getStateIndexProgram);
+
+                if(i === 0) this.$store.commit('setStateIndexProgram');
+                if(i > 0 && this.$store.getters.getStateIndexProgram) this.$store.commit('setStateIndexProgram');
+
+                
+
+                //if(this.$store.getters.getStateIndexProgram) this.$store.commit('setStateIndexProgram');
+
                 let listItemsCabeceraTemp = [...this.listItemsCabecera];
 
                 for(let item of listItemsCabeceraTemp){

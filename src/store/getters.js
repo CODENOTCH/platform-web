@@ -14,8 +14,8 @@ export const getIsMobileOrTablet = state => {
     return state.isMobileOrTable;
 };
 
-export const getStateMenuMobile = state => {
-    return state.isOpenMobileMenu;
+export const getStateIndexProgram = state => {
+    return state.isOpenIndexProgram;
 };
 
 export const getLogged = state => {

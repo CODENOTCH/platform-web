@@ -40,6 +40,19 @@
                 background: $purple;
                 pointer-events: none;
             }
+            span{
+                display: none;
+                @media (min-width: 992px){
+                    display: inline-block;
+                }
+            }
+            img{
+                /*width: auto;
+                height: 16px;*/
+                @media (min-width: 992px){
+                    margin-right: 1em;
+                }
+            }
         }
     }
 }
