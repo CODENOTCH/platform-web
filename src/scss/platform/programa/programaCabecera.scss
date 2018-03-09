@@ -3,11 +3,18 @@
     height: 46px;
     background: $darkGrey;
     color: $darkWhite;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
     @media (min-width: 992px){
         margin-left: 350px;
     }
     ul{
         height: 100%;
+        font-size: inherit;
+        line-height: inherit;
+        font-weight: 400;
         @include flexContainer(space-around);
         @media (min-width: 992px){
             width: calc(100% - 350px);
@@ -17,6 +24,7 @@
         width: 100%;
         height: 46px;
         border-right: 1px solid $grey;
+        list-style: none;
         &:last-of-type{
             border-right: none;
         }

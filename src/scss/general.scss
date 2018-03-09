@@ -11,6 +11,7 @@ body{
 
 h2{
   font-size: 1.5em;
+  line-height: 1.2em;
   color: $black;
   font-weight: 600;
 }
@@ -20,6 +21,13 @@ p{
   line-height: 1.6em;
   color: $black;
   font-weight: 300;
+}
+
+ul{
+  @extend p;
+  li{
+    list-style: square inside;
+  }
 }
 
 .link-codenotch{
@@ -38,10 +46,11 @@ p{
 }
 
 .list-links{
-  line-height: 2;
+  line-height: 2 !important;
   li{
     display: inline-block;
     margin-right: 1em;
+    list-style: none;
     &:after{
       margin-left: 1em;
       content: "/"

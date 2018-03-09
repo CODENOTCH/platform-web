@@ -28,15 +28,29 @@
             margin: 0 auto;
             cursor: pointer;
             @media (min-width: 567px) and (orientation:landscape){
-                width: 70vh;
+                width: 85vh;
+            
             }
-            @media (min-width: 768px){
+            @media (min-width: 769px){
                 width: 334px;
                 margin: 0;
             }
             img{
                 max-width: 80%;
+                @media (max-width: 768px){
+                    width: 38vh;
+                }
+                @media (min-width: 567px) and (orientation:landscape){
+                    width: 85vh;
+                }
             }
+        }
+    }
+    ul{
+        font-size: inherit;
+        line-height: inherit;
+        li{
+            list-style: none;
         }
     }
 }
@@ -69,7 +83,8 @@
     min-height: 36px;
     @include flexContainer(flex-start);
     font-weight: 400;
-    font-size: .9em;
+    font-size: 1em;
+    line-height: 1.3em;
     cursor: pointer;
     img{
         margin-right: .8em;
