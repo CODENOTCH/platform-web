@@ -90,9 +90,11 @@
         margin-right: .8em;
     }
     @include transition(all,.5s,ease-out,0);
-    &:hover{
-      background: $softPurple;
-    } 
+    @media (min-width: 1200px){
+        &:hover{
+            background: $softPurple;
+        } 
+    }
 }
 
 .modulo-subtema{

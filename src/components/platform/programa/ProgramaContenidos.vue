@@ -1,5 +1,5 @@
 <template>
-    <div class="programa-contenido">
+    <div class="programa-contenidos">
         <div class="container-fluid">
              <div class="row">
                 <div class="col-12 col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
@@ -30,7 +30,7 @@
     import { mapGetters } from "vuex";
 
     export default {
-        name:'programaContenido',
+        name:'programaContenidos',
         
         data () {
             return {
@@ -39,8 +39,7 @@
 
         computed: {
             ...mapGetters({
-                config: "getConfigData",
-                isOpen: 'getStateIndexProgram'
+                config: "getConfigData"
             }),
 
             setPathImgContenidos1() {
