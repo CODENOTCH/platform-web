@@ -67,12 +67,17 @@
 
                 //this.props.onClickProgramCabecera;
 
-                this.$emit('clicked',i);
+                
 
-                if(i === 0) this.$store.commit('setStateIndexProgram');
-                if(i > 0 && this.$store.getters.getStateIndexProgram) this.$store.commit('setStateIndexProgram');
+                //if(i === 0) this.$store.commit('setStateIndexProgram');
+                //if(i > 0 && this.$store.getters.getStateIndexProgram) this.$store.commit('setStateIndexProgram');
 
-                //if(this.$store.getters.getStateIndexProgram) this.$store.commit('setStateIndexProgram');
+                let isIndexOpen = false;
+
+                if(i === 0) isIndexOpen = !isIndexOpen;
+                //if(i > 0 && this.$store.getters.getStateIndexProgram) 
+
+                this.$emit('clicked',i,isIndexOpen);
 
                 let listItemsCabeceraTemp = [...this.listItemsCabecera];
 

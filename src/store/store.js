@@ -14,7 +14,7 @@ const state = {
     indexProgramData: '',
     isOnlyMobile: false,
     isMobileOrTable: false,
-    isOpenIndexProgram: false,
+    /*isOpenIndexProgram: false,*/
     logged: false,
 };
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="programa-indice" :class="{active:isOpen}">
+    <div class="programa-indice" :class="{active:isIndexOpen}">
         <div class="logo-container">
             <h1>
                 <img :src="setPathLogo" alt="logo Codenotch"/>
@@ -42,6 +42,8 @@ export default {
     ProgramaItemIndice: ProgramaItemIndice
   },
 
+  props: ['isIndexOpen'],
+
   data() {
     return {
       indexData: {},
@@ -56,8 +58,8 @@ export default {
 
   computed: {
     ...mapGetters({
-      config: "getConfigData",
-      isOpen: 'getStateIndexProgram'
+      config: "getConfigData"
+      //isOpen: 'getStateIndexProgram'
     }),
 
     setPathLogo() {

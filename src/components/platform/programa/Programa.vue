@@ -1,6 +1,6 @@
 <template>
     <div class="programa">
-      <ProgramaIndice></ProgramaIndice>
+      <ProgramaIndice :isIndexOpen="isIndexOpen"></ProgramaIndice>
       <ProgramaCabecera @clicked="onClickProgramCabecera"></ProgramaCabecera>
       <ProgramaContenidos v-if="sectionActive === 1"></ProgramaContenidos>
       <ProgramaSlides v-if="sectionActive === 2"></ProgramaSlides>
@@ -28,13 +28,15 @@
 
         data () {
             return {
-                sectionActive: 1
+                sectionActive: 1,
+                isIndexOpen: false
             }
         },
 
         methods: {
-            onClickProgramCabecera(i){
+            onClickProgramCabecera(i,isIndexOpen){
                 this.sectionActive = i;
+                this.isIndexOpen = isIndexOpen;
             }
         }
     }
