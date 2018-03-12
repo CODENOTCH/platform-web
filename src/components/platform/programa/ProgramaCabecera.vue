@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import { mapGetters } from "vuex";
+    import { mapGetters } from 'vuex';
 
     export default {
         name: 'programaCabecera',
@@ -23,39 +23,39 @@
         data () {
             return {
                 listItemsCabecera:[
-                    {name:"menu", active:false},
-                    {name:"contenidos", active:true},
-                    {name:"slides", active:false},
-                    {name:"desarrollos", active:false}
+                    {name:'menu', active:false},
+                    {name:'contenidos', active:true},
+                    {name:'slides', active:false},
+                    {name:'desarrollos', active:false}
                 ]
             }
         },
 
         computed: {
             ...mapGetters({
-                config: "getConfigData"
+                config: 'getConfigData'
             }),
 
             setPathIconIndice() {
-                return process.env.NODE_ENV === "production"
+                return process.env.NODE_ENV === 'production'
                     ? this.config.imgPathProduction.iconIndice
                     : this.config.imgPathDevelopment.iconIndice;
             },
 
             setPathIconContenidos() {
-                return process.env.NODE_ENV === "production"
+                return process.env.NODE_ENV === 'production'
                     ? this.config.imgPathProduction.iconContenidos
                     : this.config.imgPathDevelopment.iconContenidos;
             },
 
             setPathIconSlides() {
-                return process.env.NODE_ENV === "production"
+                return process.env.NODE_ENV === 'production'
                     ? this.config.imgPathProduction.iconSlides
                     : this.config.imgPathDevelopment.iconSlides;
             },
 
             setPathIconDesarrollos() {
-                return process.env.NODE_ENV === "production"
+                return process.env.NODE_ENV === 'production'
                     ? this.config.imgPathProduction.iconDesarrollos
                     : this.config.imgPathDevelopment.iconDesarrollos;
             }

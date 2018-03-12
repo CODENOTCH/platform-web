@@ -1,36 +1,36 @@
 <template>
-    <div id="login">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="logo-container">
+    <div id='login'>
+        <div class='container-fluid'>
+            <div class='row'>
+                <div class='col-12'>
+                    <div class='logo-container'>
                         <h1>
-                            <img :src="setPathLogo" alt="logo Codenotch"/>
+                            <img :src='setPathLogo' alt='logo Codenotch'/>
                         </h1>
                     </div>
                 </div>
-                <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
-                    <div class="form-container">
-                        <v-form class="container" v-model="valid" ref="form" lazy-validation>
-                            <div class="row">
-                                <div class="col-12">
-                                    <v-text-field   label="Nombre"
-                                                    v-model="name"
-                                                    :rules="nameRules"
+                <div class='col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4'>
+                    <div class='form-container'>
+                        <v-form class='container' v-model='valid' ref='form' lazy-validation>
+                            <div class='row'>
+                                <div class='col-12'>
+                                    <v-text-field   label='Nombre'
+                                                    v-model='name'
+                                                    :rules='nameRules'
                                                     required
                                     ></v-text-field>
                                 </div>
-                                <div class="col-12">
-                                    <v-text-field   label="Email"
-                                                    v-model="email"
-                                                    :rules="emailRules"
+                                <div class='col-12'>
+                                    <v-text-field   label='Email'
+                                                    v-model='email'
+                                                    :rules='emailRules'
                                                     required
                                     ></v-text-field>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-6 offset-xl-3">
-                                    <v-btn class="btn-codenotch" @click="submit">SIGN IN</v-btn>
+                            <div class='row'>
+                                <div class='col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-6 offset-xl-3'>
+                                    <v-btn class='btn-codenotch' @click='submit'>SIGN IN</v-btn>
                                 </div>
                             </div>
                         </v-form> 
@@ -74,6 +74,11 @@
         methods: {
             submit () {
                 if (this.$refs.form.validate()) {
+
+                    this.$store.commit('setProfile', 'alumno');
+
+                    /* TEMPORAL */ 
+
                     /*Axios.post('/api/submit', {
                         name: this.name,
                         email: this.email
@@ -84,7 +89,7 @@
     }
 </script>
 
-<style lang="stylus">
+<style lang='stylus'>
   @import '../../stylus/main'
 
   .input-group__details:before {

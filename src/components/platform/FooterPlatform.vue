@@ -36,7 +36,7 @@
     }
 </script>
 
-<style lang="stylus">
+<style lang='stylus'>
   @import '../../stylus/main'
 
   .application--wrap {

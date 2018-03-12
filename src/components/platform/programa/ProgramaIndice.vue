@@ -31,12 +31,12 @@
 </template>
 
 <script>
-import Axios from "axios";
-import { mapGetters } from "vuex";
-import ProgramaItemIndice from "./ProgramaItemIndice.vue";
+import Axios from 'axios';
+import { mapGetters } from 'vuex';
+import ProgramaItemIndice from './ProgramaItemIndice.vue';
 
 export default {
-  name: "programaIndice",
+  name: 'programaIndice',
 
   components: {
     ProgramaItemIndice: ProgramaItemIndice
@@ -49,33 +49,33 @@ export default {
       indexData: {},
       indexDataModules: [],
       moduleList: [
-        { name: "frontend", id: 1 },
-        { name: "backend", id: 2 },
-        { name: "mobile", id: 3 }
+        { name: 'frontend', id: 1 },
+        { name: 'backend', id: 2 },
+        { name: 'mobile', id: 3 }
       ]
     };
   },
 
   computed: {
     ...mapGetters({
-      config: "getConfigData"
+      config: 'getConfigData'
       //isOpen: 'getStateIndexProgram'
     }),
 
     setPathLogo() {
-      return process.env.NODE_ENV === "production"
+      return process.env.NODE_ENV === 'production'
         ? this.config.imgPathProduction.logo
         : this.config.imgPathDevelopment.logo;
     },
 
     setPathIconTema() {
-      return process.env.NODE_ENV === "production"
+      return process.env.NODE_ENV === 'production'
         ? this.config.imgPathProduction.iconTema
         : this.config.imgPathDevelopment.iconTema;
     },
 
     setPathIconSubtema() {
-      return process.env.NODE_ENV === "production"
+      return process.env.NODE_ENV === 'production'
         ? this.config.imgPathProduction.iconSubtema
         : this.config.imgPathDevelopment.iconSubtema;
     }
@@ -83,9 +83,9 @@ export default {
 
   beforeCreate() {
     const indexPath =
-      process.env.NODE_ENV === "production"
-        ? "./assets/data/indexProgram.json"
-        : "./public/assets/data/indexProgram.json";
+      process.env.NODE_ENV === 'production'
+        ? './assets/data/indexProgram.json'
+        : './public/assets/data/indexProgram.json';
 
     Axios.get(indexPath)
       .then(response => {
@@ -104,7 +104,7 @@ export default {
 
   methods: {
     setIndexProgramData() {
-      this.$store.commit("setIndexProgramData", this.indexData);
+      this.$store.commit('setIndexProgramData', this.indexData);
     }
   }
 };

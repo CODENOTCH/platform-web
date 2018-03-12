@@ -16,6 +16,7 @@ const state = {
     isMobileOrTable: false,
     /*isOpenIndexProgram: false,*/
     logged: false,
+    profile: 'alumno'
 };
 
 const store = new Vuex.Store({

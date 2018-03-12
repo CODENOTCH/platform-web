@@ -6,6 +6,10 @@ export const getIndexProgramData = state => {
     return state.indexProgramData;
 };
 
+export const profile = state => {
+    return state.profile;
+};
+
 export const getIsOnlyMobile = state => {
     return state.isOnlyMobile;
 };
