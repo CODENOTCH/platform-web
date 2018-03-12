@@ -1,11 +1,13 @@
 <template>
-    <div class="programa">
-      <ProgramaIndice :isIndexOpen="isIndexOpen"></ProgramaIndice>
-      <ProgramaCabecera @clicked="onClickProgramCabecera"></ProgramaCabecera>
-      <ProgramaContenidos v-if="sectionActive === 1"></ProgramaContenidos>
-      <ProgramaSlides v-if="sectionActive === 2"></ProgramaSlides>
-      <ProgramaDesarrollos v-if="sectionActive === 3"></ProgramaDesarrollos>
-    </div>
+    <transition name="contentTransition" appear>
+        <div class="programa">
+            <ProgramaIndice :isIndexOpen="isIndexOpen"></ProgramaIndice>
+            <ProgramaCabecera @clickedTab="onClickProgramCabeceraTab"></ProgramaCabecera>
+            <ProgramaContenidos v-if="sectionActive === 1"></ProgramaContenidos>
+            <ProgramaSlides v-if="sectionActive === 2"></ProgramaSlides>
+            <ProgramaDesarrollos v-if="sectionActive === 3"></ProgramaDesarrollos>
+        </div>
+    </transition>
 </template>
 
 <script>
@@ -34,7 +36,7 @@
         },
 
         methods: {
-            onClickProgramCabecera(i,isIndexOpen){
+            onClickProgramCabeceraTab(i,isIndexOpen){
                 this.sectionActive = i;
                 this.isIndexOpen = isIndexOpen;
             }

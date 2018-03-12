@@ -6,7 +6,7 @@ export const getIndexProgramData = state => {
     return state.indexProgramData;
 };
 
-export const profile = state => {
+export const getProfile = state => {
     return state.profile;
 };
 

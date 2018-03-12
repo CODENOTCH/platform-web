@@ -1,9 +1,12 @@
 <template>
     <main id="app-container">
-      <!--Login></Login>
-      <AlumnoHome></AlumnoHome-->
-      <Programa></Programa>
-      <FooterPlatform></FooterPlatform>
+        <transition name="contentTransition" appear>
+            <router-view></router-view>
+        </transition>
+      <!--Login></Login-->
+      <!--AlumnoHome></AlumnoHome-->
+      <!--Programa></Programa>
+      <FooterPlatform></FooterPlatform-->
     </main>
 </template>
 

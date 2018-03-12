@@ -27,6 +27,9 @@
   .container-btn-session{
     width: 180px;
     margin-bottom: 1vh;
+    .link-codenotch{
+      line-height: 2;
+    }
     @media (min-width: 567px){
       float: left;
       margin-bottom: 0;

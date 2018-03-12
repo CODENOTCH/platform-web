@@ -1,9 +1,11 @@
 <template>
     <div class="programa-indice" :class="{active:isIndexOpen}">
         <div class="logo-container">
-            <h1>
-                <img :src="setPathLogo" alt="logo Codenotch"/>
-            </h1>
+            <router-link :to="{ name: 'alumnoHome'}">
+              <h1>
+                  <img :src="setPathLogo" alt="logo Codenotch"/>
+              </h1>
+            </router-link>  
         </div>
         <div class="indice-container">
             <ul>

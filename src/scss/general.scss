@@ -7,6 +7,7 @@ html{
 body{
   font-family: 'Open Sans', sans-serif;
   font-size: 15px;
+  background: $darkWhite;
 }
 
 h2{
@@ -54,14 +55,14 @@ ul{
 
 .link-codenotch{
   font-size: 1.05em;
-  color: $grey;
+  color: $grey !important;
   font-weight: 600;
   @include transition(color,.4s,ease-out,0);
   &:hover{
-    color: $purple;
+    color: $purple !important;
   }
   &.disabled{
-    color: $black;
+    color: $black !important;
     font-weight: 400;
     pointer-events: none;
   } 

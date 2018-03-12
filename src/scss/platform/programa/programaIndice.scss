@@ -11,7 +11,8 @@
     background: $darkWhite;
     border-right: 1px solid $softGrey;
     height: 100% !important;
-    overflow: scroll !important;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
     @include transition(all,.35s,ease-out,0);
     &.active{
         transform: translateX(0); 

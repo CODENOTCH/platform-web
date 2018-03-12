@@ -1,24 +1,36 @@
 <template>
-    <footer id="footer-platform">
-        <div class="container-btn-session">
-            <v-app>
-                <v-container fluid>
-                    <v-switch :label="`Cerrar sesión`" v-model="switch1"></v-switch>
-                </v-container>
-            </v-app>  
-        </div>
-        <div class="container-breadcrumbs">
-            <ul class="list-links">
-                <li v-for="(link,index) of breadcrumbs" v-bind:key="index">
-                    <a class="link-codenotch disabled" href="#">{{link.text}}</a>
-                </li>
-            </ul>
-        </div>
-    </footer>            
-
+    <transition name="contentTransition" appear>
+        <footer id="footer-platform">
+            <div class="container-btn-session">
+                <!--v-app>
+                    <v-container fluid>
+                        <router-link :to="{ name: 'login'}">
+                            <v-switch :label="`Cerrar sesión`" v-model="switch1"></v-switch>
+                        </router-link>
+                    </v-container>
+                </v-app-->
+                <router-link class="link-codenotch" :to="{ name: 'login'}">
+                    <span>Cerrar sesión</span>
+                </router-link>  
+            </div>
+            <div class="container-breadcrumbs">
+                <ul class="list-links">
+                    
+                    <li v-for="(link,index) of breadcrumbs" v-bind:key="index">
+                        <!--a class="link-codenotch">{{link.text}}</a-->
+                        <router-link class="link-codenotch" :class="{disabled:link.disabled}" :to="{ name: link.path}">
+                            <span>{{link.text}}</span>
+                        </router-link>  
+                    </li>
+                </ul>
+            </div>
+        </footer>            
+    </transition>
 </template>
 
 <script>
+
+    import { mapGetters } from 'vuex';
 
     export default {
         name:'footerPlatform',
@@ -26,12 +38,21 @@
         data () {
             return {
                 breadcrumbs: [
-                    {text:'Prehome',disabled: false},
-                    {text:'Home',disabled: false},
-                    {text:'Temario',disabled: true}
-                ],
-                switch1: true
+                    {text:'Home', disabled: false, path:'alumnoHome'},
+                    {text:'Programa', disabled: true, path:'alumnoPrograma'}
+                ]/*,
+                switch1: true*/
             }
+        }, 
+
+        computed: {
+            ...mapGetters({
+                profile: 'getProfile'
+            })
+        },
+
+        created(){
+            console.log(this.profile);
         }
     }
 </script>
@@ -44,9 +65,9 @@
     min-height: inherit !important
   }
 
-  .input-group__details {
+  /*.input-group__details {
       display: none !important
-  }
+  }*/
 
   .container {
     padding: 0 

@@ -1,36 +1,36 @@
 <template>
-    <div id='login'>
-        <div class='container-fluid'>
-            <div class='row'>
-                <div class='col-12'>
-                    <div class='logo-container'>
+    <div id="login">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="logo-container">
                         <h1>
-                            <img :src='setPathLogo' alt='logo Codenotch'/>
+                            <img :src="setPathLogo" alt="logo Codenotch"/>
                         </h1>
                     </div>
                 </div>
-                <div class='col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4'>
-                    <div class='form-container'>
-                        <v-form class='container' v-model='valid' ref='form' lazy-validation>
-                            <div class='row'>
-                                <div class='col-12'>
-                                    <v-text-field   label='Nombre'
-                                                    v-model='name'
-                                                    :rules='nameRules'
+                <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+                    <div class="form-container">
+                        <v-form class="container" v-model="valid" ref="form" lazy-validation>
+                            <div class="row">
+                                <div class="col-12">
+                                    <v-text-field   label="Usuario"
+                                                    v-model="user"
+                                                    :rules="userRules"
                                                     required
                                     ></v-text-field>
                                 </div>
-                                <div class='col-12'>
-                                    <v-text-field   label='Email'
-                                                    v-model='email'
-                                                    :rules='emailRules'
+                                <div class="col-12">
+                                    <v-text-field   label="Contraseña"
+                                                    v-model="password"
+                                                    :rules="passwordRules"
                                                     required
                                     ></v-text-field>
                                 </div>
                             </div>
-                            <div class='row'>
-                                <div class='col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-6 offset-xl-3'>
-                                    <v-btn class='btn-codenotch' @click='submit'>SIGN IN</v-btn>
+                            <div class="row">
+                                <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-6 offset-xl-3">
+                                    <v-btn class="btn-codenotch" @click="submit">INICIAR SESIÓN</v-btn>
                                 </div>
                             </div>
                         </v-form> 
@@ -50,15 +50,15 @@
         
         data: () => ({
             valid: true,
-            name: '',
-            nameRules: [
-                v => !!v || 'Necesitamos tu nombre',
-                v => (v && v.length <= 25) || 'El nombre no puede tener más de 25 caracteres'
+            user: '',
+            userRules: [
+                v => !!v || 'Necesitamos tu usuario',
+                v => (v && v.length <= 25) || 'El nombre de usuario no puede tener más de 25 caracteres'
             ],
-            email: '',
-            emailRules: [
-                v => !!v || 'Necesitamos tu email',
-                v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'Debe ser un formato de email válido'
+            password: '',
+            passwordRules: [
+                v => !!v || 'Necesitamos tu contraseña',
+                v => (v && v.length <= 25) || 'La contraseña no puede tener más de 25 caracteres'
             ],
         }),
 
@@ -76,6 +76,7 @@
                 if (this.$refs.form.validate()) {
 
                     this.$store.commit('setProfile', 'alumno');
+                    this.$router.push({path:'/alumno/home'});
 
                     /* TEMPORAL */ 
 
@@ -92,11 +93,11 @@
 <style lang='stylus'>
   @import '../../stylus/main'
 
-  .input-group__details:before {
+    .input-group__details:before {
         background: $grey
-   }
+    }
 
-   .input-group--text-field input, .input-group--text-field textarea {
+    .input-group--text-field input, .input-group--text-field textarea {
         font-size: 1.3em
     }
 
