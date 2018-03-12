@@ -30,7 +30,16 @@
         &:last-of-type{
             .row{
                 &:first-of-type{
-                    margin-bottom: 8vh;
+                    margin-bottom: 5vh;
+                    @media (min-width: 768px){
+                        margin-bottom: 8vh;
+                    }
+                }
+                &:last-of-type{
+                    margin-bottom: 22vh;
+                    @media (min-width: 768px){
+                        margin-bottom: 0;
+                    }
                 }
             }
         }

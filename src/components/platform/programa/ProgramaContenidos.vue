@@ -55,6 +55,10 @@
                     ? this.config.imgPathProduction.imgContenidos2
                     : this.config.imgPathDevelopment.imgContenidos2;
             }
+        },
+
+        created(){
+            window.scrollTo(0, 0);
         }
     }
 </script>

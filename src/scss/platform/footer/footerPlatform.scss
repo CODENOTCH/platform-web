@@ -27,6 +27,7 @@
   .container-btn-session{
     width: 180px;
     margin-bottom: 1vh;
+    @include flexContainer();
     .link-codenotch{
       line-height: 2;
     }

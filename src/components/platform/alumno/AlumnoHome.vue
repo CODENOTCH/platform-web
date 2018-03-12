@@ -78,14 +78,9 @@
                 return process.env.NODE_ENV === 'production' ? this.config.imgPathProduction.fotoAlumno : this.config.imgPathDevelopment.fotoAlumno
             }
         }, 
-        
-        methods: {
-            clickProgramHandler(){
-               // this.clickedBtnProgram = true;
-                //this.$emit('clickedBtnProgram');
-                //console.log('clickProgramHandler');
-                //this.$router.push({path:'/programa'});
-            }
+
+        created(){
+            window.scrollTo(0, 0);
         }
     }
 </script>

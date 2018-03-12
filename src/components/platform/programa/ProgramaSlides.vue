@@ -34,6 +34,10 @@
                     ? this.config.imgPathProduction.pdfPrueba
                     : this.config.imgPathDevelopment.pdfPrueba;
             },
+        },
+
+        created(){
+            window.scrollTo(0, 0);
         }
     }
 </script>

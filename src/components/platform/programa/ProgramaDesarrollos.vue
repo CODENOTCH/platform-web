@@ -60,6 +60,10 @@
                     ? this.config.imgPathProduction.imgMicrosite
                     : this.config.imgPathDevelopment.imgMicrosite;
             }
+        },
+
+        created(){
+            window.scrollTo(0, 0);
         }
     }
 </script>
