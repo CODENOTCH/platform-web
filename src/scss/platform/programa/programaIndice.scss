@@ -57,7 +57,13 @@
 }
 
 .indice-container{
-    
+    margin-bottom: 148px;
+    @media (min-width: 567px){
+        margin-bottom: 100px;
+    }
+    @media (min-width: 992px){
+        margin-bottom: 60px;
+    }
 }
 
 .modulo-cabecera{
