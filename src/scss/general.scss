@@ -68,6 +68,16 @@ ul{
   } 
 }
 
+.link-special-codenotch{
+  font-size: 1.05em;
+  color: $purple !important;
+  font-weight: 600;
+  text-decoration: none;
+  &:hover{
+    text-decoration: none;
+  }
+}
+
 .list-links{
   line-height: 2 !important;
   li{

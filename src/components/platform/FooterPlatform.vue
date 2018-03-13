@@ -9,7 +9,8 @@
                         </router-link>
                     </v-container>
                 </v-app-->
-                <router-link class="link-codenotch" :to="{ name: 'login'}">
+                <router-link class="link-special-codenotch" :to="{ name: 'login'}">
+                    <img :src="setPathIconSession" alt="icono sesión"/>
                     <span>Cerrar sesión</span>
                 </router-link>  
             </div>
@@ -37,22 +38,53 @@
         
         data () {
             return {
-                breadcrumbs: [
-                    {text:'Home', disabled: false, path:'alumnoHome'},
-                    {text:'Programa', disabled: true, path:'alumnoPrograma'}
-                ]/*,
-                switch1: true*/
+                breadcrumbs: []
+                /*switch1: true*/
             }
         }, 
 
         computed: {
             ...mapGetters({
+                config: 'getConfigData',
                 profile: 'getProfile'
-            })
+            }),
+
+            setPathIconSession() {
+                return process.env.NODE_ENV === 'production'
+                    ? this.config.imgPathProduction.iconSesion
+                    : this.config.imgPathDevelopment.iconSesion;
+            },
         },
 
         created(){
-            console.log(this.profile);
+            this.setBreadcrumbs();
+        },
+
+        watch: {
+            '$route': 'setBreadcrumbs'
+        },
+
+        methods: {
+            setBreadcrumbs(){
+                let breadcrumbs = null; 
+
+                switch(this.$route.name){
+                    case 'alumnoHome':
+                        breadcrumbs = [
+                            {text:'Home', disabled: true, path:'alumnoHome'}
+                        ]
+                    break;
+                    
+                    case 'alumnoPrograma':
+                        breadcrumbs = [
+                            {text:'Home', disabled: false, path:'alumnoHome'},
+                            {text:'Programa', disabled: true, path:'alumnoPrograma'}
+                        ]
+                    break;
+                }
+
+                this.breadcrumbs = breadcrumbs;
+            }
         }
     }
 </script>

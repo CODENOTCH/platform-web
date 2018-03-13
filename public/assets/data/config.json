@@ -1,6 +1,7 @@
 {
     "imgPathDevelopment":{
         "logo": "./public/assets/img/logo.svg",
+        "iconSesion": "./public/assets/img/icon-sesion.svg",
         "fotoAlumno": "./public/assets/img/alumno.jpg",
         "iconTema": "./public/assets/img/icon-tema.svg",
         "iconSubtema": "./public/assets/img/icon-subtema.svg",
@@ -17,6 +18,7 @@
     },
     "imgPathProduction":{
         "logo": "./assets/img/logo.svg",
+        "iconSesion": "./assets/img/icon-sesion.svg",
         "fotoAlumno": "./assets/img/alumno.jpg",
         "iconTema": "./assets/img/icon-tema.svg",
         "iconSubtema": "./assets/img/icon-subtema.svg",

@@ -27,9 +27,16 @@
   .container-btn-session{
     width: 180px;
     margin-bottom: 1vh;
-    @include flexContainer();
+    //@include flexContainer();
     .link-codenotch{
       line-height: 2;
+    }
+    .link-special-codenotch{
+      @include flexContainer();
+      line-height: 2;
+      img{
+        margin-right: .5em;
+      }
     }
     @media (min-width: 567px){
       float: left;
