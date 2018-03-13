@@ -25,12 +25,18 @@
         height: 46px;
         border-right: 1px solid $grey;
         list-style: none;
+        &:nth-of-type(3){
+            display: none;
+        }
         &:last-of-type{
             border-right: none;
         }
         @media (min-width: 992px){
             &:first-of-type{
                 display: none;
+            }
+            &:nth-of-type(3){
+                display: block;
             }
         }
         a{

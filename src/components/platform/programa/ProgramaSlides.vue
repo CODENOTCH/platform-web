@@ -5,6 +5,7 @@
                 <div class="row">
                     <div class="col-12 col-sm-10 offset-sm-1">
                         <embed :src="setPathPdf" width="800" height="600" type="application/pdf">
+                        <!--object :data="setPathPdf"></object-->
                     </div>
                 </div>
             </div>
@@ -41,4 +42,5 @@
         }
     }
 </script>
+
 
