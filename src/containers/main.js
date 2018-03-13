@@ -21,6 +21,7 @@ const getJsonData = ()=> {
         .then( (response) => {
             configData = response.data;
             createAppVue();
+            avoidContextMenu();
         })
         .catch( (error) => {
             console.log(error);
@@ -37,6 +38,10 @@ const createAppVue = ()=> {
         },
         render: h => h(App)
     });
+}
+
+const avoidContextMenu = () => {
+    document.addEventListener('contextmenu', event => event.preventDefault());
 }
 
 getJsonData();
