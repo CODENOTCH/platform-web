@@ -16,6 +16,7 @@
                                 <div class="col-12">
                                     <v-text-field   label="Usuario"
                                                     v-model="user"
+                                                    @keyup.enter="submit"
                                                     :rules="userRules"
                                                     required
                                     ></v-text-field>
@@ -23,6 +24,7 @@
                                 <div class="col-12">
                                     <v-text-field   label="Contraseña"
                                                     v-model="password"
+                                                    @keyup.enter="submit"
                                                     :rules="passwordRules"
                                                     required
                                     ></v-text-field>
