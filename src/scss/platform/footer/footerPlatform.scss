@@ -26,8 +26,18 @@
 
   .container-btn-session{
     width: 180px;
-    margin-bottom: 1vh;
     //@include flexContainer();
+    margin-bottom: 1vh;
+    @media (min-width: 567px){
+      float: left;
+      margin-bottom: 0;
+    }
+    &.centered{
+      margin-left: auto;
+      margin-right: auto;
+      float: none;
+      margin-bottom: 0;
+    }
     .link-codenotch{
       line-height: 2;
     }
@@ -37,10 +47,6 @@
       img{
         margin-right: .5em;
       }
-    }
-    @media (min-width: 567px){
-      float: left;
-      margin-bottom: 0;
     }
   }
 

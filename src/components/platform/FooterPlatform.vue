@@ -1,7 +1,7 @@
 <template>
     <transition name="contentTransition" appear>
         <footer id="footer-platform">
-            <div class="container-btn-session">
+            <div class="container-btn-session" :class="{centered:noBreadcrumbs}">
                 <!--v-app>
                     <v-container fluid>
                         <router-link :to="{ name: 'login'}">
@@ -14,12 +14,11 @@
                     <span>Cerrar sesión</span>
                 </router-link>  
             </div>
-            <div class="container-breadcrumbs">
+            <div v-if="!noBreadcrumbs" class="container-breadcrumbs">
                 <ul class="list-links">
-                    
                     <li v-for="(link,index) of breadcrumbs" v-bind:key="index">
                         <!--a class="link-codenotch">{{link.text}}</a-->
-                        <router-link class="link-codenotch" :class="{disabled:link.disabled}" :to="{ name: link.path}">
+                        <router-link class="link-codenotch" v-if="link.visible" :class="{disabled:link.disabled}" :to="{ name: link.path}">
                             <span>{{link.text}}</span>
                         </router-link>  
                     </li>
@@ -38,7 +37,8 @@
         
         data () {
             return {
-                breadcrumbs: []
+                breadcrumbs: [],
+                noBreadcrumbs: false
                 /*switch1: true*/
             }
         }, 
@@ -71,15 +71,17 @@
                 switch(this.$route.name){
                     case 'alumnoHome':
                         breadcrumbs = [
-                            {text:'Home', disabled: true, path:'alumnoHome'}
-                        ]
+                            {text:'Home', visible:false, disabled: true, path:'alumnoHome'}
+                        ],
+                        this.noBreadcrumbs = true;
                     break;
                     
                     case 'alumnoPrograma':
                         breadcrumbs = [
-                            {text:'Home', disabled: false, path:'alumnoHome'},
-                            {text:'Programa', disabled: true, path:'alumnoPrograma'}
-                        ]
+                            {text:'Home', visible:true, disabled: false, path:'alumnoHome'},
+                            {text:'Programa', visible:true, disabled: true, path:'alumnoPrograma'}
+                        ],
+                        this.noBreadcrumbs = false;
                     break;
                 }
 
