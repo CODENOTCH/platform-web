@@ -44,12 +44,20 @@ p{
   line-height: 1.6em;
   color: $black;
   font-weight: 300;
+  &.list-content{
+    &:before{
+      content: '-';
+      margin-right: .5em;
+    }
+  }
 }
 
 ul{
-  @extend p;
+  //@extend p;
   li{
-    list-style: square inside;
+    &.list-content{
+      list-style: square inside;
+    }
   }
 }
 

@@ -1,5 +1,5 @@
 <template>
-    <div :class="classSelected">
+    <div :class="classSelected" @click="clickItemIndexHandler(id)">
         <slot name="icon"></slot>
         <slot name="text"></slot>
     </div>
@@ -9,11 +9,17 @@
 
     export default {
         name: 'programaItemIndice',
-        props: ['type'],
+        props: ['type','id'],
 
         data () {
             return {
                 classSelected: this.type == 'tema' ? 'modulo-tema' : 'modulo-subtema'
+            }
+        },
+
+        methods: {
+            clickItemIndexHandler(i){
+                this.$emit('clickedItemIndexHandler',i);
             }
         }
     }

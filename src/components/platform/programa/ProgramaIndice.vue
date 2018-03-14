@@ -17,7 +17,7 @@
                         <div class="modulo-temas-container">
                             <ul>
                                 <li v-for='(item,i) of indexDataModules[i]' v-bind:key="i">
-                                    <ProgramaItemIndice :type="item.type">
+                                    <ProgramaItemIndice :type="item.type" :id="item.id" @clickedItemIndexHandler="clickedItemIndexHandler">
                                         <img v-if="item.type == 'tema'" slot="icon" :src="setPathIconTema" alt="icono documento"/>
                                         <img v-else slot="icon" :src="setPathIconSubtema" alt="icono documento"/>
                                         <span slot="text">{{item.text}}</span>
@@ -107,6 +107,10 @@ export default {
   methods: {
     setIndexProgramData() {
       this.$store.commit('setIndexProgramData', this.indexData);
+    },
+    
+    clickedItemIndexHandler(id){
+      console.log(id);
     }
   }
 };

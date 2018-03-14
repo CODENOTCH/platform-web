@@ -1,0 +1,41 @@
+{
+    "ids":["1.2.0","1.2.1","1.2.2","1.2.3","1.2.4"],
+    "data": [
+        {
+            "content": "1. Banner",
+            "type": "title"
+        },
+        {
+            "content": "Ejercicio Banner sit amet, consectetur adipiscing elit. Fusce at temp us metus. Ut at eros quis augue consequat dignissim.Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut id velit tristiqueligula tempus hendrerit a nec justo. Integer tempor ante ipsum. Ante ipsum primis in eros quisad.",
+            "type": "text"
+        },
+        {
+            "content": "./public/assets/img/ejemplo-contenidos-1.jpg",
+            "type": "img"
+        },
+        {
+            "content": "2. Landing-page",
+            "type": "title"
+        },
+        {
+            "content": "Ejercicio Landing-page sit amet, consectetur adipiscing elit. Fusce at temp us metus. Ut at eros quis augue consequat dignissim.Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut id velit tristiqueligula tempus hendrerit a nec justo. Integer tempor ante ipsum. Ante ipsum primis in eros quisad.",
+            "type": "text"
+        },
+        {
+            "content": "./public/assets/img/ejemplo-contenidos-1.jpg",
+            "type": "img"
+        },
+        {
+            "content": "3. Microsite",
+            "type": "title"
+        },
+        {
+            "content": "Ejercicio Microsite sit amet, consectetur adipiscing elit. Fusce at temp us metus. Ut at eros quis augue consequat dignissim.Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut id velit tristiqueligula tempus hendrerit a nec justo. Integer tempor ante ipsum. Ante ipsum primis in eros quisad.",
+            "type": "text"
+        },
+        {
+            "content": "./public/assets/img/ejemplo-contenidos-1.jpg",
+            "type": "img"
+        }
+    ]
+}

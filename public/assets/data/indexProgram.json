@@ -2,111 +2,137 @@
     "module1": [
         {
             "text": "Introducción al funcionamiento de Internet",
-            "type": "tema"
+            "type": "tema",
+            "id": "1.1.0"
         },
         {
             "text": "Editor de código Visual Studio Code",
-            "type": "tema"
+            "type": "tema",
+            "id": "1.2.0"
         },
         {
             "text": "Ventajas de usar Visual Studio Code",
-            "type": "subtema"
+            "type": "subtema",
+            "id": "1.2.1"
         },
         {
             "text": "Instalación",
-            "type": "subtema"
+            "type": "subtema",
+            "id": "1.2.2"
         },
         {
             "text": "Interfaz de usuario",
-            "type": "subtema"
+            "type": "subtema",
+            "id": "1.2.3"
         },
         {
             "text": "Personalización del editor",
-            "type": "subtema"
+            "type": "subtema",
+            "id": "1.2.4"
         },
         {
             "text": "Extensiones",
-            "type": "subtema"
+            "type": "subtema",
+            "id": "1.2.5"
         },
         {
             "text": "Control de versiones GIT",
-            "type": "tema"
+            "type": "tema",
+            "id": "1.3.0"
         },
         {
             "text": "Instalación de GIT",
-            "type": "subtema"
+            "type": "subtema",
+            "id": "1.3.1"
         },
         {
             "text": "Introducción a GIT",
-            "type": "subtema"
+            "type": "subtema",
+            "id": "1.3.2"
         },
         {
             "text": "Trabajando con GIT en local",
-            "type": "subtema"
+            "type": "subtema",
+            "id": "1.3.3"
         },
         {
             "text": "Trabajando con GIT en remoto",
-            "type": "subtema"
+            "type": "subtema",
+            "id": "1.3.4"
         },
         {
             "text": "Desarrollo Frontend",
-            "type": "tema"
+            "type": "tema",
+            "id": "1.4.0"
         }
     ],
     "module2": [
         {
             "text": "Introduccion al desarrollo Backend",
-            "type": "tema"
+            "type": "tema",
+            "id": "2.1.0"
         },
         {
             "text": "Express",
-            "type": "tema"
+            "type": "tema",
+            "id": "2.2.0"
         },
         {
             "text": "Introducción",
-            "type": "subtema"
+            "type": "subtema",
+            "id": "2.2.1"
         },
         {
             "text": "MongoDB",
-            "type": "tema"
+            "type": "tema",
+            "id": "2.3.0"
         },
         {
             "text": "Introducción",
-            "type": "subtema"
+            "type": "subtema",
+            "id": "2.3.1"
         },
         {
             "text": "Instalación",
-            "type": "subtema"
+            "type": "subtema",
+            "id": "2.3.2"
         },
         {
             "text": "Desarrollo de bases de datos no relacionales",
-            "type": "subtema"
+            "type": "subtema",
+            "id": "2.3.3"
         }
     ],
     "module3": [
         {
             "text": "Introducción al desarrollo móvil",
-            "type": "tema"
+            "type": "tema",
+            "id": "3.1.0"
         },
         {
             "text": "Angular",
-            "type": "tema"
+            "type": "tema",
+            "id": "3.2.0"
         },
         {
             "text": "Typescript",
-            "type": "subtema"
+            "type": "subtema",
+            "id": "3.2.1"
         },
         {
             "text": "Ionic",
-            "type": "tema"
+            "type": "tema",
+            "id": "3.3.0"
         },
         {
             "text": "Instalación",
-            "type": "subtema"
+            "type": "subtema",
+            "id": "3.3.1"
         },
         {
             "text": "Desarrollo",
-            "type": "subtema"
+            "type": "subtema",
+            "id": "3.3.2"
         }
     ]
 }

@@ -2,7 +2,7 @@
     <div class="programa-cabecera">
          <ul>
             <li v-for='(item,i) of listItemsCabecera' v-bind:key="i">
-                <a :class={active:item.active} @click=clickHandler(i)>
+                <a :class={active:item.active} @click="clickHandler(i)">
                     <img v-if="item.name == 'menu'" :src="setPathIconIndice" alt="icono índice"/>
                     <img v-else-if="item.name == 'contenidos'" :src="setPathIconContenidos" alt="icono documento"/>
                     <img v-else-if="item.name == 'slides'" :src="setPathIconSlides" alt="icono slides"/>
