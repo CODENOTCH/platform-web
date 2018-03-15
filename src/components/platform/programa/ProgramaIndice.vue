@@ -16,8 +16,8 @@
                         </div>
                         <div class="modulo-temas-container">
                             <ul>
-                                <li v-for='(item,i) of indexDataModules[i]' v-bind:key="i">
-                                    <ProgramaItemIndice :type="item.type" :id="item.id" @clickedItemIndexHandler="clickedItemIndexHandler">
+                                <li v-for='(item,i) of currentDataIndexModules[i]' v-bind:key="i">
+                                    <ProgramaItemIndice :type="item.type" :id="item.id" @clickedItem="onClickItem">
                                         <img v-if="item.type == 'tema'" slot="icon" :src="setPathIconTema" alt="icono documento"/>
                                         <img v-else slot="icon" :src="setPathIconSubtema" alt="icono documento"/>
                                         <span slot="text">{{item.text}}</span>
@@ -44,12 +44,12 @@ export default {
     ProgramaItemIndice: ProgramaItemIndice
   },
 
-  props: ['isIndexOpen'],
+  props: ['dataIndex','isIndexOpen'],
 
   data() {
     return {
-      indexData: {},
-      indexDataModules: [],
+      currentDataIndex: {},
+      currentDataIndexModules: [],
       moduleList: [
         { name: 'frontend', id: 1 },
         { name: 'backend', id: 2 },
@@ -83,19 +83,14 @@ export default {
     }
   },
 
-  beforeCreate() {
-    const indexPath =
-      process.env.NODE_ENV === 'production'
-        ? './assets/data/indexProgram.json'
-        : './public/assets/data/indexProgram.json';
-
-    Axios.get(indexPath)
+  created() {
+    Axios.get(this.dataIndex.link)
       .then(response => {
-        this.indexData = response.data;
+        this.currentDataIndex = response.data;
 
-        this.indexDataModules.push(this.indexData.module1);
-        this.indexDataModules.push(this.indexData.module2);
-        this.indexDataModules.push(this.indexData.module3);
+        this.currentDataIndexModules.push(this.currentDataIndex.module1);
+        this.currentDataIndexModules.push(this.currentDataIndex.module2);
+        this.currentDataIndexModules.push(this.currentDataIndex.module3);
 
         this.setIndexProgramData();
       })
@@ -106,11 +101,11 @@ export default {
 
   methods: {
     setIndexProgramData() {
-      this.$store.commit('setIndexProgramData', this.indexData);
+      this.$store.commit('setIndexProgramData', this.currentDataIndex);
     },
-    
-    clickedItemIndexHandler(id){
-      console.log(id);
+
+    onClickItem(id){
+      this.$emit('clickedItemIndex',id);
     }
   }
 };

@@ -2,6 +2,10 @@ export const setConfigData = (state,data) =>{
     state.configData = data;
 };
 
+export const setProgramData = (state,data) =>{
+    state.programData = data;
+};
+
 export const setIndexProgramData = (state,data) =>{
     state.indexProgramData = data;
 };

@@ -37,6 +37,23 @@
             },
         },
 
+        /*beforeCreate() {
+            const dataPath = 'https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/contenidos_1.0.0.json';
+
+            Axios.get(dataPath)
+            .then(response => {
+                this.dataContent = response.data.data;
+                let tempArray = [];
+                tempArray.push(this.dataContent);
+                this.dataParsed = tempArray[0];
+                //this.setDataParsed();
+                console.log(this.dataParsed[0]);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        },*/
+
         created(){
             window.scrollTo(0, 0);
         }

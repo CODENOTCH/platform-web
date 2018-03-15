@@ -1,5 +1,5 @@
 <template>
-    <div :class="classSelected" @click="clickItemIndexHandler(id)">
+    <div :class="classSelected" @click="clickItemHandler(id)">
         <slot name="icon"></slot>
         <slot name="text"></slot>
     </div>
@@ -18,8 +18,8 @@
         },
 
         methods: {
-            clickItemIndexHandler(i){
-                this.$emit('clickedItemIndexHandler',i);
+            clickItemHandler(i){
+                this.$emit('clickedItem',i);
             }
         }
     }

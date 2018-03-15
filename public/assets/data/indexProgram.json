@@ -61,9 +61,64 @@
             "id": "1.3.4"
         },
         {
-            "text": "Desarrollo Frontend",
+            "text": "Desarrollo Front-end",
             "type": "tema",
             "id": "1.4.0"
+        },
+        {
+            "text": "Introducción al Desarrollo Front-end",
+            "type": "subtema",
+            "id": "1.4.1"
+        },
+        {
+            "text": "Características específicas del Desarrollo Front-end",
+            "type": "subtema",
+            "id": "1.4.2"
+        },
+        {
+            "text": "Ampliación del lenguaje de etiquetado HTML/HTML5",
+            "type": "subtema",
+            "id": "1.4.3"
+        },
+        {
+            "text": "Ampliación de la maquetación CSS y CSS3",
+            "type": "subtema",
+            "id": "1.4.4"
+        },
+        {
+            "text": "Ampliación de la programación Javascript",
+            "type": "subtema",
+            "id": "1.4.5"
+        },
+        {
+            "text": "Herramientas para el desarrollo front-end",
+            "type": "subtema",
+            "id": "1.4.6"
+        },
+        {
+            "text": "Frameworks y librerías",
+            "type": "tema",
+            "id": "1.5.0"
+        },
+        {
+            "text": "Introducción",
+            "type": "subtema",
+            "id": "1.5.1"
+        },
+        {
+            "text": "Bootstrap 4",
+            "type": "subtema",
+            "id": "1.5.2"
+        },
+        {
+            "text": "JQuery",
+            "type": "subtema",
+            "id": "1.5.3"
+        },
+        {
+            "text": "Librerías para el desarrollo Front-end",
+            "type": "subtema",
+            "id": "1.5.4"
         }
     ],
     "module2": [

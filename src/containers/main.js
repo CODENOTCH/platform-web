@@ -14,18 +14,22 @@ console.log(process.env.NODE_ENV);*/
 
 
 const configPath = process.env.NODE_ENV === 'production' ? './assets/data/config.json' : './public/assets/data/config.json';
+const programDataPath = 'https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/programData.json';
 var configData = null;
+var programData = null;
 
-const getJsonData = ()=> {
-    Axios.get(configPath)
-        .then( (response) => {
-            configData = response.data;
+const getConfigData = () => Axios.get(configPath);
+const getProgramData = () => Axios.get(programDataPath);
+
+const getData = () => {
+    Axios.all([getConfigData(), getProgramData()])
+        .then( Axios.spread( (...params) => {
+            configData = params[0].data;
+            programData = params[1].data;
             createAppVue();
             avoidContextMenu();
         })
-        .catch( (error) => {
-            console.log(error);
-        });
+    )
 }
 
 const createAppVue = ()=> {
@@ -35,6 +39,7 @@ const createAppVue = ()=> {
         router,
         created:function(){
             this.$store.commit('setConfigData',configData);
+            this.$store.commit('setProgramData',programData);
         },
         render: h => h(App)
     });
@@ -44,7 +49,7 @@ const avoidContextMenu = () => {
     document.addEventListener('contextmenu', event => event.preventDefault());
 }
 
-getJsonData();
+getData();
 
 
 

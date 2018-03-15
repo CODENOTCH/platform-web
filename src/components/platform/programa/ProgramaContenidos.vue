@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="container-data col-12 col-sm-10 offset-sm-1">
                         <ul>
-                            <li v-for='(item,i) of dataParsed' v-bind:key="i">
+                            <li v-for='(item,i) of currentDataParsed' v-bind:key="i">
                                 <h2 v-if="item.type === 'title'">{{item.content}}</h2>
                                 <img v-if="item.type === 'img'" :src="item.content" alt="imagen contenido"/>
                                 <p v-if="item.type === 'text'" v-html="item.content"></p>
@@ -21,57 +21,62 @@
 </template>
 
 <script>
-    import Axios from 'axios';
-    import { mapGetters } from 'vuex';
+import Axios from "axios";
+import { mapGetters } from "vuex";
 
-    export default {
-        name:'programaContenidos',
-        
-        data () {
-            return {
-                dataContent: {},
-                dataParsed: []
-            }
-        },
+export default {
+  name: "programaContenidos",
 
-        computed: {
-            ...mapGetters({
-                config: 'getConfigData'
-            }),
+  props: ["dataContentDefault","dataContent"],
 
-            setPathImgContenidos1() {
-                return process.env.NODE_ENV === 'production'
-                    ? this.config.imgPathProduction.imgContenidos1
-                    : this.config.imgPathDevelopment.imgContenidos1;
-            },
+  data() {
+    return {
+      currentDataContent: {},
+      currentDataParsed: []
+    };
+  },
 
-            setPathImgContenidos2() {
-                return process.env.NODE_ENV === 'production'
-                    ? this.config.imgPathProduction.imgContenidos2
-                    : this.config.imgPathDevelopment.imgContenidos2;
-            }
-        },
+  computed: {
+    ...mapGetters({
+      config: "getConfigData"
+    }),
 
-        beforeCreate() {
-            const dataPath = './public/assets/data/dataProgramContents.json';
+    setPathImgContenidos1() {
+      return process.env.NODE_ENV === "production"
+        ? this.config.imgPathProduction.imgContenidos1
+        : this.config.imgPathDevelopment.imgContenidos1;
+    },
 
-            Axios.get(dataPath)
+    setPathImgContenidos2() {
+      return process.env.NODE_ENV === "production"
+        ? this.config.imgPathProduction.imgContenidos2
+        : this.config.imgPathDevelopment.imgContenidos2;
+    }
+  },
+
+  created() {
+    window.scrollTo(0, 0);
+    this.getContent(this.dataContentDefault.link);
+  },
+
+  beforeUpdate(){
+      this.getContent(this.dataContent.link);
+  },
+
+  methods: {
+        getContent(path){
+            Axios.get(path)
             .then(response => {
-                this.dataContent = response.data.data;
                 let tempArray = [];
-                tempArray.push(this.dataContent);
-                this.dataParsed = tempArray[0];
-                //this.setDataParsed();
-                console.log(this.dataParsed[0]);
+                this.currentDataContent = response.data.data;
+                tempArray.push(this.currentDataContent);
+                this.currentDataParsed = tempArray[0];
             })
             .catch(error => {
-                console.log(error);
+                console.log('error',error);
             });
-        },
-
-        created(){
-            window.scrollTo(0, 0);
         }
     }
+};
 </script>
 

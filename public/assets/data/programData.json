@@ -1,0 +1,100 @@
+{
+    "indice":{
+        "link": "https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/indice.json"
+    },
+
+    "contenidos":[
+        {
+            "link": "https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/contenidos_1.0.0.json",
+            "isLoaded": false,
+            "id": "1.0.0"
+        },
+        {
+            "link": "https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/contenidos_1.1.0.json",
+            "isLoaded": false,
+            "id": "1.1.0"
+        },
+        {
+            "link": "https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/contenidos_1.1.1.json",
+            "isLoaded": false,
+            "id": "1.1.1"
+        }
+    ],
+
+    "slides":{
+        "module1": [
+            {
+                "links": "Introducción al funcionamiento de Internet",
+                "isLoaded": false,
+                "idsRelated": ["1.0.0"]
+            },
+            {
+                "links": "Editor de código Visual Studio Code",
+                "isLoaded": false,
+                "idsRelated": ["1.1.0","1.1.1"]
+            }
+        ],
+        "module2": [
+            {
+                "links": "Introducción al funcionamiento de Internet",
+                "isLoaded": false,
+                "idsRelated": ["1.0.0"]
+            },
+            {
+                "links": "Editor de código Visual Studio Code",
+                "isLoaded": false,
+                "idsRelated": ["1.1.0","1.1.1"]
+            }
+        ],
+        "module3": [
+            {
+                "links": "Introducción al funcionamiento de Internet",
+                "isLoaded": false,
+                "idsRelated": ["1.0.0"]
+            },
+            {
+                "links": "Editor de código Visual Studio Code",
+                "isLoaded": false,
+                "idsRelated": ["1.1.0","1.1.1"]
+            }
+        ]
+    },
+    "desarrollos":{
+        "module1": [
+            {
+                "link": "Introducción al funcionamiento de Internet",
+                "isLoaded": false,
+                "idsRelated": ["1.0.0"]
+            },
+            {
+                "link": "Editor de código Visual Studio Code",
+                "isLoaded": false,
+                "idsRelated": ["1.1.0","1.1.1","1.1.2"]
+            }
+        ],
+        "module2": [
+            {
+                "link": "Introducción al funcionamiento de Internet",
+                "isLoaded": false,
+                "idsRelated": ["1.0.0"]
+            },
+            {
+                "link": "Editor de código Visual Studio Code",
+                "isLoaded": false,
+                "idsRelated": ["1.1.0","1.1.1","1.1.2"]
+            }
+        ],
+        "module3": [
+            {
+                "link": "Introducción al funcionamiento de Internet",
+                "isLoaded": false,
+                "idsRelated": ["1.0.0"]
+            },
+            {
+                "link": "Editor de código Visual Studio Code",
+                "isLoaded": false,
+                "idsRelated": ["1.1.0","1.1.1","1.1.2"]
+            }
+        ]
+    }
+}
