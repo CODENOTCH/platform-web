@@ -1,11 +1,17 @@
 <template>
-    <div class="programa">
-        <ProgramaIndice @clickedItemIndex="onClickItemIndex" :dataIndex="program.indice" :isIndexOpen="isIndexOpen"></ProgramaIndice>
-        <ProgramaCabecera @clickedTab="onClickProgramCabeceraTab"></ProgramaCabecera>
-        <ProgramaContenidos v-if="sectionActive === 1" :dataContentDefault="program.contenidos[0]" :dataContent="this.contentSelected"></ProgramaContenidos>
-        <ProgramaSlides v-if="sectionActive === 2"></ProgramaSlides>
-        <ProgramaDesarrollos v-if="sectionActive === 3"></ProgramaDesarrollos>
-    </div>
+    <transition name="contentTransition" appear>
+        <div class="programa">
+            <ProgramaIndice @clickedItemIndex="onClickItemIndex" :dataIndex="program.indice" :isIndexOpen="isIndexOpen"></ProgramaIndice>
+            <ProgramaCabecera @clickedTab="onClickProgramCabeceraTab"></ProgramaCabecera>
+            <ProgramaContenidos v-if="sectionActive === 1" 
+                                ref="contentProgram"
+                                :firstTime="isFirstTime"
+                                :dataContentDefault="program.contenidos[0]" >
+            </ProgramaContenidos>
+            <ProgramaSlides v-if="sectionActive === 2"></ProgramaSlides>
+            <ProgramaDesarrollos v-if="sectionActive === 3"></ProgramaDesarrollos>
+        </div>
+    </transition>
 </template>
 
 <script>
@@ -32,7 +38,8 @@
             return {
                 sectionActive: 1,
                 isIndexOpen: false,
-                contentSelected:0
+                isFirstTime: true,
+                contentSelected: null
             }
         },
 
@@ -43,10 +50,25 @@
             })
         },
 
-        created(){
-           // console.log(this.program.indice);
-            console.log('programaContenidos',this.program.contenidos[0]);
+        /*created(){
+            console.log(' programa created');
         },
+
+        beforeMount(){
+            console.log(' programa beforeMount');
+        },
+
+        mounted(){
+            console.log(' programa mounted');
+        },
+
+        beforeUpdate(){
+            console.log(' programa beforeUpdate');
+        },
+
+        updated(){
+            console.log(' programa updated');
+        },*/
 
         methods: {
             onClickProgramCabeceraTab(i,isIndexOpen){
@@ -55,10 +77,15 @@
             },
 
             onClickItemIndex(id){
+                if(this.isFirstTime) this.isFirstTime = false;
+
                 let contentSelected = this.program.contenidos.find(item => item.id === id);
                 this.contentSelected = contentSelected;
-                //console.log('contenidoSelected: ',contentSelected);
-                //this.program.contenidos
+                this.updateContent();
+            },
+
+            updateContent(){
+                this.$refs.contentProgram.getContent(this.contentSelected.link);
             }
         }
     }
