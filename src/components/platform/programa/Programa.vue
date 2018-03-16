@@ -6,7 +6,7 @@
             <ProgramaContenidos v-if="sectionActive === 1" 
                                 ref="contentProgram"
                                 :firstTime="isFirstTime"
-                                :dataContentDefault="program.contenidos[0]" >
+                                :dataContentDefault="contentDefault" >
             </ProgramaContenidos>
             <ProgramaSlides v-if="sectionActive === 2"></ProgramaSlides>
             <ProgramaDesarrollos v-if="sectionActive === 3"></ProgramaDesarrollos>
@@ -39,7 +39,8 @@
                 sectionActive: 1,
                 isIndexOpen: false,
                 isFirstTime: true,
-                contentSelected: null
+                contentSelected: null,
+                contentDefault: null
             }
         },
 
@@ -50,11 +51,11 @@
             })
         },
 
-        /*created(){
-            console.log(' programa created');
+        created(){
+            this.contentDefault = this.program.contenidos[0];
         },
 
-        beforeMount(){
+        /*beforeMount(){
             console.log(' programa beforeMount');
         },
 
@@ -77,10 +78,12 @@
             },
 
             onClickItemIndex(id){
-                if(this.isFirstTime) this.isFirstTime = false;
+                //if(this.isFirstTime) this.isFirstTime = false;
 
                 let contentSelected = this.program.contenidos.find(item => item.id === id);
                 this.contentSelected = contentSelected;
+                this.contentDefault = this.contentSelected;
+                //console.log(this.contentDefault);
                 this.updateContent();
             },
 

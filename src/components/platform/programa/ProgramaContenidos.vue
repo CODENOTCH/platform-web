@@ -51,41 +51,6 @@ export default {
     //console.log('dataContent',this.dataContent);
   },
 
-  mounted(){
-      this.containerData = document.querySelector('.container-data');
-      console.log('containerData',this.containerData);
-  },
-
-  /*beforeMount(){
-      console.log(' programaContenidos beforeMount');
-  },
-
-  mounted(){
-      console.log(' programaContenidos mounted');
-  },*/
-
-  beforeUpdate(){
-      /*console.log(' programaContenidos beforeUpdate');
-      if(!this.firstTime) {
-          console.log('add fade-out');
-          this.containerData.classList.add("fade-out");
-      }*/
-  },
-
-  updated(){
-      /*console.log(' programaContenidos updated');
-      if(!this.firstTime) {
-           console.log('remove fade-out');
-           setTimeout(() => {
-               this.containerData.classList.remove("fade-out");
-           }, 1000);
-      }*/
-  },
-
-  beforeDestroy(){
-      console.log('programaContenidos beforeDestroy');
-  },
-
   methods: {
         getContent(path){
             //console.log(path)
