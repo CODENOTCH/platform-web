@@ -17,7 +17,7 @@
                         <div class="modulo-temas-container">
                             <ul>
                                 <li v-for='(item,i) of currentDataIndexModules[i]' v-bind:key="i">
-                                    <ProgramaItemIndice :type="item.type" :id="item.id" @clickedItem="onClickItem">
+                                    <ProgramaItemIndice :active="itemActivated" :type="item.type" :id="item.id" @clickedItem="onClickItem">
                                         <img v-if="item.type == 'tema'" slot="icon" :src="setPathIconTema" alt="icono documento"/>
                                         <img v-else slot="icon" :src="setPathIconSubtema" alt="icono documento"/>
                                         <span slot="text">{{item.text}}</span>
@@ -54,7 +54,8 @@ export default {
         { name: 'frontend', id: 1 },
         { name: 'backend', id: 2 },
         { name: 'mobile', id: 3 }
-      ]
+      ],
+      itemActivated: false
     };
   },
 

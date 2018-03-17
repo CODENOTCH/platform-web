@@ -1,5 +1,5 @@
 <template>
-    <div :class="classSelected" @click="clickItemHandler(id)">
+    <div :class="[classSelected,activeSelected]" @click="clickItemHandler(id)">
         <slot name="icon"></slot>
         <slot name="text"></slot>
     </div>
@@ -9,11 +9,12 @@
 
     export default {
         name: 'programaItemIndice',
-        props: ['type','id'],
+        props: ['type','id','active'],
 
         data () {
             return {
-                classSelected: this.type == 'tema' ? 'modulo-tema' : 'modulo-subtema'
+                classSelected: this.type == 'tema' ? 'modulo-tema' : 'modulo-subtema',
+                activeSelected: this.active ? 'active' : null
             }
         },
 

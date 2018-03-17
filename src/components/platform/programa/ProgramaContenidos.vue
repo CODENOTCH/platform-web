@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="container-data col-12 col-sm-10 offset-sm-1">
-                    <ProgramaDataContenido v-for='(item,i) of currentDataParsed' :key="i">
+                    <ProgramaDataContenido v-for='(item,i) of currentContentsData' :key="i">
                         <h2 slot="title" v-if="item.type === 'title'" :key="i">{{item.content}}</h2>
                         <h3 slot="subtitle" v-if="item.type === 'subtitle'" :key="i">{{item.content}}</h3>
                         <img slot="img" v-if="item.type === 'img'" :src="item.content" alt="imagen contenido" :key="i"/>
@@ -17,9 +17,7 @@
 </template>
 
 <script>
-import Axios from "axios";
 import { mapGetters } from "vuex";
-
 import ProgramaDataContenido from './ProgramaDataContenido.vue';
 
 export default {
@@ -29,13 +27,13 @@ export default {
     ProgramaDataContenido: ProgramaDataContenido
   },
 
-  props: ["dataContentDefault","firstTime"],
+  props: ["currentContentsData"],
 
   data() {
     return {
         containerData:null,
         currentDataContent: {},
-        currentDataParsed: []
+        currentData: []
     };
   },
 
@@ -47,25 +45,12 @@ export default {
 
   created() {
     window.scrollTo(0, 0);
-    this.getContent(this.dataContentDefault.link);
+    //this.currentData = [...this.currentDataParsed];
+   // this.getContent(this.dataContentDefault.contenidosPath);
     //console.log('dataContent',this.dataContent);
   },
 
-  methods: {
-        getContent(path){
-            //console.log(path)
-            Axios.get(path)
-            .then(response => {
-                let tempArray = [];
-                this.currentDataContent = response.data.data;
-                tempArray.push(this.currentDataContent);
-                this.currentDataParsed = tempArray[0];
-            })
-            .catch(error => {
-                console.log('error',error);
-            });
-        }
-    }
+  
 };
 </script>
 

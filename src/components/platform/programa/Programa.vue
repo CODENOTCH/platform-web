@@ -3,13 +3,7 @@
         <div class="programa">
             <ProgramaIndice @clickedItemIndex="onClickItemIndex" :dataIndex="program.indice" :isIndexOpen="isIndexOpen"></ProgramaIndice>
             <ProgramaCabecera @clickedTab="onClickProgramCabeceraTab"></ProgramaCabecera>
-            <ProgramaContenidos v-if="sectionActive === 1" 
-                                ref="contentProgram"
-                                :firstTime="isFirstTime"
-                                :dataContentDefault="contentDefault" >
-            </ProgramaContenidos>
-            <ProgramaSlides v-if="sectionActive === 2"></ProgramaSlides>
-            <ProgramaDesarrollos v-if="sectionActive === 3"></ProgramaDesarrollos>
+            <ProgramaCore ref="coreProgram"></ProgramaCore>
         </div>
     </transition>
 </template>
@@ -19,9 +13,7 @@
 
     import ProgramaIndice from './ProgramaIndice.vue';
     import ProgramaCabecera from './ProgramaCabecera.vue';
-    import ProgramaContenidos from './ProgramaContenidos.vue';
-    import ProgramaSlides from './ProgramaSlides.vue';
-    import ProgramaDesarrollos from './ProgramaDesarrollos.vue';
+    import ProgramaCore from './ProgramaCore.vue';
 
     export default {
         name:'programa',
@@ -29,18 +21,12 @@
         components: {
             ProgramaIndice: ProgramaIndice,
             ProgramaCabecera: ProgramaCabecera,
-            ProgramaContenidos: ProgramaContenidos,
-            ProgramaSlides: ProgramaSlides,
-            ProgramaDesarrollos: ProgramaDesarrollos
+            ProgramaCore: ProgramaCore
         },
 
         data () {
             return {
-                sectionActive: 1,
-                isIndexOpen: false,
-                isFirstTime: true,
-                contentSelected: null,
-                contentDefault: null
+                isIndexOpen: false
             }
         },
 
@@ -51,44 +37,13 @@
             })
         },
 
-        created(){
-            this.contentDefault = this.program.contenidos[0];
-        },
-
-        /*beforeMount(){
-            console.log(' programa beforeMount');
-        },
-
-        mounted(){
-            console.log(' programa mounted');
-        },
-
-        beforeUpdate(){
-            console.log(' programa beforeUpdate');
-        },
-
-        updated(){
-            console.log(' programa updated');
-        },*/
-
         methods: {
-            onClickProgramCabeceraTab(i,isIndexOpen){
-                this.sectionActive = i;
+            onClickProgramCabeceraTab(numSectionActive,isIndexOpen){
                 this.isIndexOpen = isIndexOpen;
+                this.$refs.coreProgram.goSectionActive(numSectionActive);
             },
-
             onClickItemIndex(id){
-                //if(this.isFirstTime) this.isFirstTime = false;
-
-                let contentSelected = this.program.contenidos.find(item => item.id === id);
-                this.contentSelected = contentSelected;
-                this.contentDefault = this.contentSelected;
-                //console.log(this.contentDefault);
-                this.updateContent();
-            },
-
-            updateContent(){
-                this.$refs.contentProgram.getContent(this.contentSelected.link);
+                this.$refs.coreProgram.updateContent(id);
             }
         }
     }

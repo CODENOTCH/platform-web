@@ -2,35 +2,33 @@
     <div class="programa-desarrollos">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 col-sm-10 offset-sm-1">
-                    <h2>1. Banner</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at temp us metus. Ut at eros quis augue consequat 
-                    dignissim.Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut id velit tristique
-                    ligula tempus hendrerit a nec justo. Integer tempor ante ipsum. Ante ipsum primis in eros quisad. </p>
-                    <img :src="setPathImgBanner" alt="img desarrollos">
-                    <h2>2. Landing-page</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at temp us metus. Ut at eros quis augue consequat 
-                    dignissim.Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut id velit tristique
-                    ligula tempus hendrerit a nec justo. Integer tempor ante ipsum. Ante ipsum primis in eros quisad. </p>
-                    <img :src="setPathImgLanding" alt="img desarrollos">
-                    <h2>3. Microsite</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at temp us metus. Ut at eros quis augue consequat 
-                    dignissim.Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut id velit tristique
-                    ligula tempus hendrerit a nec justo. Integer tempor ante ipsum. Ante ipsum primis in eros quisad. </p>
-                    <img :src="setPathImgMicrosite" alt="img desarrollos">
-                </div>
+                <div class="container-data col-12 col-sm-10 offset-sm-1">
+                    <ProgramaDataContenido v-for='(item,i) of currentDevelopmentsData' :key="i">
+                        <h2 slot="title" v-if="item.type === 'title'" :key="i">{{item.content}}</h2>
+                        <h3 slot="subtitle" v-if="item.type === 'subtitle'" :key="i">{{item.content}}</h3>
+                        <img slot="img" v-if="item.type === 'img'" :src="item.content" alt="imagen contenido" :key="i"/>
+                        <p slot="text" v-if="item.type === 'text'" v-html="item.content" :key="i"></p>
+                        <p slot="list" v-if="item.type === 'list'" class="list-content" v-html="item.content" :key="i"></p>
+                    </ProgramaDataContenido>
+                </div>    
             </div>
         </div>
     </div>            
 </template>
 
 <script>
-    import Axios from 'axios';
-    import { mapGetters } from 'vuex';
+    import { mapGetters } from "vuex";
+    import ProgramaDataContenido from './ProgramaDataContenido.vue';
 
     export default {
         name:'programaDesarrollos',
+
+        components: {
+            ProgramaDataContenido: ProgramaDataContenido
+        },
         
+        props: ["currentDevelopmentsData"],
+
         data () {
             return {
             }
@@ -61,6 +59,10 @@
         },
 
         created(){
+            window.scrollTo(0, 0);
+        },
+
+        beforeUpdate(){
             window.scrollTo(0, 0);
         }
     }
