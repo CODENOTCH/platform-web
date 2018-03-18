@@ -1,9 +1,9 @@
 <template>
     <transition name="contentTransition" appear>
         <div class="programa">
-            <ProgramaIndice @clickedItemIndex="onClickItemIndex" :dataIndex="program.indice" :isIndexOpen="isIndexOpen"></ProgramaIndice>
-            <ProgramaCabecera @clickedTab="onClickProgramCabeceraTab"></ProgramaCabecera>
-            <ProgramaCore ref="coreProgram"></ProgramaCore>
+            <programa-indice @clickedItemIndex="onClickItemIndex" :dataIndex="program.indice" :isIndexOpen="isIndexOpen"></programa-indice>
+            <programa-cabecera @clickedTab="onClickProgramCabeceraTab"></programa-cabecera>
+            <programa-core ref="coreProgram"></programa-core>
         </div>
     </transition>
 </template>
@@ -19,9 +19,9 @@
         name:'programa',
 
         components: {
-            ProgramaIndice: ProgramaIndice,
-            ProgramaCabecera: ProgramaCabecera,
-            ProgramaCore: ProgramaCore
+            programaIndice: ProgramaIndice,
+            programaCabecera: ProgramaCabecera,
+            programaCore: ProgramaCore
         },
 
         data () {
@@ -38,9 +38,9 @@
         },
 
         methods: {
-            onClickProgramCabeceraTab(numSectionActive,isIndexOpen){
+            onClickProgramCabeceraTab(nameTab,isIndexOpen){
                 this.isIndexOpen = isIndexOpen;
-                this.$refs.coreProgram.goSectionActive(numSectionActive);
+                this.$refs.coreProgram.goSectionActive(nameTab);
             },
             onClickItemIndex(id){
                 this.$refs.coreProgram.updateContent(id);

@@ -1,17 +1,6 @@
 <template>
     <div class="programa-core">
-        <ProgramaContenidos v-if="sectionActive === 1" 
-                            :currentContentsData="currentContentsData"
-                            >
-        </ProgramaContenidos>
-        <ProgramaSlides v-if="sectionActive === 2"
-                            :currentSlidesData="currentSlidesData"
-                            >
-        </ProgramaSlides>
-        <ProgramaDesarrollos v-if="sectionActive === 3"
-                             :currentDevelopmentsData="currentDevelopmentsData"
-                            >
-        </ProgramaDesarrollos>
+        <component :is="sectionActive" :currentData="getCurrentData"></component>
     </div>
 </template>
 
@@ -27,14 +16,14 @@
         name:'programaCore',
 
         components: {
-            ProgramaContenidos: ProgramaContenidos,
-            ProgramaSlides: ProgramaSlides,
-            ProgramaDesarrollos: ProgramaDesarrollos
+            contenidos: ProgramaContenidos,
+            slides: ProgramaSlides,
+            desarrollos: ProgramaDesarrollos
         },
 
         data () {
             return {
-                sectionActive: 1,
+                sectionActive: 'contenidos',
                 defaultPath: '',
                 currentContentsData: [],
                 currentSlidesData: [],
@@ -47,7 +36,21 @@
             ...mapGetters({
                 config: 'getConfigData',
                 programData: 'getProgramData'
-            })
+            }),
+
+            getCurrentData(){
+                switch(this.sectionActive){
+                    case 'contenidos':
+                        return this.currentContentsData;
+                    break;
+                    case 'slides':
+                        return this.currentSlidesData;
+                    break;
+                    case 'desarrollos':
+                        return this.currentDevelopmentsData;
+                    break;
+                }
+            }
         },
 
         created(){
@@ -72,8 +75,8 @@
                 );
             },
 
-            goSectionActive(numSectionActive){
-                this.sectionActive = numSectionActive;
+            goSectionActive(nameTab){
+                this.sectionActive = nameTab;
             },
 
             updateContent(id){

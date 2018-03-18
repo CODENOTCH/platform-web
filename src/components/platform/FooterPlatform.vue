@@ -2,13 +2,6 @@
     <transition name="contentTransition" appear>
         <footer id="footer-platform">
             <div class="container-btn-session" :class="{centered:noBreadcrumbs}">
-                <!--v-app>
-                    <v-container fluid>
-                        <router-link :to="{ name: 'login'}">
-                            <v-switch :label="`Cerrar sesión`" v-model="switch1"></v-switch>
-                        </router-link>
-                    </v-container>
-                </v-app-->
                 <router-link class="link-special-codenotch" :to="{ name: 'login'}">
                     <img :src="setPathIconSession" alt="icono sesión"/>
                     <span>Cerrar sesión</span>
@@ -17,7 +10,6 @@
             <div v-if="!noBreadcrumbs" class="container-breadcrumbs">
                 <ul class="list-links">
                     <li v-for="(link,index) of breadcrumbs" v-bind:key="index">
-                        <!--a class="link-codenotch">{{link.text}}</a-->
                         <router-link class="link-codenotch" v-if="link.visible" :class="{disabled:link.disabled}" :to="{ name: link.path}">
                             <span>{{link.text}}</span>
                         </router-link>  
@@ -39,7 +31,6 @@
             return {
                 breadcrumbs: [],
                 noBreadcrumbs: false
-                /*switch1: true*/
             }
         }, 
 
@@ -98,10 +89,6 @@
     display: block !important
     min-height: inherit !important
   }
-
-  /*.input-group__details {
-      display: none !important
-  }*/
 
   .container {
     padding: 0 

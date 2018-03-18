@@ -2,7 +2,7 @@
     <div class="programa-cabecera">
          <ul>
             <li v-for='(item,i) of listItemsCabecera' v-bind:key="i">
-                <a :class={active:item.active} @click="clickHandler(i)">
+                <a :class={active:item.active} @click="clickHandler(i,item.name)">
                     <img v-if="item.name == 'menu'" :src="setPathIconIndice" alt="icono índice"/>
                     <img v-else-if="item.name == 'contenidos'" :src="setPathIconContenidos" alt="icono documento"/>
                     <img v-else-if="item.name == 'slides'" :src="setPathIconSlides" alt="icono slides"/>
@@ -62,12 +62,12 @@
         },    
 
         methods: {
-            clickHandler(i){
+            clickHandler(index,tabName){
                 let isIndexOpen = false;
 
-                if(i === 0) isIndexOpen = !isIndexOpen;
+                if(tabName === 'menu') isIndexOpen = !isIndexOpen;
 
-                this.$emit('clickedTab',i,isIndexOpen);
+                this.$emit('clickedTab',tabName,isIndexOpen);
 
                 let listItemsCabeceraTemp = [...this.listItemsCabecera];
 
@@ -75,10 +75,10 @@
                     item.active = false;
                 }
 
-                let itemCabeceraTemp = {...listItemsCabeceraTemp[i]};
+                let itemCabeceraTemp = {...listItemsCabeceraTemp[index]};
                 itemCabeceraTemp.active = true;
 
-                listItemsCabeceraTemp[i] = itemCabeceraTemp;
+                listItemsCabeceraTemp[index] = itemCabeceraTemp;
 
                 this.listItemsCabecera = listItemsCabeceraTemp;
             }

@@ -17,11 +17,11 @@
                         <div class="modulo-temas-container">
                             <ul>
                                 <li v-for='(item,i) of currentDataIndexModules[i]' v-bind:key="i">
-                                    <ProgramaItemIndice :active="itemActivated" :type="item.type" :id="item.id" @clickedItem="onClickItem">
+                                    <item-indice :active="itemActivated" :type="item.type" :id="item.id" @clickedItem="onClickItem">
                                         <img v-if="item.type == 'tema'" slot="icon" :src="setPathIconTema" alt="icono documento"/>
                                         <img v-else slot="icon" :src="setPathIconSubtema" alt="icono documento"/>
                                         <span slot="text">{{item.text}}</span>
-                                    </ProgramaItemIndice>
+                                    </item-indice>
                                 </li>
                             </ul>
                         </div>
@@ -41,7 +41,7 @@ export default {
   name: 'programaIndice',
 
   components: {
-    ProgramaItemIndice: ProgramaItemIndice
+    itemIndice: ProgramaItemIndice
   },
 
   props: ['dataIndex','isIndexOpen'],
@@ -62,7 +62,6 @@ export default {
   computed: {
     ...mapGetters({
       config: 'getConfigData'
-      //isOpen: 'getStateIndexProgram'
     }),
 
     setPathLogo() {
@@ -92,8 +91,6 @@ export default {
         this.currentDataIndexModules.push(this.currentDataIndex.module1);
         this.currentDataIndexModules.push(this.currentDataIndex.module2);
         this.currentDataIndexModules.push(this.currentDataIndex.module3);
-
-        this.setIndexProgramData();
       })
       .catch(error => {
         console.log(error);
@@ -101,10 +98,6 @@ export default {
   },
 
   methods: {
-    setIndexProgramData() {
-      this.$store.commit('setIndexProgramData', this.currentDataIndex);
-    },
-
     onClickItem(id){
       this.$emit('clickedItemIndex',id);
     }
