@@ -96,6 +96,10 @@
     img{
         margin-right: .8em;
     }
+    &.active{
+        pointer-events: none;
+        background: $softPurple;
+    }
     @include transition(all,.5s,ease-out,0);
     @media (min-width: 1200px){
         &:hover{

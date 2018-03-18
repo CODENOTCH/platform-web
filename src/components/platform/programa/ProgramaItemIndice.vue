@@ -1,5 +1,5 @@
 <template>
-    <div :class="[classSelected,activeSelected]" @click="clickItemHandler(id)">
+    <div :class="[getClassSelected,toogleClassActive]" @click="clickItemHandler(id)">
         <slot name="icon"></slot>
         <slot name="text"></slot>
     </div>
@@ -11,10 +11,15 @@
         name: 'programaItemIndice',
         props: ['type','id','active'],
 
-        data () {
-            return {
-                classSelected: this.type == 'tema' ? 'modulo-tema' : 'modulo-subtema',
-                activeSelected: this.active ? 'active' : null
+        computed:{
+            getClassSelected(){
+                let classSelected = this.type == 'tema' ? 'modulo-tema' : 'modulo-subtema';
+                return classSelected;
+            },
+
+            toogleClassActive(){
+                let activated = this.active ? 'active' : null
+                return activated;
             }
         },
 

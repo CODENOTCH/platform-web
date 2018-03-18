@@ -16,8 +16,8 @@
                         </div>
                         <div class="modulo-temas-container">
                             <ul>
-                                <li v-for='(item,i) of currentDataIndexModules[i]' v-bind:key="i">
-                                    <item-indice :active="itemActivated" :type="item.type" :id="item.id" @clickedItem="onClickItem">
+                                <li v-for='(item,i) of currentDataIndex' v-bind:key="i">
+                                    <item-indice :active="item.active" :type="item.type" :id="item.id" @clickedItem="onClickItem">
                                         <img v-if="item.type == 'tema'" slot="icon" :src="setPathIconTema" alt="icono documento"/>
                                         <img v-else slot="icon" :src="setPathIconSubtema" alt="icono documento"/>
                                         <span slot="text">{{item.text}}</span>
@@ -48,8 +48,7 @@ export default {
 
   data() {
     return {
-      currentDataIndex: {},
-      currentDataIndexModules: [],
+      currentDataIndex: [],
       moduleList: [
         { name: 'frontend', id: 1 },
         { name: 'backend', id: 2 },
@@ -86,11 +85,7 @@ export default {
   created() {
     Axios.get(this.dataIndex.link)
       .then(response => {
-        this.currentDataIndex = response.data;
-
-        this.currentDataIndexModules.push(this.currentDataIndex.module1);
-        this.currentDataIndexModules.push(this.currentDataIndex.module2);
-        this.currentDataIndexModules.push(this.currentDataIndex.module3);
+        this.currentDataIndex = response.data.module1.concat(response.data.module2,response.data.module3);
       })
       .catch(error => {
         console.log(error);
@@ -100,6 +95,26 @@ export default {
   methods: {
     onClickItem(id){
       this.$emit('clickedItemIndex',id);
+      this.setItemActive(id);
+    },
+
+    setItemActive(id){
+      let listItems = [...this.currentDataIndex];
+      let index = listItems.findIndex(item => item.id === id);
+
+      for(let item of listItems){
+          item.active = false;
+      }
+
+      let itemSelected = {...listItems[index]};
+      itemSelected.active = true;
+
+      //console.log(itemSelected)
+      //console.log(listItems)
+
+      listItems[index] = itemSelected;
+
+      this.currentDataIndex = listItems;
     }
   }
 };
