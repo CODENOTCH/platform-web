@@ -79,8 +79,17 @@
             }
         }, 
 
-        created(){
+        created() {
             window.scrollTo(0, 0);
+
+            /*Axios.get(this.dataIndex.link)
+                .then(response => {
+                    this.currentDataIndex = response.data.module1.concat(response.data.module2,response.data.module3);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+            */
         }
     }
 </script>

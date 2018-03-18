@@ -53,8 +53,7 @@ export default {
         { name: 'frontend', id: 1 },
         { name: 'backend', id: 2 },
         { name: 'mobile', id: 3 }
-      ],
-      itemActivated: false
+      ]
     };
   },
 
