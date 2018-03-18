@@ -69,6 +69,10 @@
 
                 this.$emit('clickedTab',tabName,isIndexOpen);
 
+                this.setTab(index);
+            },
+            
+            setTab(index){
                 let listItemsCabeceraTemp = [...this.listItemsCabecera];
 
                 for(let item of listItemsCabeceraTemp){

@@ -10,22 +10,7 @@
 </template>
 
 <script>
-
     export default {
-        name: 'programaDataContenido',
-
-        data () {
-            return {
-                classSelected: null
-            }
-        },
-
-        updated(){
-            console.log('programaDataContenidos updated');
-        },
-
-        beforeDestroy(){
-            console.log('programaDataContenidos beforeDestroy');
-        }
+        name: 'programaDataContenido'
     }
 </script>

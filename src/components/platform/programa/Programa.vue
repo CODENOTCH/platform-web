@@ -2,8 +2,8 @@
     <transition name="contentTransition" appear>
         <div class="programa">
             <programa-indice @clickedItemIndex="onClickItemIndex" :dataIndex="program.indice" :isIndexOpen="isIndexOpen"></programa-indice>
-            <programa-cabecera @clickedTab="onClickProgramCabeceraTab"></programa-cabecera>
-            <programa-core ref="coreProgram"></programa-core>
+            <programa-cabecera ref="header" @clickedTab="onClickProgramCabeceraTab"></programa-cabecera>
+            <programa-core ref="core"></programa-core>
         </div>
     </transition>
 </template>
@@ -40,10 +40,16 @@
         methods: {
             onClickProgramCabeceraTab(nameTab,isIndexOpen){
                 this.isIndexOpen = isIndexOpen;
-                this.$refs.coreProgram.goSectionActive(nameTab);
+                this.$refs.core.goSectionActive(nameTab);
             },
+            
             onClickItemIndex(id){
-                this.$refs.coreProgram.updateContent(id);
+                if(this.isIndexOpen){
+                    this.isIndexOpen = !this.isIndexOpen;
+                    this.$refs.header.setTab(1);
+                    this.$refs.core.goSectionActive('contenidos');
+                }
+                this.$refs.core.updateContent(id);
             }
         }
     }
