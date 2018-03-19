@@ -15,20 +15,15 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 col-xl-2 offset-xl-1 container-img-codenotch">
-                        <img class="img-fluid img-codenotch" :src="setPathFotoAlumno" alt="foto alumno">
+                        <img class="img-fluid img-codenotch" :src="currentStudentData.imgPath" alt="foto alumno" />
                     </div> 
                     <div class="col-12 col-xl-8">
-                        <h2>JAIME DE MIGUEL ALCOBENDAS</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at temp us 
-                            metus. Ut at eros quis augue consequat dignissim.Vestibulum ante ipsum
-                            primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut id velit
-                            tristique ligula tempus hendrerit a nec justo. Integer tempor ante ipsum,
-                            Ut at eros quis augue consequat consectetur adipiscing elit.
-                        </p>
+                        <h2>{{currentStudentData.name}}</h2>
+                        <p v-html="currentStudentData.description"></p>
                         <div class="alumnos-links">
                             <ul class="list-links">
-                                <li v-for="(link,index) of links" v-bind:key="index">
-                                    <a class="link-codenotch" href="#">{{link.text}}</a>
+                                <li v-for="(link,index) of currentStudentData.links" v-bind:key="index">
+                                    <a class="link-codenotch" :href="link.url" target="_blank">{{link.content}}</a>
                                 </li>
                             </ul>
                         </div>
@@ -57,6 +52,7 @@
 
         data(){
             return{
+                currentStudentData: {},
                 links: [
                         {text:'Github',disabled: false},
                         {text:'Linkedin',disabled: false},
@@ -67,7 +63,9 @@
         
         computed: {
             ...mapGetters({
-                config: 'getConfigData'
+                config: 'getConfigData',
+                studentData: 'getStudentData',
+                studentId: 'getStudentId'
             }),
 
             setPathLogo() {
@@ -79,17 +77,31 @@
             }
         }, 
 
+        beforeCreate(){
+            /* TEMPORAL */
+            this.$store.commit('setStudentId', '1.1'); 
+        },
+
         created() {
             window.scrollTo(0, 0);
 
-            /*Axios.get(this.dataIndex.link)
+            let arrStudentData = [...this.studentData.data];
+            let indexMatched = arrStudentData.findIndex( item => item.studentId == this.studentId);
+            let studentDataPath = arrStudentData[indexMatched].path;
+
+
+            console.log('indexMatched',indexMatched);
+            //console.log('studentDataPath',studentDataPath);
+
+            Axios.get(studentDataPath)
                 .then(response => {
-                    this.currentDataIndex = response.data.module1.concat(response.data.module2,response.data.module3);
+                    this.currentStudentData = response.data.data;
+                    console.log('currentStudentData',this.currentStudentData);
+
                 })
                 .catch(error => {
                     console.log(error);
                 });
-            */
         }
     }
 </script>

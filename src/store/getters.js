@@ -10,6 +10,10 @@ export const getStudentData = state => {
     return state.studentData;
 };
 
+export const getStudentId = state => {
+    return state.studentId;
+};
+
 export const getIndexProgramData = state => {
     return state.indexProgramData;
 };

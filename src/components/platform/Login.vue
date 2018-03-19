@@ -77,15 +77,18 @@
             submit () {
                 if (this.$refs.form.validate()) {
 
-                    this.$store.commit('setProfile', 'alumno');
-                    this.$router.push({path:'/alumno/home'});
-
                     /* TEMPORAL */ 
 
                     /*Axios.post('/api/submit', {
                         name: this.name,
                         email: this.email
                     });*/
+
+                    this.$store.commit('setProfile', 'alumno');
+                    //this.$store.commit('setStudentId', '1.1');
+                    this.$router.push({path:'/alumno/home'});
+
+
                 }
             }
         }

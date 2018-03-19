@@ -1,7 +1,7 @@
 <template>
     <div id="alumno-wrapper">
         <router-view></router-view>
-        <FooterPlatform></FooterPlatform>
+        <footer-platform></footer-platform>
     </div>
 </template>
 
@@ -12,7 +12,7 @@
         name:'alumnoWrapper',
 
         components: {
-            FooterPlatform: FooterPlatform
+            footerPlatform: FooterPlatform
         }
     }    
 </script>

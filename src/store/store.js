@@ -13,6 +13,7 @@ const state = {
     configData: '',
     programData: '',
     studentData: '',
+    studentId: '',
     indexProgramData: '',
     isOnlyMobile: false,
     isMobileOrTable: false,
