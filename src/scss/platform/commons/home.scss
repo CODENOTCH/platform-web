@@ -1,6 +1,6 @@
-/* ALUMNO HOME */
+/* HOME */
 
-#alumno-home{
+.home{
     width: 100%;
     min-height: 100vh;
     background: $darkWhite;
@@ -36,9 +36,32 @@
                     }
                 }
                 &:last-of-type{
-                    margin-bottom: 22vh;
+                    margin-bottom: 16vh;
+                    @media (min-width: 567px){
+                        margin-bottom: 22vh;
+                    }
                     @media (min-width: 768px){
+                        margin-bottom: 15vh;
+                    }
+                    @media (min-width: 992px){
+                        margin-bottom: 18vh;
+                    }
+                    @media (min-width: 1200px){
                         margin-bottom: 0;
+                    }
+                    > div{
+                        &:last-of-type{
+                            margin-top: 2vh;
+                            @media (min-width: 567px){
+                                margin-top: 4vh;
+                            }
+                            @media (min-width: 768px){
+                                margin-top: 3vh;
+                            }
+                            @media (min-width: 992px){
+                                margin-top: 0;
+                            }
+                        }
                     }
                 }
             }

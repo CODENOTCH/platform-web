@@ -14,6 +14,14 @@ export const setStudentId = (state,data) =>{
     state.studentId = data;
 };
 
+export const setTeacherData = (state,data) =>{
+    state.teacherData = data;
+};
+
+export const setTeacherId = (state,data) =>{
+    state.teacherId = data;
+};
+
 export const setIndexProgramData = (state,data) =>{
     state.indexProgramData = data;
 };

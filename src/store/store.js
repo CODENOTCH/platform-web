@@ -14,12 +14,14 @@ const state = {
     programData: '',
     studentData: '',
     studentId: '',
+    teacherData: '',
+    teacherId: '',
     indexProgramData: '',
     isOnlyMobile: false,
     isMobileOrTable: false,
     /*isOpenIndexProgram: false,*/
     logged: false,
-    profile: 'alumno'
+    profile: ''
 };
 
 const store = new Vuex.Store({

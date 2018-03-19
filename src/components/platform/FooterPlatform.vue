@@ -74,6 +74,13 @@
                         ],
                         this.noBreadcrumbs = false;
                     break;
+
+                     case 'profesorHome':
+                        breadcrumbs = [
+                            {text:'Home', visible:false, disabled: true, path:'profesorHome'}
+                        ],
+                        this.noBreadcrumbs = true;
+                    break;
                 }
 
                 this.breadcrumbs = breadcrumbs;

@@ -14,6 +14,14 @@ export const getStudentId = state => {
     return state.studentId;
 };
 
+export const getTeacherData = state => {
+    return state.teacherData;
+};
+
+export const getTeacherId = state => {
+    return state.teacherId;
+};
+
 export const getIndexProgramData = state => {
     return state.indexProgramData;
 };
