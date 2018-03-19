@@ -6,6 +6,10 @@ export const getProgramData = state => {
     return state.programData;
 };
 
+export const getStudentData = state => {
+    return state.studentData;
+};
+
 export const getIndexProgramData = state => {
     return state.indexProgramData;
 };

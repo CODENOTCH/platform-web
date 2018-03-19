@@ -6,6 +6,10 @@ export const setProgramData = (state,data) =>{
     state.programData = data;
 };
 
+export const setStudentData = (state,data) =>{
+    state.studentData = data;
+};
+
 export const setIndexProgramData = (state,data) =>{
     state.indexProgramData = data;
 };

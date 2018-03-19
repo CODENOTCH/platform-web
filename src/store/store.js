@@ -12,6 +12,7 @@ const state = {
     versionIE: undefined,
     configData: '',
     programData: '',
+    studentData: '',
     indexProgramData: '',
     isOnlyMobile: false,
     isMobileOrTable: false,

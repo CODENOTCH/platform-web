@@ -82,7 +82,7 @@ export default {
   },
 
   created() {
-    Axios.get(this.dataIndex.link)
+    Axios.get(this.dataIndex.path)
       .then(response => {
         this.currentDataIndex = response.data.module1.concat(response.data.module2,response.data.module3);
       })
