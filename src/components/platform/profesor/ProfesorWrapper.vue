@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import FooterPlatform from '../FooterPlatform.vue';
+    import FooterPlatform from '../comunes/FooterPlatform.vue';
 
     export default {
         name:'profesorWrapper',

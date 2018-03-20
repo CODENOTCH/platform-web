@@ -1,6 +1,6 @@
 <template>
     <transition name="contentTransition" appear>
-        <div id="profesor-prehome">
+        <div id="listado-bootcamps">
             <div id="profesor-home" class="home">
                 <div class="container-fluid">
                     <div class="row">
@@ -26,7 +26,7 @@
     import { mapGetters } from 'vuex';
 
     export default {
-        name:'profesorPrehome',
+        name:'listadoBootcamps',
 
         computed: {
             ...mapGetters({

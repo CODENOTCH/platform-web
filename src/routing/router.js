@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Login from '../components/platform/Login.vue';
+import Login from '../components/platform/comunes/Login.vue';
 import AlumnoWrapper from '../components/platform/alumno/AlumnoWrapper.vue';
 import AlumnoHome from '../components/platform/alumno/AlumnoHome.vue';
 import ProfesorWrapper from '../components/platform/profesor/ProfesorWrapper.vue';
