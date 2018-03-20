@@ -84,7 +84,7 @@
                         email: this.email
                     });*/
 
-                    this.$store.commit('setProfile', 'alumno');
+                    this.$store.commit('setProfile', 'profesor');
                     //this.$store.commit('setStudentId', '1.1');
 
                     //this.$router.push({path:'/alumno'});

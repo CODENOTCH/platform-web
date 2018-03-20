@@ -1,7 +1,7 @@
 <template>
     <div class="programa-indice" :class="{active:isIndexOpen}">
         <div class="logo-container">
-            <router-link :to="{ name: 'alumnoHome'}">
+            <router-link :to="{ name: setLinkLogo}">
               <h1>
                   <img :src="setPathLogo" alt="logo Codenotch"/>
               </h1>
@@ -59,7 +59,8 @@ export default {
 
   computed: {
     ...mapGetters({
-      config: 'getConfigData'
+      config: 'getConfigData',
+      profile: 'getProfile'
     }),
 
     setPathLogo() {
@@ -78,6 +79,11 @@ export default {
       return process.env.NODE_ENV === 'production'
         ? this.config.imgPathProduction.iconSubtema
         : this.config.imgPathDevelopment.iconSubtema;
+    },
+
+    setLinkLogo(){
+      let path = this.profile === 'alumno' ? 'alumnoHome' : 'profesorHome';
+      return path;
     }
   },
 
