@@ -14,7 +14,7 @@ const router = new VueRouter({
         { path: '/alumno', name:'alumno', component: AlumnoWrapper,
             children: [
                 {
-                    path: 'home',
+                    path: '',
                     name:'alumnoHome',
                     component: AlumnoHome
                 },
@@ -28,7 +28,7 @@ const router = new VueRouter({
         { path: '/profesor', name:'profesor', component: ProfesorWrapper,
             children: [
                 {
-                    path: 'home',
+                    path: '',
                     name:'profesorHome',
                     component: ProfesorHome
                 },

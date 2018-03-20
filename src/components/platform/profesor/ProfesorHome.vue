@@ -15,14 +15,14 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 col-xl-2 offset-xl-1 container-img-codenotch">
-                        <img class="img-fluid img-codenotch" :src="currentStudentData.imgPath" alt="foto profesor" />
+                        <img class="img-fluid img-codenotch" :src="currentTeacherData.imgPath" alt="foto profesor" />
                     </div> 
                     <div class="col-12 col-xl-8">
-                        <h2>{{currentStudentData.name}}</h2>
-                        <p v-html="currentStudentData.description"></p>
+                        <h2>{{currentTeacherData.name}}</h2>
+                        <p v-html="currentTeacherData.description"></p>
                         <div class="alumnos-links">
                             <ul class="list-links">
-                                <li v-for="(link,index) of currentStudentData.links" v-bind:key="index">
+                                <li v-for="(link,index) of currentTeacherData.links" v-bind:key="index">
                                     <a class="link-codenotch" :href="link.url" target="_blank">{{link.content}}</a>
                                 </li>
                             </ul>
@@ -57,7 +57,7 @@
 
         data(){
             return{
-                currentStudentData: {},
+                currentTeacherData: {},
                 links: [
                         {text:'Github',disabled: false},
                         {text:'Linkedin',disabled: false},
@@ -69,39 +69,34 @@
         computed: {
             ...mapGetters({
                 config: 'getConfigData',
-                studentData: 'getStudentData',
-                studentId: 'getStudentId'
+                teacherData: 'getTeacherData',
+                teacherId: 'getTeacherId'
             }),
 
             setPathLogo() {
                 return process.env.NODE_ENV === 'production' ? this.config.imgPathProduction.logo : this.config.imgPathDevelopment.logo
-            },
-
-            setPathFotoAlumno() {
-                return process.env.NODE_ENV === 'production' ? this.config.imgPathProduction.fotoAlumno : this.config.imgPathDevelopment.fotoAlumno
             }
         }, 
 
         beforeCreate(){
             /* TEMPORAL */
-            this.$store.commit('setStudentId', '1.1'); 
+            this.$store.commit('setTeacherId', '1.2'); 
         },
 
         created() {
             window.scrollTo(0, 0);
 
-            let arrStudentData = [...this.studentData.data];
-            let indexMatched = arrStudentData.findIndex( item => item.studentId == this.studentId);
-            let studentDataPath = arrStudentData[indexMatched].path;
+            let arrTeacherData = [...this.teacherData.data];
+            let indexMatched = arrTeacherData.findIndex( item => item.teacherId == this.teacherId);
+            let teacherDataPath = arrTeacherData[indexMatched].path;
 
 
             console.log('indexMatched',indexMatched);
-            //console.log('studentDataPath',studentDataPath);
 
-            Axios.get(studentDataPath)
+            Axios.get(teacherDataPath)
                 .then(response => {
-                    this.currentStudentData = response.data.data;
-                    console.log('currentStudentData',this.currentStudentData);
+                    this.currentTeacherData = response.data.data;
+                    console.log('currentTeacherData',this.currentTeacherData);
 
                 })
                 .catch(error => {

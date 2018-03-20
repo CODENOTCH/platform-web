@@ -70,10 +70,6 @@
 
             setPathLogo() {
                 return process.env.NODE_ENV === 'production' ? this.config.imgPathProduction.logo : this.config.imgPathDevelopment.logo
-            },
-
-            setPathFotoAlumno() {
-                return process.env.NODE_ENV === 'production' ? this.config.imgPathProduction.fotoAlumno : this.config.imgPathDevelopment.fotoAlumno
             }
         }, 
 

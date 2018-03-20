@@ -87,9 +87,8 @@
                     this.$store.commit('setProfile', 'alumno');
                     //this.$store.commit('setStudentId', '1.1');
 
-                    //this.$router.push({path:'/alumno/home'});
-
-                    this.$router.push({path:'/profesor/home'});
+                    //this.$router.push({path:'/alumno'});
+                    this.$router.push({path:'/profesor'});
                 }
             }
         }
