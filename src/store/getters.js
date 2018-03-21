@@ -6,28 +6,24 @@ export const getProgramData = state => {
     return state.programData;
 };
 
-export const getStudentData = state => {
-    return state.studentData;
+export const getBootcampData = state => {
+    return state.bootcampData;
+};
+
+export const getProfile = state => {
+    return state.profile;
+};
+
+export const getBootcampId = state => {
+    return state.bootcampId;
 };
 
 export const getStudentId = state => {
     return state.studentId;
 };
 
-export const getTeacherData = state => {
-    return state.teacherData;
-};
-
 export const getTeacherId = state => {
     return state.teacherId;
-};
-
-export const getIndexProgramData = state => {
-    return state.indexProgramData;
-};
-
-export const getProfile = state => {
-    return state.profile;
 };
 
 export const getIsOnlyMobile = state => {
@@ -37,10 +33,6 @@ export const getIsOnlyMobile = state => {
 export const getIsMobileOrTablet = state => {
     return state.isMobileOrTable;
 };
-/*
-export const getStateIndexProgram = state => {
-    return state.isOpenIndexProgram;
-};*/
 
 export const getLogged = state => {
     return state.logged;

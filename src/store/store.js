@@ -12,14 +12,12 @@ const state = {
     versionIE: undefined,
     configData: '',
     programData: '',
-    studentData: '',
+    bootcampData: '',
+    bootcampId: '',
     studentId: '',
-    teacherData: '',
     teacherId: '',
-    indexProgramData: '',
     isOnlyMobile: false,
     isMobileOrTable: false,
-    /*isOpenIndexProgram: false,*/
     logged: false,
     profile: ''
 };

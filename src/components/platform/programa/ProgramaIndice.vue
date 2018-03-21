@@ -114,9 +114,6 @@ export default {
       let itemSelected = {...listItems[index]};
       itemSelected.active = true;
 
-      //console.log(itemSelected)
-      //console.log(listItems)
-
       listItems[index] = itemSelected;
 
       this.currentDataIndex = listItems;

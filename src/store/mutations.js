@@ -6,28 +6,24 @@ export const setProgramData = (state,data) =>{
     state.programData = data;
 };
 
-export const setStudentData = (state,data) =>{
-    state.studentData = data;
+export const setBootcampData = (state,data) =>{
+    state.bootcampData = data;
+};
+
+export const setProfile = (state,data) =>{
+    state.profile = data;
+};
+
+export const setBootcampId = (state,data) =>{
+    state.bootcampId = data;
 };
 
 export const setStudentId = (state,data) =>{
     state.studentId = data;
 };
 
-export const setTeacherData = (state,data) =>{
-    state.teacherData = data;
-};
-
 export const setTeacherId = (state,data) =>{
     state.teacherId = data;
-};
-
-export const setIndexProgramData = (state,data) =>{
-    state.indexProgramData = data;
-};
-
-export const setProfile = (state,data) =>{
-    state.profile = data;
 };
 
 export const setIsOnlyMobile = state => {
@@ -41,11 +37,7 @@ export const setIsMobileOrTablet = state => {
 export const setLogged = (state,isLogged) => {
     state.logged = isLogged;
 };
-/*
-export const setStateIndexProgram = state => {
-    state.isOpenIndexProgram = !state.isOpenIndexProgram;
-};
-*/
+
 export const setVersionIE = (state) => {
     let userAgent = window.navigator.userAgent;
     let msie = userAgent.indexOf('MSIE ');

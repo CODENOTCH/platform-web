@@ -15,7 +15,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 col-xl-2 offset-xl-1 container-img-codenotch">
-                        <img class="img-fluid img-codenotch" :src="currentStudentData.imgPath" alt="foto alumno" />
+                        <img class="img-fluid img-codenotch" :src="currentStudentData.photoPath" alt="foto alumno" />
                     </div> 
                     <div class="col-12 col-xl-8">
                         <h2>{{currentStudentData.name}}</h2>
@@ -52,19 +52,15 @@
 
         data(){
             return{
-                currentStudentData: {},
-                links: [
-                        {text:'Github',disabled: false},
-                        {text:'Linkedin',disabled: false},
-                        {text:'Twitter',disabled: true}
-                ]
+                currentStudentData: {}
             }
         },
         
         computed: {
             ...mapGetters({
                 config: 'getConfigData',
-                studentData: 'getStudentData',
+                bootcampData: 'getBootcampData',
+                bootcampId: 'getBootcampId',
                 studentId: 'getStudentId'
             }),
 
@@ -75,29 +71,18 @@
 
         beforeCreate(){
             /* TEMPORAL */
+            this.$store.commit('setBootcampId', '1.1');
             this.$store.commit('setStudentId', '1.1'); 
         },
 
         created() {
             window.scrollTo(0, 0);
 
-            let arrStudentData = [...this.studentData.data];
-            let indexMatched = arrStudentData.findIndex( item => item.studentId == this.studentId);
-            let studentDataPath = arrStudentData[indexMatched].path;
-
-
-            console.log('indexMatched',indexMatched);
-            //console.log('studentDataPath',studentDataPath);
-
-            Axios.get(studentDataPath)
-                .then(response => {
-                    this.currentStudentData = response.data.data;
-                    console.log('currentStudentData',this.currentStudentData);
-
-                })
-                .catch(error => {
-                    console.log(error);
-                });
+            let arrBootcampsData = [...this.bootcampData.bootcamps];
+            let indexBootcampMatched = arrBootcampsData.findIndex( item => item.bootcampId == this.bootcampId);
+            let studentList = arrBootcampsData[indexBootcampMatched].studentList;
+            let indexStudentMatched = studentList.findIndex( item => item.studentId == this.studentId);
+            this.currentStudentData = studentList[indexStudentMatched];
         }
     }
 </script>
