@@ -1,17 +1,15 @@
 <template>
-    <transition name="contentTransition" appear>
-        <div class="container-fluid logo-platform">
-            <div class="row">
-                <div class="col-12 col-xl-4 offset-xl-4">
-                    <div class="logo-container">
-                        <h1>
-                            <img :src="setPathLogo" alt="logo Codenotch"/>
-                        </h1>
-                    </div>
+    <div class="container-fluid logo-platform">
+        <div class="row">
+            <div class="col-12 col-xl-4 offset-xl-4">
+                <div class="logo-container">
+                    <h1>
+                        <img :src="setPathLogo" alt="logo Codenotch"/>
+                    </h1>
                 </div>
             </div>
         </div>
-    </transition>
+    </div>
 </template>
 
 <script>

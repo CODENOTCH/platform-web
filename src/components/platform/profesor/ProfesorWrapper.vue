@@ -1,5 +1,5 @@
 <template>
-    <div id="profesor-wrapper">
+    <div id="profesor-wrapper" class="platform-wrapper">
         <logo-platform v-if="!isProgram"></logo-platform>
         <router-view></router-view>
         <footer-platform></footer-platform>

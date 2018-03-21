@@ -1,24 +1,21 @@
 <template>
-    <transition name="contentTransition" appear>
-        <div id="profesor-bootcamps" class="home bootcamps">  
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
-                        <div class="container-bootcamps">
-                            <ul>
-                                <li v-for='(item,i) of bootcampsList' v-bind:key="i">
-                                    <router-link class="link-codenotch" :to="{ name: 'listadoAlumnos'}">
-                                        <span>{{item.content}}</span>
-                                    </router-link>  
-                                </li>
-                            </ul> 
-                        </div>
-                    </div>    
-                </div>
-            </div>         
-                
-        </div>
-    </transition>
+    <div id="profesor-bootcamps" class="home bootcamps">  
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+                    <div class="container-bootcamps">
+                        <ul>
+                            <li v-for='(item,i) of bootcampsList' v-bind:key="i">
+                                <router-link class="link-codenotch" :to="{ name: 'listadoAlumnos'}">
+                                    <span>{{item.content}}</span>
+                                </router-link>  
+                            </li>
+                        </ul> 
+                    </div>
+                </div>    
+            </div>
+        </div>           
+    </div>
 </template>
 
 <script>

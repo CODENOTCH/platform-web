@@ -1,23 +1,21 @@
 <template>
-    <transition name="contentTransition" appear>
-        <footer id="footer-platform">
-            <div class="container-btn-session" :class="{centered:noBreadcrumbs}">
-                <router-link class="link-special-codenotch" :to="{ name: 'login'}">
-                    <img :src="setPathIconSession" alt="icono sesión"/>
-                    <span>Cerrar sesión</span>
-                </router-link>  
-            </div>
-            <div v-if="!noBreadcrumbs" class="container-breadcrumbs">
-                <ul class="list-links">
-                    <li v-for="(link,index) of breadcrumbs" v-bind:key="index">
-                        <router-link class="link-codenotch" v-if="link.visible" :class="{disabled:link.disabled}" :to="{ name: link.path}">
-                            <span>{{link.text}}</span>
-                        </router-link>  
-                    </li>
-                </ul>
-            </div>
-        </footer>            
-    </transition>
+    <footer id="footer-platform">
+        <div class="container-btn-session" :class="{centered:noBreadcrumbs}">
+            <router-link class="link-special-codenotch" :to="{ name: 'login'}">
+                <img :src="setPathIconSession" alt="icono sesión"/>
+                <span>Cerrar sesión</span>
+            </router-link>  
+        </div>
+        <div v-if="!noBreadcrumbs" class="container-breadcrumbs">
+            <ul class="list-links">
+                <li v-for="(link,index) of breadcrumbs" v-bind:key="index">
+                    <router-link class="link-codenotch" v-if="link.visible" :class="{disabled:link.disabled}" :to="{ name: link.path}">
+                        <span>{{link.text}}</span>
+                    </router-link>  
+                </li>
+            </ul>
+        </div>
+    </footer>  
 </template>
 
 <script>

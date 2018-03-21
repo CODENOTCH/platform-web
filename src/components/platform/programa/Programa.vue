@@ -1,11 +1,9 @@
 <template>
-    <transition name="contentTransition" appear>
-        <div class="programa">
-            <programa-indice @clickedItemIndex="onClickItemIndex" :dataIndex="program.indice" :isIndexOpen="isIndexOpen"></programa-indice>
-            <programa-cabecera ref="header" @clickedTab="onClickProgramCabeceraTab"></programa-cabecera>
-            <programa-core ref="core"></programa-core>
-        </div>
-    </transition>
+    <div class="programa">
+        <programa-indice @clickedItemIndex="onClickItemIndex" :dataIndex="program.indice" :isIndexOpen="isIndexOpen"></programa-indice>
+        <programa-cabecera ref="header" @clickedTab="onClickProgramCabeceraTab"></programa-cabecera>
+        <programa-core ref="core"></programa-core>
+    </div>
 </template>
 
 <script>

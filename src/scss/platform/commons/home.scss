@@ -1,8 +1,6 @@
-/* HOME */
-
 .home{
     width: 100%;
-    min-height: 100vh;
+    /*min-height: 100%;*/
     background: $darkWhite;
     color: $grey;
     @include flexContainer($rowAlign:flex-start,$direction:column);

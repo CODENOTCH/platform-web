@@ -1,33 +1,31 @@
 <template>
-    <transition name="contentTransition" appear>
-        <div id="alumno-home" class="home">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 col-xl-2 offset-xl-1 container-img-codenotch">
-                        <img class="img-fluid img-codenotch" :src="currentStudentData.photoPath" alt="foto alumno" />
-                    </div> 
-                    <div class="col-12 col-xl-8">
-                        <h2>{{currentStudentData.name}}</h2>
-                        <p v-html="currentStudentData.description"></p>
-                        <div class="alumnos-links">
-                            <ul class="list-links">
-                                <li v-for="(link,index) of currentStudentData.links" v-bind:key="index">
-                                    <a class="link-codenotch" :href="link.url" target="_blank">{{link.content}}</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-2 offset-xl-5">
-                        <router-link :to="{ name: 'alumnoPrograma'}">
-                            <v-btn class="btn-codenotch">PROGRAMA</v-btn>
-                        </router-link>
+    <div id="alumno-home" class="home">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-xl-2 offset-xl-1 container-img-codenotch">
+                    <img class="img-fluid img-codenotch" :src="currentStudentData.photoPath" alt="foto alumno" />
+                </div> 
+                <div class="col-12 col-xl-8">
+                    <h2>{{currentStudentData.name}}</h2>
+                    <p v-html="currentStudentData.description"></p>
+                    <div class="alumnos-links">
+                        <ul class="list-links">
+                            <li v-for="(link,index) of currentStudentData.links" v-bind:key="index">
+                                <a class="link-codenotch" :href="link.url" target="_blank">{{link.content}}</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-2 offset-xl-5">
+                    <router-link :to="{ name: 'alumnoPrograma'}">
+                        <v-btn class="btn-codenotch">PROGRAMA</v-btn>
+                    </router-link>
+                </div>
+            </div>
         </div>
-    </transition>    
+    </div> 
 </template>
 
 <script>

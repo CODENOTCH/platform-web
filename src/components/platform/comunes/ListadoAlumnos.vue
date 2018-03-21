@@ -1,19 +1,17 @@
 <template>
-    <transition name="contentTransition" appear>
-        <div id="listado-alumnos" class="home alumnos">  
-            <div class="container-fluid">
-                <div class="row" v-for="(item,index) of currentStudentData" v-bind:key="index">
-                    <div class="col-12 col-xl-2 offset-xl-1 container-img-codenotch">
-                        <img class="img-fluid img-codenotch" :src="item.photoPath" alt="foto alumno" />
-                    </div> 
-                    <div class="col-12 col-xl-8">
-                        <h2>{{item.name}}</h2>
-                        <p v-html="item.description"></p>
-                    </div>
+    <div id="listado-alumnos" class="home alumnos">  
+        <div class="container-fluid">
+            <div class="row" v-for="(item,index) of currentStudentData" v-bind:key="index">
+                <div class="col-12 col-xl-2 offset-xl-1 container-img-codenotch">
+                    <img class="img-fluid img-codenotch" :src="item.photoPath" alt="foto alumno" />
+                </div> 
+                <div class="col-12 col-xl-8">
+                    <h2>{{item.name}}</h2>
+                    <p v-html="item.description"></p>
                 </div>
             </div>
         </div>
-    </transition>    
+    </div>
 </template>
 
 <script>
