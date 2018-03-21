@@ -19,7 +19,8 @@ const state = {
     isOnlyMobile: false,
     isMobileOrTable: false,
     logged: false,
-    profile: ''
+    profile: '',
+    isProgram: false,
 };
 
 const store = new Vuex.Store({

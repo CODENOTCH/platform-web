@@ -1,0 +1,18 @@
+.home{
+    &.alumnos{
+        .container-fluid{
+            .row{
+                margin-bottom: 6vh;
+                @media (min-width: 992px){
+                    margin-bottom: 14vh;
+                }
+                @media (min-width: 1200px){
+                    margin-bottom: 16vh;
+                }
+                @media (min-width: 1440px){
+                    margin-bottom: 20vh;
+                }
+            }
+        }
+    }
+}

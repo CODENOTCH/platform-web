@@ -1,17 +1,15 @@
 .home{
     &.bootcamps{
         .container-fluid{
-            &:first-of-type{
-                margin-bottom: 10vh;
-                @media (min-width: 992px){
-                    margin-bottom: 14vh;
-                }
-                @media (min-width: 1200px){
-                    margin-bottom: 16vh;
-                }
-                @media (min-width: 1440px){
-                    margin-bottom: 20vh;
-                }
+            margin-top: 10vh;
+            @media (min-width: 992px){
+                margin-top: 12vh;
+            }
+            @media (min-width: 1200px){
+                margin-top: 15vh;
+            }
+            @media (min-width: 1440px){
+                margin-top: 18vh;
             }
         }
     }

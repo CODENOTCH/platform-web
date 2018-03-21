@@ -3,17 +3,6 @@
         <div id="alumno-home" class="home">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12 col-xl-4 offset-xl-4">
-                        <div class="logo-container">
-                            <h1>
-                                <img :src="setPathLogo" alt="logo Codenotch"/>
-                            </h1>
-                        </div>
-                    </div>
-                </div>
-            </div>    
-            <div class="container-fluid">
-                <div class="row">
                     <div class="col-12 col-xl-2 offset-xl-1 container-img-codenotch">
                         <img class="img-fluid img-codenotch" :src="currentStudentData.photoPath" alt="foto alumno" />
                     </div> 
@@ -73,6 +62,8 @@
             /* TEMPORAL */
             this.$store.commit('setBootcampId', '1.1');
             this.$store.commit('setStudentId', '1.1'); 
+
+            this.$store.commit('setIsProgram',false);
         },
 
         created() {

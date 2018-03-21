@@ -1,0 +1,15 @@
+.logo-platform{
+    margin-top: 10vh;
+    margin-bottom: 6vh;
+    @media (min-width: 992px){
+        margin-top: 10vh;
+        margin-bottom: 6vh;
+    }
+    @media (min-width: 1200px){
+        margin-bottom: 8vh;
+    }
+    @media (min-width: 1440px){
+        margin-top: 10vh;
+        margin-bottom: 14vh;
+    }
+}

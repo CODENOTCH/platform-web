@@ -82,6 +82,14 @@
                         this.noBreadcrumbs = true;
                     break;
 
+                    case 'profesorPrograma':
+                        breadcrumbs = [
+                            {text:'Home', visible:true, disabled: false, path:'profesorHome'},
+                            {text:'Programa', visible:true, disabled: true, path:'profesorPrograma'}
+                        ],
+                        this.noBreadcrumbs = false;
+                    break;
+
                     case 'listadoBootcamps':
                         breadcrumbs = [
                             {text:'Home', visible:true, disabled: false, path:'profesorHome'},
@@ -90,10 +98,11 @@
                         this.noBreadcrumbs = false;
                     break;
 
-                    case 'profesorPrograma':
+                    case 'listadoAlumnos':
                         breadcrumbs = [
                             {text:'Home', visible:true, disabled: false, path:'profesorHome'},
-                            {text:'Programa', visible:true, disabled: true, path:'profesorPrograma'}
+                            {text:'Bootcamps', visible:true, disabled: false, path:'listadoBootcamps'},
+                            {text:'Alumnos', visible:true, disabled: true, path:'listadoAlumnos'}
                         ],
                         this.noBreadcrumbs = false;
                     break;

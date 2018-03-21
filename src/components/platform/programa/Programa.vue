@@ -37,6 +37,10 @@
             })
         },
 
+        beforeCreate(){
+            this.$store.commit('setIsProgram',true);
+        },
+
         methods: {
             onClickProgramCabeceraTab(nameTab,isIndexOpen){
                 this.isIndexOpen = isIndexOpen;

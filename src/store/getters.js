@@ -26,6 +26,10 @@ export const getTeacherId = state => {
     return state.teacherId;
 };
 
+export const getIsProgram = state => {
+    return state.isProgram;
+};
+
 export const getIsOnlyMobile = state => {
     return state.isOnlyMobile;
 };

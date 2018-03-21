@@ -8,6 +8,7 @@ import ProfesorWrapper from '../components/platform/profesor/ProfesorWrapper.vue
 import ProfesorHome from '../components/platform/profesor/ProfesorHome.vue';
 import Programa from '../components/platform/programa/Programa.vue';
 import ListadoBootcamps from '../components/platform/comunes/ListadoBootcamps.vue';
+import ListadoAlumnos from '../components/platform/comunes/ListadoAlumnos.vue';
 
 const router = new VueRouter({
     routes : [
@@ -41,8 +42,14 @@ const router = new VueRouter({
                 {
                     path: 'bootcamps',
                     name:'listadoBootcamps',
-                    component: ListadoBootcamps
-                }
+                    component: ListadoBootcamps,
+                },
+                ,
+                {
+                    path: 'bootcamps/alumnos',
+                    name:'listadoAlumnos',
+                    component: ListadoAlumnos
+                },
             ]
         }
     ],
