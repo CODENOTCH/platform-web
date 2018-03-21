@@ -82,6 +82,14 @@
                         this.noBreadcrumbs = true;
                     break;
 
+                    case 'listadoBootcamps':
+                        breadcrumbs = [
+                            {text:'Home', visible:true, disabled: false, path:'profesorHome'},
+                            {text:'Bootcamps', visible:true, disabled: true, path:'listadoBootcamps'}
+                        ],
+                        this.noBreadcrumbs = false;
+                    break;
+
                     case 'profesorPrograma':
                         breadcrumbs = [
                             {text:'Home', visible:true, disabled: false, path:'profesorHome'},
@@ -98,7 +106,7 @@
 </script>
 
 <style lang='stylus'>
-  @import '../../stylus/main'
+  @import '../../../stylus/main'
 
   .application--wrap {
     display: block !important

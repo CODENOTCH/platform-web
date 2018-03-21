@@ -96,7 +96,7 @@
 </script>
 
 <style lang='stylus'>
-  @import '../../stylus/main'
+  @import '../../../stylus/main'
 
     .input-group__details:before {
         background: $grey

@@ -36,8 +36,8 @@
                         </router-link>
                     </div>
                     <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-3 offset-lg-0 col-xl-3 offset-xl-0">
-                         <router-link :to="{ name: 'profesorPrograma'}">
-                            <v-btn class="btn-codenotch">ALUMNOS</v-btn>
+                         <router-link :to="{ name: 'listadoBootcamps'}">
+                            <v-btn class="btn-codenotch">BOOTCAMPS</v-btn>
                         </router-link>
                     </div>
                 </div>

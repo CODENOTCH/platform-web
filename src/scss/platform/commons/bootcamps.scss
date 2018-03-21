@@ -1,0 +1,42 @@
+.home{
+    &.bootcamps{
+        .container-fluid{
+            &:first-of-type{
+                margin-bottom: 10vh;
+                @media (min-width: 992px){
+                    margin-bottom: 14vh;
+                }
+                @media (min-width: 1200px){
+                    margin-bottom: 16vh;
+                }
+                @media (min-width: 1440px){
+                    margin-bottom: 20vh;
+                }
+            }
+        }
+    }
+}
+
+.container-bootcamps{
+    text-align: center;
+    padding: 2em;
+    line-height: 1.5em;
+    border: 1px solid $purple;
+    box-shadow: 0px 0px 5px 1px $blackTransparent;
+    background: $darkWhite;
+    li{
+        margin-bottom: 3vw;
+        &:last-of-type{
+            margin-bottom: 0;
+        }
+        @media (min-width: 768px){
+            margin-bottom: 1.5vw;
+        }
+    }
+    .link-codenotch{
+        font-size: 1.1em;
+        @media (min-width: 768px){
+            font-size: 1.3em;
+        }
+    }
+}
