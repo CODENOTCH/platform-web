@@ -1,15 +1,27 @@
 <template>
     <div id="listado-alumnos" class="home alumnos">  
         <div class="container-fluid">
-            <div class="row" v-for="(item,index) of currentStudentData" v-bind:key="index">
-                <div class="col-12 col-xl-2 offset-xl-1 container-img-codenotch">
-                    <img class="img-fluid img-codenotch" :src="item.photoPath" alt="foto alumno" />
-                </div> 
-                <div class="col-12 col-xl-8">
-                    <h2>{{item.name}}</h2>
-                    <p v-html="item.description"></p>
+            <div class="row" >
+                <div class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-0 col-xl-4 offset-xl-0 block-alumno" v-for="(item,index) of currentStudentData" v-bind:key="index">
+                    <div class="container-img">
+                        <img class="img-fluid img-codenotch" :src="item.photoPath" alt="foto alumno" />
+                    </div> 
+                    <div class="container-data">
+                        <h2>{{item.name}}</h2>
+                        <div class="block-data">
+                            <span>DNI: {{item.data.dni}}</span>
+                            <span>DOMICILIO: {{item.data.domicilio}}</span>
+                            <span>EMAIL: {{item.data.email}}</span>
+                            <span>TELÉFONO: {{item.data.telefono}}</span>
+                        </div>
+                    </div>
+                    <div class="btn-container col-xl-8 offset-xl-2">
+                        <router-link :to="{ name: 'listadoBootcamps'}">
+                            <v-btn class="btn-codenotch">SEGUIMIENTO</v-btn>
+                        </router-link>
+                    </div>
                 </div>
-            </div>
+            </div>    
         </div>
     </div>
 </template>

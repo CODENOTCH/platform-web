@@ -32,7 +32,7 @@
                     margin-bottom: 0;
                 }
                 > div{
-                    &:last-of-type{
+                    &.last-btn-container{
                         margin-top: 2vh;
                         @media (min-width: 567px){
                             margin-top: 4vh;

@@ -14,5 +14,32 @@
                 }
             }
         }
+        h2{
+            text-align: center !important;
+            margin-bottom: 1.5em;
+        }
+        img{
+            margin: 0 auto 2em;
+        }
+        .block-alumno{
+            margin-bottom: 5em;
+        }
+        .container-data{
+            text-align: left;
+            color: $darkGrey;
+            @include flexContainer($direction:column);
+            span{
+                display: block;
+                /*text-overflow: ellipsis;
+                max-width: 90%;*/
+            }
+        }
+        .block-data{
+            font-size: 1.3em;
+            margin-bottom: 1.4em;
+            max-width: 100%;
+            overflow: hidden;
+        }
     }
 }
+
