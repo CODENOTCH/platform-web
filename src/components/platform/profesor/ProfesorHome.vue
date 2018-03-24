@@ -74,9 +74,9 @@
             window.scrollTo(0, 0);
 
             let arrBootcampsData = [...this.bootcampData.bootcamps];
-            let indexBootcampMatched = arrBootcampsData.findIndex( item => item.bootcampId == this.bootcampId);
+            let indexBootcampMatched = arrBootcampsData.findIndex( item => item.bootcampId === this.bootcampId);
             let teacherList = arrBootcampsData[indexBootcampMatched].teacherList;
-            let indexTeacherMatched = teacherList.findIndex( item => item.teacherId == this.teacherId);
+            let indexTeacherMatched = teacherList.findIndex( item => item.teacherId === this.teacherId);
             this.currentTeacherData = teacherList[indexTeacherMatched];
         }
     }

@@ -21,6 +21,7 @@ const state = {
     logged: false,
     profile: '',
     isProgram: false,
+    dataStudentSelected: []
 };
 
 const store = new Vuex.Store({

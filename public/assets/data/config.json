@@ -2,36 +2,27 @@
     "imgPathDevelopment":{
         "logo": "./public/assets/img/logo.svg",
         "iconSesion": "./public/assets/img/icon-sesion.svg",
-        "fotoAlumno": "./public/assets/img/alumno.jpg",
         "iconTema": "./public/assets/img/icon-tema.svg",
         "iconSubtema": "./public/assets/img/icon-subtema.svg",
         "iconIndice": "./public/assets/img/icon-indice.svg",
         "iconContenidos": "./public/assets/img/icon-contenidos.svg",
         "iconSlides": "./public/assets/img/icon-slides.svg",
         "iconDesarrollos": "./public/assets/img/icon-desarrollos.svg",
-        "imgContenidos1": "./public/assets/img/ejemplo-contenidos-1.jpg",
-        "imgContenidos2": "./public/assets/img/ejemplo-contenidos-2.png",
-        "pdfPrueba": "./public/assets/pdf/pdf-prueba.pdf#toolbar=0&navpanes=0&scrollbar=0",
-        "imgBanner": "./public/assets/img/banner.png",
-        "imgLanding": "./public/assets/img/landing.png",
-        "imgMicrosite": "./public/assets/img/microsite.jpg"
+        "iconEdit": "./public/assets/img/icon-edit.svg",
+        "iconConfirm": "./public/assets/img/icon-confirm.svg"
     },
+    
     "imgPathProduction":{
         "logo": "./assets/img/logo.svg",
         "iconSesion": "./assets/img/icon-sesion.svg",
-        "fotoAlumno": "./assets/img/alumno.jpg",
         "iconTema": "./assets/img/icon-tema.svg",
         "iconSubtema": "./assets/img/icon-subtema.svg",
         "iconIndice": "./assets/img/icon-indice.svg",
         "iconContenidos": "./assets/img/icon-contenidos.svg",
         "iconSlides": "./assets/img/icon-slides.svg",
         "iconDesarrollos": "./assets/img/icon-desarrollos.svg",
-        "imgContenidos1": "./assets/img/ejemplo-contenidos-1.jpg",
-        "imgContenidos2": "./assets/img/ejemplo-contenidos-2.png",
-        "pdfPrueba": "./assets/pdf/pdf-prueba.pdf#toolbar=0&navpanes=0&scrollbar=0",
-        "imgBanner": "./assets/img/banner.png",
-        "imgLanding": "./assets/img/landing.png",
-        "imgMicrosite": "./assets/img/microsite.jpg"
+        "iconEdit": "./assets/img/icon-edit.svg",
+        "iconConfirm": "./assets/img/icon-confirm.svg"
     }
 }
   

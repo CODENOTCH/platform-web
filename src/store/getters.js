@@ -30,6 +30,10 @@ export const getIsProgram = state => {
     return state.isProgram;
 };
 
+export const getDataStudentSelected = state => {
+    return state.dataStudentSelected;
+};
+
 export const getIsOnlyMobile = state => {
     return state.isOnlyMobile;
 };

@@ -104,6 +104,16 @@
                         ],
                         this.noBreadcrumbs = false;
                     break;
+
+                    case 'alumnoSeguimiento':
+                        breadcrumbs = [
+                            {text:'Home', visible:true, disabled: false, path:'profesorHome'},
+                            {text:'Bootcamps', visible:true, disabled: false, path:'listadoBootcamps'},
+                            {text:'Alumnos', visible:true, disabled: false, path:'listadoAlumnos'},
+                            {text:'Seguimiento', visible:true, disabled: true, path:'alumnoSeguimiento'}
+                        ],
+                        this.noBreadcrumbs = false;
+                    break;
                 }
 
                 this.breadcrumbs = breadcrumbs;

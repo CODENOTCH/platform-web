@@ -9,6 +9,7 @@ import ProfesorHome from '../components/platform/profesor/ProfesorHome.vue';
 import Programa from '../components/platform/programa/Programa.vue';
 import ListadoBootcamps from '../components/platform/comunes/ListadoBootcamps.vue';
 import ListadoAlumnos from '../components/platform/comunes/ListadoAlumnos.vue';
+import AlumnoSeguimiento from '../components/platform/profesor/AlumnoSeguimiento.vue';
 
 const router = new VueRouter({
     routes : [
@@ -44,12 +45,16 @@ const router = new VueRouter({
                     name:'listadoBootcamps',
                     component: ListadoBootcamps,
                 },
-                ,
                 {
-                    path: 'bootcamps/alumnos',
+                    path: 'bootcamps/:bootcampId/alumnos',
                     name:'listadoAlumnos',
                     component: ListadoAlumnos
                 },
+                {
+                    path: 'bootcamps/:bootcampId/alumnos/:studentId',
+                    name:'alumnoSeguimiento',
+                    component: AlumnoSeguimiento
+                }
             ]
         }
     ],

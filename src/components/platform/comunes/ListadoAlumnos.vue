@@ -16,8 +16,8 @@
                         </div>
                     </div>
                     <div class="btn-container col-xl-8 offset-xl-2">
-                        <router-link :to="{ name: 'listadoBootcamps'}">
-                            <v-btn class="btn-codenotch">SEGUIMIENTO</v-btn>
+                        <router-link :to="{ path: `alumnos/${item.studentId}`}">
+                            <v-btn @click="setDataStudentSelected(item)" class="btn-codenotch">SEGUIMIENTO</v-btn>
                         </router-link>
                     </div>
                 </div>
@@ -62,6 +62,12 @@
             let indexBootcampMatched = arrBootcampsData.findIndex( item => item.bootcampId == this.bootcampId);
             let studentList = arrBootcampsData[indexBootcampMatched].studentList;
             this.currentStudentData = studentList;
+        },
+
+        methods:{
+            setDataStudentSelected(data){
+                console.log('data',data);
+            }
         }
     }
 </script>
