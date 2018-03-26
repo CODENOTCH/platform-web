@@ -40,7 +40,7 @@
         methods:{
             boxHandler(){
                 this.isEmpty = this.comment ? false : true;
-                this.$emit('onBoxHandler',this.isEmpty);
+                this.$emit('onBoxHandler',this.comment,this.isEmpty);
             }
         }
     }    

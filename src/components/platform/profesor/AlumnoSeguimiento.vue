@@ -23,7 +23,9 @@
                     <comentario v-for="(item,index) of currentBootcampData.weeks"
                                         :key="index" 
                                         :itemSelected="item" 
-                                        :indexSelected="index">
+                                        :indexSelected="index"
+                                        @onConfirmComment="onConfirmComment"
+                                        >
                     </comentario>
                 </div> 
             </div>
@@ -86,10 +88,16 @@ export default {
   },
 
   methods: {
-    boxHandler(comment, index) {
-      this.numBox = index;
-      this.activeConfirmMode = comment !== "" ? true : false;
-    }
+      onConfirmComment(comment,index){
+          this.comments[index].comment = comment;
+
+          /* TEMPORAL -- HAY QUE ENVIAR LOS COMENTARIOS A LA BASE DE DATOS*/ 
+
+            /*Axios.post('/api/submit', {
+                name: this.name,
+                email: this.email
+            });*/
+      }
   }
 };
 </script>

@@ -31,7 +31,8 @@
         data(){
             return{
                 confirmMode: false,
-                editMode: false
+                editMode: false,
+                comment:''
             }
         },
 
@@ -51,13 +52,16 @@
                 console.log("comment:", comment);
             },
 
-            onBoxHandler(isEmpty){
+            onBoxHandler(comment,isEmpty){
                 this.confirmMode = isEmpty ? false : true;
+                if(!isEmpty) this.comment = comment;
             },
 
             confirmHandler(){
                 this.confirmMode = false;
                 this.editMode = true;
+
+                this.$emit('onConfirmComment', this.comment, this.indexSelected);
             },
 
             editHandler(){

@@ -27,7 +27,7 @@
         data(){
             return{
                 activeConfirmMode: false,
-                activeEditMode: true
+                activeEditMode: false
             }
         },
 
