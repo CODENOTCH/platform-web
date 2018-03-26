@@ -108,6 +108,10 @@
         font-size: 1.3em
     }
 
+    form .input-group .input-group__input {
+        background: transparent;
+    }
+
     .input-group label {
         font-size: 1.3em
     }

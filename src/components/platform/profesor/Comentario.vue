@@ -43,15 +43,6 @@
         },
 
         methods:{
-            sendComment(e,comment,confirmed) {
-                //console.log(confirmed);
-
-                this.confirmMode = false;
-                this.editMode = true;
-
-                console.log("comment:", comment);
-            },
-
             onBoxHandler(comment,isEmpty){
                 this.confirmMode = isEmpty ? false : true;
                 if(!isEmpty) this.comment = comment;

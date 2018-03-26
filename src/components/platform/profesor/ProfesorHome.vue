@@ -68,6 +68,7 @@
 
 
             this.$store.commit('setIsProgram',false);
+            this.$store.commit('setIsBootcamp',false);
         },
 
         created() {

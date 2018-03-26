@@ -30,6 +30,10 @@ export const getIsProgram = state => {
     return state.isProgram;
 };
 
+export const getIsBootcamp  = state => {
+    return state.isBootcamp;
+};
+
 export const getDataStudentSelected = state => {
     return state.dataStudentSelected;
 };

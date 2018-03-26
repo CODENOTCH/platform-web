@@ -43,6 +43,10 @@
             }
         },
 
+        beforeCreate(){
+            this.$store.commit('setIsBootcamp',true);
+        },
+
         created() {
             window.scrollTo(0, 0);
 

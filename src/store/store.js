@@ -21,6 +21,7 @@ const state = {
     logged: false,
     profile: '',
     isProgram: false,
+    isBootcamp: false,
     dataStudentSelected: []
 };
 

@@ -4,7 +4,10 @@
             <div class="col-12 col-xl-4 offset-xl-4">
                 <div class="logo-container">
                     <h1>
-                        <img :src="setPathLogo" alt="logo Codenotch"/>
+                        <router-link v-if="isLinkActive" :to="{ name: 'profesorHome'}">
+                            <img :src="setPathLogo" alt="logo Codenotch"/>
+                        </router-link> 
+                        <img v-else :src="setPathLogo" alt="logo Codenotch"/> 
                     </h1>
                 </div>
             </div>
@@ -25,12 +28,28 @@
 
         computed: {
             ...mapGetters({
-                config: 'getConfigData'
-            }),    
+                config: 'getConfigData',
+                isBootcamp: 'getIsBootcamp',
+                profile: 'getProfile'
+            }),   
+            
+            isLinkActive(){
+                let isActiveLink = this.isBootcamp && this.profile === 'profesor' ? true : false; 
+                return isActiveLink;
+            },
 
             setPathLogo() {
                 return process.env.NODE_ENV === 'production' ? this.config.imgPathProduction.logo : this.config.imgPathDevelopment.logo
             }
         },
+
+         beforeCreate(){
+             /* TEMPORAL */ 
+            this.$store.commit('setProfile', 'profesor');
+        },
+
+        created(){
+            console.log(this.profile)
+        }
     }    
 </script>
