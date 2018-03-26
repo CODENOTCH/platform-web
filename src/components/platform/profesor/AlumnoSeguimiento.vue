@@ -20,37 +20,11 @@
             </div>
             <div class="row">
                 <div class="col-12 col-md-10 offset-md-1 col-lg-10 offset-lg-1 col-xl-6 offset-xl-3 container-comments">
-                    <div class="container-week" v-for="(item,index) of currentBootcampData.weeks" v-bind:key="index">
-                        <div class="block-name">
-                            <h4>{{ item }}</h4>
-                            <div class="block-icons">
-                                <img v-if="numBox === index && activeConfirmMode" 
-                                    :src="setPathIconConfirm" 
-                                    alt="icono editar" 
-                                    @click="sendComment($event,comments[index].comment,comments[index].confirmedComment)"
-                                />
-                                <img v-if="numBox === index && activeEditMode"
-                                    :src="setPathIconEdit"
-                                    alt="icono confirmar"
-                                />
-                            </div>
-                        </div>
-                        <div class="block-box">
-                            <v-container grid-list-md>
-                                <v-layout row wrap>
-                                    <v-flex>
-                                        <v-text-field box multi-line label="Comentarios" 
-                                            @click="boxHandler(comments[index].comment,index)" 
-                                            @keyup="boxHandler(comments[index].comment,index)" 
-                                            v-model.trim="comments[index].comment"
-                                            class="box"
-                                        >
-                                        </v-text-field>
-                                    </v-flex>
-                                </v-layout>
-                            </v-container>
-                        </div>
-                    </div>
+                    <comentario v-for="(item,index) of currentBootcampData.weeks"
+                                        :key="index" 
+                                        :itemSelected="item" 
+                                        :indexSelected="index">
+                    </comentario>
                 </div> 
             </div>
         </div>
@@ -60,9 +34,14 @@
 <script>
 import Axios from "axios";
 import { mapGetters } from "vuex";
+import Comentario from './Comentario.vue';
 
 export default {
   name: "alumnoSeguimiento",
+
+  components: {
+        comentario: Comentario,
+  },
 
   props: ["dataAlumno"],
 
@@ -72,9 +51,6 @@ export default {
       currentStudentData: {},
       bootcampId: "",
       studentId: "",
-      numBox: null,
-      activeConfirmMode: false,
-      activeEditMode: false,
       comments: []
     };
   },
@@ -83,19 +59,7 @@ export default {
     ...mapGetters({
       config: "getConfigData",
       bootcampData: "getBootcampData"
-    }),
-
-    setPathIconEdit() {
-      return process.env.NODE_ENV === "production"
-        ? this.config.imgPathProduction.iconEdit
-        : this.config.imgPathDevelopment.iconEdit;
-    },
-
-    setPathIconConfirm() {
-      return process.env.NODE_ENV === "production"
-        ? this.config.imgPathProduction.iconConfirm
-        : this.config.imgPathDevelopment.iconConfirm;
-    }
+    })
   },
 
   created() {
@@ -125,43 +89,9 @@ export default {
     boxHandler(comment, index) {
       this.numBox = index;
       this.activeConfirmMode = comment !== "" ? true : false;
-    },
-
-    sendComment(e,comment,confirmed) {
-        console.log(confirmed);
-      let btn = e.currentTarget;
-      let containerBox = btn.parentNode.parentNode.nextElementSibling;   
-      let boxSelected = containerBox.querySelector('.input-group__input');
-
-      boxSelected.classList.add('completed');
-
-      this.activeConfirmMode = false;
-      this.activeEditMode = true;
-
-      console.log("comment:", comment);
     }
   }
 };
 </script>
 
-<style lang='stylus'>
-@import '../../../stylus/main';
-@import '../../../stylus/vars';
 
-.input-group__input {
-    background: $white;
-
-    &.completed {
-        background: $darkWhite;
-        pointer-events: none;
-    }
-}
-
-.input-group--focused.primary--text {
-    color: $purple;
-}
-
-.input-group label {
-    color: $grey;
-}
-</style>  
