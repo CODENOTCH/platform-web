@@ -9,7 +9,8 @@
         "iconSlides": "./public/assets/img/icon-slides.svg",
         "iconDesarrollos": "./public/assets/img/icon-desarrollos.svg",
         "iconEdit": "./public/assets/img/icon-edit.svg",
-        "iconConfirm": "./public/assets/img/icon-confirm.svg"
+        "iconConfirm": "./public/assets/img/icon-confirm.svg",
+        "imgListadoBootcamp": "./public/assets/img/class_bootcamp.png"
     },
     
     "imgPathProduction":{
@@ -22,7 +23,8 @@
         "iconSlides": "./assets/img/icon-slides.svg",
         "iconDesarrollos": "./assets/img/icon-desarrollos.svg",
         "iconEdit": "./assets/img/icon-edit.svg",
-        "iconConfirm": "./assets/img/icon-confirm.svg"
+        "iconConfirm": "./assets/img/icon-confirm.svg",
+        "imgListadoBootcamp": "./public/assets/img/class_bootcamp.png"
     }
 }
   

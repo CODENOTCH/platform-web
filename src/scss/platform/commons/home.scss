@@ -1,7 +1,8 @@
 .home{
     width: 100%;
     /*min-height: 100%;*/
-    background: $darkWhite;
+    /*background: $darkWhite;*/
+    background: transparent;
     color: $grey;
     @include flexContainer($rowAlign:flex-start,$direction:column);
     .logo-container{

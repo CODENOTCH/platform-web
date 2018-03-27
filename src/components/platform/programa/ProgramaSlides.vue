@@ -20,6 +20,10 @@
 
         created(){
             window.scrollTo(0, 0);
+        },
+
+        beforeUpdate(){
+            window.scrollTo(0, 0);
         }
     }
 </script>

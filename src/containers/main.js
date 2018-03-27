@@ -14,8 +14,8 @@ console.log(process.env.NODE_ENV);*/
 
 
 const configPath = process.env.NODE_ENV === 'production' ? './assets/data/config.json' : './public/assets/data/config.json';
-const programDataPath = 'https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/programData.json';
-const bootcampDataPath = 'https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/bootcampData.json';
+const programDataPath = 'https://raw.githubusercontent.com/CODENOTCH/bbdk_fake_jaime/master/programData.json';
+const bootcampDataPath = 'https://raw.githubusercontent.com/CODENOTCH/bbdk_fake_jaime/master/bootcampData.json';
 
 var configData = null;
 var programData = null;

@@ -23,6 +23,13 @@
         }
         .block-alumno{
             margin-bottom: 5em;
+            @media (min-width: 1200px){
+                margin-bottom: 6em;
+            }
+            @media (min-width: 1440px){
+                margin-bottom: 7em;
+            }
+            border-left: 1px solid $softGrey;
         }
         .container-data{
             text-align: left;
