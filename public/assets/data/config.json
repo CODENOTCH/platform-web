@@ -24,7 +24,7 @@
         "iconDesarrollos": "./assets/img/icon-desarrollos.svg",
         "iconEdit": "./assets/img/icon-edit.svg",
         "iconConfirm": "./assets/img/icon-confirm.svg",
-        "imgListadoBootcamp": "./public/assets/img/class_bootcamp.png"
+        "imgListadoBootcamp": "./assets/img/class_bootcamp.png"
     }
 }
   
