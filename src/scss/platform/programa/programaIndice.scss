@@ -5,6 +5,7 @@
     left: 0;
     top: 46px;
     transform: translateX(-100%);
+    opacity: 0;
     z-index: 1;
     width: 100%;
     min-height: 100vh;
@@ -16,6 +17,9 @@
     @include transition(all,.35s,ease-out,0);
     &.active{
         transform: translateX(0); 
+    }
+    &.visible{
+        opacity: 1;
     }
     @media (min-width: 992px){
         top: 0;

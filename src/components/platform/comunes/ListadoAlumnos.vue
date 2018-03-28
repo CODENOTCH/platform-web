@@ -65,9 +65,9 @@
         },
 
         methods:{
-            setDataStudentSelected(data){
+            /*setDataStudentSelected(data){
                 console.log('data',data);
-            }
+            }*/
         }
     }
 </script>

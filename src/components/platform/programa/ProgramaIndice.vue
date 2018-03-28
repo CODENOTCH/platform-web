@@ -1,5 +1,5 @@
 <template>
-    <div class="programa-indice" :class="{active:isIndexOpen}">
+    <div class="programa-indice" :class="[{active:isIndexOpen},{visible:isVisible}]">
         <div class="logo-container">
             <router-link :to="{ name: setLinkLogo}">
               <h1>
@@ -53,7 +53,8 @@ export default {
         { name: 'frontend', id: 1 },
         { name: 'backend', id: 2 },
         { name: 'mobile', id: 3 }
-      ]
+      ],
+      isVisible: false
     };
   },
 
@@ -95,6 +96,10 @@ export default {
       .catch(error => {
         console.log(error);
       });
+  },
+
+  mounted(){
+    this.isVisible = true;
   },
 
   methods: {
