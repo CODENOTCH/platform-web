@@ -1,13 +1,17 @@
 <template>
     <div class="comment">
         <comentario-header :title="itemSelected"
+                            :acceptMode="acceptMode"
                             :confirmMode="confirmMode"
                             :editMode="editMode"
-                            @onClickConfirm="confirmHandler"
+                            @onClickAccept="alertHandler"
                             @onClickEdit="editHandler"
         ></comentario-header>
         <comentario-box @onBoxHandler="onBoxHandler"
+                        @onClickConfirm="confirmHandler"
+                        @onClickEdit="editHandler"
                         :editMode="editMode"
+                        :confirmMode="confirmMode"
         >
         </comentario-box>
     </div>
@@ -30,6 +34,7 @@
 
         data(){
             return{
+                acceptMode: false,
                 confirmMode: false,
                 editMode: false,
                 comment:''
@@ -44,19 +49,27 @@
 
         methods:{
             onBoxHandler(comment,isEmpty){
-                this.confirmMode = isEmpty ? false : true;
+                this.acceptMode = isEmpty ? false : true;
                 if(!isEmpty) this.comment = comment;
             },
 
+            alertHandler(){
+                this.acceptMode = false;
+                this.confirmMode = true;
+                this.editMode = false;
+            },
+
             confirmHandler(){
+                this.$emit('onConfirmComment', this.comment, this.indexSelected);
+
+                this.acceptMode = false;
                 this.confirmMode = false;
                 this.editMode = true;
-
-                this.$emit('onConfirmComment', this.comment, this.indexSelected);
             },
 
             editHandler(){
-                this.confirmMode = true;
+                this.acceptMode = true;
+                this.confirmMode = false;
                 this.editMode = false;
             }
         }

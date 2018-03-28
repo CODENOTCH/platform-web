@@ -3,11 +3,18 @@
         <v-container grid-list-md>
             <v-layout row wrap>
                 <v-flex>
+                    <div v-if="confirmMode" class="container-alert">
+                        <p>¿Desea confirmar el comentario?</p>
+                        <div class="container-btn">
+                            <button @click="confirmHandler" type="button" class="btn btn-success">sí</button>
+                            <button @click="rejectHandler" type="button" class="btn btn-danger">no</button>
+                        </div>
+                    </div>
                     <v-text-field box multi-line label="Comentarios" 
                         @click="boxHandler" 
                         @keyup="boxHandler" 
                         v-model.trim="comment"
-                        :class="{ confirmed: editMode }"
+                        :class="{ editmode: editMode, confirmmode: confirmMode}"
                     >
                     </v-text-field>
                 </v-flex>
@@ -22,7 +29,7 @@
     export default {
         name:'comentarioBox',
 
-        props:['editMode'],
+        props:['editMode','confirmMode'],
 
         computed: {
             ...mapGetters({
@@ -41,6 +48,14 @@
             boxHandler(){
                 this.isEmpty = this.comment ? false : true;
                 this.$emit('onBoxHandler',this.comment,this.isEmpty);
+            },
+
+            confirmHandler(){
+                this.$emit('onClickConfirm');
+            },
+
+            rejectHandler(){
+                this.$emit('onClickEdit');
             }
         }
     }    
@@ -54,12 +69,28 @@
         .input-group__input {
             background: $white;
         }
-        &.confirmed {
+        &.confirmmode {
             .input-group__input {
                 background: $darkWhite;
                 pointer-events: none;
+                textarea{
+                    color: $grey;
+                    opacity:.5;
+                }
             }
-        }    
+        }
+        &.editmode {
+            label{
+                color: $softGrey;
+            }
+            .input-group__input {
+                background: $grey;
+                pointer-events: none;
+                textarea{
+                    color: $darkWhite;
+                }
+            }
+        }
     }
 
     .input-group--focused.primary--text {

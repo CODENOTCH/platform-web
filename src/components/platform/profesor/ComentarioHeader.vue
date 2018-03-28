@@ -2,10 +2,10 @@
     <div class="comment-header">
         <h4>{{ title }}</h4>
         <div class="block-icons">
-            <img v-if="confirmMode" 
+            <img v-if="acceptMode" 
                 :src="setPathIconConfirm" 
                 alt="icono editar" 
-                @click="clickConfirmHandler"
+                @click="clickAcceptHandler"
             />
             <img v-if="editMode"
                 :src="setPathIconEdit"
@@ -22,10 +22,11 @@
     export default {
         name:'comentarioHeader',
 
-        props:['title','confirmMode','editMode'],
+        props:['title','confirmMode','acceptMode','editMode'],
         
         data(){
             return{
+                activeAcceptMode: false,
                 activeConfirmMode: false,
                 activeEditMode: false
             }
@@ -50,8 +51,8 @@
         },
 
         methods:{
-            clickConfirmHandler(){
-                this.$emit('onClickConfirm');
+            clickAcceptHandler(){
+                this.$emit('onClickAccept');
             },
 
             clickEditHandler(){
