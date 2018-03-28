@@ -12,19 +12,8 @@
                 </div> 
             </div>
             <div class="row">
-                <div class="col-12 col-md-10 offset-md-1 col-lg-10 offset-lg-1 col-xl-6 offset-xl-3 container-data">
-                    <p v-html="currentStudentData.description"></p>
-                    <div class="alumnos-links">
-                        <ul class="list-links">
-                            <li v-for="(link,index) of currentStudentData.links" v-bind:key="index">
-                                <a class="link-codenotch" :href="link.url" target="_blank">{{link.content}}</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div> 
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-10 offset-md-1 col-lg-10 offset-lg-1 col-xl-6 offset-xl-3 container-comments">
+                <div class="col-12 col-md-10 offset-md-1 col-lg-10 offset-lg-1 col-xl-6 offset-xl-3 container-data-student">
+                    <dato-alumno v-for="(data,index) of currentStudentData.data" :key="index" :data="currentStudentData.data[index]"></dato-alumno>
                 </div> 
             </div>
         </div>
@@ -34,9 +23,14 @@
 <script>
 import Axios from "axios";
 import { mapGetters } from "vuex";
+import DatoAlumno from '../comunes/DatoAlumno.vue';
 
 export default {
   name: "alumnoDatosAdmisiones",
+
+  components: {
+      datoAlumno: DatoAlumno
+  },
 
   props: ["dataAlumno"],
 
@@ -45,8 +39,7 @@ export default {
       currentBootcampData: [],
       currentStudentData: {},
       bootcampId: "",
-      studentId: "",
-      comments: []
+      studentId: ""
     };
   },
 
@@ -80,8 +73,6 @@ export default {
     );
 
     this.currentStudentData = studentList[indexStudentMatched];
-
-    this.comments = [...this.currentStudentData.weekComments];
   },
 
   methods: {
