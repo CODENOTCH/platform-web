@@ -9,15 +9,15 @@
                     <div class="container-data">
                         <h2>{{item.name}}</h2>
                         <div class="block-data">
-                            <span>DNI: {{item.data.dni}}</span>
-                            <span>DOMICILIO: {{item.data.domicilio}}</span>
-                            <span>EMAIL: {{item.data.email}}</span>
-                            <span>TELÉFONO: {{item.data.telefono}}</span>
+                            <span>DNI: {{item.data.dni.content}}</span>
+                            <span>DOMICILIO: {{item.data.domicilio.content}}</span>
+                            <span>EMAIL: {{item.data.email.content}}</span>
+                            <span>TELÉFONO: {{item.data.telefono.content}}</span>
                         </div>
                     </div>
                     <div class="btn-container col-xl-8 offset-xl-2">
                         <router-link :to="{ path: `alumnos/${item.studentId}`}">
-                            <v-btn @click="setDataStudentSelected(item)" class="btn-codenotch">SEGUIMIENTO</v-btn>
+                            <v-btn class="btn-codenotch">{{getNameBtn}}</v-btn>
                         </router-link>
                     </div>
                 </div>
@@ -44,10 +44,12 @@
                 config: 'getConfigData',
                 bootcampData: 'getBootcampData',
                 bootcampId: 'getBootcampId',
+                profile: 'getProfile'
             }),
 
-            setPathLogo() {
-                return process.env.NODE_ENV === 'production' ? this.config.imgPathProduction.logo : this.config.imgPathDevelopment.logo
+            getNameBtn(){
+                let name = this.profile === 'profesor' ? 'SEGUIMIENTO' : 'FICHA';
+                return name;
             }
         }, 
 
@@ -58,16 +60,12 @@
         created() {
             window.scrollTo(0, 0);
 
+            console.log(this.profile);
+
             let arrBootcampsData = [...this.bootcampData.bootcamps];
             let indexBootcampMatched = arrBootcampsData.findIndex( item => item.bootcampId == this.bootcampId);
             let studentList = arrBootcampsData[indexBootcampMatched].studentList;
             this.currentStudentData = studentList;
-        },
-
-        methods:{
-            /*setDataStudentSelected(data){
-                console.log('data',data);
-            }*/
         }
     }
 </script>

@@ -5,7 +5,7 @@
                 <div class="col-12">
                     <div class="logo-container">
                         <h1>
-                            <img :src="setPathLogo" alt="logo Codenotch"/>
+                            <img :src="getPathLogo" alt="logo Codenotch"/>
                         </h1>
                     </div>
                 </div>
@@ -68,7 +68,8 @@
             ...mapGetters({
                 config: 'getConfigData',
             }),
-            setPathLogo: function() {
+            
+            getPathLogo: function() {
                 return process.env.NODE_ENV === 'production' ? this.config.imgPathProduction.logo : this.config.imgPathDevelopment.logo
             }
         },
@@ -85,12 +86,14 @@
                     });*/
 
                     //this.$store.commit('setProfile', 'alumno');
-                    this.$store.commit('setProfile', 'profesor');
+                    //this.$store.commit('setProfile', 'profesor');
+                    this.$store.commit('setProfile', 'admisiones');
                     //this.$store.commit('setBootcampId', '1.1');
                     //this.$store.commit('setStudentId', '1.1');
 
                     //this.$router.push({path:'/alumno'});
-                    this.$router.push({path:'/profesor'});
+                    //this.$router.push({path:'/profesor'});
+                    this.$router.push({path:'/admisiones/bootcamps'});
                 }
             }
         }

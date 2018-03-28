@@ -3,12 +3,12 @@
         <h4>{{ title }}</h4>
         <div class="block-icons">
             <img v-if="acceptMode" 
-                :src="setPathIconConfirm" 
+                :src="getPathIconConfirm" 
                 alt="icono editar" 
                 @click="clickAcceptHandler"
             />
             <img v-if="editMode"
-                :src="setPathIconEdit"
+                :src="getPathIconEdit"
                 alt="icono confirmar"
                 @click="clickEditHandler"
             />
@@ -37,13 +37,13 @@
                 config: "getConfigData",
             }),
 
-            setPathIconEdit() {
+            getPathIconEdit() {
                 return process.env.NODE_ENV === "production"
                     ? this.config.imgPathProduction.iconEdit
                     : this.config.imgPathDevelopment.iconEdit;
             },
 
-            setPathIconConfirm() {
+            getPathIconConfirm() {
                 return process.env.NODE_ENV === "production"
                     ? this.config.imgPathProduction.iconConfirm
                     : this.config.imgPathDevelopment.iconConfirm;

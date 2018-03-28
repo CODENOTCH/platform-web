@@ -4,10 +4,9 @@
             <div class="col-12 col-xl-4 offset-xl-4">
                 <div class="logo-container">
                     <h1>
-                        <router-link v-if="isLinkActive" :to="{ name: 'profesorHome'}">
-                            <img :src="setPathLogo" alt="logo Codenotch"/>
+                        <router-link :to="{ name: getRoute}">
+                            <img :src="getPathLogo" alt="logo Codenotch"/>
                         </router-link> 
-                        <img v-else :src="setPathLogo" alt="logo Codenotch"/> 
                     </h1>
                 </div>
             </div>
@@ -20,11 +19,7 @@
     import FooterPlatform from '../comunes/FooterPlatform.vue';
 
     export default {
-        name:'profesorWrapper',
-
-        components: {
-            footerPlatform: FooterPlatform
-        },
+        name:'logoPlatform',
 
         computed: {
             ...mapGetters({
@@ -32,20 +27,32 @@
                 isBootcamp: 'getIsBootcamp',
                 profile: 'getProfile'
             }),   
-            
-            isLinkActive(){
-                let isActiveLink = this.isBootcamp && this.profile === 'profesor' ? true : false; 
-                return isActiveLink;
+
+            getRoute(){
+                let route = '';
+
+                switch (this.profile) {
+                    case 'profesor':
+                        route = 'profesorHome';
+                    break;
+                    case 'admisiones':
+                        route = 'listadoBootcampsAdmisiones';
+                    break;
+                }
+
+                console.log(route);
+
+                return route;
             },
 
-            setPathLogo() {
+            getPathLogo() {
                 return process.env.NODE_ENV === 'production' ? this.config.imgPathProduction.logo : this.config.imgPathDevelopment.logo
             }
         },
 
          beforeCreate(){
              /* TEMPORAL */ 
-            this.$store.commit('setProfile', 'profesor');
+            this.$store.commit('setProfile', 'admisiones');
         },
 
         created(){

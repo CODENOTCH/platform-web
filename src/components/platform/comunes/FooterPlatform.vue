@@ -2,7 +2,7 @@
     <footer id="footer-platform">
         <div class="container-btn-session" :class="{centered:noBreadcrumbs}">
             <router-link class="link-special-codenotch" :to="{ name: 'login'}">
-                <img :src="setPathIconSession" alt="icono sesión"/>
+                <img :src="getPathIconSession" alt="icono sesión"/>
                 <span>Cerrar sesión</span>
             </router-link>  
         </div>
@@ -38,7 +38,7 @@
                 profile: 'getProfile'
             }),
 
-            setPathIconSession() {
+            getPathIconSession() {
                 return process.env.NODE_ENV === 'production'
                     ? this.config.imgPathProduction.iconSesion
                     : this.config.imgPathDevelopment.iconSesion;
@@ -111,6 +111,30 @@
                             {text:'Bootcamps', visible:true, disabled: false, path:'listadoBootcamps'},
                             {text:'Alumnos', visible:true, disabled: false, path:'listadoAlumnos'},
                             {text:'Seguimiento', visible:true, disabled: true, path:'alumnoSeguimiento'}
+                        ],
+                        this.noBreadcrumbs = false;
+                    break;
+
+                    case 'listadoBootcampsAdmisiones':
+                        breadcrumbs = [
+                            {text:'Bootcamps', visible:false, disabled: true, path:'listadoBootcampsAdmisiones'}
+                        ],
+                        this.noBreadcrumbs = true;
+                    break;
+
+                    case 'listadoAlumnosAdmisiones':
+                        breadcrumbs = [
+                            {text:'Bootcamps', visible:true, disabled: false, path:'listadoBootcampsAdmisiones'},
+                            {text:'Alumnos', visible:true, disabled: true, path:'listadoAlumnosAdmisiones'}
+                        ],
+                        this.noBreadcrumbs = false;
+                    break;
+
+                    case 'alumnoDatosAdmisiones':
+                        breadcrumbs = [
+                            {text:'Bootcamps', visible:true, disabled: false, path:'listadoBootcampsAdmisiones'},
+                            {text:'Alumnos', visible:true, disabled: false, path:'listadoAlumnosAdmisiones'},
+                            {text:'Alumno', visible:true, disabled: true, path:'alumnoDatosAdmisiones'}
                         ],
                         this.noBreadcrumbs = false;
                     break;

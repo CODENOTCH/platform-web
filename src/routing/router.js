@@ -10,6 +10,8 @@ import Programa from '../components/platform/programa/Programa.vue';
 import ListadoBootcamps from '../components/platform/comunes/ListadoBootcamps.vue';
 import ListadoAlumnos from '../components/platform/comunes/ListadoAlumnos.vue';
 import AlumnoSeguimiento from '../components/platform/profesor/AlumnoSeguimiento.vue';
+import AdmisionesWrapper from '../components/platform/admisiones/AdmisionesWrapper.vue';
+import AlumnoDatosAdmisiones from '../components/platform/admisiones/AlumnoDatosAdmisiones.vue';
 
 const router = new VueRouter({
     routes : [
@@ -56,7 +58,26 @@ const router = new VueRouter({
                     component: AlumnoSeguimiento
                 }
             ]
-        }
+        },
+        { path: '/admisiones', name:'admisiones', component: AdmisionesWrapper,
+            children: [
+                {
+                    path: 'bootcamps',
+                    name:'listadoBootcampsAdmisiones',
+                    component: ListadoBootcamps
+                },
+                {
+                    path: 'bootcamps/:bootcampId/alumnos',
+                    name:'listadoAlumnosAdmisiones',
+                    component: ListadoAlumnos
+                },
+                {
+                    path: 'bootcamps/:bootcampId/alumnos/:studentId',
+                    name:'alumnoDatosAdmisiones',
+                    component: AlumnoDatosAdmisiones
+                }
+            ]
+        },
     ],
     /*mode: 'history'*/
 });

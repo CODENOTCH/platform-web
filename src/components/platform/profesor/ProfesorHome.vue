@@ -54,11 +54,7 @@
                 bootcampData: 'getBootcampData',
                 bootcampId: 'getBootcampId',
                 teacherId: 'getTeacherId'
-            }),
-
-            setPathLogo() {
-                return process.env.NODE_ENV === 'production' ? this.config.imgPathProduction.logo : this.config.imgPathDevelopment.logo
-            }
+            })
         }, 
 
         beforeCreate(){

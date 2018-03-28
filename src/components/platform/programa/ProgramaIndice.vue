@@ -3,7 +3,7 @@
         <div class="logo-container">
             <router-link :to="{ name: setLinkLogo}">
               <h1>
-                  <img :src="setPathLogo" alt="logo Codenotch"/>
+                  <img :src="getPathLogo" alt="logo Codenotch"/>
               </h1>
             </router-link>  
         </div>
@@ -18,8 +18,8 @@
                             <ul>
                                 <li v-for='(item,i) of currentDataIndex' v-bind:key="i">
                                     <item-indice :active="item.active" :type="item.type" :id="item.id" @clickedItem="onClickItem">
-                                        <img v-if="item.type == 'tema'" slot="icon" :src="setPathIconTema" alt="icono documento"/>
-                                        <img v-else slot="icon" :src="setPathIconSubtema" alt="icono documento"/>
+                                        <img v-if="item.type == 'tema'" slot="icon" :src="getPathIconTema" alt="icono documento"/>
+                                        <img v-else slot="icon" :src="getPathIconSubtema" alt="icono documento"/>
                                         <span slot="text">{{item.text}}</span>
                                     </item-indice>
                                 </li>
@@ -64,25 +64,25 @@ export default {
       profile: 'getProfile'
     }),
 
-    setPathLogo() {
+    getPathLogo() {
       return process.env.NODE_ENV === 'production'
         ? this.config.imgPathProduction.logo
         : this.config.imgPathDevelopment.logo;
     },
 
-    setPathIconTema() {
+    getPathIconTema() {
       return process.env.NODE_ENV === 'production'
         ? this.config.imgPathProduction.iconTema
         : this.config.imgPathDevelopment.iconTema;
     },
 
-    setPathIconSubtema() {
+    getPathIconSubtema() {
       return process.env.NODE_ENV === 'production'
         ? this.config.imgPathProduction.iconSubtema
         : this.config.imgPathDevelopment.iconSubtema;
     },
 
-    setLinkLogo(){
+    getLinkLogo(){
       let path = this.profile === 'alumno' ? 'alumnoHome' : 'profesorHome';
       return path;
     }
