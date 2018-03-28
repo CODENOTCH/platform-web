@@ -7,6 +7,11 @@
                 </div> 
             </div>
             <div class="row">
+                <div class="col-12 container-name">
+                    <h2>{{currentStudentData.name}}</h2>
+                </div> 
+            </div>
+            <div class="row">
                 <div class="col-12 col-md-10 offset-md-1 col-lg-10 offset-lg-1 col-xl-6 offset-xl-3 container-data">
                     <p v-html="currentStudentData.description"></p>
                     <div class="alumnos-links">

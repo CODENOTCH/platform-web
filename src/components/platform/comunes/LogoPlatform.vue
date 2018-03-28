@@ -49,7 +49,7 @@
         },
 
         created(){
-            console.log(this.profile)
+            //console.log(this.profile)
         }
     }    
 </script>
