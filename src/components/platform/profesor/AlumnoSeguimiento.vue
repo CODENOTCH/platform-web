@@ -42,7 +42,7 @@ export default {
   name: "alumnoSeguimiento",
 
   components: {
-        comentario: Comentario,
+        comentario: Comentario
   },
 
   props: ["dataAlumno"],
