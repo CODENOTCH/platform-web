@@ -7,7 +7,7 @@
 </template>
 
 <script>
-     import { mapGetters } from 'vuex';
+    import { mapGetters } from 'vuex';
     import LogoPlatform from '../comunes/LogoPlatform.vue';
     import FooterPlatform from '../comunes/FooterPlatform.vue';
 
@@ -23,6 +23,30 @@
             ...mapGetters({
                 isProgram: 'getIsProgram',
             }),
+        },
+
+        created(){
+            //console.log('created alumnoWrapper');
+            this.avoidContextMenu();
+        },
+
+        beforeDestroy(){
+            //console.log('beforeDestroy alumnoWrapper');
+            this.allowContextMenu();
+        },
+
+        methods:{
+            avoidContextMenu(){
+                document.addEventListener('contextmenu', this.listener)
+            },
+
+            allowContextMenu(){
+                document.removeEventListener('contextmenu', this.listener)
+            },
+
+            listener(event){
+                event.preventDefault();
+            }
         }
     }    
 </script>

@@ -32,7 +32,7 @@ const getData = () => {
             programData = params[1].data;
             bootcampData = params[2].data;
             createAppVue();
-            avoidContextMenu();
+            //avoidContextMenu();
         })
     )
 }
@@ -51,9 +51,9 @@ const createAppVue = ()=> {
     });
 }
 
-const avoidContextMenu = () => {
+/*const avoidContextMenu = () => {
     document.addEventListener('contextmenu', event => event.preventDefault());
-}
+}*/
 
 getData();
 
