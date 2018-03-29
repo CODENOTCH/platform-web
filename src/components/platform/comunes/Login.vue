@@ -85,15 +85,47 @@
                         email: this.email
                     });*/
 
-                    let myRandom = Math.floor(Math.random() * 2) + 1;
-                    
-                    if(myRandom === 1){
+                    /* TEMPORAL */ 
+
+                    /*let myRandom = Math.round(Math.random() * 3) + 0;
+
+                    [   {profile:'alumno', path:'/alumno'},
+                        {profile:'profesor', path:'/profesor'},
+                        {profile:'admisiones' , path:'/admisiones/bootcamps'},
+                        {profile:'contabilidad' , path:'/contabilidad/bootcamps'}
+                    ].forEach((item,index) => {
+                        if(index === myRandom){
+                            console.log('item.profile',item.profile);
+                            console.log('item.path',item.path);
+                            this.$store.commit('setProfile', item.profile);
+                            this.$router.push({path: item.path});
+                        }
+                    });*/
+
+                    /* TEMPORAL */
+
+                    if(this.user === 'alumno' && this.password === 'alumno') {
                         this.$store.commit('setProfile', 'alumno');
-                        this.$router.push({path:'/alumno'});
-                    } else{
-                        this.$store.commit('setProfile', 'profesor');
-                        this.$router.push({path:'/profesor'});
+                        this.$router.push({path: '/alumno'});
                     }
+
+                    if(this.user === 'profesor' && this.password === 'profesor') {
+                        this.$store.commit('setProfile', 'profesor');
+                        this.$router.push({path: '/profesor'});
+                    }
+
+                    if(this.user === 'admisiones' && this.password === 'admisiones') {
+                        this.$store.commit('setProfile', 'admisiones');
+                        this.$router.push({path: '/admisiones/bootcamps'});
+                    }
+
+                    if(this.user === 'contabilidad' && this.password === 'contabilidad') {
+                        this.$store.commit('setProfile', 'contabilidad');
+                        this.$router.push({path: '/contabilidad/bootcamps'});
+                    }
+
+                    
+                    /* TEMPORAL */ 
 
                     //this.$store.commit('setProfile', 'alumno');
                     //this.$store.commit('setProfile', 'profesor');

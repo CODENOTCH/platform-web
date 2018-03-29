@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
-                     <img :src="setPathImgListadosBootcamp" alt="logo Codenotch" class="img-fluid"/>
+                     <img :src="getPathImgListadosBootcamp" alt="img bootcamp" class="img-fluid"/>
                 </div>
             </div>       
             <div class="row">
@@ -43,13 +43,28 @@
             ...mapGetters({
                 config: 'getConfigData',
                 bootcampData: 'getBootcampData',
-                bootcampId: 'getBootcampId'
+                bootcampId: 'getBootcampId',
+                profile: 'getProfile'
             }),
 
-            setPathImgListadosBootcamp() {
-                return process.env.NODE_ENV === 'production' 
-                    ? this.config.imgPathProduction.imgListadoBootcamp 
-                    : this.config.imgPathDevelopment.imgListadoBootcamp
+            getPathImgListadosBootcamp() {
+                switch(this.profile){
+                    case 'profesor':
+                        return process.env.NODE_ENV === 'production' 
+                            ? this.config.imgPathProduction.imgListadoBootcampProfesor 
+                            : this.config.imgPathDevelopment.imgListadoBootcampProfesor
+                    break;
+                    case 'admisiones':
+                        return process.env.NODE_ENV === 'production' 
+                            ? this.config.imgPathProduction.imgListadoBootcampAdmisiones 
+                            : this.config.imgPathDevelopment.imgListadoBootcampAdmisiones
+                    break;
+                    case 'contabilidad':
+                        return process.env.NODE_ENV === 'production' 
+                            ? this.config.imgPathProduction.imgListadoBootcampContabilidad 
+                            : this.config.imgPathDevelopment.imgListadoBootcampContabilidad
+                    break;
+                }
             }
         },
 

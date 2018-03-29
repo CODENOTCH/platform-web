@@ -56,13 +56,16 @@ export default {
 
   beforeCreate(){
     this.$store.commit('setIsBootcamp',true);
-    /*temporal*/ 
-    this.$store.commit('setProfile','admisiones');
+    
+    /* TEMPORAL */ 
+    //this.$store.commit('setProfile','admisiones');
     //this.$store.commit('setProfile','contabilidad');
   },
 
   created() {
     window.scrollTo(0, 0);
+
+    //console.log('from AlumnoDatos PROFILE is: ' + this.profile);
 
     this.bootcampId = this.$route.params.bootcampId;
     this.studentId = this.$route.params.studentId;

@@ -43,7 +43,7 @@
                     break;
                 }
 
-                console.log(route);
+                //console.log(route);
 
                 return route;
             },
@@ -56,7 +56,7 @@
          beforeCreate(){
              /* TEMPORAL */ 
             //this.$store.commit('setProfile', 'alumno');
-            this.$store.commit('setProfile', 'profesor');
+            //this.$store.commit('setProfile', 'profesor');
             //this.$store.commit('setProfile', 'admisiones');
             //this.$store.commit('setProfile', 'contabilidad');
         },

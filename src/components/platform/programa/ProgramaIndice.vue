@@ -1,7 +1,7 @@
 <template>
     <div class="programa-indice" :class="[{active:isIndexOpen},{visible:isVisible}]">
         <div class="logo-container">
-            <router-link :to="{ name: setLinkLogo}">
+            <router-link :to="{ name: getLinkLogo}">
               <h1>
                   <img :src="getPathLogo" alt="logo Codenotch"/>
               </h1>

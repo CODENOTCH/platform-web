@@ -60,7 +60,7 @@
         created() {
             window.scrollTo(0, 0);
 
-            console.log(this.profile);
+            //console.log('from ListadoAlumnos PROFILE is: ' + this.profile);
 
             let arrBootcampsData = [...this.bootcampData.bootcamps];
             let indexBootcampMatched = arrBootcampsData.findIndex( item => item.bootcampId == this.bootcampId);
