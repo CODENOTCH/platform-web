@@ -57,7 +57,7 @@ export default {
   beforeCreate(){
     this.$store.commit('setIsBootcamp',true);
     /*temporal*/ 
-    this.$store.commit('setProfile','admisiones');
+    this.$store.commit('setProfile','contabilidad');
   },
 
   created() {

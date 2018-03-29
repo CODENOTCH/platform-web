@@ -38,6 +38,9 @@
                     case 'admisiones':
                         route = 'listadoBootcampsAdmisiones';
                     break;
+                    case 'contabilidad':
+                        route = 'listadoBootcampsContabilidad';
+                    break;
                 }
 
                 console.log(route);
@@ -52,7 +55,9 @@
 
          beforeCreate(){
              /* TEMPORAL */ 
-            this.$store.commit('setProfile', 'admisiones');
+            //this.$store.commit('setProfile', 'profesor');
+            //this.$store.commit('setProfile', 'admisiones');
+            this.$store.commit('setProfile', 'contabilidad');
         },
 
         created(){

@@ -78,6 +78,25 @@ const router = new VueRouter({
                 }
             ]
         },
+        { path: '/contabilidad', name:'contabilidad', component: AdmisionesWrapper,
+            children: [
+                {
+                    path: 'bootcamps',
+                    name:'listadoBootcampsContabilidad',
+                    component: ListadoBootcamps
+                },
+                {
+                    path: 'bootcamps/:bootcampId/alumnos',
+                    name:'listadoAlumnosContabilidad',
+                    component: ListadoAlumnos
+                },
+                {
+                    path: 'bootcamps/:bootcampId/alumnos/:studentId',
+                    name:'alumnoDatosContabilidad',
+                    component: AlumnoDatos
+                }
+            ]
+        },
     ],
     /*mode: 'history'*/
 });

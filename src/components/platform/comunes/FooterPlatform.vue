@@ -9,7 +9,7 @@
         <div v-if="!noBreadcrumbs" class="container-breadcrumbs">
             <ul class="list-links">
                 <li v-for="(link,index) of breadcrumbs" v-bind:key="index">
-                    <router-link class="link-codenotch" v-if="link.visible" :class="{disabled:link.disabled}" :to="{ name: link.path}">
+                    <router-link class="link-codenotch" v-if="link.visible" :class="{disabled:link.disabled}" :to="{ name: link.route}">
                         <span>{{link.text}}</span>
                     </router-link>  
                 </li>
@@ -60,81 +60,105 @@
                 switch(this.$route.name){
                     case 'alumnoHome':
                         breadcrumbs = [
-                            {text:'Home', visible:false, disabled: true, path:'alumnoHome'}
+                            {text:'Home', visible:false, disabled: true, route:'alumnoHome'}
                         ],
                         this.noBreadcrumbs = true;
                     break;
                     
                     case 'alumnoPrograma':
                         breadcrumbs = [
-                            {text:'Home', visible:true, disabled: false, path:'alumnoHome'},
-                            {text:'Programa', visible:true, disabled: true, path:'alumnoPrograma'}
+                            {text:'Home', visible:true, disabled: false, route:'alumnoHome'},
+                            {text:'Programa', visible:true, disabled: true, route:'alumnoPrograma'}
                         ],
                         this.noBreadcrumbs = false;
                     break;
 
                     case 'profesorHome':
                         breadcrumbs = [
-                            {text:'Home', visible:false, disabled: true, path:'profesorHome'}
+                            {text:'Home', visible:false, disabled: true, route:'profesorHome'}
                         ],
                         this.noBreadcrumbs = true;
                     break;
 
                     case 'profesorPrograma':
                         breadcrumbs = [
-                            {text:'Home', visible:true, disabled: false, path:'profesorHome'},
-                            {text:'Programa', visible:true, disabled: true, path:'profesorPrograma'}
+                            {text:'Home', visible:true, disabled: false, route:'profesorHome'},
+                            {text:'Programa', visible:true, disabled: true, route:'profesorPrograma'}
                         ],
                         this.noBreadcrumbs = false;
                     break;
 
                     case 'listadoBootcamps':
                         breadcrumbs = [
-                            {text:'Home', visible:true, disabled: false, path:'profesorHome'},
-                            {text:'Bootcamps', visible:true, disabled: true, path:'listadoBootcamps'}
+                            {text:'Home', visible:true, disabled: false, route:'profesorHome'},
+                            {text:'Bootcamps', visible:true, disabled: true, route:'listadoBootcamps'}
                         ],
                         this.noBreadcrumbs = false;
                     break;
 
                     case 'listadoAlumnos':
                         breadcrumbs = [
-                            {text:'Home', visible:true, disabled: false, path:'profesorHome'},
-                            {text:'Bootcamps', visible:true, disabled: false, path:'listadoBootcamps'},
-                            {text:'Alumnos', visible:true, disabled: true, path:'listadoAlumnos'}
+                            {text:'Home', visible:true, disabled: false, route:'profesorHome'},
+                            {text:'Bootcamps', visible:true, disabled: false, route:'listadoBootcamps'},
+                            {text:'Alumnos', visible:true, disabled: true, route:'listadoAlumnos'}
                         ],
                         this.noBreadcrumbs = false;
                     break;
 
                     case 'alumnoSeguimiento':
                         breadcrumbs = [
-                            {text:'Home', visible:true, disabled: false, path:'profesorHome'},
-                            {text:'Bootcamps', visible:true, disabled: false, path:'listadoBootcamps'},
-                            {text:'Alumnos', visible:true, disabled: false, path:'listadoAlumnos'},
-                            {text:'Seguimiento', visible:true, disabled: true, path:'alumnoSeguimiento'}
+                            {text:'Home', visible:true, disabled: false, route:'profesorHome'},
+                            {text:'Bootcamps', visible:true, disabled: false, route:'listadoBootcamps'},
+                            {text:'Alumnos', visible:true, disabled: false, route:'listadoAlumnos'},
+                            {text:'Seguimiento', visible:true, disabled: true, route:'alumnoSeguimiento'}
                         ],
                         this.noBreadcrumbs = false;
                     break;
 
                     case 'listadoBootcampsAdmisiones':
                         breadcrumbs = [
-                            {text:'Bootcamps', visible:false, disabled: true, path:'listadoBootcampsAdmisiones'}
+                            {text:'Bootcamps', visible:false, disabled: true, route:'listadoBootcampsAdmisiones'}
                         ],
                         this.noBreadcrumbs = true;
                     break;
 
                     case 'listadoAlumnosAdmisiones':
                         breadcrumbs = [
-                            {text:'Bootcamps', visible:true, disabled: false, path:'listadoBootcampsAdmisiones'},
-                            {text:'Alumnos', visible:true, disabled: true, path:'listadoAlumnosAdmisiones'}
+                            {text:'Bootcamps', visible:true, disabled: false, route:'listadoBootcampsAdmisiones'},
+                            {text:'Alumnos', visible:true, disabled: true, route:'listadoAlumnosAdmisiones'}
                         ],
                         this.noBreadcrumbs = false;
                     break;
 
                     case 'alumnoDatosAdmisiones':
                         breadcrumbs = [
-                            {text:'Bootcamps', visible:true, disabled: false, path:'listadoBootcampsAdmisiones'},
-                            {text:'Alumnos', visible:true, disabled: false, path:'listadoAlumnosAdmisiones'},
-                            {text:'Alumno', visible:true, disabled: true, path:'alumnoDatos'}
+                            {text:'Bootcamps', visible:true, disabled: false, route:'listadoBootcampsAdmisiones'},
+                            {text:'Alumnos', visible:true, disabled: false, route:'listadoAlumnosAdmisiones'},
+                            {text:'Alumno', visible:true, disabled: true, route:'alumnoDatosAdmisiones'}
+                        ],
+                        this.noBreadcrumbs = false;
+                    break;
+
+                    case 'listadoBootcampsContabilidad':
+                        breadcrumbs = [
+                            {text:'Bootcamps', visible:false, disabled: true, route:'listadoBootcampsContabilidad'}
+                        ],
+                        this.noBreadcrumbs = true;
+                    break;
+
+                    case 'listadoAlumnosContabilidad':
+                        breadcrumbs = [
+                            {text:'Bootcamps', visible:true, disabled: false, route:'listadoBootcampsContabilidad'},
+                            {text:'Alumnos', visible:true, disabled: true, route:'listadoAlumnosContabilidad'}
+                        ],
+                        this.noBreadcrumbs = false;
+                    break;
+
+                    case 'alumnoDatosContabilidad':
+                        breadcrumbs = [
+                            {text:'Bootcamps', visible:true, disabled: false, route:'listadoBootcampsContabilidad'},
+                            {text:'Alumnos', visible:true, disabled: false, route:'listadoAlumnosContabilidad'},
+                            {text:'Alumno', visible:true, disabled: true, route:'alumnoDatosContabilidad'}
                         ],
                         this.noBreadcrumbs = false;
                     break;
