@@ -56,8 +56,8 @@
          beforeCreate(){
              /* TEMPORAL */ 
             //this.$store.commit('setProfile', 'profesor');
-            //this.$store.commit('setProfile', 'admisiones');
-            this.$store.commit('setProfile', 'contabilidad');
+            this.$store.commit('setProfile', 'admisiones');
+            //this.$store.commit('setProfile', 'contabilidad');
         },
 
         created(){

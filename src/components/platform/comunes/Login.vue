@@ -87,15 +87,15 @@
 
                     //this.$store.commit('setProfile', 'alumno');
                     //this.$store.commit('setProfile', 'profesor');
-                    //this.$store.commit('setProfile', 'admisiones');
-                    this.$store.commit('setProfile', 'contabilidad');
+                    this.$store.commit('setProfile', 'admisiones');
+                    //this.$store.commit('setProfile', 'contabilidad');
                     //this.$store.commit('setBootcampId', '1.1');
                     //this.$store.commit('setStudentId', '1.1');
 
                     //this.$router.push({path:'/alumno'});
                     //this.$router.push({path:'/profesor'});
-                    //this.$router.push({path:'/admisiones/bootcamps'});
-                    this.$router.push({path:'/contabilidad/bootcamps'});
+                    this.$router.push({path:'/admisiones/bootcamps'});
+                    //this.$router.push({path:'/contabilidad/bootcamps'});
                 }
             }
         }
