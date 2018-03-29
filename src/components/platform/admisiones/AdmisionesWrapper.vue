@@ -1,13 +1,13 @@
 <template>
     <div id="admisiones-wrapper">
-        <logo-platform v-if="!isProgram"></logo-platform>
+        <logo-platform></logo-platform>
         <router-view></router-view>
         <footer-platform></footer-platform>
     </div>
 </template>
 
 <script>
-     import { mapGetters } from 'vuex';
+    import { mapGetters } from 'vuex';
     import LogoPlatform from '../comunes/LogoPlatform.vue';
     import FooterPlatform from '../comunes/FooterPlatform.vue';
 
@@ -17,12 +17,6 @@
         components: {
             logoPlatform: LogoPlatform,
             footerPlatform: FooterPlatform
-        },
-
-        computed: {
-            ...mapGetters({
-                isProgram: 'getIsProgram',
-            }),
         }
     }    
 </script>

@@ -49,12 +49,15 @@ export default {
   computed: {
     ...mapGetters({
       config: "getConfigData",
-      bootcampData: "getBootcampData"
+      bootcampData: "getBootcampData",
+      profile:'getProfile'
     })
   },
 
   beforeCreate(){
     this.$store.commit('setIsBootcamp',true);
+    /*temporal*/ 
+    this.$store.commit('setProfile','admisiones');
   },
 
   created() {
@@ -79,7 +82,7 @@ export default {
 
     let studentData = studentList[indexStudentMatched].data;
     let firstFilterKey = 'shared';
-    let secondFilterKey = 'admisiones';
+    let secondFilterKey = this.profile;
     let objFiltered = {};
 
     objFiltered = _.merge(_.pickBy(studentData, item => item.type === firstFilterKey),_.pickBy(studentData, item => item.type === secondFilterKey));
