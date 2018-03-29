@@ -134,7 +134,7 @@
                         breadcrumbs = [
                             {text:'Bootcamps', visible:true, disabled: false, path:'listadoBootcampsAdmisiones'},
                             {text:'Alumnos', visible:true, disabled: false, path:'listadoAlumnosAdmisiones'},
-                            {text:'Alumno', visible:true, disabled: true, path:'alumnoDatosAdmisiones'}
+                            {text:'Alumno', visible:true, disabled: true, path:'alumnoDatos'}
                         ],
                         this.noBreadcrumbs = false;
                     break;

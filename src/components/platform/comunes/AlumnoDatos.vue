@@ -13,7 +13,8 @@
             </div>
             <div class="row">
                 <div class="col-12 col-md-10 offset-md-1 col-lg-10 offset-lg-1 col-xl-6 offset-xl-3 container-data-student">
-                    <dato-alumno v-for="(data,index) of currentStudentData.data" :key="index" :data="currentStudentData.data[index]"></dato-alumno>
+                    <!--dato-alumno v-for="(data,index) of currentStudentData.data" :key="index" :data="currentStudentData.data[index]"></dato-alumno-->
+                    <dato-alumno v-for="(data,index) of currentFilteredStudentData" :key="index" :data="currentFilteredStudentData[index]"></dato-alumno>
                 </div> 
             </div>
         </div>
@@ -22,11 +23,12 @@
 
 <script>
 import Axios from "axios";
+import _ from "lodash";
 import { mapGetters } from "vuex";
 import DatoAlumno from '../comunes/DatoAlumno.vue';
 
 export default {
-  name: "alumnoDatosAdmisiones",
+  name: "alumnoDatos",
 
   components: {
       datoAlumno: DatoAlumno
@@ -38,6 +40,7 @@ export default {
     return {
       currentBootcampData: [],
       currentStudentData: {},
+      currentFilteredStudentData: {},
       bootcampId: "",
       studentId: ""
     };
@@ -73,9 +76,15 @@ export default {
     );
 
     this.currentStudentData = studentList[indexStudentMatched];
-  },
 
-  methods: {
+    let studentData = studentList[indexStudentMatched].data;
+    let firstFilterKey = 'shared';
+    let secondFilterKey = 'admisiones';
+    let objFiltered = {};
+
+    objFiltered = _.merge(_.pickBy(studentData, item => item.type === firstFilterKey),_.pickBy(studentData, item => item.type === secondFilterKey));
+
+    this.currentFilteredStudentData = objFiltered;
   }
 };
 </script>

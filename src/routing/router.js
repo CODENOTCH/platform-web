@@ -11,7 +11,7 @@ import ListadoBootcamps from '../components/platform/comunes/ListadoBootcamps.vu
 import ListadoAlumnos from '../components/platform/comunes/ListadoAlumnos.vue';
 import AlumnoSeguimiento from '../components/platform/profesor/AlumnoSeguimiento.vue';
 import AdmisionesWrapper from '../components/platform/admisiones/AdmisionesWrapper.vue';
-import AlumnoDatosAdmisiones from '../components/platform/admisiones/AlumnoDatosAdmisiones.vue';
+import AlumnoDatos from '../components/platform/comunes/AlumnoDatos.vue';
 
 const router = new VueRouter({
     routes : [
@@ -74,7 +74,7 @@ const router = new VueRouter({
                 {
                     path: 'bootcamps/:bootcampId/alumnos/:studentId',
                     name:'alumnoDatosAdmisiones',
-                    component: AlumnoDatosAdmisiones
+                    component: AlumnoDatos
                 }
             ]
         },
