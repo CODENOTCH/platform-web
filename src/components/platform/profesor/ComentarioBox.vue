@@ -15,7 +15,6 @@
                         @keyup="boxHandler" 
                         v-model.trim="comment"
                         :class="{ editmode: editMode, confirmmode: confirmMode}"
-                        autofocus
                         loading
                         hint="Añada sus comentarios"
                     >
@@ -84,8 +83,8 @@
         }
         &.editmode {
             label{
-                /*color: $softGrey;*/
-                color: $purple;
+                color: $softGrey;
+                /*color: $purple;*/
             }
             .input-group__input {
                 background: $grey;

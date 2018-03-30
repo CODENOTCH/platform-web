@@ -20,6 +20,7 @@
                                                     :rules="userRules"
                                                     class="input-login"
                                                     autofocus
+                                                    counter
                                                     required
                                     ></v-text-field>
                                 </div>
@@ -29,6 +30,9 @@
                                                     @keyup.enter="submit"
                                                     :rules="passwordRules"
                                                     class="input-login"
+                                                    :append-icon="e2 ? 'visibility' : 'visibility_off'"
+                                                    :append-icon-cb="() => (e2 = !e2)"
+                                                    :type="e2 ? 'password' : 'text'"
                                                     required
                                     ></v-text-field>
                                 </div>
@@ -72,7 +76,8 @@
                 v => !!v || 'Necesitamos tu contraseña',
                 v => (v && v.length <= 25) || 'La contraseña no puede tener más de 25 caracteres'
             ],
-            onModalMode: false
+            onModalMode: false,
+            e2: false
         }),
 
         computed: {
