@@ -27,7 +27,12 @@
         data() {
             return {
                 offsetTop: 0,
-                isVisible: false
+                isVisible: false,
+                animOptions : {
+                    duration: 350,
+                    offset: 0,
+                    easing: 'easeInOutCubic'
+                }
             };
         },
 
@@ -38,18 +43,12 @@
 
         methods:{
             clickHandler(){
-                TweenMax.to(window, 1, {scrollTo:{y:0, ease:Power3.easeout}});
+                this.$vuetify.goTo(0, this.animOptions);
             },
 
             onScroll(){
                 this.offsetTop = window.pageYOffset || document.documentElement.scrollTop;
-
-                if(this.offsetTop > document.body.clientHeight/4){
-                    this.isVisible = true;
-                } else{
-                    this.isVisible = false;
-                }
-                //console.log('this.offsetTop',this.offsetTop);
+                this.isVisible = this.offsetTop > document.body.clientHeight/4 ? true : false;
             }
         }
     }
