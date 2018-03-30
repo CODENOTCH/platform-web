@@ -9,10 +9,22 @@
                     <div class="container-data">
                         <h2>{{item.name}}</h2>
                         <div class="block-data">
-                            <span>DNI: {{item.data.dni.content}}</span>
-                            <span>DOMICILIO: {{item.data.domicilio.content}}</span>
-                            <span>EMAIL: {{item.data.email.content}}</span>
-                            <span>TELÉFONO: {{item.data.telefono.content}}</span>
+                            <div class="data">
+                                <span class="label">DNI:</span>
+                                <span class="value">{{item.data.dni.content}}</span>
+                            </div>
+                            <div class="data">
+                                <span class="label">DOMICILIO:</span>
+                                <span class="value">{{item.data.domicilio.content}}</span>
+                            </div>
+                            <div class="data">
+                                <span class="label">EMAIL:</span>
+                                <span class="value">{{item.data.email.content}}</span>
+                            </div>
+                            <div class="data">
+                                <span class="label">TELÉFONO:</span>
+                                <span class="value">{{item.data.telefono.content}}</span>
+                            </div>
                         </div>
                     </div>
                     <div class="btn-container col-xl-8 offset-xl-2">

@@ -37,17 +37,28 @@
             text-align: left;
             color: $darkGrey;
             @include flexContainer($direction:column);
-            span{
+            /*span{
                 display: block;
                 /*text-overflow: ellipsis;
-                max-width: 90%;*/
-            }
+                max-width: 90%;
+            }*/
         }
         .block-data{
             font-size: 1.3em;
             margin-bottom: 1.4em;
             max-width: 100%;
             overflow: hidden;
+            .data{
+                width: 100%;
+                @include flexContainer(flex-start,center);
+                .label{
+                    font-size: .6em;
+                    margin-right: 1em;
+                }
+                .value{
+                    font-size: .95em;
+                }
+            }
         }
     }
 }
