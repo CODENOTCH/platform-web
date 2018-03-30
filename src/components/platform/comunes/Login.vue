@@ -19,6 +19,7 @@
                                                     @keyup.enter="submit"
                                                     :rules="userRules"
                                                     class="input-login"
+                                                    autofocus
                                                     required
                                     ></v-text-field>
                                 </div>

@@ -15,6 +15,9 @@
                         @keyup="boxHandler" 
                         v-model.trim="comment"
                         :class="{ editmode: editMode, confirmmode: confirmMode}"
+                        autofocus
+                        loading
+                        hint="Añada sus comentarios"
                     >
                     </v-text-field>
                 </v-flex>
@@ -81,7 +84,8 @@
         }
         &.editmode {
             label{
-                color: $softGrey;
+                /*color: $softGrey;*/
+                color: $purple;
             }
             .input-group__input {
                 background: $grey;
@@ -99,5 +103,10 @@
 
     .input-group label {
         color: $grey;
+    }
+
+    .input-group__details{
+        color: $darkGrey;
+        font-weight: 600;
     }
 </style>  
