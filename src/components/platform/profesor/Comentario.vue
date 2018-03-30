@@ -8,10 +8,11 @@
                             @onClickEdit="editHandler"
         ></comentario-header>
         <comentario-box @onBoxHandler="onBoxHandler"
-                        @onClickConfirm="confirmHandler"
-                        @onClickEdit="editHandler"
+                        @onConfirm="confirmHandler"
+                        @onEdit="editHandler"
                         :editMode="editMode"
                         :confirmMode="confirmMode"
+                        ref="boxwrapper"
         >
         </comentario-box>
     </div>
@@ -71,6 +72,8 @@
                 this.acceptMode = true;
                 this.confirmMode = false;
                 this.editMode = false;
+
+                this.$refs.boxwrapper.setBoxFocus();
             }
         }
     }    

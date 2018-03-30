@@ -17,6 +17,7 @@
                         :class="{ editmode: editMode, confirmmode: confirmMode}"
                         loading
                         hint="Añada sus comentarios"
+                        class="box-container"
                     >
                     </v-text-field>
                 </v-flex>
@@ -53,11 +54,18 @@
             },
 
             confirmHandler(){
-                this.$emit('onClickConfirm');
+                this.$emit('onConfirm');
             },
 
             rejectHandler(){
-                this.$emit('onClickEdit');
+                this.$emit('onEdit');
+            },
+
+            setBoxFocus(){
+                let boxWrapper = this.$el.querySelector('.box-container');
+                let boxTextarea = boxWrapper.querySelector('textarea');
+
+                boxTextarea.focus();
             }
         }
     }    
