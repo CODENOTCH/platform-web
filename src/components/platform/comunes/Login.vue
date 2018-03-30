@@ -34,7 +34,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-6 offset-xl-3">
-                                    <v-btn class="btn-codenotch" @click="submit">INICIAR SESIÓN</v-btn>
+                                    <v-btn class="btn-codenotch" @click="submit" slot="activator">INICIAR SESIÓN</v-btn>
                                 </div>
                             </div>
                         </v-form> 
@@ -42,15 +42,22 @@
                 </div>
             </div>
         </div>
+        <login-modal :modalMode="onModalMode" @onClickCloseModal="onClickBtnModal"></login-modal>
+        <div class="overlay" v-if="onModalMode"></div>
     </div>
 </template>
 
 <script>
     import Axios from 'axios';
     import { mapGetters } from 'vuex';
+    import LoginModal from './LoginModal.vue';
 
     export default {
         name:'login',
+
+        components: {
+            loginModal: LoginModal
+        },
         
         data: () => ({
             valid: true,
@@ -64,6 +71,7 @@
                 v => !!v || 'Necesitamos tu contraseña',
                 v => (v && v.length <= 25) || 'La contraseña no puede tener más de 25 caracteres'
             ],
+            onModalMode: false
         }),
 
         computed: {
@@ -111,19 +119,24 @@
                         this.$router.push({path: '/alumno'});
                     }
 
-                    if(this.user === 'profesor' && this.password === 'profesor') {
+                    else if(this.user === 'profesor' && this.password === 'profesor') {
                         this.$store.commit('setProfile', 'profesor');
                         this.$router.push({path: '/profesor'});
                     }
 
-                    if(this.user === 'admisiones' && this.password === 'admisiones') {
+                    else if(this.user === 'admisiones' && this.password === 'admisiones') {
                         this.$store.commit('setProfile', 'admisiones');
                         this.$router.push({path: '/admisiones/bootcamps'});
                     }
 
-                    if(this.user === 'contabilidad' && this.password === 'contabilidad') {
+                    else if(this.user === 'contabilidad' && this.password === 'contabilidad') {
                         this.$store.commit('setProfile', 'contabilidad');
                         this.$router.push({path: '/contabilidad/bootcamps'});
+                    }
+
+                    else {
+                        //console.log('usuario incorrecto')
+                        this.onModalMode = true;
                     }
 
                     
@@ -141,6 +154,10 @@
                     //this.$router.push({path:'/admisiones/bootcamps'});
                     //this.$router.push({path:'/contabilidad/bootcamps'});
                 }
+            },
+
+            onClickBtnModal(){
+                this.onModalMode = false;
             }
         }
     }

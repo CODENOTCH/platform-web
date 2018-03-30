@@ -1,5 +1,8 @@
 <template>
     <div class="programa-contenidos">
+        <!--div v-if="isLoading" class="container-progress">
+            <v-progress-circular indeterminate :size="70" :width="7" color="purple"></v-progress-circular>
+        </div-->
         <div class="container-fluid">
             <div class="row">
                 <div class="container-data col-12 col-sm-10 offset-sm-1">
@@ -28,13 +31,25 @@ export default {
 
   props: ["currentData"],
 
+  data () {
+        return {
+            //isLoading: true
+        }
+    },
+
   created() {
     window.scrollTo(0, 0);
   },
 
   beforeUpdate(){
         window.scrollTo(0, 0);
-    }
+    },
+
+  mounted(){
+      //this.isLoading = false;
+  }  
+
+
 };
 </script>
 
