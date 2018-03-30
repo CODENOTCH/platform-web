@@ -1,8 +1,9 @@
 <template>
     <main id="app-container">
-        <transition name="contentTransition" appear>
+        <!--transition name="contentTransition" appear>
             <router-view></router-view>
-        </transition>
+        </transition-->
+        <router-view></router-view>
     </main>
 </template>
 

@@ -1,54 +1,56 @@
 <template>
-    <div id="login">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="logo-container">
-                        <h1>
-                            <img :src="getPathLogo" alt="logo Codenotch"/>
-                        </h1>
+    <transition name="contentTransition" appear>
+        <div id="login">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="logo-container">
+                            <h1>
+                                <img :src="getPathLogo" alt="logo Codenotch"/>
+                            </h1>
+                        </div>
                     </div>
-                </div>
-                <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
-                    <div class="form-container">
-                        <v-form class="container" v-model="valid" ref="form" lazy-validation>
-                            <div class="row">
-                                <div class="col-12">
-                                    <v-text-field   label="Usuario"
-                                                    v-model.trim="user"
-                                                    @keyup.enter="submit"
-                                                    :rules="userRules"
-                                                    class="input-login"
-                                                    autofocus
-                                                    counter
-                                                    required
-                                    ></v-text-field>
+                    <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+                        <div class="form-container">
+                            <v-form class="container" v-model="valid" ref="form" lazy-validation>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <v-text-field   label="Usuario"
+                                                        v-model.trim="user"
+                                                        @keyup.enter="submit"
+                                                        :rules="userRules"
+                                                        class="input-login"
+                                                        autofocus
+                                                        counter
+                                                        required
+                                        ></v-text-field>
+                                    </div>
+                                    <div class="col-12">
+                                        <v-text-field   label="Contraseña"
+                                                        v-model.trim="password"
+                                                        @keyup.enter="submit"
+                                                        :rules="passwordRules"
+                                                        class="input-login"
+                                                        :append-icon="e2 ? 'visibility' : 'visibility_off'"
+                                                        :append-icon-cb="() => (e2 = !e2)"
+                                                        :type="e2 ? 'password' : 'text'"
+                                                        required
+                                        ></v-text-field>
+                                    </div>
                                 </div>
-                                <div class="col-12">
-                                    <v-text-field   label="Contraseña"
-                                                    v-model.trim="password"
-                                                    @keyup.enter="submit"
-                                                    :rules="passwordRules"
-                                                    class="input-login"
-                                                    :append-icon="e2 ? 'visibility' : 'visibility_off'"
-                                                    :append-icon-cb="() => (e2 = !e2)"
-                                                    :type="e2 ? 'password' : 'text'"
-                                                    required
-                                    ></v-text-field>
+                                <div class="row">
+                                    <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-6 offset-xl-3">
+                                        <v-btn class="btn-codenotch" @click="submit" slot="activator">INICIAR SESIÓN</v-btn>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-6 offset-xl-3">
-                                    <v-btn class="btn-codenotch" @click="submit" slot="activator">INICIAR SESIÓN</v-btn>
-                                </div>
-                            </div>
-                        </v-form> 
+                            </v-form> 
+                        </div>
                     </div>
                 </div>
             </div>
+            <login-modal v-if="onModalMode" @onClickCloseModal="onClickBtnModal"></login-modal>
         </div>
-        <login-modal v-if="onModalMode" @onClickCloseModal="onClickBtnModal"></login-modal>
-    </div>
+    </transition>
 </template>
 
 <script>
