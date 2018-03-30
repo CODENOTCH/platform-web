@@ -15,17 +15,19 @@
                             <div class="row">
                                 <div class="col-12">
                                     <v-text-field   label="Usuario"
-                                                    v-model="user"
+                                                    v-model.trim="user"
                                                     @keyup.enter="submit"
                                                     :rules="userRules"
+                                                    class="input-login"
                                                     required
                                     ></v-text-field>
                                 </div>
                                 <div class="col-12">
                                     <v-text-field   label="Contraseña"
-                                                    v-model="password"
+                                                    v-model.trim="password"
                                                     @keyup.enter="submit"
                                                     :rules="passwordRules"
+                                                    class="input-login"
                                                     required
                                     ></v-text-field>
                                 </div>
