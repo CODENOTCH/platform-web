@@ -47,8 +47,7 @@
                 </div>
             </div>
         </div>
-        <login-modal :modalMode="onModalMode" @onClickCloseModal="onClickBtnModal"></login-modal>
-        <div class="overlay" v-if="onModalMode"></div>
+        <login-modal v-if="onModalMode" @onClickCloseModal="onClickBtnModal"></login-modal>
     </div>
 </template>
 
