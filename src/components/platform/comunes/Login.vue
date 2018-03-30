@@ -150,7 +150,7 @@
   @import '../../../stylus/main'
 
     .input-group__details:before {
-        background: $grey
+        background: $purple
     }
 
     .input-group--text-field input, .input-group--text-field textarea {
@@ -166,7 +166,7 @@
     }
 
     .input-group--focused.primary--text{
-        color: $purple
+        color: $grey
     }
 
     .input-group--error.error--text{
