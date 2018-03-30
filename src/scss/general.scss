@@ -63,10 +63,16 @@ ul{
 
 .link-codenotch{
   font-size: 1.05em;
-  color: $grey !important;
+  color: $purple !important;
   font-weight: 600;
   @include transition(color,.4s,ease-out,0);
-  &:hover{
+  /*&:hover{
+    color: $purple !important;
+  }*/
+  &:focus{
+    color: $purple !important;
+  }
+  &:active{
     color: $purple !important;
   }
   &.disabled{
@@ -136,7 +142,7 @@ ul{
 }
 
 .btn-codenotch{
-  background: $grey;
+  background: $purple;
   color: $white;
   box-shadow: none !important;
   line-height: 0;
@@ -146,9 +152,9 @@ ul{
   padding: 0 !important;
   font-size: 1.3em !important;
   @include transition(all,.5s,ease-out,0);
-  &:hover{
+  /*&:hover{
     background: $purple;
-  } 
+  } */
 }
 
 .contentTransition-enter-active{

@@ -9,7 +9,7 @@
     z-index: 1;
     width: 100%;
     min-height: 100vh;
-    background: $darkWhite;
+    background: $softPurple;
     border-right: 1px solid $softGrey;
     height: 100% !important;
     overflow-y: scroll !important;
@@ -102,12 +102,12 @@
     }
     &.active{
         pointer-events: none;
-        background: $softPurple;
+        background: $darkWhite;
     }
     @include transition(all,.5s,ease-out,0);
     @media (min-width: 1200px){
         &:hover{
-            background: $softPurple;
+            background: $darkWhite;
         } 
     }
 }
