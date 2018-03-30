@@ -10,9 +10,9 @@
         "iconDesarrollos": "./public/assets/img/icon-desarrollos.svg",
         "iconEdit": "./public/assets/img/icon-edit.svg",
         "iconConfirm": "./public/assets/img/icon-confirm.svg",
-        "imgListadoBootcampProfesor": "./public/assets/img/teacher_bootcamp.png",
-        "imgListadoBootcampAdmisiones": "./public/assets/img/admission_bootcamp.png",
-        "imgListadoBootcampContabilidad": "./public/assets/img/contability_bootcamp.png"
+        "imgListadoBootcampProfesor": "./public/assets/img/teacher_bootcamp.svg",
+        "imgListadoBootcampAdmisiones": "./public/assets/img/admission_bootcamp.svg",
+        "imgListadoBootcampContabilidad": "./public/assets/img/contability_bootcamp.svg"
     },
     
     "imgPathProduction":{
@@ -26,9 +26,9 @@
         "iconDesarrollos": "./assets/img/icon-desarrollos.svg",
         "iconEdit": "./assets/img/icon-edit.svg",
         "iconConfirm": "./assets/img/icon-confirm.svg",
-        "imgListadoBootcampProfesor": "./assets/img/teacher_bootcamp.png",
-        "imgListadoBootcampAdmisiones": "./assets/img/admission_bootcamp.png",
-        "imgListadoBootcampContabilidad": "./assets/img/contability_bootcamp.png"
+        "imgListadoBootcampProfesor": "./assets/img/teacher_bootcamp.svg",
+        "imgListadoBootcampAdmisiones": "./assets/img/admission_bootcamp.svg",
+        "imgListadoBootcampContabilidad": "./assets/img/contability_bootcamp.svg"
     }
 }
   
