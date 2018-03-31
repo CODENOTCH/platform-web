@@ -9,17 +9,26 @@
         </div>
         <div class="indice-container">
             <ul>
-                <li v-for="(moduleItem,i) of moduleList" v-bind:key="i">
+                <li v-for="(moduleItem,moduleIndex) of moduleList" v-bind:key="moduleIndex">
                     <div class="modulo-container">
                         <div class="modulo-cabecera">
                             <span>Módulo {{ moduleItem.id }}</span>
                         </div>
                         <div class="modulo-temas-container">
                             <ul>
-                                <li v-for='(item,i) of currentDataIndex' v-bind:key="i">
-                                    <item-indice :active="item.active" :type="item.type" :id="item.id" @clickedItem="onClickItem">
-                                        <img v-if="item.type == 'tema'" slot="icon" :src="getPathIconTema" alt="icono documento"/>
-                                        <img v-else slot="icon" :src="getPathIconSubtema" alt="icono documento"/>
+                                <li v-for='(item,i) of currentDataIndex[moduleIndex]' v-bind:key="i">
+                                    <item-indice :active="item.active" 
+                                                  :type="item.type"
+                                                  :id="item.id"
+                                                  @clickedItem="onClickItem">
+                                        <img v-if="item.type == 'tema'"
+                                              slot="icon" 
+                                              :src="getPathIconTema" 
+                                              alt="icono documento"/>
+                                        <img v-else
+                                             slot="icon" 
+                                             :src="getPathIconSubtema" 
+                                             alt="icono documento"/>
                                         <span slot="text">{{item.text}}</span>
                                     </item-indice>
                                 </li>
@@ -44,7 +53,7 @@ export default {
     itemIndice: ProgramaItemIndice
   },
 
-  props: ['dataIndex','isIndexOpen'],
+  props: ['isIndexOpen'],
 
   data() {
     return {
@@ -61,7 +70,8 @@ export default {
   computed: {
     ...mapGetters({
       config: 'getConfigData',
-      profile: 'getProfile'
+      profile: 'getProfile',
+      program: 'getProgramData'
     }),
 
     getPathLogo() {
@@ -83,15 +93,17 @@ export default {
     },
 
     getLinkLogo(){
-      let path = this.profile === 'alumno' ? 'alumnoHome' : 'profesorHome';
-      return path;
+      let route = this.profile === 'alumno' ? 'alumnoHome' : 'profesorHome';
+      return route;
     }
   },
 
   created() {
-    Axios.get(this.dataIndex.path)
+    Axios.get(this.program.indice.path)
       .then(response => {
-        this.currentDataIndex = response.data.module1.concat(response.data.module2,response.data.module3);
+        for (let module in response.data) {
+          this.currentDataIndex.push(response.data[module]);
+        }
       })
       .catch(error => {
         console.log(error);

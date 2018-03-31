@@ -9,8 +9,7 @@ import Axios from 'axios';
 Vue.use(Vuetify);
 Vue.use(VueRouter);
 
-/*console.log('main');
-console.log(process.env.NODE_ENV);*/
+/* console.log(process.env.NODE_ENV); */
 
 
 const configPath = process.env.NODE_ENV === 'production' ? './assets/data/config.json' : './public/assets/data/config.json';
@@ -32,7 +31,6 @@ const getData = () => {
             programData = params[1].data;
             bootcampData = params[2].data;
             createAppVue();
-            //avoidContextMenu();
         })
     )
 }
@@ -50,10 +48,6 @@ const createAppVue = ()=> {
         render: h => h(App)
     });
 }
-
-/*const avoidContextMenu = () => {
-    document.addEventListener('contextmenu', event => event.preventDefault());
-}*/
 
 getData();
 

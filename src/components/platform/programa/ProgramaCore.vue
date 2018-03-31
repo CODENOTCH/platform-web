@@ -24,7 +24,7 @@
         data () {
             return {
                 sectionActive: 'contenidos',
-                defaultPath: '',
+                defaultContent: '',
                 currentContentsData: [],
                 currentSlidesData: [],
                 currentDevelopmentsData: [],
@@ -54,19 +54,19 @@
         },
 
         created(){
-            this.defaultPath = this.programData.programa[0];
-            this.getData(this.defaultPath);
+            this.defaultContent = this.programData.programa[0];
+            this.getData(this.defaultContent);
         },
 
         methods: {
-            getSectionData (path) {
-                return Axios.get(path)
+            getSectionData (route) {
+                return Axios.get(route)
             },
 
-            getData(path){
-                Axios.all([ this.getSectionData(path.contenidosPath),
-                            this.getSectionData(path.slidesPath),
-                            this.getSectionData(path.desarrolloPath) ])
+            getData(content){
+                Axios.all([ this.getSectionData(content.contenidosPath),
+                            this.getSectionData(content.slidesPath),
+                            this.getSectionData(content.desarrolloPath) ])
                     .then(Axios.spread( (...params) => {
                         this.currentContentsData = params[0].data.data;
                         this.currentSlidesData = params[1].data.links;
