@@ -18,12 +18,8 @@ export const setBootcampId = (state,data) =>{
     state.bootcampId = data;
 };
 
-export const setStudentId = (state,data) =>{
-    state.studentId = data;
-};
-
-export const setTeacherId = (state,data) =>{
-    state.teacherId = data;
+export const setUserId = (state,data) =>{
+    state.userId = data;
 };
 
 export const setIsProgram = (state,data) =>{

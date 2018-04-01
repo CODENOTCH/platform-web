@@ -58,31 +58,31 @@
                 let breadcrumbs = null; 
 
                 switch(this.$route.name){
-                    case 'alumnoHome':
+                    case 'alumnoIntro':
                         breadcrumbs = [
-                            {text:'Home', visible:false, disabled: true, route:'alumnoHome'}
+                            {text:'Intro', visible:false, disabled: true, route:'alumnoIntro'}
                         ],
                         this.noBreadcrumbs = true;
                     break;
                     
                     case 'alumnoPrograma':
                         breadcrumbs = [
-                            {text:'Home', visible:true, disabled: false, route:'alumnoHome'},
+                            {text:'Intro', visible:true, disabled: false, route:'alumnoIntro'},
                             {text:'Programa', visible:true, disabled: true, route:'alumnoPrograma'}
                         ],
                         this.noBreadcrumbs = false;
                     break;
 
-                    case 'profesorHome':
+                    case 'profesorIntro':
                         breadcrumbs = [
-                            {text:'Home', visible:false, disabled: true, route:'profesorHome'}
+                            {text:'Intro', visible:false, disabled: true, route:'profesorIntro'}
                         ],
                         this.noBreadcrumbs = true;
                     break;
 
                     case 'profesorPrograma':
                         breadcrumbs = [
-                            {text:'Home', visible:true, disabled: false, route:'profesorHome'},
+                            {text:'Intro', visible:true, disabled: false, route:'profesorIntro'},
                             {text:'Programa', visible:true, disabled: true, route:'profesorPrograma'}
                         ],
                         this.noBreadcrumbs = false;
@@ -90,7 +90,7 @@
 
                     case 'listadoBootcamps':
                         breadcrumbs = [
-                            {text:'Home', visible:true, disabled: false, route:'profesorHome'},
+                            {text:'Intro', visible:true, disabled: false, route:'profesorIntro'},
                             {text:'Bootcamps', visible:true, disabled: true, route:'listadoBootcamps'}
                         ],
                         this.noBreadcrumbs = false;
@@ -98,7 +98,7 @@
 
                     case 'listadoAlumnos':
                         breadcrumbs = [
-                            {text:'Home', visible:true, disabled: false, route:'profesorHome'},
+                            {text:'Intro', visible:true, disabled: false, route:'profesorIntro'},
                             {text:'Bootcamps', visible:true, disabled: false, route:'listadoBootcamps'},
                             {text:'Alumnos', visible:true, disabled: true, route:'listadoAlumnos'}
                         ],
@@ -107,7 +107,7 @@
 
                     case 'alumnoSeguimiento':
                         breadcrumbs = [
-                            {text:'Home', visible:true, disabled: false, route:'profesorHome'},
+                            {text:'Intro', visible:true, disabled: false, route:'profesorIntro'},
                             {text:'Bootcamps', visible:true, disabled: false, route:'listadoBootcamps'},
                             {text:'Alumnos', visible:true, disabled: false, route:'listadoAlumnos'},
                             {text:'Seguimiento', visible:true, disabled: true, route:'alumnoSeguimiento'}

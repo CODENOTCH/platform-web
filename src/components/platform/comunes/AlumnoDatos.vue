@@ -56,16 +56,10 @@ export default {
 
   beforeCreate(){
     this.$store.commit('setIsBootcamp',true);
-    
-    /* TEMPORAL */ 
-    //this.$store.commit('setProfile','admisiones');
-    //this.$store.commit('setProfile','contabilidad');
   },
 
   created() {
     window.scrollTo(0, 0);
-
-    //console.log('from AlumnoDatos PROFILE is: ' + this.profile);
 
     this.bootcampId = this.$route.params.bootcampId;
     this.studentId = this.$route.params.studentId;
@@ -79,7 +73,7 @@ export default {
 
     let studentList = arrBootcampsData[indexBootcampMatched].studentList;
     let indexStudentMatched = studentList.findIndex(
-      item => item.studentId === this.studentId
+      item => item._id === this.studentId
     );
 
     this.currentStudentData = studentList[indexStudentMatched];

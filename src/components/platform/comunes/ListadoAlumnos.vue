@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="btn-container col-xl-8 offset-xl-2">
-                        <router-link :to="{ path: `alumnos/${item.studentId}`}">
+                        <router-link :to="{ path: `alumnos/${item._id}`}">
                             <v-btn class="btn-codenotch">{{getNameBtn}}</v-btn>
                         </router-link>
                     </div>
@@ -66,13 +66,12 @@
         }, 
 
         beforeCreate(){
-            this.$store.commit('setBootcampId', '1.1');
+            /* TEMPORAL*/
+            //this.$store.commit('setBootcampId', '1.1');
         },
 
         created() {
             window.scrollTo(0, 0);
-
-            //console.log('from ListadoAlumnos PROFILE is: ' + this.profile);
 
             let arrBootcampsData = [...this.bootcampData.bootcamps];
             let indexBootcampMatched = arrBootcampsData.findIndex( item => item.bootcampId == this.bootcampId);

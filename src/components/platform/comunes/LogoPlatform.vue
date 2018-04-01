@@ -33,7 +33,7 @@
 
                 switch (this.profile) {
                     case 'profesor':
-                        route = 'profesorHome';
+                        route = 'profesorIntro';
                     break;
                     case 'admisiones':
                         route = 'listadoBootcampsAdmisiones';
@@ -43,26 +43,12 @@
                     break;
                 }
 
-                //console.log(route);
-
                 return route;
             },
 
             getPathLogo() {
                 return process.env.NODE_ENV === 'production' ? this.config.imgPathProduction.logo : this.config.imgPathDevelopment.logo
             }
-        },
-
-         beforeCreate(){
-             /* TEMPORAL */ 
-            //this.$store.commit('setProfile', 'alumno');
-            //this.$store.commit('setProfile', 'profesor');
-            //this.$store.commit('setProfile', 'admisiones');
-            //this.$store.commit('setProfile', 'contabilidad');
-        },
-
-        created(){
-            //console.log(this.profile)
         }
     }    
 </script>

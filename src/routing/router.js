@@ -3,9 +3,8 @@ import VueRouter from 'vue-router';
 
 import Login from '../components/platform/comunes/Login.vue';
 import AlumnoWrapper from '../components/platform/alumno/AlumnoWrapper.vue';
-import AlumnoHome from '../components/platform/alumno/AlumnoHome.vue';
 import ProfesorWrapper from '../components/platform/profesor/ProfesorWrapper.vue';
-import ProfesorHome from '../components/platform/profesor/ProfesorHome.vue';
+import Intro from '../components/platform/comunes/Intro.vue';
 import Programa from '../components/platform/programa/Programa.vue';
 import ListadoBootcamps from '../components/platform/comunes/ListadoBootcamps.vue';
 import ListadoAlumnos from '../components/platform/comunes/ListadoAlumnos.vue';
@@ -20,8 +19,8 @@ const router = new VueRouter({
             children: [
                 {
                     path: '',
-                    name:'alumnoHome',
-                    component: AlumnoHome
+                    name:'alumnoIntro',
+                    component: Intro
                 },
                 {
                     path: 'programa',
@@ -34,8 +33,8 @@ const router = new VueRouter({
             children: [
                 {
                     path: '',
-                    name:'profesorHome',
-                    component: ProfesorHome
+                    name:'profesorIntro',
+                    component: Intro
                 },
                 {
                     path: 'programa',

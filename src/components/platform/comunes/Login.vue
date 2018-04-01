@@ -78,12 +78,12 @@
                 v => (v && v.length <= 25) || 'La contraseña no puede tener más de 25 caracteres'
             ],
             onModalMode: false,
-            e2: false
+            e2: true
         }),
 
         computed: {
             ...mapGetters({
-                config: 'getConfigData',
+                config: 'getConfigData'
             }),
             
             getPathLogo: function() {
@@ -104,48 +104,58 @@
 
                     /* TEMPORAL */ 
 
-                    /*let myRandom = Math.round(Math.random() * 3) + 0;
-
-                    [   {profile:'alumno', path:'/alumno'},
-                        {profile:'profesor', path:'/profesor'},
-                        {profile:'admisiones' , path:'/admisiones/bootcamps'},
-                        {profile:'contabilidad' , path:'/contabilidad/bootcamps'}
-                    ].forEach((item,index) => {
-                        if(index === myRandom){
-                            console.log('item.profile',item.profile);
-                            console.log('item.path',item.path);
-                            this.$store.commit('setProfile', item.profile);
-                            this.$router.push({path: item.path});
+                    let arrayFakeResponse = [
+                        {
+                            name:"Laura",
+                            id:"1.112347",
+                            profile:"alumno", 
+                            user:"alumno", 
+                            password:"alumno",
+                            route:'alumno',
+                            bootcampId:'1.1'
+                        },
+                        {
+                            name:"Alberto",
+                            id:"1.112352",
+                            profile:"profesor", 
+                            user:"profesor", 
+                            password:"profesor",
+                            route: 'profesor',
+                            bootcampId:'1.1'
+                        },
+                        {
+                            name:"Paloma",
+                            id:"1.4",
+                            profile:"admisiones", 
+                            user:"admisiones", 
+                            password:"admisiones",
+                            route: 'admisiones/bootcamps',
+                            bootcampId:'1.1'
+                        },
+                        {
+                            name:"Manuel",
+                            id:"1.5",
+                            profile:"contabilidad", 
+                            user:"contabilidad", 
+                            password:"contabilidad",
+                            route: 'contabilidad/bootcamps',
+                            bootcampId:'1.1'
                         }
-                    });*/
+                    ]
 
-                    /* TEMPORAL */
-
-                    if(this.user === 'alumno' && this.password === 'alumno') {
-                        this.$store.commit('setProfile', 'alumno');
-                        this.$router.push({path: '/alumno'});
-                    }
-
-                    else if(this.user === 'profesor' && this.password === 'profesor') {
-                        this.$store.commit('setProfile', 'profesor');
-                        this.$router.push({path: '/profesor'});
-                    }
-
-                    else if(this.user === 'admisiones' && this.password === 'admisiones') {
-                        this.$store.commit('setProfile', 'admisiones');
-                        this.$router.push({path: '/admisiones/bootcamps'});
-                    }
-
-                    else if(this.user === 'contabilidad' && this.password === 'contabilidad') {
-                        this.$store.commit('setProfile', 'contabilidad');
-                        this.$router.push({path: '/contabilidad/bootcamps'});
-                    }
-
-                    else {
-                        //console.log('usuario incorrecto')
-                        this.onModalMode = true;
-                    }
-
+                    let filteredArray = arrayFakeResponse.filter( (userCodenotch,indexArray) => {
+                        if( this.user !== userCodenotch.user ) {
+                            this.onModalMode = true;
+                            return;
+                        }
+                        else if(this.password !== userCodenotch.password) return;
+                        else{
+                            this.$store.commit('setProfile', userCodenotch.profile);
+                            this.$store.commit('setUserId', userCodenotch.id);
+                            this.$store.commit('setBootcampId', userCodenotch.bootcampId);
+                            this.$router.push({path: `/${userCodenotch.route}`});
+                        }
+                    } );
                     
                     /* TEMPORAL */ 
 

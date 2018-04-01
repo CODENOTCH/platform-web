@@ -18,12 +18,8 @@ export const getBootcampId = state => {
     return state.bootcampId;
 };
 
-export const getStudentId = state => {
-    return state.studentId;
-};
-
-export const getTeacherId = state => {
-    return state.teacherId;
+export const getUserId = state => {
+    return state.userId;
 };
 
 export const getIsProgram = state => {

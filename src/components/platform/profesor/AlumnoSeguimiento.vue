@@ -58,6 +58,7 @@ export default {
       currentStudentData: {},
       bootcampId: "",
       studentId: "",
+      userId: 'getUserId',
       comments: []
     };
   },
@@ -88,7 +89,7 @@ export default {
 
     let studentList = arrBootcampsData[indexBootcampMatched].studentList;
     let indexStudentMatched = studentList.findIndex(
-      item => item.studentId === this.studentId
+      item => item._id === this.studentId
     );
 
     this.currentStudentData = studentList[indexStudentMatched];
