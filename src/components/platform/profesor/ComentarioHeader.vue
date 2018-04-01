@@ -22,15 +22,7 @@
     export default {
         name:'comentarioHeader',
 
-        props:['title','confirmMode','acceptMode','editMode'],
-        
-        data(){
-            return{
-                activeAcceptMode: false,
-                activeConfirmMode: false,
-                activeEditMode: false
-            }
-        },
+        props:['title','acceptMode','editMode'],
 
         computed: {
             ...mapGetters({

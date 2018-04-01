@@ -1,20 +1,20 @@
 <template>
     <div class="comment">
-        <comentario-header :title="itemSelected"
+        <comentario-header :title="weekTitle"
                             :acceptMode="acceptMode"
                             :confirmMode="confirmMode"
                             :editMode="editMode"
                             @onClickAccept="alertHandler"
-                            @onClickEdit="editHandler"
+                            @onClickEdit="editBtnHandler"
         ></comentario-header>
-        <comentario-box @onBoxHandler="onBoxHandler"
-                        @onConfirm="confirmHandler"
-                        @onEdit="editHandler"
+        <comentario-box :comment="getComment"
                         :editMode="editMode"
                         :confirmMode="confirmMode"
+                        @onBoxHandler="onBoxHandler"
+                        @onConfirm="confirmHandler"
+                        @onEdit="editBoxBtnHandler"
                         ref="boxwrapper"
-        >
-        </comentario-box>
+        ></comentario-box>
     </div>
 </template>
 
@@ -31,7 +31,7 @@
             comentarioBox: ComentarioBox,
         },
 
-        props:['itemSelected','indexSelected'],
+        props:['weekTitle','weekComment','indexSelected'],
 
         data(){
             return{
@@ -46,6 +46,15 @@
             ...mapGetters({
                 isProgram: 'getIsProgram',
             }),
+
+            getComment(){
+                let comment = this.weekComment ? this.weekComment : '';
+                return comment;
+            }
+        },
+
+        created(){
+             if(this.weekComment) this.editMode = true;
         },
 
         methods:{
@@ -68,7 +77,15 @@
                 this.editMode = true;
             },
 
-            editHandler(){
+            editBoxBtnHandler(comment){
+                this.acceptMode =  comment ? true : false;
+                this.confirmMode = false;
+                this.editMode = false;
+
+                this.$refs.boxwrapper.setBoxFocus();
+            },
+
+            editBtnHandler(){
                 this.acceptMode = true;
                 this.confirmMode = false;
                 this.editMode = false;

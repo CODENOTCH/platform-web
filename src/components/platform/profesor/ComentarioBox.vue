@@ -7,13 +7,16 @@
                         <p>¿Desea confirmar el comentario?</p>
                         <div class="container-btn">
                             <button @click="confirmHandler" type="button" class="btn btn-success">sí</button>
-                            <button @click="rejectHandler" type="button" class="btn btn-danger">no</button>
+                            <button @click="restoreHandler" type="button" class="btn btn-danger">no</button>
+                            <button @click="editHandler" type="button" class="btn btn-info">
+                                <v-icon>edit</v-icon>
+                            </button>
                         </div>
                     </div>
                     <v-text-field box multi-line label="Comentarios" 
                         @click="boxHandler" 
                         @keyup="boxHandler" 
-                        v-model.trim="comment"
+                        v-model.trim="currentComment"
                         :class="{ editmode: editMode, confirmmode: confirmMode}"
                         loading
                         hint="Añada sus comentarios"
@@ -32,33 +35,51 @@
     export default {
         name:'comentarioBox',
 
-        props:['editMode','confirmMode'],
+        props:['editMode','confirmMode','comment'],
 
         computed: {
             ...mapGetters({
                 isProgram: 'getIsProgram',
-            }),
+            })
         },
 
         data(){
             return{
-                comment:'',
+                currentComment:'',
                 isEmpty: true
             }
         },
 
+        created(){
+            this.setInitialComment();
+        },
+
         methods:{
             boxHandler(){
-                this.isEmpty = this.comment ? false : true;
-                this.$emit('onBoxHandler',this.comment,this.isEmpty);
+                this.isEmpty = this.currentComment ? false : true;
+                this.$emit('onBoxHandler',this.currentComment,this.isEmpty);
             },
 
             confirmHandler(){
                 this.$emit('onConfirm');
             },
 
-            rejectHandler(){
-                this.$emit('onEdit');
+            editHandler(){
+                this.$emit('onEdit',this.currentComment);
+            },
+
+            restoreHandler(){
+                if(this.comment){
+                    this.currentComment = this.comment;
+                    this.$emit('onConfirm');
+                } else {
+                    this.currentComment = '';
+                    this.$emit('onEdit',this.currentComment);
+                }
+            },
+
+            setInitialComment(){
+                this.currentComment = this.comment ? this.comment : '';
             },
 
             setBoxFocus(){
