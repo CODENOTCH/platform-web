@@ -4,7 +4,7 @@
             <v-layout row wrap>
                 <v-flex>
                     <div v-if="confirmMode" class="container-alert">
-                        <p>¿Desea confirmar el comentario?</p>
+                        <p>¿Desea {{getActionTxt}} el comentario?</p>
                         <div class="container-btn">
                             <button @click="confirmHandler" type="button" class="btn btn-success">sí</button>
                             <button @click="restoreHandler" type="button" class="btn btn-danger">no</button>
@@ -19,7 +19,7 @@
                         v-model.trim="currentComment"
                         :class="{ editmode: editMode, confirmmode: confirmMode}"
                         loading
-                        hint="Añada sus comentarios"
+                        :hint="getSupportTxt"
                         class="box-container"
                     >
                     </v-text-field>
@@ -40,7 +40,17 @@
         computed: {
             ...mapGetters({
                 isProgram: 'getIsProgram',
-            })
+            }),
+
+            getActionTxt(){
+                let txt = this.comment ? 'modificar' : 'confirmar';
+                return txt;
+            },
+
+            getSupportTxt(){
+                let txt = this.comment ? 'Modificando comentario' : 'Añadiendo comentario';
+                return txt;
+            }
         },
 
         data(){
@@ -134,7 +144,15 @@
     }
 
     .input-group__details{
-        color: $darkGrey;
+        color: $white !important;
         font-weight: 600;
+    }
+
+    .input-group--text-field-box:not(.input-group--textarea).input-group--multi-line .input-group__input {
+        padding-top: 0 !important;
+    }
+
+    .input-group--text-field-box.input-group--multi-line textarea {
+        padding-top: 26px !important;
     }
 </style>  
