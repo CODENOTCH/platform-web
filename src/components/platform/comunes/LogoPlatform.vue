@@ -32,6 +32,9 @@
                 let route = '';
 
                 switch (this.profile) {
+                    case 'alumno':
+                        route = 'alumnoIntro';
+                    break;
                     case 'profesor':
                         route = 'profesorIntro';
                     break;

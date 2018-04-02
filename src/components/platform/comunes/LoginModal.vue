@@ -7,7 +7,7 @@
           <v-btn class="btn-codenotch" 
                     @click="closeModalHandler"
                     @keyup.enter="closeModalHandler"
-                    OK>
+                    > OK
             </v-btn>
         </v-card-actions>
       </v-card>

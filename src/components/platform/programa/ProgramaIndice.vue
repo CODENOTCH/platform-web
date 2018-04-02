@@ -93,7 +93,7 @@ export default {
     },
 
     getLinkLogo(){
-      let route = this.profile === 'alumno' ? 'alumnoHome' : 'profesorHome';
+      let route = this.profile === 'alumno' ? 'alumnoIntro' : 'profesorIntro';
       return route;
     }
   },
