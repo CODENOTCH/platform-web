@@ -48,7 +48,7 @@
                     </div>
                 </div>
             </div>
-            <login-modal v-if="onModalMode" @onClickCloseModal="onClickBtnModal"></login-modal>
+            <login-modal v-if="onModalMode" :type="typeModal" @onClickCloseModal="onClickBtnModal"></login-modal>
         </div>
     </transition>
 </template>
@@ -78,6 +78,7 @@
                 v => (v && v.length <= 25) || 'La contraseña no puede tener más de 25 caracteres'
             ],
             onModalMode: false,
+            typeModal: '',
             e2: true
         }),
 
@@ -141,21 +142,27 @@
                             route: 'contabilidad/bootcamps',
                             bootcampId:'1.1'
                         }
-                    ]
+                    ];
 
-                    let filteredArray = arrayFakeResponse.filter( (userCodenotch,indexArray) => {
-                        if( this.user !== userCodenotch.user ) {
+                    let userSelected = arrayFakeResponse.find(user => user.user === this.user);
+
+                    if(!userSelected) {
+                        this.onModalMode = true;
+                        this.typeModal = "wrongUser";
+                    } else {
+                        if(this.password !== userSelected.password) {
                             this.onModalMode = true;
-                            return;
+                            this.typeModal = "wrongPassword";
                         }
-                        else if(this.password !== userCodenotch.password) return;
                         else{
-                            this.$store.commit('setProfile', userCodenotch.profile);
-                            this.$store.commit('setUserId', userCodenotch.id);
-                            this.$store.commit('setBootcampId', userCodenotch.bootcampId);
-                            this.$router.push({path: `/${userCodenotch.route}`});
+                            this.$store.commit('setProfile', userSelected.profile);
+                            this.$store.commit('setUserId', userSelected.id);
+                            this.$store.commit('setBootcampId', userSelected.bootcampId);
+                            this.$router.push({path: `/${userSelected.route}`});
                         }
-                    } );
+                    };
+
+
                     
                     /* TEMPORAL */ 
 
