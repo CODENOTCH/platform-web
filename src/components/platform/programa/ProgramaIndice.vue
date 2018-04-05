@@ -16,7 +16,7 @@
                         </div>
                         <div class="modulo-temas-container">
                             <ul>
-                                <li v-for='(item,i) of currentDataIndex[moduleIndex]' v-bind:key="i">
+                                <li v-for='(item,i) of currentDataIndex' v-bind:key="i">
                                     <item-indice :active="item.active" 
                                                   :type="item.type"
                                                   :id="item.id"
@@ -58,6 +58,7 @@ export default {
   data() {
     return {
       currentDataIndex: [],
+      moduleData: [],
       moduleList: [
         { name: 'frontend', id: 1 },
         { name: 'backend', id: 2 },
@@ -101,9 +102,9 @@ export default {
   created() {
     Axios.get(this.program.indice.path)
       .then(response => {
-        for (let module in response.data) {
-          this.currentDataIndex.push(response.data[module]);
-        }
+        for (let module in response.data) this.moduleData.push(response.data[module]) 
+        let modules = this.moduleData.reduce( (prev,next) => prev.concat(next));
+        this.currentDataIndex = modules;
       })
       .catch(error => {
         console.log(error);
@@ -122,11 +123,10 @@ export default {
 
     setItemActive(id){
       let listItems = [...this.currentDataIndex];
+      
       let index = listItems.findIndex(item => item.id === id);
 
-      for(let item of listItems){
-          item.active = false;
-      }
+      for(let item of listItems) item.active = false;
 
       let itemSelected = {...listItems[index]};
       itemSelected.active = true;
