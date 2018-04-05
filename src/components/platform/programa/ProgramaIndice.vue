@@ -132,7 +132,6 @@ export default {
       itemSelected.active = true;
 
       listItems[index] = itemSelected;
-
       this.currentDataIndex = listItems;
     }
   }
