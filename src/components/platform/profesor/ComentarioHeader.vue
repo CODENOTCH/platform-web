@@ -12,20 +12,38 @@
                 alt="icono confirmar"
                 @click="clickEditHandler"
             /-->
-            <button v-if="acceptMode" 
+            <!--button v-if="acceptMode" 
                     @click="clickAcceptHandler"
                     type="button" 
                     class="btn-success"
             >   
                 <v-icon>done</v-icon>
-            </button>
-            <button v-if="editMode"
+            </button-->
+            <v-btn v-if="acceptMode" 
+                    @click="clickAcceptHandler"
+                    dark
+                    small
+                    fab
+                    class="btn-comment"
+            >
+                <v-icon>done</v-icon>
+            </v-btn>
+            <!--button v-if="editMode"
                     @click="clickEditHandler"
                     type="button" 
                     class="btn-info"
             >   
                 <v-icon>edit</v-icon>
-            </button>
+            </button-->
+            <v-btn v-if="editMode" 
+                    @click="clickEditHandler"
+                    dark
+                    small
+                    fab
+                    class="btn-comment"
+            >
+                <v-icon>edit</v-icon>
+            </v-btn>
         </div>
     </div>
 </template>

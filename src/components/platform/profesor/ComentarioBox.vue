@@ -110,6 +110,10 @@
     @import '../../../stylus/main';
     @import '../../../stylus/vars';
 
+    .container.grid-list-md {
+        padding: 0 8px !important;
+    }
+
     .input-group{
         .input-group__input {
             background: $white;
