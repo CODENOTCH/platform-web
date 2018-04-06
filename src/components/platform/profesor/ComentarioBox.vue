@@ -6,8 +6,12 @@
                     <div v-if="confirmMode" class="container-alert">
                         <p>¿Desea {{getActionTxt}} el comentario?</p>
                         <div class="container-btn">
-                            <button @click="confirmHandler" type="button" class="btn btn-success">sí</button>
-                            <button @click="restoreHandler" type="button" class="btn btn-danger">no</button>
+                            <button @click="confirmHandler" type="button" class="btn btn-success">
+                                <v-icon>done</v-icon>
+                            </button>
+                            <button @click="restoreHandler" type="button" class="btn btn-danger">
+                                <v-icon>restore</v-icon>
+                            </button>
                             <button @click="editHandler" type="button" class="btn btn-info">
                                 <v-icon>edit</v-icon>
                             </button>

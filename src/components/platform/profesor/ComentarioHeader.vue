@@ -1,8 +1,8 @@
 <template>
     <div class="comment-header">
         <h4>{{ title }}</h4>
-        <div class="block-icons">
-            <img v-if="acceptMode" 
+        <div class="block-btns">
+            <!--img v-if="acceptMode" 
                 :src="getPathIconConfirm" 
                 alt="icono editar" 
                 @click="clickAcceptHandler"
@@ -11,7 +11,21 @@
                 :src="getPathIconEdit"
                 alt="icono confirmar"
                 @click="clickEditHandler"
-            />
+            /-->
+            <button v-if="acceptMode" 
+                    @click="clickAcceptHandler"
+                    type="button" 
+                    class="btn-success"
+            >   
+                <v-icon>done</v-icon>
+            </button>
+            <button v-if="editMode"
+                    @click="clickEditHandler"
+                    type="button" 
+                    class="btn-info"
+            >   
+                <v-icon>edit</v-icon>
+            </button>
         </div>
     </div>
 </template>
