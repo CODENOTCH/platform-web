@@ -10,7 +10,7 @@
                                 <v-icon>done</v-icon>
                             </button>
                             <button @click="restoreHandler" type="button" class="btn btn-danger">
-                                <v-icon>restore</v-icon>
+                                <v-icon>close</v-icon>
                             </button>
                             <button @click="editHandler" type="button" class="btn btn-info">
                                 <v-icon>edit</v-icon>
