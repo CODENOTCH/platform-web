@@ -1,16 +1,18 @@
 <template>
-  <div class="container-modal" @keyup.enter="closeModalHandler">
-      <v-card class="block-modal">
-        <v-card-title class="headline">Ups! ha habido un error</v-card-title>
-        <v-card-text>{{ getTxtModal }}</v-card-text>
-        <v-card-actions>
-          <v-btn class="btn-codenotch" 
-                    @click="closeModalHandler"
-                    > OK
-            </v-btn>
-        </v-card-actions>
-      </v-card>
-  </div>
+    <transition name="contentTransition" appear>
+        <div class="container-modal" @keyup.enter="closeModalHandler">
+            <v-card class="block-modal">
+                <v-card-title class="headline">Ups! ha habido un error</v-card-title>
+                <v-card-text>{{ getTxtModal }}</v-card-text>
+                <v-card-actions>
+                <v-btn class="btn-codenotch" 
+                            @click="closeModalHandler"
+                            > OK
+                    </v-btn>
+                </v-card-actions>
+            </v-card>
+        </div>
+    </transition>
 </template>
 
 <script>
