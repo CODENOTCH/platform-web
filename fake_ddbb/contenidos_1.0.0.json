@@ -1,0 +1,53 @@
+{
+    "Paragraphs": {
+        "Ptext": [
+            "Internet es una red mundial que para permite la conexión entre ordenadores a través de un protocolo de comunicaciones, formando <strong>una telaraña de información</strong>.",
+            "Para entender el funcionamiento de internet. hay que tener claros una serie de conceptos:",
+            "Esta petición, que hace el ordenador cliente al servidor cuando se escribe una dirección URL en la barra de direcciones del navegador web, se lleva a cabo a través del protocolo http (una serie de normas que se usa para acceder a páginas web).",
+            "Todos los ordenadores conectados a internet (tanto los ordenadores clientes como los servidores) tienen un identificador único (dirección IP). Para poder acceder desde un navegador web a un servidor web, necesitamos conocer la dirección IP del servidor web. Para facilitar esta tarea, está el sistema de nombres de dominio (DNS) que se encarga de traducir las direcciones IP a un nombre identificativo o Dominio",
+            "El servidor nos da una respuesta (a la petición solicitada) en forma de archivos HTML, que el navegador entiende e interpreta, como una página web",
+            "Para poder acceder directamente a los archivos alojados en un hosting, tenemos el protocolo FTP, que permite transferir datos entre el ordenador cliente y el hosting a través de programas o clientes FTP como Filezilla, Ciberduck o Transmit."
+        ],
+        "Pposition": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+        ]
+    },
+    "Images": {
+        "route": [
+            "https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/img/contenidos_img1_1.0.0.jpg",
+            "https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/img/contenidos_img2_1.0.0.png"
+        ],
+        "imageposition": [
+            6,
+            7
+        ]
+    },
+    "Subtitles": {
+        "subtitle": [
+            "hosting"
+        ],
+        "subposition": [
+            8
+        ]
+    },
+    "Lists": {
+        "Ltext": [
+            "Cliente: Es el ordenador del usuario.",
+            "Servidor web o hosting: Es un ordenador que contiene multitud de archivos de información y que “esperan” peticiones de otros ordenadores (clientes), conectados a una red.",
+            "Navegador web: Es un programa instalado en el ordenador cliente que sirve para pedir e interpretar la información disponible en un servidor."
+        ],
+        "Lposition": [
+            9,
+            10,
+            11
+        ]
+    },
+    "Title": "Introducción al funcionamiento de Internet",
+    "_id": "5ab8c0c84fd3cb1b43a7bfc7",
+    "__v": 0
+}

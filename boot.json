@@ -1,0 +1,201 @@
+{
+    "bootcamps": [
+        {
+            "weeks": [
+                "semana 1 - 02/09/2018 - 08/09/2018",
+                "semana 2 - 09/09/2018 - 16/09/2018",
+                "semana 3 - 17/09/2018 - 24/09/2018",
+                "semana 4 - 25/09/2018 - 01/10/2018",
+                "semana 5 - 02/10/2018 - 08/10/2018",
+                "semana 6 - 09/10/2018 - 16/10/2018",
+                "semana 7 - 17/10/2018 - 24/10/2018"
+            ],
+            "_id": "5ac48fd42863d6839c8c17fa",
+            "name": "Bootcamp - fulltime : octubre / diciembre 2018",
+            "__v": 0
+        }
+    ],
+    "studentList": [
+        {
+            "description": "soy mulskdjosjdzko",
+            "_id": "5ac491382863d6839c8c17fb",
+            "data": {
+                "telefono": {
+                    "label": "teléfono",
+                    "content": 618227956,
+                    "type": "shared"
+                },
+                "email": {
+                    "label": "email",
+                    "type": "shared"
+                },
+                "domicilio": {
+                    "label": "domicilio",
+                    "content": "calle torquemada 21",
+                    "type": "shared"
+                },
+                "codigopostal": {
+                    "label": "código postal",
+                    "content": "28043",
+                    "type": "shared"
+                },
+                "dni": {
+                    "label": "dni / pasaporte",
+                    "content": 5944409,
+                    "type": "shared"
+                },
+                "fechaNacimiento": {
+                    "label": "fecha de nacimiento",
+                    "type": "shared"
+                },
+                "lugarNacimiento": {
+                    "label": "lugar de nacimiento",
+                    "content": "sakljvklansvj",
+                    "type": "shared"
+                },
+                "sexo": {
+                    "label": "sexo",
+                    "type": "shared"
+                },
+                "nacionalidad": {
+                    "label": "nacionalidad",
+                    "content": "asdlkfjoksajgf",
+                    "type": "shared"
+                },
+                "estadoCivil": {
+                    "label": "estado civil",
+                    "content": "nvjsbajdvbasjhbv",
+                    "type": "shared"
+                },
+                "modalidadCurso": {
+                    "label": "modalidad del curso",
+                    "content": "part",
+                    "type": "shared"
+                },
+                "estudios": {
+                    "label": "estudios realizados",
+                    "content": "none",
+                    "type": "admisiones"
+                },
+                "experienciaLaboral": {
+                    "label": "experiencia laboral",
+                    "content": "jaridnaero",
+                    "type": "admisiones"
+                },
+                "referenciasCodenotch": {
+                    "label": "referencias Codenotch",
+                    "content": "oasjvdoja",
+                    "type": "admisiones"
+                },
+                "interesCodenotch": {
+                    "label": "interés por Codenotch",
+                    "content": "pekrjownin",
+                    "type": "admisiones"
+                },
+                "objetivosProgramación": {
+                    "label": "objetivos de aprender a programar",
+                    "content": "oasjdjioansdij",
+                    "type": "admisiones"
+                },
+                "hobbies": {
+                    "label": "hobbies",
+                    "content": [],
+                    "type": "admisiones"
+                },
+                "temasInteres": {
+                    "label": "temas de interés",
+                    "content": [],
+                    "type": "admisiones"
+                },
+                "empresas": {
+                    "label": "empresas",
+                    "content": [],
+                    "type": "admisiones"
+                },
+                "perfilCandidato": {
+                    "label": "perfil de candidato",
+                    "type": "admisiones"
+                },
+                "formaPago": {
+                    "label": "forma de pago",
+                    "content": "paypal",
+                    "type": "contabilidad"
+                },
+                "facturacionEmpresa": {
+                    "label": "datos de facturación - empresa",
+                    "content": "papa",
+                    "type": "contabilidad"
+                },
+                "facturacionCib": {
+                    "label": "datos de facturación - cif",
+                    "content": "2908345u29834",
+                    "type": "contabilidad"
+                },
+                "facturacionDireccion": {
+                    "label": "datos de facturación - dirección",
+                    "content": "torqurmada",
+                    "type": "contabilidad"
+                },
+                "notasAdmisiones": {
+                    "label": "nota de admisiones",
+                    "content": [
+                        "aosjdvnjsdvnjasn"
+                    ],
+                    "type": "shared"
+                }
+            },
+            "photoPath": "http://codenotch.com/foto.jp",
+            "links": [
+                {
+                    "content": "Github",
+                    "url": "sadlkfjasldfjas"
+                },
+                {
+                    "content": "Linkedin",
+                    "url": "sdaklmflksmnjtjtjtj"
+                },
+                {
+                    "content": "Twitter",
+                    "url": "http://twittert.com"
+                }
+            ],
+            "weekComments": [
+                {
+                    "weekName": "semana 1 - 02/09/2018 - 08/09/2018"
+                },
+                {
+                    "weekName": "semana 2 - 09/09/2018 - 16/09/2018"
+                },
+                {
+                    "weekName": "semana 3 - 17/09/2018 - 24/09/2018"
+                },
+                {
+                    "weekName": "semana 4 - 25/09/2018 - 01/10/2018"
+                },
+                {
+                    "weekName": "semana 5 - 02/10/2018 - 08/10/2018"
+                },
+                {
+                    "weekName": "semana 6 - 09/10/2018 - 16/10/2018"
+                },
+                {
+                    "weekName": "semana 7 - 17/10/2018 - 24/10/2018"
+                }
+            ]
+        }
+    ],
+    "teacherList": [
+        {
+            "Links": [],
+            "_id": "5ac491742863d6839c8c17fd",
+            "DNI": 8439845,
+            "Adress": "oasifjoaijdf",
+            "Phone": 234234234,
+            "Description": "asdiuhfiauhdf",
+            "Photo": "gcfgyjfytfhyft",
+            "Birthdate": "gdfudfurdftdt",
+            "userID": "5ac48f712863d6839c8c17f9",
+            "__v": 0
+        }
+    ]
+}

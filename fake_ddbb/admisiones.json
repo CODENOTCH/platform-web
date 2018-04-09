@@ -1,0 +1,20 @@
+{
+    "DNI":"095673827c",
+    "Phone": 32495809335,
+    "Sex":"Hombre",
+    "Nationality":"Español",
+    "Adress":"calle santo angel 34",
+    "CourseType":"Part Time",
+    "Studies":"FP cocina",
+    "WorkExp":"Cocinero real",
+    "Meetus":"internet",
+    "InterestedOn":"Videojuegos, chuches y marcha",
+    "MainObjectives":"Aprender a programar para tener un trabajo mejor",
+    "CivilStatus":"Casado",
+    "admiNotes":["es bastante lorem","Y tambien un poco ipsum dolor"],
+    "hobbies":["robots","Comer golosinas"],
+    "ThemesOfInterest":["robots","golosinas"],
+    "VisitedCompanies ":["Everis","Indra"],
+    "JobProfile":"Lorem ipsum dolor etc etc",
+    "userID":"5ac8c0c82fd2cb1b43a7bfc1"
+}

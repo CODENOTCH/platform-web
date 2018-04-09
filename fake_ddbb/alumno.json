@@ -1,0 +1,10 @@
+{
+    "DNI":  "06456643c",
+    "Adress": "calle santo angel 47",
+    "Phone":  "617445684",
+    "Description": "lorem ipsum dolor",
+    "Links": ["https://www.github.com","https://www.linkedin.com"],
+    "Photo": "pepe.jpg",
+    "Brithdate": "04-11-1986",
+    "userID": "5ac8c0c82fd2cb1b43a7bfc8"
+    }

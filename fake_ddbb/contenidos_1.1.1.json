@@ -1,0 +1,36 @@
+{
+    "Paragraphs": {
+        "Ptext": [],
+        "Pposition": []
+    },
+    "Images": {
+        "route": [],
+        "imageposition": []
+    },
+    "Subtitles": {
+        "subtitle": [],
+        "subposition": []
+    },
+    "Lists": {
+        "Ltext": [
+            "Es un editor open-source (totalmente gratuito) y multiplataforma, es decir, que está disponible para Window. Mac y Linux.",
+            "A diferencia de otras herramientas para escribir de código, Visual Studio Code tiene un muy bajo consumo de recursos del ordenador donde se esté ejecutando, por lo que no necesitamos un ordenador muy potente para programar…",
+            "Tiene curva de aprendizaje muy baja. Se tarda muy poco tiempo en aprender a usarlo con cierta soltura.",
+            "Es muy customizable, por lo que los usuarios pueden cambiar el tema del editor, los atajos de teclado y las preferencias",
+            "Viene con control integrado de Git y herramientas de depuración de código",
+            "Tiene un sistema Intellisense, que facilita y agiliza el trabajo con código.",
+            "Permite trabajar con diferentes lenguajes de programación."
+        ],
+        "Lposition": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+        ]
+    },
+    "Title": "Ventajas de usar Visual Studio Code",
+    "_id": "5ab8c0c84fd3cb1b43a7bfc9",
+    "__v": 0
+}

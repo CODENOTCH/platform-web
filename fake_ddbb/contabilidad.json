@@ -1,0 +1,16 @@
+{
+    "DNI":"095673867c",
+    "Phone": 324958093845,
+    "Sex":"Hombre",
+    "Nationality":"Español",
+    "Adress":"calle santo angel 34",
+    "CourseType":"Part Time",
+    "PayMethod":"Cash",
+    "FactData":{
+        "Nombre":"Pepe",
+        "CIF":"34958093485909348F",
+        "Adress":"Calle no santo angel"
+    },
+    "ContNotes":["es bastante lorem","Y tambien un poco ipsum dolor"],
+    "userID":"5ac8c0c82fd2cb1b43a7bfc9"
+}

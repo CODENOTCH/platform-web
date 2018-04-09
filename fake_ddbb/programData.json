@@ -1,0 +1,23 @@
+{
+    "Index":{
+        "Route": "https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/indice.json"
+    },
+
+    "Program":[
+        {
+            "contentRoute": "https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/contenidos_1.0.0.json",
+            "slidesRoute": "https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/slides_1.0.json",
+            "developRoute": "https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/desarrollos_1.0.json"
+        },
+        {
+            "contentRoute": "https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/contenidos_1.1.0.json",
+            "slidesRoute": "https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/slides_1.1.json",
+            "developRoute": "https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/desarrollos_1.1.json"
+        },
+        {
+            "contentRoute": "https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/contenidos_1.1.1.json",
+            "slidesRoute": "https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/slides_1.1.json",
+            "developRoute": "https://raw.githubusercontent.com/CODENOTCH/bbdd_fake/master/desarrollos_1.1.json"
+        }
+    ]
+}
