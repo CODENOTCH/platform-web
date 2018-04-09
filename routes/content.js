@@ -177,7 +177,6 @@ router.get('/programData', (req, res, next) => {
     slides.find({},(err,slidedata)=>{
       developments.find({},(err,developdata)=>{
         let program = []
-        let url = req.protocol + '://' + req.get('host');
         let slideid=""
         let developid=""
         for (let i = 0; i < contentdata.length; i++) {
@@ -196,16 +195,16 @@ router.get('/programData', (req, res, next) => {
           }
         }
           let content = {
-            contenidosPath: url+'getContent/?contentid='+contentdata[i]._id,
-            slidesPath: url+'getSlides/?slideid='+slideid,
-            desarrolloPath: url+'/getDevelopment/?developid='+developid,
+            contenidosPath: 'https://www.codenotch.com/getContent/?contentid='+contentdata[i]._id,
+            slidesPath: 'https://www.codenotch.com/getSlides/?slideid='+slideid,
+            desarrolloPath: 'https://www.codenotch.com/getDevelopment/?developid='+developid,
             indexId: contentdata[i]._id
           }
           program.push(content)
         }
         let programData = {
           Index: {
-            Route: url + '/contentIndex/'
+            Route: 'https://www.codenotch.com/contentIndex/'
           },
           programa: program
         }
