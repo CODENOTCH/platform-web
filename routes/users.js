@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var user = require('../mongo/userSchema.js');
 var mongoose = require('mongoose');
-var crypt=require('bcrypt');
+var crypt=require('bcrypt-nodejs');
 var middlewares=require('../middlewares/usersMiddlewares.js');
 var session=require('express-sesssion');
 

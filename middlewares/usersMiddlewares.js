@@ -1,4 +1,4 @@
-let crypt=require('bcrypt')
+let crypt=require('bcrypt-nodejs')
 
 exports.encryptPassword=(req,res,next)=>{
     req.body.password = crypt.hashSync(req.body.password, 10);
