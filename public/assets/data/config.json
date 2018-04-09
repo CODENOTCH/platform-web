@@ -12,7 +12,9 @@
         "iconConfirm": "./public/assets/img/icon-confirm.svg",
         "imgListadoBootcampProfesor": "./public/assets/img/teacher_bootcamp.svg",
         "imgListadoBootcampAdmisiones": "./public/assets/img/admission_bootcamp.svg",
-        "imgListadoBootcampContabilidad": "./public/assets/img/contability_bootcamp.svg"
+        "imgListadoBootcampContabilidad": "./public/assets/img/contability_bootcamp.svg",
+        "imgProfesor": "./public/assets/img/teacher_alone_bootcamp.svg",
+        "imgEstudiante": "./public/assets/img/student_alone_bootcamp.svg"
     },
     
     "imgPathProduction":{
@@ -28,7 +30,9 @@
         "iconConfirm": "./assets/img/icon-confirm.svg",
         "imgListadoBootcampProfesor": "./assets/img/teacher_bootcamp.svg",
         "imgListadoBootcampAdmisiones": "./assets/img/admission_bootcamp.svg",
-        "imgListadoBootcampContabilidad": "./assets/img/contability_bootcamp.svg"
+        "imgListadoBootcampContabilidad": "./assets/img/contability_bootcamp.svg",
+        "imgProfesor": "./assets/img/teacher_alone_bootcamp.svg",
+        "imgEstudiante": "./assets/img/student_alone_bootcamp.svg"
     }
 }
   

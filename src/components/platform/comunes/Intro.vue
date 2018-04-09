@@ -83,10 +83,10 @@
         created() {
             window.scrollTo(0, 0);
 
-            console.log('this.profile',this.profile)
+            //console.log('this.profile',this.profile)
 
             let arrBootcampsData = [...this.bootcampData.bootcamps];
-            let indexBootcampMatched = arrBootcampsData.findIndex( item => item.bootcampId === this.bootcampId);
+            let indexBootcampMatched = arrBootcampsData.findIndex( item => item._id === this.bootcampId);
 
             if(this.profile === 'profesor'){
                 let teacherList = arrBootcampsData[indexBootcampMatched].teacherList;
@@ -94,9 +94,9 @@
                 this.currentUserData = teacherList[indexTeacherMatched];
             } else {
                 let studentList = arrBootcampsData[indexBootcampMatched].studentList;
-                console.log('studentList',studentList)
+                //console.log('studentList',studentList)
                 let indexStudentMatched = studentList.findIndex( item => item._id == this.userId);
-                console.log('indexStudentMatched',indexStudentMatched)
+                //console.log('indexStudentMatched',indexStudentMatched)
                 this.currentUserData = studentList[indexStudentMatched];
             }
         }

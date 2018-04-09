@@ -1,5 +1,5 @@
 <template>
-    <div id="profesor-bootcamps" class="home bootcamps">  
+    <div class="home bootcamps">  
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
@@ -11,10 +11,7 @@
                     <div class="container-bootcamps">
                         <ul>
                             <li v-for='(item,i) of currentDataBootcamps' v-bind:key="i">
-                                <!--router-link class="link-codenotch" :to="{ path: `bootcamps/${item.bootcampId}/alumnos`}">
-                                    <span>{{item.name}}</span>
-                                </router-link-->  
-                                <router-link :to="{ path: `bootcamps/${item.bootcampId}/alumnos`}">
+                                <router-link :to="{ path: `bootcamps/${item._id}/${getRoute}`}">
                                     <v-btn class="btn-codenotch">{{item.name}}</v-btn>
                                 </router-link>
                             </li>
@@ -65,6 +62,22 @@
                             : this.config.imgPathDevelopment.imgListadoBootcampContabilidad
                     break;
                 }
+            }, 
+
+            getRoute() {
+                let route ='';
+
+                switch(this.profile){
+                    case 'profesor':
+                        route = 'alumnos';
+                    break;
+                    case 'admisiones':
+                    case 'contabilidad':
+                        route = 'participantes';
+                    break;
+                }
+
+                return route;
             }
         },
 
@@ -76,8 +89,6 @@
             window.scrollTo(0, 0);
 
             this.currentDataBootcamps = [...this.bootcampData.bootcamps];
-            /*let indexBootcampMatched = arrBootcampsData.findIndex( item => item.bootcampId == this.$route.bootcampId);
-            let teacherList = arrBootcampsData[indexBootcampMatched].teacherList;*/
         }
 
     }    

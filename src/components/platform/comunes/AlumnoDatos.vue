@@ -66,7 +66,7 @@ export default {
 
     let arrBootcampsData = [...this.bootcampData.bootcamps];
     let indexBootcampMatched = arrBootcampsData.findIndex(
-      item => item.bootcampId === this.bootcampId
+      item => item._id === this.bootcampId
     );
 
     this.currentBootcampData = arrBootcampsData[indexBootcampMatched];
