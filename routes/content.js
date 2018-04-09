@@ -196,9 +196,9 @@ router.get('/programData', (req, res, next) => {
           }
         }
           let content = {
-            contenidosPath: url+'/?contentid='+contentdata[i]._id,
-            slidesPath: url+'/?contentid='+slideid,
-            desarrolloPath: url+'/?contentid='+developid,
+            contenidosPath: url+'getContent/?contentid='+contentdata[i]._id,
+            slidesPath: url+'getSlides/?slideid='+slideid,
+            desarrolloPath: url+'/getDevelopment/?developid='+developid,
             indexId: contentdata[i]._id
           }
           program.push(content)
