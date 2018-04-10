@@ -6,6 +6,7 @@ var crypt=require('bcrypt-nodejs');
 var middlewares=require('../middlewares/usersMiddlewares.js');
 var session=require('express-sesssion');
 
+
 var conn=mongoose.connection;
 
 router.post('/register',
