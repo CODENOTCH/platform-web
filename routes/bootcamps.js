@@ -11,7 +11,6 @@ let session=require('express-sesssion');
 let conn=mongoose.connection;
 
 
-
 router.post('/insertBootcamp',(req,res,next)=>{
     let bootcampData={
         name:req.body.bootname,
