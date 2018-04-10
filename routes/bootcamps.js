@@ -101,13 +101,14 @@ router.get('/getBootcampData',(req,res,next)=>{
             studentList.push(student)
           }
           res.send({
-            bootcamps:[
+            bootdata
+            /*bootcamps:[
             bootdata,
             {
             studentList: studentList,
             teacherList: teacherList
             }
-            ]
+            ]*/
             })
         })
       })
