@@ -45,6 +45,7 @@ router.get('/getBootcampData',(req,res,next)=>{
             let student={
               name: username,
               description:studentdata[i].Description,
+              bootcampId:studentdata[i].bootcampID,
               _id: studentdata[i]._id,
               data:{
                 telefono: {label:"teléfono",content:studentdata[i].Phone,type:"shared"},
@@ -99,6 +100,45 @@ router.get('/getBootcampData',(req,res,next)=>{
             ]
             }
             studentList.push(student)
+          }
+          for(let j=0;j<teacherdata.length;j++){
+            let mail=""
+           let username=""
+            for(let z=0;z<userdata.length;z++){
+              if(userdata[z]._id==teacherdata[j].userID){
+                mail=userdata[z].mail;
+                username=userdata[z].username;
+              }
+            }
+            let teacher={
+              name: username,
+              _id: "1.112351",
+              bootcampId: teacherdata[j].bootcampID,
+              description: teacherdata[j].Description,
+              data: {
+                  telefono:{label:"teléfono",content:teacherdata[j].Phone},
+                  email:{label:"email",content:mail},
+                  domicilio:{label:"domicilio",content:teacherdata[j].Adress},
+                  codigoPostal:{label:"código postal",content:"none"},
+                  dni:{label:"dni / pasaporte",content:teacherdata[j].DNI},
+                  fechaNacimiento:{label:"fecha de nacimiento",content:teacherdata[j].Birthdate}
+              },
+              links: [
+                  {
+                      "content": "Github",
+                      "url": "https://github.com"
+                  },
+                  {
+                      "content": "Linkedin",
+                      "url": "https://es.linkedin.com/"
+                  },
+                  {
+                      "content": "Twitter",
+                      "url": "https://twitter.com"
+                  }
+              ],
+              "photoPath": teacherdata[j].Photo
+          }
           }
           res.send({
             bootcamps:[
