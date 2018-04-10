@@ -41,7 +41,7 @@ router.post('/insertStudent',(req,res,next)=>{
             Adress:req.body.factadress
         },
         bootcampID: req.body.bootcampid,
-        userID:req.session.userid
+        userID:req.body.userid
       }
       let newStudent=new student(studentData)
       newStudent.save((err,studentData)=>{
