@@ -1,7 +1,8 @@
 let crypt=require('bcrypt-nodejs')
 
 exports.encryptPassword=(req,res,next)=>{
-    req.body.password = crypt.hashSync(req.body.password, 10);
+    var salt = crypt.genSaltSync(10);
+    req.body.password =  crypt.hashSync(req.body.password, salt);
     next()
   }
 
