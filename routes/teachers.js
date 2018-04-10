@@ -16,7 +16,7 @@ router.post('/insertTeacher',(req,res,next)=>{
         Photo:req.body.photo,
         Birthdate: req.body.birthdate,
         bootcampID: req.body.bootcampid,
-        userID:req.session.userid
+        userID:req.body.userid
       }
       let newTeacher=new teacher(teacherData)
       newTeacher.save((err,teacherData)=>{
@@ -53,7 +53,7 @@ router.put('/updateTeacher',(req,res,next)=>{
         Photo:req.body.photo,
         Birthdate: req.body.birthdate,
         bootcampID: req.body.bootcampid,
-        userID:req.session.userid
+        userID:req.body.userid
       }
     teacher.findOneAndUpdate({userID:newTeacher.userID},newTeacher,
         (err,data)=>{

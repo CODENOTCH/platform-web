@@ -98,7 +98,7 @@ router.put('/updateStudent',(req,res,next)=>{
             Adress:req.body.factadress
         },
         bootcampID: req.body.bootcampid,
-        userID:req.session.userid
+        userID:req.body.userid
       }
     student.findOneAndUpdate({userID:newStudent.userID},newStudent,
         (err,data)=>{
