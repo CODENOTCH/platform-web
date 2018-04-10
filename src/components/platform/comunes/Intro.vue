@@ -83,10 +83,12 @@
         created() {
             window.scrollTo(0, 0);
 
-            //console.log('this.profile',this.profile)
 
             let arrBootcampsData = [...this.bootcampData.bootcamps];
             let indexBootcampMatched = arrBootcampsData.findIndex( item => item._id === this.bootcampId);
+
+            console.log('this.bootcampId',this.bootcampId)
+
 
             if(this.profile === 'profesor'){
                 let teacherList = arrBootcampsData[indexBootcampMatched].teacherList;

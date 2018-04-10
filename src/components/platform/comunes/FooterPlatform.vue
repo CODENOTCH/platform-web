@@ -139,12 +139,31 @@
                         this.noBreadcrumbs = false;
                     break;
 
+                    case 'listadoProfesoresAdmisiones':
+                        breadcrumbs = [
+                            {text:'Bootcamps', visible:true, disabled: false, route:'listadoBootcampsAdmisiones'},
+                            {text:'Participantes', visible:true, disabled: false, route:'participantesAdmisiones'},
+                            {text:'Profesores', visible:true, disabled: true, route:'listadoProfesoresAdmisiones'}
+                        ],
+                        this.noBreadcrumbs = false;
+                    break;
+
                     case 'alumnoDatosAdmisiones':
                         breadcrumbs = [
                             {text:'Bootcamps', visible:true, disabled: false, route:'listadoBootcampsAdmisiones'},
                             {text:'Participantes', visible:true, disabled: false, route:'participantesAdmisiones'},
                             {text:'Alumnos', visible:true, disabled: false, route:'listadoAlumnosAdmisiones'},
                             {text:'Alumno', visible:true, disabled: true, route:'alumnoDatosAdmisiones'}
+                        ],
+                        this.noBreadcrumbs = false;
+                    break;
+
+                    case 'profesorDatosAdmisiones':
+                        breadcrumbs = [
+                            {text:'Bootcamps', visible:true, disabled: false, route:'listadoBootcampsAdmisiones'},
+                            {text:'Participantes', visible:true, disabled: false, route:'participantesAdmisiones'},
+                            {text:'Profesores', visible:true, disabled: false, route:'listadoProfesoresAdmisiones'},
+                            {text:'Profesor', visible:true, disabled: true, route:'profesorDatosAdmisiones'}
                         ],
                         this.noBreadcrumbs = false;
                     break;
@@ -173,12 +192,31 @@
                         this.noBreadcrumbs = false;
                     break;
 
+                    case 'listadoProfesoresContabilidad':
+                        breadcrumbs = [
+                            {text:'Bootcamps', visible:true, disabled: false, route:'listadoBootcampsContabilidad'},
+                            {text:'Participantes', visible:true, disabled: false, route:'participantesContabilidad'},
+                            {text:'Profesores', visible:true, disabled: true, route:'listadoProfesoresContabilidad'}
+                        ],
+                        this.noBreadcrumbs = false;
+                    break;
+
                     case 'alumnoDatosContabilidad':
                         breadcrumbs = [
                             {text:'Bootcamps', visible:true, disabled: false, route:'listadoBootcampsContabilidad'},
                             {text:'Participantes', visible:true, disabled: false, route:'participantesContabilidad'},
                             {text:'Alumnos', visible:true, disabled: false, route:'listadoAlumnosContabilidad'},
                             {text:'Alumno', visible:true, disabled: true, route:'alumnoDatosContabilidad'}
+                        ],
+                        this.noBreadcrumbs = false;
+                    break;
+
+                    case 'profesorDatosContabilidad':
+                        breadcrumbs = [
+                            {text:'Bootcamps', visible:true, disabled: false, route:'listadoBootcampsContabilidad'},
+                            {text:'Participantes', visible:true, disabled: false, route:'participantesContabilidad'},
+                            {text:'Profesores', visible:true, disabled: false, route:'listadoProfesoresContabilidad'},
+                            {text:'Profesor', visible:true, disabled: true, route:'alumnoDatosContabilidad'}
                         ],
                         this.noBreadcrumbs = false;
                     break;

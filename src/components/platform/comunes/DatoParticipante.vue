@@ -1,9 +1,9 @@
 <template>
-    <div class="card dato-alumno">
-        <div class="card-header dato-label">
+    <div class="card participant-data">
+        <div class="card-header label-data">
             {{data.label}}
         </div>
-        <div class="card-body dato-content">
+        <div class="card-body content-data">
             <h5 class="card-title">{{data.content}}</h5>
         </div>
     </div>
@@ -11,7 +11,7 @@
 
 <script>
     export default {
-        name: 'dataAlumno',
+        name: 'datoParticipante',
 
         props: ["data"],
     }

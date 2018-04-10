@@ -98,9 +98,9 @@
 
                     /* TEMPORAL */ 
 
-                    /*Axios.post('/api/submit', {
-                        name: this.name,
-                        email: this.email
+                    /*Axios.post('https://www.codenotch.com/users/login', {
+                        username: this.name,
+                        password: this.email
                     });*/
 
                     /* TEMPORAL */ 
@@ -161,6 +161,37 @@
                             this.$router.push({path: `/${userSelected.route}`});
                         }
                     };
+
+
+                    /*var options = {
+                        method: 'POST',
+                        url: 'https://www.codenotch.com/users/login',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                            "Access-Control-Allow-Origin": "*"
+                        },
+                        json: true
+                    };
+
+                    Axios.post(options, {
+                       username: this.name,
+                       password: this.password
+                    })*/
+
+                    
+
+                    /*Axios.post('https://www.codenotch.com/users/login',{
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                            "Access-Control-Allow-Origin": "*"
+                        }
+                    })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });*/
 
 
                     

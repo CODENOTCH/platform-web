@@ -8,11 +8,11 @@ import Intro from '../components/platform/comunes/Intro.vue';
 import Programa from '../components/platform/programa/Programa.vue';
 import ListadoBootcamps from '../components/platform/comunes/ListadoBootcamps.vue';
 import Participantes from '../components/platform/comunes/Participantes.vue';
-import ListadoAlumnos from '../components/platform/comunes/ListadoAlumnos.vue';
+import ListadoParticipantes from '../components/platform/comunes/ListadoParticipantes.vue';
 import AlumnoSeguimiento from '../components/platform/profesor/AlumnoSeguimiento.vue';
 import AdmisionesWrapper from '../components/platform/admisiones/AdmisionesWrapper.vue';
 import ContabilidadWrapper from '../components/platform/contabilidad/ContabilidadWrapper.vue';
-import AlumnoDatos from '../components/platform/comunes/AlumnoDatos.vue';
+import ParticipanteDatos from '../components/platform/comunes/ParticipanteDatos.vue';
 
 const router = new VueRouter({
     routes : [
@@ -51,7 +51,7 @@ const router = new VueRouter({
                 {
                     path: 'bootcamps/:bootcampId/alumnos',
                     name:'listadoAlumnos',
-                    component: ListadoAlumnos
+                    component: ListadoParticipantes
                 },
                 {
                     path: 'bootcamps/:bootcampId/alumnos/:studentId',
@@ -75,12 +75,22 @@ const router = new VueRouter({
                 {
                     path: 'bootcamps/:bootcampId/participantes/alumnos',
                     name:'listadoAlumnosAdmisiones',
-                    component: ListadoAlumnos
+                    component: ListadoParticipantes
                 },
                 {
-                    path: 'bootcamps/:bootcampId/participantes/alumnos/:studentId',
+                    path: 'bootcamps/:bootcampId/participantes/profesores',
+                    name:'listadoProfesoresAdmisiones',
+                    component: ListadoParticipantes
+                },
+                {
+                    path: 'bootcamps/:bootcampId/participantes/alumnos/:id',
                     name:'alumnoDatosAdmisiones',
-                    component: AlumnoDatos
+                    component: ParticipanteDatos
+                },
+                {
+                    path: 'bootcamps/:bootcampId/participantes/profesores/:id',
+                    name:'profesorDatosAdmisiones',
+                    component: ParticipanteDatos
                 }
             ]
         },
@@ -99,12 +109,23 @@ const router = new VueRouter({
                 {
                     path: 'bootcamps/:bootcampId/participantes/alumnos',
                     name:'listadoAlumnosContabilidad',
-                    component: ListadoAlumnos
+                    component: ListadoParticipantes
+                },
+                ,
+                {
+                    path: 'bootcamps/:bootcampId/participantes/profesores',
+                    name:'listadoProfesoresContabilidad',
+                    component: ListadoParticipantes
                 },
                 {
-                    path: 'bootcamps/:bootcampId/participantes/alumnos/:studentId',
+                    path: 'bootcamps/:bootcampId/participantes/alumnos/:id',
                     name:'alumnoDatosContabilidad',
-                    component: AlumnoDatos
+                    component: ParticipanteDatos
+                },
+                {
+                    path: 'bootcamps/:bootcampId/participantes/profesores/:id',
+                    name:'profesorDatosContabilidad',
+                    component: ParticipanteDatos
                 }
             ]
         },
