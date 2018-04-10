@@ -18,9 +18,6 @@ let contentIndex=require('./routes/contentIndex')
 let bootcamp=require('./routes/bootcamps')
 
 
-var cors = require('cors')
-app.use(cors());
-
 let app = express();
 
 let mongoose = require('mongoose');
