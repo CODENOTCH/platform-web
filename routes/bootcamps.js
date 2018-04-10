@@ -25,8 +25,6 @@ router.post('/insertBootcamp',(req,res,next)=>{
       }) 
 })
 router.get('/getBootcampData',(req,res,next)=>{
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
   bootcamp.findOne({},(err,bootdata)=>{
     students.find({},(err,studentdata)=>{
       teachers.find({},(err,teacherdata)=>{

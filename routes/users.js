@@ -32,9 +32,6 @@ router.get('/Logout',(req,res,next)=>{
   res.send({message:'logout',code:200})
 })
 router.post('/login',(req,res,next)=>{
-  res.append('Access-Control-Allow-Origin', ['*']);
-  res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.append('Access-Control-Allow-Headers', 'Content-Type');
   user.find({username:req.body.username},(err,data)=>{
     if(crypt.compareSync(req.body.password, data[0].password)){
       req.session.userid=data[0]._id
