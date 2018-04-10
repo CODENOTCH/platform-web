@@ -33,6 +33,7 @@ router.get('/getBootcampData',(req,res,next)=>{
       teachers.find({},(err,teacherdata)=>{
         users.find({},(err,userdata)=>{
           let studentList=[]
+          let teacherList=[]
           for(let i=0;i<studentdata.length;i++){
            let mail=""
            let username=""
@@ -101,6 +102,7 @@ router.get('/getBootcampData',(req,res,next)=>{
             }
             studentList.push(student)
           }
+
           for(let j=0;j<teacherdata.length;j++){
             let mail=""
            let username=""
@@ -112,7 +114,7 @@ router.get('/getBootcampData',(req,res,next)=>{
             }
             let teacher={
               name: username,
-              _id: "1.112351",
+              _id: teacherdata[j]._id,
               bootcampId: teacherdata[j].bootcampID,
               description: teacherdata[j].Description,
               data: {
@@ -139,6 +141,7 @@ router.get('/getBootcampData',(req,res,next)=>{
               ],
               "photoPath": teacherdata[j].Photo
           }
+          teacherList.push(teacher)
           }
           res.send({
             bootcamps:[
@@ -147,7 +150,7 @@ router.get('/getBootcampData',(req,res,next)=>{
             _id:bootdata._id,
             weeks:bootdata.weeks,
             studentList: studentList,
-            teacherList: teacherdata
+            teacherList: teacherList
             }]
             })
         })
