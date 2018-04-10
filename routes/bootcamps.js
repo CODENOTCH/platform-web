@@ -104,9 +104,10 @@ router.get('/getBootcampData',(req,res,next)=>{
             bootcamps:[
             bootdata,
             {
-            //studentList: studentList,
-            teacherList: teacherList
-          }]
+            studentList: studentList,
+            teacherList: teacherdata
+            }
+            ]
             })
         })
       })
