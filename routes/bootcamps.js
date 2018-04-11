@@ -102,7 +102,7 @@ router.get('/getBootcampData',(req,res,next)=>{
 
           for(let j=0;j<teacherdata.length;j++){
             let mail=""
-           let username=""
+            let username=""
             for(let z=0;z<userdata.length;z++){
               if(userdata[z]._id==teacherdata[j].userID){
                 mail=userdata[z].mail;
