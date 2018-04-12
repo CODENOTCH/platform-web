@@ -102,7 +102,8 @@ export default {
       defaultParticipantData: [],
       currentRoute: "",
       editMode: false,
-      onModalMode: false
+      onModalMode: false,
+      isConfirmed: false
     };
   },
 
@@ -120,7 +121,7 @@ export default {
     },
 
     isAdmissionProfile(){
-        return this.profile === 'admisiones' ? true : false;
+      return this.profile === 'admisiones' ? true : false;
     }
   },
 
@@ -130,6 +131,7 @@ export default {
   },
 
   created() {
+      console.log('created');
     window.scrollTo(0, 0);
 
     let arrBootcampsData = [...this.bootcampData.bootcamps];
@@ -144,12 +146,12 @@ export default {
       case "listadoAlumnos":
       case "listadoAlumnosAdmisiones":
       case "listadoAlumnosContabilidad":
-        participantsList = arrBootcampsData[indexBootcampMatched].studentList;
+        participantsList = [...arrBootcampsData[indexBootcampMatched].studentList];
         this.currentRoute = "alumnos";
         break;
       case "listadoProfesoresAdmisiones":
       case "listadoProfesoresContabilidad":
-        participantsList = arrBootcampsData[indexBootcampMatched].teacherList;
+        participantsList = [...arrBootcampsData[indexBootcampMatched].teacherList];
         this.currentRoute = "profesores";
         break;
     }
@@ -158,9 +160,25 @@ export default {
     this.defaultParticipantData = [...this.currentParticipantData];
   },
 
+  /*destroy(){
+    console.log('destroy')
+    if(this.isConfirmed !== true) {
+        this.currentParticipantData = this.defaultParticipantData;
+        this.editMode = false;
+    }
+  },
+
+  updated(){
+      console.log('updated')
+  },*/
+
   methods:{
       clickEditHandler(){
           this.editMode = true;
+          /*window.onhashchange = function() { 
+              alert('cuidado')
+          };*/
+          this.addEventHashChange();
           this.$store.commit('setEditModeActive',true);
       },
 
@@ -169,6 +187,7 @@ export default {
       },
 
       confirmModalHandler(){
+          this.isConfirmed = true;
           this.onModalMode = false;
           this.$store.commit('setEditModeActive',false);
       },
@@ -194,6 +213,28 @@ export default {
 
       editParticipantHandler(){
 
+      },
+
+      addEventHashChange(){
+          window.addEventListener('hashchange', this.listenerHashChange);
+      },
+
+      removeEventHashChange(){
+          window.removeEventListener('hashchange', this.listenerHashChange);
+      },
+
+      listenerHashChange(){
+          if(this.isConfirmed === false){
+              console.log('this.currentParticipantData from listenerHashChange before assing',this.currentParticipantData);
+              console.log('this.defaultParticipantData from listenerHashChange before assing',this.defaultParticipantData);
+              this.currentParticipantData = this.defaultParticipantData;
+              console.log('this.currentParticipantData from listenerHashChange after assing',this.currentParticipantData);
+              console.log('this.defaultParticipantData from listenerHashChange after assing',this.defaultParticipantData);
+          }
+          this.onModalMode = false; 
+          this.editMode = false;
+          this.$store.commit('setEditModeActive',false);
+          this.removeEventHashChange();
       }
   }
 };
