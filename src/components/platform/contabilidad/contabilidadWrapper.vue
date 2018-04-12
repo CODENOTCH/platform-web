@@ -20,6 +20,16 @@
             logoPlatform: LogoPlatform,
             footerPlatform: FooterPlatform,
             btnScroll: BtnScroll
+        },
+
+        computed: {
+            ...mapGetters({
+                logged: 'getLogged'
+            }),
+        },
+
+        created(){
+            if(!this.logged) this.$router.push({ name: 'login'});
         }
     }    
 </script>

@@ -5,4 +5,16 @@
             margin: 0 auto;
         }
     }
+    .container-btns{
+        position: fixed;
+        z-index: 4;
+        right: 10px;
+        top: 20px;
+        .btn{
+            color: $white;
+            background: $purple;
+        }
+    }
 }
+
+

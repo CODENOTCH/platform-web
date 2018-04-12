@@ -24,17 +24,17 @@
 
         computed: {
             ...mapGetters({
+                logged: 'getLogged',
                 isProgram: 'getIsProgram',
             }),
         },
 
         created(){
-            //console.log('created alumnoWrapper');
+            if(!this.logged) this.$router.push({ name: 'login'});
             this.avoidContextMenu();
         },
 
         beforeDestroy(){
-            //console.log('beforeDestroy alumnoWrapper');
             this.allowContextMenu();
         },
 

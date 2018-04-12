@@ -12,7 +12,7 @@
                         <ul>
                             <li v-for='(item,i) of currentDataBootcamps' v-bind:key="i">
                                 <router-link :to="{ path: `bootcamps/${item._id}/${getRoute}`}">
-                                    <v-btn class="btn-codenotch">{{item.name}}</v-btn>
+                                    <v-btn @click="setBootcampId(i)" class="btn-codenotch">{{item.name}}</v-btn>
                                 </router-link>
                             </li>
                         </ul> 
@@ -89,6 +89,12 @@
             window.scrollTo(0, 0);
 
             this.currentDataBootcamps = [...this.bootcampData.bootcamps];
+        },
+
+        methods:{
+            setBootcampId(index){
+                this.$store.commit('setBootcampId', this.currentDataBootcamps[index]._id);
+            }
         }
 
     }    

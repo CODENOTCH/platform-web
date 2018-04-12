@@ -87,12 +87,14 @@
             let arrBootcampsData = [...this.bootcampData.bootcamps];
             let indexBootcampMatched = arrBootcampsData.findIndex( item => item._id === this.bootcampId);
 
-            console.log('this.bootcampId',this.bootcampId)
+            //console.log('this.bootcampId',this.bootcampId)
+           // console.log('indexBootcampMatched',indexBootcampMatched)
 
 
             if(this.profile === 'profesor'){
                 let teacherList = arrBootcampsData[indexBootcampMatched].teacherList;
                 let indexTeacherMatched = teacherList.findIndex( item => item._id === this.userId);
+                console.log('this.userId',this.userId)
                 this.currentUserData = teacherList[indexTeacherMatched];
             } else {
                 let studentList = arrBootcampsData[indexBootcampMatched].studentList;

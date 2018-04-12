@@ -1,5 +1,27 @@
 <template>
-    <div id="listado-participantes" class="home participants">  
+    <div id="listado-participantes" class="home participants">
+        <div class="container-btns" v-if="isAdmissionProfile">
+            <v-btn
+                v-if="!editMode"
+                dark
+                small
+                fab
+                @click="clickEditHandler"
+                class="btn"
+                >
+                <v-icon>edit</v-icon>
+            </v-btn>
+            <v-btn
+                v-else
+                dark
+                small
+                fab
+                @click="clickConfirmHandler"
+                class="btn"
+                >
+                <v-icon>done</v-icon>
+            </v-btn>
+        </div>  
         <div class="container-fluid">
             <div class="row" >
                 <div class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-0 col-xl-4 offset-xl-0 block-participant" v-for="(item,index) of currentParticipantData" v-bind:key="index">
@@ -35,20 +57,32 @@
                 </div>
             </div>    
         </div>
+        <listado-participantes-modal v-if="onModalMode"
+                                     @onConfirm="confirmModalHandler"
+                                     @onRestore="restoreModalHandler"
+                                     @onEdit="editModalHandler"
+        ></listado-participantes-modal>
     </div>
 </template>
 
 <script>
 import Axios from "axios";
 import { mapGetters } from "vuex";
+import ListadoParticipantesModal from './ListadoParticipantesModal.vue';
 
 export default {
   name: "listadoParticipantes",
 
+  components: {
+    listadoParticipantesModal: ListadoParticipantesModal
+  },
+
   data() {
     return {
       currentParticipantData: {},
-      currentRoute: ""
+      currentRoute: "",
+      editMode: false,
+      onModalMode: false
     };
   },
 
@@ -63,6 +97,10 @@ export default {
     getNameBtn() {
       let name = this.profile === "profesor" ? "SEGUIMIENTO" : "FICHA";
       return name;
+    },
+
+    isAdmissionProfile(){
+        return this.profile === 'admisiones' ? true : false;
     }
   },
 
@@ -75,9 +113,11 @@ export default {
     window.scrollTo(0, 0);
 
     let arrBootcampsData = [...this.bootcampData.bootcamps];
+    console.log('arrBootcampsData: ',arrBootcampsData);
     let indexBootcampMatched = arrBootcampsData.findIndex(
       item => item._id == this.bootcampId
     );
+    console.log('indexBootcampMatched: ',indexBootcampMatched);
     let participantsList = null;
 
     switch (this.$route.name) {
@@ -95,6 +135,28 @@ export default {
     }
 
     this.currentParticipantData = participantsList;
+  },
+
+  methods:{
+      clickEditHandler(){
+          this.editMode = true;
+      },
+
+      clickConfirmHandler(){
+          this.onModalMode = true;
+      },
+
+      confirmModalHandler(){
+          this.onModalMode = false;
+      },
+
+      restoreModalHandler(){
+          this.onModalMode = false;
+      },
+
+      editModalHandler(){
+          //this.onModalMode = true;
+      }
   }
 };
 </script>

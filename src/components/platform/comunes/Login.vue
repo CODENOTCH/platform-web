@@ -98,13 +98,6 @@
 
                     /* TEMPORAL */ 
 
-                    /*Axios.post('https://www.codenotch.com/users/login', {
-                        username: this.name,
-                        password: this.email
-                    });*/
-
-                    /* TEMPORAL */ 
-
                     let arrayFakeResponse = [
                         {
                             name:"Laura",
@@ -155,6 +148,7 @@
                             this.typeModal = "wrongPassword";
                         }
                         else{
+                            this.$store.commit('setLogged', true);
                             this.$store.commit('setProfile', userSelected.profile);
                             this.$store.commit('setUserId', userSelected.id);
                             this.$store.commit('setBootcampId', userSelected.bootcampId);
@@ -163,33 +157,46 @@
                     };
 
 
-                    /*var options = {
-                        method: 'POST',
-                        url: 'https://www.codenotch.com/users/login',
+                   /*Axios.post('https://www.codenotch.com/users/login',{
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
                             "Access-Control-Allow-Origin": "*"
                         },
-                        json: true
-                    };
-
-                    Axios.post(options, {
-                       username: this.name,
-                       password: this.password
-                    })*/
-
-                    
-
-                    /*Axios.post('https://www.codenotch.com/users/login',{
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                            "Access-Control-Allow-Origin": "*"
+                        params: {
+                            username: this.user,
+                            password: this.password
                         }
                     })
-                    .then(function (response) {
+                    .then( (response) => {
                         console.log(response);
+                        const responseData = response.data;
+
+                        if(responseData.message === 'unauthorized') {
+                            this.typeModal = "wrongUser";
+                            this.onModalMode = true;
+                            return;
+                        }
+
+                        this.$store.commit('setLogged', true);
+                        this.$store.commit('setProfile', responseData.type);
+                        this.$store.commit('setUserId', responseData._id);
+
+                        switch (responseData.type) {
+                            case "alumno":
+                                this.$router.push({path:'alumno'});
+                            case "profesor":
+                                this.$router.push({path:'profesor'});
+                                this.$store.commit('setBootcampId', response.data.bootcampId);
+                                break;
+                            case "admisiones":
+                                this.$router.push({path:'admisiones/bootcamps'});
+                                break;    
+                            case "contabilidad":
+                                this.$router.push({path:'contabilidad/bootcamps'});
+                                break; 
+                        }
                     })
-                    .catch(function (error) {
+                    .catch( (error) => {
                         console.log(error);
                     });*/
 

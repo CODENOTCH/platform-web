@@ -24,8 +24,13 @@
 
         computed: {
             ...mapGetters({
-                isProgram: 'getIsProgram',
+                logged: 'getLogged',
+                isProgram: 'getIsProgram'
             }),
+        },
+
+        created(){
+            if(!this.logged) this.$router.push({ name: 'login'});
         }
     }    
 </script>
