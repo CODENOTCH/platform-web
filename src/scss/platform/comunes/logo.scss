@@ -12,4 +12,11 @@
         margin-top: 10vh;
         margin-bottom: 14vh;
     }
+    h1{
+        a{
+            &.unlinked{
+                pointer-events: none;
+            }
+        }
+    }
 }

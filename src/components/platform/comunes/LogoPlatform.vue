@@ -4,7 +4,7 @@
             <div class="col-12 col-xl-4 offset-xl-4">
                 <div class="logo-container">
                     <h1>
-                        <router-link :to="{ name: getRoute}">
+                        <router-link :to="{ name: getRoute}" :class="{unlinked:editModeActive}">
                             <img :src="getPathLogo" alt="logo Codenotch"/>
                         </router-link> 
                     </h1>
@@ -25,7 +25,8 @@
             ...mapGetters({
                 config: 'getConfigData',
                 isBootcamp: 'getIsBootcamp',
-                profile: 'getProfile'
+                profile: 'getProfile',
+                editModeActive: 'getEditModeActive'
             }),   
 
             getRoute(){
