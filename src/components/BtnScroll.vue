@@ -1,5 +1,5 @@
 <template>
-    <div class="container-btn-scroll"  v-scroll="onScroll">
+    <div class="container-btn-scroll" v-scroll="onScroll" :class="{below:editModeActive}">
         <v-btn
               dark
               small
@@ -38,7 +38,8 @@
 
         computed: mapGetters({
             config: 'getConfigData',
-            isOnlyMobile: 'getIsOnlyMobile'
+            isOnlyMobile: 'getIsOnlyMobile',
+            editModeActive: 'getEditModeActive'
         }),
 
         methods:{
@@ -62,6 +63,9 @@
         z-index: 3;
         bottom: 100px;
         right: 74px;
+        &.below{
+            bottom: 45px;
+        }
     }
     .btn-scroll{
         color: $white;
