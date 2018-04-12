@@ -113,11 +113,11 @@ export default {
     window.scrollTo(0, 0);
 
     let arrBootcampsData = [...this.bootcampData.bootcamps];
-    console.log('arrBootcampsData: ',arrBootcampsData);
+    //console.log('arrBootcampsData: ',arrBootcampsData);
     let indexBootcampMatched = arrBootcampsData.findIndex(
       item => item._id == this.bootcampId
     );
-    console.log('indexBootcampMatched: ',indexBootcampMatched);
+    //console.log('indexBootcampMatched: ',indexBootcampMatched);
     let participantsList = null;
 
     switch (this.$route.name) {
