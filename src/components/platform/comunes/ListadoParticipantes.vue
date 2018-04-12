@@ -50,13 +50,32 @@
                         </div>
                     </div>
                     <div class="btn-container col-xl-8 offset-xl-2">
-                        <router-link :to="{ path: `${currentRoute}/${item._id}`}">
+                        <router-link v-if="!editMode" :to="{ path: `${currentRoute}/${item._id}`}">
                             <v-btn class="btn-codenotch">{{getNameBtn}}</v-btn>
                         </router-link>
+                        <div v-else class="container-btns-edit">
+                            <button @click="deleteParticipantHandler" type="button" class="btn btn-danger">
+                                <v-icon>delete</v-icon>
+                            </button>
+                            <button @click="editParticipantHandler" type="button" class="btn btn-info">
+                                <v-icon>edit</v-icon>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>    
         </div>
+        <div class="container-btn-add" v-if="editMode">
+            <v-btn
+                dark
+                small
+                fab
+                @click="clickEditHandler"
+                class="btn"
+                >
+                <v-icon>add</v-icon>
+            </v-btn>
+        </div> 
         <listado-participantes-modal v-if="onModalMode"
                                      @onConfirm="confirmModalHandler"
                                      @onRestore="restoreModalHandler"
@@ -152,10 +171,19 @@ export default {
 
       restoreModalHandler(){
           this.onModalMode = false;
+          this.editMode = false;
       },
 
       editModalHandler(){
           //this.onModalMode = true;
+      },
+
+      deleteParticipantHandler(){
+
+      },
+
+      editParticipantHandler(){
+
       }
   }
 };

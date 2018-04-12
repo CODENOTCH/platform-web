@@ -61,7 +61,7 @@
         position: fixed;
         z-index: 3;
         bottom: 100px;
-        right: 65px;
+        right: 74px;
     }
     .btn-scroll{
         color: $white;
