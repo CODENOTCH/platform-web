@@ -54,7 +54,7 @@
                             <v-btn class="btn-codenotch">{{getNameBtn}}</v-btn>
                         </router-link>
                         <div v-else class="container-btns-edit">
-                            <button @click="deleteParticipantHandler" type="button" class="btn btn-danger">
+                            <button @click="deleteParticipantHandler(item)" type="button" class="btn btn-danger">
                                 <v-icon>delete</v-icon>
                             </button>
                             <button @click="editParticipantHandler" type="button" class="btn btn-info">
@@ -98,7 +98,8 @@ export default {
 
   data() {
     return {
-      currentParticipantData: {},
+      currentParticipantData: [],
+      defaultParticipantData: [],
       currentRoute: "",
       editMode: false,
       onModalMode: false
@@ -134,7 +135,7 @@ export default {
     let arrBootcampsData = [...this.bootcampData.bootcamps];
     //console.log('arrBootcampsData: ',arrBootcampsData);
     let indexBootcampMatched = arrBootcampsData.findIndex(
-      item => item._id == this.bootcampId
+      item => item._id === this.bootcampId
     );
     //console.log('indexBootcampMatched: ',indexBootcampMatched);
     let participantsList = null;
@@ -154,6 +155,7 @@ export default {
     }
 
     this.currentParticipantData = participantsList;
+    this.defaultParticipantData = [...this.currentParticipantData];
   },
 
   methods:{
@@ -172,14 +174,19 @@ export default {
       restoreModalHandler(){
           this.onModalMode = false;
           this.editMode = false;
+          this.currentParticipantData = this.defaultParticipantData;
       },
 
       editModalHandler(){
           //this.onModalMode = true;
       },
 
-      deleteParticipantHandler(){
+      deleteParticipantHandler(participant){
+          let indexParticipantMatched = this.currentParticipantData.findIndex(
+            item => item === participant
+          );
 
+          this.currentParticipantData.splice(indexParticipantMatched,1);
       },
 
       editParticipantHandler(){
