@@ -1,4 +1,8 @@
 .participants{
+    padding-bottom: 14vh;
+    @media (min-width: 768px){
+        padding-bottom: 0;
+    }
     .block-sup{
         margin-bottom: 3em;
         img{

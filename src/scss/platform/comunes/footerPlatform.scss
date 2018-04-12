@@ -12,6 +12,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    @include transition(all,.35s,ease-out,0);
+    &.approachless{
+      bottom: -130px;
+    }
     ul{
       font-size: inherit;
       line-height: inherit;

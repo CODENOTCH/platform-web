@@ -26,7 +26,7 @@ export const getIsProgram = state => {
     return state.isProgram;
 };
 
-export const getIsBootcamp  = state => {
+export const getIsBootcamp = state => {
     return state.isBootcamp;
 };
 
@@ -44,6 +44,10 @@ export const getIsMobileOrTablet = state => {
 
 export const getLogged = state => {
     return state.logged;
+};
+
+export const getEditModeActive = state => {
+    return state.editModeActive;
 };
 
 export const getVersionIE = state => {

@@ -1,5 +1,5 @@
 <template>
-    <footer id="footer-platform">
+    <footer id="footer-platform" :class="{approachless:editModeActive}">
         <div class="container-btn-session" :class="{centered:noBreadcrumbs}">
             <router-link class="link-special-codenotch" :to="{ name: 'login'}">
                 <img :src="getPathIconSession" alt="icono sesión"/>
@@ -35,7 +35,8 @@
         computed: {
             ...mapGetters({
                 config: 'getConfigData',
-                profile: 'getProfile'
+                profile: 'getProfile',
+                editModeActive: 'getEditModeActive'
             }),
 
             getPathIconSession() {

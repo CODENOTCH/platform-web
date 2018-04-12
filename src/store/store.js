@@ -21,7 +21,8 @@ const state = {
     profile: '',
     isProgram: false,
     isBootcamp: false,
-    dataStudentSelected: []
+    dataStudentSelected: [],
+    editModeActive: false
 };
 
 const store = new Vuex.Store({

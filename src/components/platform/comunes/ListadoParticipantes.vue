@@ -161,6 +161,7 @@ export default {
   methods:{
       clickEditHandler(){
           this.editMode = true;
+          this.$store.commit('setEditModeActive',true);
       },
 
       clickConfirmHandler(){
@@ -169,12 +170,14 @@ export default {
 
       confirmModalHandler(){
           this.onModalMode = false;
+          this.$store.commit('setEditModeActive',false);
       },
 
       restoreModalHandler(){
           this.onModalMode = false;
           this.editMode = false;
           this.currentParticipantData = this.defaultParticipantData;
+          this.$store.commit('setEditModeActive',false);
       },
 
       editModalHandler(){

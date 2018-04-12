@@ -46,6 +46,10 @@ export const setLogged = (state,isLogged) => {
     state.logged = isLogged;
 };
 
+export const setEditModeActive = (state,isActive) => {
+    state.editModeActive = isActive;
+};
+
 export const setVersionIE = (state) => {
     let userAgent = window.navigator.userAgent;
     let msie = userAgent.indexOf('MSIE ');
