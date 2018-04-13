@@ -13,6 +13,7 @@ import AlumnoSeguimiento from '../components/platform/profesor/AlumnoSeguimiento
 import AdmisionesWrapper from '../components/platform/admisiones/AdmisionesWrapper.vue';
 import ContabilidadWrapper from '../components/platform/contabilidad/ContabilidadWrapper.vue';
 import ParticipanteDatos from '../components/platform/comunes/ParticipanteDatos.vue';
+import ParticipanteDatosEditar from '../components/platform/comunes/ParticipanteDatosEditar.vue';
 
 const router = new VueRouter({
     routes : [
@@ -91,6 +92,16 @@ const router = new VueRouter({
                     path: 'bootcamps/:bootcampId/participantes/profesores/:id',
                     name:'profesorDatosAdmisiones',
                     component: ParticipanteDatos
+                },
+                {
+                    path: 'bootcamps/:bootcampId/participantes/alumnos/:id/edit',
+                    name:'alumnoDatosEditarAdmisiones',
+                    component: ParticipanteDatosEditar
+                },
+                {
+                    path: 'bootcamps/:bootcampId/participantes/profesores/:id/edit',
+                    name:'profesorDatosEditarAdmisiones',
+                    component: ParticipanteDatosEditar
                 }
             ]
         },

@@ -55,6 +55,29 @@
                 }
             }
         }
+        .container-btns{
+            position: fixed;
+            z-index: 4;
+            right: 10px;
+            top: 20px;
+            .btn{
+                color: $white;
+                background: $purple;
+            }
+        }
+        .container-btn-add{
+            position: fixed;
+            z-index: 4;
+            left: 10px;
+            bottom: 20px;
+            .btn{
+                color: $white;
+                background: $green;
+            }
+        }
+        .container-btns-edit{
+            @include flexContainer();
+        }
     }
 }
 

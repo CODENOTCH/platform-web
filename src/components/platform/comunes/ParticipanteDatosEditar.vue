@@ -1,14 +1,30 @@
 <template>
-    <div class="interior-ficha">
+    <div class="interior-ficha edit">
+        <div class="container-btn-confirm">
+            <v-btn
+                dark
+                small
+                fab
+                @click="clickConfirmHandler"
+                class="btn"
+                >
+                <v-icon>done</v-icon>
+            </v-btn>
+        </div>  
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-2 offset-xl-5 container-img-codenotch">
-                    <img class="img-fluid img-codenotch" :src="currentParticipantData.photoPath" alt="foto alumno" />
+                    <img class="img-fluid img-codenotch" :src="getUserPhoto" alt="foto alumno" />
+                    <!--v-btn @click="uploadPhoto" class="btn-codenotch"> SUBIR FOTO </v-btn-->
+
+                    <label class="btn-codenotch">
+                        SUBIR FOTO <input type="file" hidden accept="image/*" @change="handleFile">
+                    </label>
                 </div> 
             </div>
             <div class="row">
                 <div class="col-12 container-name">
-                    <h2>{{currentParticipantData.name}}</h2>
+                    <h2 ref="userName" contenteditable="true" spellcheck="false">{{currentParticipantData.name}}</h2>
                 </div> 
             </div>
             <div class="row">
@@ -27,7 +43,7 @@ import { mapGetters } from 'vuex';
 import DatoParticipante from '../comunes/DatoParticipante.vue';
 
 export default {
-  name: 'participanteDatos',
+  name: 'participanteDatosEditar',
 
   components: {
       datoParticipante: DatoParticipante
@@ -41,6 +57,9 @@ export default {
       bootcampId: '',
       id: '',
       participantType: '',
+      isUploadedPhoto: false,
+      uploadedPhotoPath: '',
+      userName:''
     };
   },
 
@@ -48,8 +67,15 @@ export default {
     ...mapGetters({
       config: 'getConfigData',
       bootcampData: 'getBootcampData',
-      profile:'getProfile'
+      profile:'getProfile',
+      editModeActive: 'getEditModeActive'
     }),
+
+    getUserPhoto(){
+        /* PROVISIONAL */ 
+        if(!this.isUploadedPhoto) return this.currentParticipantData.photoPath;
+        else return 'https://raw.githubusercontent.com/CODENOTCH/bbdk_fake_jaime/master/img/alumno6.jpg';
+    },
 
     isContabilityProfile(){
         return this.profile === 'contabilidad' ? true : false;
@@ -80,13 +106,11 @@ export default {
     let participantsList = null;
 
     switch (this.$route.name) {
-      case "alumnoDatosAdmisiones":
-      case "alumnoDatosContabilidad":
+      case "alumnoDatosEditarAdmisiones":
         participantsList = arrBootcampsData[indexBootcampMatched].studentList;
         this.participantType = 'student';
         break;
-      case "profesorDatosAdmisiones":
-      case "profesorDatosContabilidad":
+      case "profesorDatosEditarAdmisiones":
         participantsList = arrBootcampsData[indexBootcampMatched].teacherList;
         this.participantType = 'teacher';
         break;
@@ -112,6 +136,38 @@ export default {
     } 
 
     else this.currentFilteredData = this.currentParticipantData.data;
+  },
+
+  methods:{
+      clickConfirmHandler(){
+          console.log('clickConfirmHandler');
+
+          console.log(this.$refs.userName.innerHTML);
+      },
+
+      handleFile(e){
+        let file = e.target.files[0];
+
+        this.isUploadedPhoto = true;
+
+        /*try {
+            sessionStorage.setItem("userimage", file);
+        } catch (e) {
+            console.log("Storage failed: " + e);
+        }
+
+        this.uploadedPhoto = sessionStorage.getItem('userimage');
+        this.uploadedPhotoName = file.name;
+
+        console.log(this.uploadedPhoto);
+        console.log(this.uploadedPhotoName);
+        */
+
+
+       /* AÑADIR ENVIO POST DE IMÁGEN  */
+        
+
+      }
   }
 };
 </script>

@@ -9,8 +9,42 @@
             margin-bottom: 1.5em;
         }
         .btn-codenotch{
+            @include flexContainer();
+            cursor: pointer;
             width: 114px;
             font-size: 1.1em !important;
+            @include transition(all,.35s,ease-out,0);
+            &:hover{
+                background: $hoverPurple;
+            }
+        }
+    }
+    &.edit{
+        h2{
+            cursor: text;
+            resize: none;
+            text-overflow: ellipsis;
+            background-color: transparent;
+            border: solid 1px $softGrey;
+            border-radius: 2px;
+            outline: none;
+            overflow: hidden;
+            padding-left: 5px;
+            padding-right: 6px;
+            position: relative;
+            @include transition(all,.35s,ease-out,0);
+            &:hover{
+                background-color: $softPurple;
+            }
+            &:focus{
+                background-color: $white;
+                outline: $purple solid 1px; 
+                outline-offset: 0.5px; 
+                text-overflow: initial !important;  
+            }
+        }
+        .container-name{
+            @include flexContainer();
         }
     }
     .alumnos-links{
@@ -45,6 +79,16 @@
         margin-bottom: 3em;
         .label-data{
             text-transform: uppercase;
+        }
+    }
+    .container-btn-confirm{
+        position: fixed;
+        z-index: 4;
+        right: 10px;
+        top: 20px;
+        .btn{
+            color: $white;
+            background: $purple;
         }
     }
 }

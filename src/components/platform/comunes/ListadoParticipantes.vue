@@ -57,7 +57,7 @@
                             <button @click="deleteParticipantHandler(item)" type="button" class="btn btn-danger">
                                 <v-icon>delete</v-icon>
                             </button>
-                            <router-link :to="{ path: `${currentRoute}/${item._id}`}">
+                            <router-link :to="{ path: `${currentRoute}/${item._id}/edit`}">
                                 <button type="button" class="btn btn-info">
                                     <v-icon>edit</v-icon>
                                 </button>
