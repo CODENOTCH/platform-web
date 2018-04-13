@@ -58,6 +58,9 @@ export default {
   data() {
     return {
       currentDataIndex: [],
+      lengthListModule1: 0,
+      lengthListModule2: 0,
+      lengthListModule3: 0,
       moduleData: [],
       moduleList: [
         { name: 'frontend', id: 1 },
@@ -105,8 +108,11 @@ export default {
     //Axios.get(this.program.Index.Route)
       .then(response => {
         for (let module in response.data) this.moduleData.push(response.data[module]);
+
         this.currentDataIndex = this.moduleData;
-        console.log('currentDataIndex',this.currentDataIndex);
+        this.lengthListModule1 = this.currentDataIndex[0].length;
+        this.lengthListModule2 = this.currentDataIndex[1].length;
+        this.lengthListModule3 = this.currentDataIndex[2].length;
       })
       .catch(error => {
         console.log(error);
@@ -126,10 +132,6 @@ export default {
     setItemActive(id){
       let listItems = [...this.currentDataIndex];
 
-      let lengthListModule1 = listItems[0].length;
-      let lengthListModule2 = listItems[1].length;
-      let lengthListModule3 = listItems[2].length;
-
       let listAllItems = listItems.reduce( (prev,next) => prev.concat(next));
       
       let index = listAllItems.findIndex(item => item.id === id);
@@ -144,9 +146,9 @@ export default {
       for (let i = 0; i < listItems.length; i++) listItems[i] = [];
 
       listAllItems.forEach( (item,i) => {
-        if(i < lengthListModule1) listItems[0].push(item);
-        if(i >= lengthListModule1 && i < (lengthListModule1 + lengthListModule2)) listItems[1].push(item);
-        if(i >= (lengthListModule1 + lengthListModule2)) listItems[2].push(item);
+        if(i < this.lengthListModule1) listItems[0].push(item);
+        if(i >= this.lengthListModule1 && i < (this.lengthListModule1 + this.lengthListModule2)) listItems[1].push(item);
+        if(i >= (this.lengthListModule1 + this.lengthListModule2)) listItems[2].push(item);
       });
 
       this.currentDataIndex = listItems;
