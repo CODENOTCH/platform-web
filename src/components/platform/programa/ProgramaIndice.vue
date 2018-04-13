@@ -104,11 +104,9 @@ export default {
     Axios.get(this.program.indice.path)
     //Axios.get(this.program.Index.Route)
       .then(response => {
-        for (let module in response.data) this.moduleData.push(response.data[module]) 
-        //let modules = this.moduleData.reduce( (prev,next) => prev.concat(next));
-
+        for (let module in response.data) this.moduleData.push(response.data[module]);
         this.currentDataIndex = this.moduleData;
-        //this.currentDataIndex = modules;
+        console.log('currentDataIndex',this.currentDataIndex);
       })
       .catch(error => {
         console.log(error);
@@ -127,15 +125,30 @@ export default {
 
     setItemActive(id){
       let listItems = [...this.currentDataIndex];
+
+      let lengthListModule1 = listItems[0].length;
+      let lengthListModule2 = listItems[1].length;
+      let lengthListModule3 = listItems[2].length;
+
+      let listAllItems = listItems.reduce( (prev,next) => prev.concat(next));
       
-      let index = listItems.findIndex(item => item.id === id);
+      let index = listAllItems.findIndex(item => item.id === id);
 
-      for(let item of listItems) item.active = false;
+      for(let item of listAllItems) item.active = false;
 
-      let itemSelected = {...listItems[index]};
+      let itemSelected = {...listAllItems[index]};
       itemSelected.active = true;
 
-      listItems[index] = itemSelected;
+      listAllItems[index] = itemSelected;
+
+      for (let i = 0; i < listItems.length; i++) listItems[i] = [];
+
+      listAllItems.forEach( (item,i) => {
+        if(i < lengthListModule1) listItems[0].push(item);
+        if(i >= lengthListModule1 && i < (lengthListModule1 + lengthListModule2)) listItems[1].push(item);
+        if(i >= (lengthListModule1 + lengthListModule2)) listItems[2].push(item);
+      });
+
       this.currentDataIndex = listItems;
     }
   }
