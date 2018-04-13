@@ -2,16 +2,6 @@
     &.bootcamps{
         .container-fluid{
             margin-top: 0;
-            /*margin-top: 10vh;
-            @media (min-width: 992px){
-                margin-top: 12vh;
-            }
-            @media (min-width: 1200px){
-                margin-top: 13vh;
-            }
-            @media (min-width: 1440px){
-                margin-top: 18vh;
-            }*/
             .row{
                 &:first-of-type{
                     margin-bottom: 3vh;
@@ -21,7 +11,6 @@
                 }
             }
         }
-        
         img{
             margin: 0 auto;
             width: 430px;
@@ -35,9 +24,6 @@
     padding: 2em;
     line-height: 1.5em;
     margin-bottom: 3em;
-   /* border: 1px solid $purple;
-    box-shadow: 0px 0px 5px 1px $blackTransparent;*/
-    /*background: $darkWhite;*/
     background: transparent;
     li{
         margin-bottom: 3vw;
@@ -51,12 +37,6 @@
             text-transform: uppercase;
         }
     }
-    /*.link-codenotch{
-        font-size: 1.1em;
-        @media (min-width: 768px){
-            font-size: 1.3em;
-        }
-    }*/
     .btn-codenotch{
         font-size: 1.1em;
         height: auto !important;

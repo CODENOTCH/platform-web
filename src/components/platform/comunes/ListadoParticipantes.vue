@@ -189,6 +189,7 @@ export default {
       confirmModalHandler(){
           this.isConfirmed = true;
           this.onModalMode = false;
+          this.editMode = false;
           this.$store.commit('setEditModeActive',false);
       },
 
