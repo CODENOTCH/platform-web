@@ -57,9 +57,11 @@
                             <button @click="deleteParticipantHandler(item)" type="button" class="btn btn-danger">
                                 <v-icon>delete</v-icon>
                             </button>
-                            <button @click="editParticipantHandler" type="button" class="btn btn-info">
-                                <v-icon>edit</v-icon>
-                            </button>
+                            <router-link :to="{ path: `${currentRoute}/${item._id}`}">
+                                <button type="button" class="btn btn-info">
+                                    <v-icon>edit</v-icon>
+                                </button>
+                             </router-link>
                         </div>
                     </div>
                 </div>
@@ -131,15 +133,12 @@ export default {
   },
 
   created() {
-      console.log('created');
     window.scrollTo(0, 0);
 
     let arrBootcampsData = [...this.bootcampData.bootcamps];
-    //console.log('arrBootcampsData: ',arrBootcampsData);
     let indexBootcampMatched = arrBootcampsData.findIndex(
       item => item._id === this.bootcampId
     );
-    //console.log('indexBootcampMatched: ',indexBootcampMatched);
     let participantsList = null;
 
     switch (this.$route.name) {
@@ -160,24 +159,9 @@ export default {
     this.defaultParticipantData = [...this.currentParticipantData];
   },
 
-  /*destroy(){
-    console.log('destroy')
-    if(this.isConfirmed !== true) {
-        this.currentParticipantData = this.defaultParticipantData;
-        this.editMode = false;
-    }
-  },
-
-  updated(){
-      console.log('updated')
-  },*/
-
   methods:{
       clickEditHandler(){
           this.editMode = true;
-          /*window.onhashchange = function() { 
-              alert('cuidado')
-          };*/
           this.addEventHashChange();
           this.$store.commit('setEditModeActive',true);
       },
@@ -212,9 +196,9 @@ export default {
           this.currentParticipantData.splice(indexParticipantMatched,1);
       },
 
-      editParticipantHandler(){
+      /*editParticipantHandler(){
 
-      },
+      },*/
 
       addEventHashChange(){
           window.addEventListener('hashchange', this.listenerHashChange);
@@ -225,13 +209,8 @@ export default {
       },
 
       listenerHashChange(){
-          if(this.isConfirmed === false){
-              console.log('this.currentParticipantData from listenerHashChange before assing',this.currentParticipantData);
-              console.log('this.defaultParticipantData from listenerHashChange before assing',this.defaultParticipantData);
-              this.currentParticipantData = this.defaultParticipantData;
-              console.log('this.currentParticipantData from listenerHashChange after assing',this.currentParticipantData);
-              console.log('this.defaultParticipantData from listenerHashChange after assing',this.defaultParticipantData);
-          }
+          if(this.isConfirmed === false) this.currentParticipantData = this.defaultParticipantData;
+
           this.onModalMode = false; 
           this.editMode = false;
           this.$store.commit('setEditModeActive',false);

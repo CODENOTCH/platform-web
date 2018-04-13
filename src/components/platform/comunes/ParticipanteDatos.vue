@@ -4,6 +4,7 @@
             <div class="row">
                 <div class="col-xl-2 offset-xl-5 container-img-codenotch">
                     <img class="img-fluid img-codenotch" :src="currentParticipantData.photoPath" alt="foto alumno" />
+                    <v-btn v-if="editModeActive" class="btn-codenotch"> SUBIR FOTO </v-btn>
                 </div> 
             </div>
             <div class="row">
@@ -40,7 +41,7 @@ export default {
       currentFilteredData: {},
       bootcampId: '',
       id: '',
-      participantType: ''
+      participantType: '',
     };
   },
 
@@ -48,7 +49,8 @@ export default {
     ...mapGetters({
       config: 'getConfigData',
       bootcampData: 'getBootcampData',
-      profile:'getProfile'
+      profile:'getProfile',
+      editModeActive: 'getEditModeActive'
     }),
 
     isContabilityProfile(){

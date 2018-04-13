@@ -16,7 +16,7 @@
                         </div>
                         <div class="modulo-temas-container">
                             <ul>
-                                <li v-for='(item,i) of currentDataIndex' v-bind:key="i">
+                                <li v-for='(item,i) of currentDataIndex[moduleIndex]' v-bind:key="i">
                                     <item-indice :active="item.active" 
                                                   :type="item.type"
                                                   :id="item.id"
@@ -105,8 +105,10 @@ export default {
     //Axios.get(this.program.Index.Route)
       .then(response => {
         for (let module in response.data) this.moduleData.push(response.data[module]) 
-        let modules = this.moduleData.reduce( (prev,next) => prev.concat(next));
-        this.currentDataIndex = modules;
+        //let modules = this.moduleData.reduce( (prev,next) => prev.concat(next));
+
+        this.currentDataIndex = this.moduleData;
+        //this.currentDataIndex = modules;
       })
       .catch(error => {
         console.log(error);

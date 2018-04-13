@@ -4,6 +4,14 @@
     }
     .container-img-codenotch{
         margin-bottom: 3em;
+        @include flexContainer($direction:column);
+        img{
+            margin-bottom: 1.5em;
+        }
+        .btn-codenotch{
+            width: 114px;
+            font-size: 1.1em !important;
+        }
     }
     .alumnos-links{
         @include flexContainer();
