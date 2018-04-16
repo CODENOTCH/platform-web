@@ -12,7 +12,7 @@
 
 <script>
     export default {
-        name: 'datoParticipante',
+        name: 'participanteDato',
 
         props: ["data","type"],
 

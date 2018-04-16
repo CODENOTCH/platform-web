@@ -2,6 +2,7 @@
     img{
         width: 114px;
     }
+
     .container-img-codenotch{
         margin-bottom: 3em;
         @include flexContainer($direction:column);
@@ -20,6 +21,64 @@
             }
         }
     }
+
+    .container-btn-confirm{
+        position: fixed;
+        z-index: 4;
+        right: 10px;
+        top: 20px;
+        .btn{
+            color: $white;
+            background: $green;
+        }
+    }
+
+    .participant-data{
+        margin-bottom: 3em;
+        width: 100%;
+        .label-data{
+            text-transform: uppercase;
+        }
+        .content-data{
+            @include flexContainer(flex-start,$wrap:wrap);
+        }
+    }
+
+    .alumnos-links{
+        @include flexContainer();
+    }
+    
+    .container-data{
+        margin-bottom: 3em;
+    }
+
+    .container-name{
+        margin-bottom: 2em;
+        h2{
+            text-align: center;
+        }
+    }
+
+    .container-data-participant{
+        margin-top: 2em;
+        margin-bottom: 16vh;
+        @media (min-width: 567px){
+            margin-bottom: 22vh;
+        }
+        @media (min-width: 768px){
+            margin-bottom: 15vh;
+        }
+        @media (min-width: 992px){
+            margin-bottom: 18vh;
+        }
+        @media (min-width: 1200px){
+            margin-bottom: 5vw;
+        }
+        .input-edit{
+            width: 100%;
+        }
+    }
+
     &.edit{
         .container-name{
             @include flexContainer();
@@ -55,83 +114,25 @@
                     }
                 }
             }
-        }
-        .input-edit{
-            /*cursor: text;
-            resize: vertical;*/
-            font-size: 1.2em;
-            text-overflow: ellipsis;
-            background-color: transparent;
-            border: solid 1px $softGrey;
-            border-radius: 2px;
-            outline: none;
-            overflow: hidden;
-            padding-left: 5px;
-            padding-right: 6px;
-            position: relative;
-            @include transition(all,.35s,ease-out,0);
-            &:hover{
-                background-color: $softPurple;
+            .container-link-edit{
+                /*background: $softGrey;*/
+                @include flexContainer();
+                .container-inputs{
+                    input:first-child{
+                        margin-bottom: .5em;
+                    }
+                }
+                .container-btn{
+                    margin-left: 10px;
+                    .btn{
+                        background: $green;
+                        .icon{
+                            color: $white;
+                            margin-left: 0;
+                        }
+                    }
+                }
             }
-            &:focus{
-                background-color: $white;
-                outline: $purple solid 1px; 
-                outline-offset: 0.5px; 
-                text-overflow: initial !important;  
-            }
-        }
-
-        .textarea-edit{
-            @extend .input-edit;
-            width: 100%;
-            padding-bottom: 15%;
-        }
-    }
-    .alumnos-links{
-        @include flexContainer();
-    }
-    .container-data{
-        margin-bottom: 3em;
-    }
-    .container-name{
-        margin-bottom: 2em;
-        h2{
-            text-align: center;
-        }
-    }
-    .container-data-participant{
-        margin-top: 2em;
-        margin-bottom: 16vh;
-        @media (min-width: 567px){
-            margin-bottom: 22vh;
-        }
-        @media (min-width: 768px){
-            margin-bottom: 15vh;
-        }
-        @media (min-width: 992px){
-            margin-bottom: 18vh;
-        }
-        @media (min-width: 1200px){
-            margin-bottom: 5vw;
-        }
-        .input-edit{
-            width: 100%;
-        }
-    }
-    .participant-data{
-        margin-bottom: 3em;
-        .label-data{
-            text-transform: uppercase;
-        }
-    }
-    .container-btn-confirm{
-        position: fixed;
-        z-index: 4;
-        right: 10px;
-        top: 20px;
-        .btn{
-            color: $white;
-            background: $green;
         }
     }
 }

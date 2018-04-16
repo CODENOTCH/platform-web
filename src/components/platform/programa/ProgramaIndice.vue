@@ -104,8 +104,8 @@ export default {
 
   created() {
     /* TEMPORAL */ 
-    Axios.get(this.program.indice.path)
-    //Axios.get(this.program.Index.Route)
+    //Axios.get(this.program.indice.path)
+    Axios.get(this.program.Index.Route)
       .then(response => {
         for (let module in response.data) this.moduleData.push(response.data[module]);
 

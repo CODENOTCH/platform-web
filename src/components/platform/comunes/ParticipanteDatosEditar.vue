@@ -15,8 +15,6 @@
             <div class="row">
                 <div class="col-xl-2 offset-xl-5 container-img-codenotch">
                     <img class="img-fluid img-codenotch" :src="getUserPhoto" alt="foto alumno" />
-                    <!--v-btn @click="uploadPhoto" class="btn-codenotch"> SUBIR FOTO </v-btn-->
-
                     <label class="btn-codenotch">
                         SUBIR FOTO <input type="file" hidden accept="image/*" @change="handleFile">
                     </label>
@@ -24,7 +22,6 @@
             </div>
             <div class="row">
                 <div class="col-12 container-name">
-                    <!--h2 ref="userName" contenteditable="true" spellcheck="false">{{currentParticipantData.name}}</h2-->
                     <input type="text" class="input-edit" v-model.trim="currentParticipantData.name">
                 </div> 
             </div>
@@ -39,14 +36,30 @@
                     <div class="card participant-data container-links">
                         <div class="card-header label-data">LINKS</div>
                         <div class="card-body content-data">
-                            <v-chip v-for="(item,index) of currentParticipantData.links" :key="index">
-                                {{item.content}}
-                                <v-icon class="icon">edit</v-icon>
-                                <v-icon class="icon">delete</v-icon>
-                            </v-chip>
+                            <div class="container-links" v-for="(item,index) of currentParticipantData.links" :key="index">
+                                <participante-dato-link-editar 
+                                                    :data="item"
+                                                    :index="index"
+                                                    :indexSelected="indexSelectedLink"
+                                                    :mode="modeLink"
+                                                    @onClickBtnConfirmLink="confirmLink"
+                                                    >
+                                </participante-dato-link-editar>
+                                <participante-dato-link :data="item"
+                                                        :index="index"
+                                                        :mode="modeLink"
+                                                        @onClickBtnEditLink="editLink"
+                                                        @onClickBtnDeleteLink="deleteLink"
+                                                        >
+                                </participante-dato-link>
+                            </div>
                         </div>
                     </div>
-                    <dato-participante v-for="(data,index) of currentFilteredData" :key="index" :data="currentFilteredData[index]" :type="'editable'"></dato-participante>
+                    <participante-dato v-for="(item,index) of currentFilteredData" 
+                                        :key="index" 
+                                        :data="item" 
+                                        :type="'editable'">
+                    </participante-dato>
                 </div> 
             </div>
         </div>
@@ -57,13 +70,17 @@
 import Axios from 'axios';
 import _ from 'lodash';
 import { mapGetters } from 'vuex';
-import DatoParticipante from '../comunes/DatoParticipante.vue';
+import ParticipanteDato from '../comunes/ParticipanteDato.vue';
+import ParticipanteDatoLink from '../comunes/ParticipanteDatoLink.vue';
+import ParticipanteDatoLinkEditar from '../comunes/ParticipanteDatoLinkEditar.vue';
 
 export default {
   name: 'participanteDatosEditar',
 
   components: {
-      datoParticipante: DatoParticipante
+      participanteDato: ParticipanteDato,
+      participanteDatoLink: ParticipanteDatoLink,
+      participanteDatoLinkEditar: ParticipanteDatoLinkEditar
   },
 
   data() {
@@ -76,7 +93,8 @@ export default {
       participantType: '',
       isUploadedPhoto: false,
       uploadedPhotoPath: '',
-      userName:''
+      modeLink: 'normal',
+      indexSelectedLink: 0
     };
   },
 
@@ -166,26 +184,23 @@ export default {
 
       handleFile(e){
         let file = e.target.files[0];
-
         this.isUploadedPhoto = true;
-
-        /*try {
-            sessionStorage.setItem("userimage", file);
-        } catch (e) {
-            console.log("Storage failed: " + e);
-        }
-
-        this.uploadedPhoto = sessionStorage.getItem('userimage');
-        this.uploadedPhotoName = file.name;
-
-        console.log(this.uploadedPhoto);
-        console.log(this.uploadedPhotoName);
-        */
-
 
        /* AÑADIR ENVIO POST DE IMÁGEN  */
         
+      },
 
+      confirmLink(){
+        this.modeLink = 'normal';
+      },
+
+      editLink(index){
+        this.indexSelectedLink = index;  
+        this.modeLink = 'edit';
+      },
+
+      deleteLink(index){
+        this.currentParticipantData.links.splice(index,1);
       }
   }
 };

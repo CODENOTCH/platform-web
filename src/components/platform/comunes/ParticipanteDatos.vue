@@ -13,7 +13,12 @@
             </div>
             <div class="row">
                 <div class="col-12 col-md-10 offset-md-1 col-lg-10 offset-lg-1 col-xl-6 offset-xl-3 container-data-participant">
-                    <dato-participante v-for="(data,index) of currentFilteredData" :key="index" :data="currentFilteredData[index]" :type="'noeditable'"></dato-participante>
+                    <participante-dato v-for="(item,index) of currentFilteredData" 
+                                        :key="index" 
+                                        :data="item" 
+                                        :type="'noeditable'"
+                                        >
+                    </participante-dato>
                 </div> 
             </div>
         </div>
@@ -24,13 +29,13 @@
 import Axios from 'axios';
 import _ from 'lodash';
 import { mapGetters } from 'vuex';
-import DatoParticipante from '../comunes/DatoParticipante.vue';
+import ParticipanteDato from '../comunes/ParticipanteDato.vue';
 
 export default {
   name: 'participanteDatos',
 
   components: {
-      datoParticipante: DatoParticipante
+      participanteDato: ParticipanteDato
   },
 
   data() {
