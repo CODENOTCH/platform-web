@@ -14,8 +14,9 @@
             width: 114px;
             font-size: 1.1em !important;
             @include transition(all,.35s,ease-out,0);
+            background: $blue;
             &:hover{
-                background: $hoverPurple;
+                background: $darkBlue;
             }
         }
     }
@@ -43,12 +44,15 @@
                 &:first-of-type{
                     margin-left: .7em;
                     color: $blue;
+                    &:hover{
+                        color: $darkBlue;
+                    }
                 }
                 &:last-of-type{
                     color: $red;
-                }
-                &:hover{
-                    color: $darkGrey;
+                    &:hover{
+                        color: $darkRed;
+                    }
                 }
             }
         }
