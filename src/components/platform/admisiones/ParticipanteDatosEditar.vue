@@ -63,6 +63,11 @@
                 </div> 
             </div>
         </div>
+        <participantes-modal v-if="onModalMode"
+                            @onConfirmModal="confirmModalHandler"
+                            @onRestoreModal="restoreModalHandler"
+                            @onEditModal="editModalHandler"
+        ></participantes-modal>
     </div> 
 </template>
 
@@ -71,8 +76,9 @@ import Axios from 'axios';
 import _ from 'lodash';
 import { mapGetters } from 'vuex';
 import ParticipanteDato from '../comunes/ParticipanteDato.vue';
-import ParticipanteDatoLink from '../comunes/ParticipanteDatoLink.vue';
-import ParticipanteDatoLinkEditar from '../comunes/ParticipanteDatoLinkEditar.vue';
+import ParticipanteDatoLink from './ParticipanteDatoLink.vue';
+import ParticipanteDatoLinkEditar from './ParticipanteDatoLinkEditar.vue';
+import ParticipantesModal from './ParticipantesModal.vue';
 
 export default {
   name: 'participanteDatosEditar',
@@ -80,7 +86,8 @@ export default {
   components: {
       participanteDato: ParticipanteDato,
       participanteDatoLink: ParticipanteDatoLink,
-      participanteDatoLinkEditar: ParticipanteDatoLinkEditar
+      participanteDatoLinkEditar: ParticipanteDatoLinkEditar,
+      participantesModal: ParticipantesModal
   },
 
   data() {
@@ -94,7 +101,8 @@ export default {
       isUploadedPhoto: false,
       uploadedPhotoPath: '',
       modeLink: 'normal',
-      indexSelectedLink: 0
+      indexSelectedLink: 0,
+      onModalMode: false
     };
   },
 
@@ -157,7 +165,7 @@ export default {
 
     this.currentParticipantData = participantsList[indexParticipantsMatched];
 
-    console.log('this.currentParticipantData', this.currentParticipantData);
+    //console.log('this.currentParticipantData', this.currentParticipantData);
 
      /* get filtered data by keys */ 
 
@@ -177,9 +185,9 @@ export default {
 
   methods:{
       clickConfirmHandler(){
-           console.log('this.currentParticipantData after', this.currentParticipantData);
+           //console.log('this.currentParticipantData after', this.currentParticipantData);
 
-          //console.log(this.$refs.userName.innerHTML);
+           this.onModalMode = true;
       },
 
       handleFile(e){
@@ -201,7 +209,20 @@ export default {
 
       deleteLink(index){
         this.currentParticipantData.links.splice(index,1);
-      }
+      },
+
+      confirmModalHandler(){
+        this.onModalMode = false;
+        this.$router.back();
+      },
+
+      restoreModalHandler(){
+        this.onModalMode = false;
+      },
+
+      editModalHandler(){
+        this.onModalMode = false;
+      },
   }
 };
 </script>

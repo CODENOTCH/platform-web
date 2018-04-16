@@ -61,7 +61,7 @@
                                 <button type="button" class="btn btn-info">
                                     <v-icon>edit</v-icon>
                                 </button>
-                             </router-link>
+                            </router-link>
                         </div>
                     </div>
                 </div>
@@ -78,24 +78,24 @@
                 <v-icon>add</v-icon>
             </v-btn>
         </div> 
-        <listado-participantes-modal v-if="onModalMode"
-                                     @onConfirm="confirmModalHandler"
-                                     @onRestore="restoreModalHandler"
-                                     @onEdit="editModalHandler"
-        ></listado-participantes-modal>
+        <participantes-modal v-if="onModalMode"
+                            @onConfirmModal="confirmModalHandler"
+                            @onRestoreModal="restoreModalHandler"
+                            @onEditModal="editModalHandler"
+        ></participantes-modal>
     </div>
 </template>
 
 <script>
 import Axios from "axios";
 import { mapGetters } from "vuex";
-import ListadoParticipantesModal from './ListadoParticipantesModal.vue';
+import ParticipantesModal from '../admisiones/ParticipantesModal.vue';
 
 export default {
   name: "listadoParticipantes",
 
   components: {
-    listadoParticipantesModal: ListadoParticipantesModal
+    participantesModal: ParticipantesModal
   },
 
   data() {
@@ -114,7 +114,8 @@ export default {
       config: "getConfigData",
       bootcampData: "getBootcampData",
       bootcampId: "getBootcampId",
-      profile: "getProfile"
+      profile: "getProfile",
+      editModeActive: "getEditModeActive"
     }),
 
     getNameBtn() {
@@ -134,6 +135,8 @@ export default {
 
   created() {
     window.scrollTo(0, 0);
+
+    this.setEditMode();
 
     let arrBootcampsData = [...this.bootcampData.bootcamps];
     let indexBootcampMatched = arrBootcampsData.findIndex(
@@ -160,9 +163,12 @@ export default {
   },
 
   methods:{
+      setEditMode() {
+        this.editMode = this.editModeActive;
+      },
+
       clickEditHandler(){
           this.editMode = true;
-          this.addEventHashChange();
           this.$store.commit('setEditModeActive',true);
       },
 
@@ -175,6 +181,8 @@ export default {
           this.onModalMode = false;
           this.editMode = false;
           this.$store.commit('setEditModeActive',false);
+
+          /* AÑADIR ENVIO POST DE LOS DATOS DE LOS PARTICIPANTES  */
       },
 
       restoreModalHandler(){
@@ -194,27 +202,6 @@ export default {
           );
 
           this.currentParticipantData.splice(indexParticipantMatched,1);
-      },
-
-      /*editParticipantHandler(){
-
-      },*/
-
-      addEventHashChange(){
-          window.addEventListener('hashchange', this.listenerHashChange);
-      },
-
-      removeEventHashChange(){
-          window.removeEventListener('hashchange', this.listenerHashChange);
-      },
-
-      listenerHashChange(){
-          if(this.isConfirmed === false) this.currentParticipantData = this.defaultParticipantData;
-
-          this.onModalMode = false; 
-          this.editMode = false;
-          this.$store.commit('setEditModeActive',false);
-          this.removeEventHashChange();
       }
   }
 };

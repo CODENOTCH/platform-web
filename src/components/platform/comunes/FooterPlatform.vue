@@ -50,6 +50,10 @@
             this.setBreadcrumbs();
         },
 
+        updated(){
+            /*console.log('editModeActive From FooterPlatform updated',this.editModeActive)*/
+        },
+
         watch: {
             '$route': 'setBreadcrumbs'
         },

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Login from '../components/platform/comunes/Login.vue';
+import Login from '../components/platform/login/Login.vue';
 import AlumnoWrapper from '../components/platform/alumno/AlumnoWrapper.vue';
 import ProfesorWrapper from '../components/platform/profesor/ProfesorWrapper.vue';
 import Intro from '../components/platform/comunes/Intro.vue';
@@ -13,7 +13,7 @@ import AlumnoSeguimiento from '../components/platform/profesor/AlumnoSeguimiento
 import AdmisionesWrapper from '../components/platform/admisiones/AdmisionesWrapper.vue';
 import ContabilidadWrapper from '../components/platform/contabilidad/ContabilidadWrapper.vue';
 import ParticipanteDatos from '../components/platform/comunes/ParticipanteDatos.vue';
-import ParticipanteDatosEditar from '../components/platform/comunes/ParticipanteDatosEditar.vue';
+import ParticipanteDatosEditar from '../components/platform/admisiones/ParticipanteDatosEditar.vue';
 
 const router = new VueRouter({
     routes : [

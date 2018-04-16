@@ -1,6 +1,6 @@
 <template>
     <transition name="contentTransition" appear>
-        <div class="container-modal confirm">
+        <div class="container-modal confirm">Modal
             <v-card class="block-modal">
                 <v-card-text>¿Quieres confirmar los cambios?</v-card-text>
                 <v-card-actions>
@@ -23,7 +23,7 @@
 
 <script>
     export default {
-        name:'listadoParticipantesModal',
+        name:'participantesModal',
 
         created(){
         },
@@ -33,15 +33,15 @@
 
         methods: {
             confirmHandler(){
-                this.$emit('onConfirm');
+                this.$emit('onConfirmModal');
             },
 
             restoreHandler(){
-                this.$emit('onRestore');
+                this.$emit('onRestoreModal');
             },
 
             editHandler(){
-                this.$emit('onEdit');
+                this.$emit('onEditModal');
             }
         }
     }    
