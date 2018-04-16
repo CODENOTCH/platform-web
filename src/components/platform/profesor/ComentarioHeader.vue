@@ -7,7 +7,7 @@
                     dark
                     small
                     fab
-                    class="btn-comment"
+                    class="btn-comment confirm"
             >
                 <v-icon>done</v-icon>
             </v-btn>
@@ -16,7 +16,7 @@
                     dark
                     small
                     fab
-                    class="btn-comment"
+                    class="btn-comment edit"
             >
                 <v-icon>edit</v-icon>
             </v-btn>

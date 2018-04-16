@@ -7,7 +7,7 @@
                 small
                 fab
                 @click="clickEditHandler"
-                class="btn"
+                class="btn-edit"
                 >
                 <v-icon>edit</v-icon>
             </v-btn>
@@ -17,7 +17,7 @@
                 small
                 fab
                 @click="clickConfirmHandler"
-                class="btn"
+                class="btn-confirm"
                 >
                 <v-icon>done</v-icon>
             </v-btn>

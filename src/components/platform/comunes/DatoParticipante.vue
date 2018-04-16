@@ -4,7 +4,8 @@
             {{data.label}}
         </div>
         <div class="card-body content-data">
-            <h5 class="card-title">{{data.content}}</h5>
+            <input v-if="isEditable" type="text" class="input-edit" v-model.trim="data.content">
+            <h5 v-else class="card-title">{{data.content}}</h5>
         </div>
     </div>
 </template>
@@ -13,6 +14,12 @@
     export default {
         name: 'datoParticipante',
 
-        props: ["data"],
+        props: ["data","type"],
+
+        computed: {
+            isEditable(){
+                return this.type === 'editable' ? true : false;
+            }
+        }
     }
 </script>

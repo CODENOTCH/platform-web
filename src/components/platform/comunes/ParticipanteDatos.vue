@@ -13,7 +13,7 @@
             </div>
             <div class="row">
                 <div class="col-12 col-md-10 offset-md-1 col-lg-10 offset-lg-1 col-xl-6 offset-xl-3 container-data-participant">
-                    <dato-participante v-for="(data,index) of currentFilteredData" :key="index" :data="currentFilteredData[index]"></dato-participante>
+                    <dato-participante v-for="(data,index) of currentFilteredData" :key="index" :data="currentFilteredData[index]" :type="'noeditable'"></dato-participante>
                 </div> 
             </div>
         </div>

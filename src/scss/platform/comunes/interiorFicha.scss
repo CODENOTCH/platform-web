@@ -20,9 +20,42 @@
         }
     }
     &.edit{
-        h2{
-            cursor: text;
-            resize: none;
+        .container-name{
+            @include flexContainer();
+            .input-edit{
+                font-size: 1.5em;
+                line-height: 1.2em;
+                color: $black;
+                font-weight: 600;
+                text-align: center;
+                text-transform: uppercase;
+                &::placeholder{
+                    color: $black;
+                }
+            }
+        }
+        .container-links{
+            .icon{
+                cursor: pointer;
+                font-size: 1.3em;
+                margin-left: .3em;
+                @include transition(all,.35s,ease-out,0);
+                &:first-of-type{
+                    margin-left: .7em;
+                    color: $blue;
+                }
+                &:last-of-type{
+                    color: $red;
+                }
+                &:hover{
+                    color: $darkGrey;
+                }
+            }
+        }
+        .input-edit{
+            /*cursor: text;
+            resize: vertical;*/
+            font-size: 1.2em;
             text-overflow: ellipsis;
             background-color: transparent;
             border: solid 1px $softGrey;
@@ -43,8 +76,11 @@
                 text-overflow: initial !important;  
             }
         }
-        .container-name{
-            @include flexContainer();
+
+        .textarea-edit{
+            @extend .input-edit;
+            width: 100%;
+            padding-bottom: 15%;
         }
     }
     .alumnos-links{
@@ -74,6 +110,9 @@
         @media (min-width: 1200px){
             margin-bottom: 5vw;
         }
+        .input-edit{
+            width: 100%;
+        }
     }
     .participant-data{
         margin-bottom: 3em;
@@ -88,7 +127,7 @@
         top: 20px;
         .btn{
             color: $white;
-            background: $purple;
+            background: $green;
         }
     }
 }

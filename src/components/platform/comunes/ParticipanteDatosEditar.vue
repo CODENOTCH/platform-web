@@ -24,12 +24,29 @@
             </div>
             <div class="row">
                 <div class="col-12 container-name">
-                    <h2 ref="userName" contenteditable="true" spellcheck="false">{{currentParticipantData.name}}</h2>
+                    <!--h2 ref="userName" contenteditable="true" spellcheck="false">{{currentParticipantData.name}}</h2-->
+                    <input type="text" class="input-edit" v-model.trim="currentParticipantData.name">
                 </div> 
             </div>
             <div class="row">
                 <div class="col-12 col-md-10 offset-md-1 col-lg-10 offset-lg-1 col-xl-6 offset-xl-3 container-data-participant">
-                    <dato-participante v-for="(data,index) of currentFilteredData" :key="index" :data="currentFilteredData[index]"></dato-participante>
+                    <div class="card participant-data container-description">
+                        <div class="card-header label-data">DESCRIPCIÓN</div>
+                        <div class="card-body content-data">
+                            <textarea class="textarea-edit" v-model.trim="currentParticipantData.description"></textarea>
+                        </div>
+                    </div>
+                    <div class="card participant-data container-links">
+                        <div class="card-header label-data">LINKS</div>
+                        <div class="card-body content-data">
+                            <v-chip v-for="(item,index) of currentParticipantData.links" :key="index">
+                                {{item.content}}
+                                <v-icon class="icon">edit</v-icon>
+                                <v-icon class="icon">delete</v-icon>
+                            </v-chip>
+                        </div>
+                    </div>
+                    <dato-participante v-for="(data,index) of currentFilteredData" :key="index" :data="currentFilteredData[index]" :type="'editable'"></dato-participante>
                 </div> 
             </div>
         </div>
@@ -122,6 +139,8 @@ export default {
 
     this.currentParticipantData = participantsList[indexParticipantsMatched];
 
+    console.log('this.currentParticipantData', this.currentParticipantData);
+
      /* get filtered data by keys */ 
 
     if(this.participantType === 'student'){
@@ -140,9 +159,9 @@ export default {
 
   methods:{
       clickConfirmHandler(){
-          console.log('clickConfirmHandler');
+           console.log('this.currentParticipantData after', this.currentParticipantData);
 
-          console.log(this.$refs.userName.innerHTML);
+          //console.log(this.$refs.userName.innerHTML);
       },
 
       handleFile(e){
@@ -171,5 +190,15 @@ export default {
   }
 };
 </script>
+
+<style lang='stylus'>
+  @import '../../../stylus/main'
+
+    .chip {
+        .chip__content{
+            background: $softGrey
+        }
+    }
+</style>
 
 
