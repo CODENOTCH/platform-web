@@ -14,9 +14,12 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-2 offset-xl-5 container-img-codenotch">
-                    <img class="img-fluid img-codenotch" :src="getUserPhoto" alt="foto alumno" />
+                    <img class="img-fluid img-codenotch" :src="photoPath" alt="foto alumno" />
                     <label class="btn-codenotch">
-                        SUBIR FOTO <input type="file" hidden accept="image/*" @change="handleFile">
+                        SUBIR FOTO 
+                        <form enctype="multipart/form-data" method="post" id="form-upload">
+                            <input name="filetoupload" type="file" hidden accept="image/*" @change="handleFile">
+                        </form>
                     </label>
                 </div> 
             </div>
@@ -94,12 +97,14 @@ export default {
     return {
       currentBootcampData: [],
       currentParticipantData: {},
+      defaultParticipantData: {},
+      defaultParticipantDataLinks: [],
       currentFilteredData: {},
+      //defaultFilteredData: {},
       bootcampId: '',
       id: '',
       participantType: '',
-      isUploadedPhoto: false,
-      uploadedPhotoPath: '',
+      photoPath: '',
       modeLink: 'normal',
       indexSelectedLink: 0,
       onModalMode: false
@@ -113,12 +118,6 @@ export default {
       profile:'getProfile',
       editModeActive: 'getEditModeActive'
     }),
-
-    getUserPhoto(){
-        /* PROVISIONAL */ 
-        if(!this.isUploadedPhoto) return this.currentParticipantData.photoPath;
-        else return 'https://raw.githubusercontent.com/CODENOTCH/bbdk_fake_jaime/master/img/alumno6.jpg';
-    },
 
     isContabilityProfile(){
         return this.profile === 'contabilidad' ? true : false;
@@ -163,7 +162,26 @@ export default {
       item => item._id === this.id
     );
 
-    this.currentParticipantData = participantsList[indexParticipantsMatched];
+    this.defaultParticipantData = participantsList[indexParticipantsMatched];
+    this.defaultParticipantDataLinks = [...participantsList[indexParticipantsMatched].links];
+
+    this.currentParticipantData = {...this.defaultParticipantData};
+
+    /*this.defaultParticipantDataLinks = participantsList[indexParticipantsMatched].links.forEach( (item) => {
+        console.log('item',item);
+        item = {...item};
+    });*/
+
+    this.currentParticipantData.links = [...this.defaultParticipantDataLinks];
+
+    /*this.currentParticipantData = {...this.defaultParticipantData};
+    this.currentParticipantData.links = [...this.defaultParticipantDataLinks];
+    this.currentParticipantData.links.forEach( (item) => {
+        item = {...item};
+    });*/
+
+    console.log('defaultParticipantData from ParticipanteDatosEditar created',this.defaultParticipantData);
+    console.log('defaultParticipantDataLinks from ParticipanteDatosEditar created',this.defaultParticipantDataLinks);
 
     //console.log('this.currentParticipantData', this.currentParticipantData);
 
@@ -177,10 +195,22 @@ export default {
 
         objFiltered = _.merge(_.pickBy(studentData, item => item.type === firstFilterKey),_.pickBy(studentData, item => item.type === secondFilterKey));
 
+       /* this.defaultFilteredData = objFiltered;
+        this.defaultFilteredData.telefono.content = '98899889';
+        this.currentFilteredData = {...this.defaultFilteredData};*/
+
         this.currentFilteredData = objFiltered;
     } 
 
-    else this.currentFilteredData = this.currentParticipantData.data;
+    else {
+        /*this.defaultFilteredData = this.currentParticipantData.data;
+        this.defaultFilteredData = {...this.currentParticipantData.data};
+        this.currentFilteredData = {...this.defaultFilteredData};*/photoPath
+
+         this.currentFilteredData = this.currentParticipantData.data;
+    }
+
+    this.photoPath = this.currentParticipantData.photoPath;
   },
 
   methods:{
@@ -191,11 +221,25 @@ export default {
       },
 
       handleFile(e){
-        let file = e.target.files[0];
-        this.isUploadedPhoto = true;
+        const file = e.target.files[0];
+        const formElement = document.getElementById("form-upload");
+        const _data = new FormData(formElement);
+        _data.append(file,file.name);
 
-       /* AÑADIR ENVIO POST DE IMÁGEN  */
-        
+        const config = {
+            headers: { 'content-type': 'multipart/form-data' }
+        }
+
+        Axios.post('https://www.codenotch.com/docs/upload',_data,config)
+        .then( (response) => {
+            const responseData = response.data;
+            //console.log('responseData',responseData);
+            this.photoPath = responseData.secure_url;
+            this.currentParticipantData.photoPath = this.photoPath;
+        })
+        .catch( (error) => {
+            console.log(error);
+        });
       },
 
       confirmLink(){
@@ -217,7 +261,14 @@ export default {
       },
 
       restoreModalHandler(){
+        this.currentParticipantData = {...this.defaultParticipantData};
+        this.currentParticipantData.links = [...this.defaultParticipantDataLinks];
+        //this.currentParticipantData.data = {...this.defaultFilteredData};
+        this.photoPath = this.currentParticipantData.photoPath; 
         this.onModalMode = false;
+        console.log('defaultParticipantDataLinks from ParticipanteDatosEditar restoreModalHandler',this.defaultParticipantDataLinks);
+        console.log('defaultParticipantData from ParticipanteDatosEditar restoreModalHandler',this.defaultParticipantData);
+        //console.log('defaultFilteredData from ParticipanteDatosEditar restoreModalHandler',this.defaultFilteredData);
       },
 
       editModalHandler(){

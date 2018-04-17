@@ -69,7 +69,8 @@
                             this.getSectionData(content.desarrolloPath) ])
                     .then(Axios.spread( (...params) => {
                         this.currentContentsData = params[0].data.data;
-                        this.currentSlidesData = params[1].data.links;
+                        this.currentSlidesData = params[1].data[0].Routes;
+                        console.log('this.currentSlidesData',params[1].data[0].Routes);
                         this.currentDevelopmentsData = params[2].data.data;
                     })
                 );

@@ -13,10 +13,10 @@ Vue.use(VueRouter);
 
 
 const configPath = process.env.NODE_ENV === 'production' ? './assets/data/config.json' : './public/assets/data/config.json';
-//const programDataPath = 'https://www.codenotch.com/content/programData';
-const programDataPath = 'https://raw.githubusercontent.com/CODENOTCH/bbdk_fake_jaime/master/programData.json';
-//const bootcampDataPath = 'https://www.codenotch.com/bootcamps/getBootcampData';
-const bootcampDataPath = 'https://raw.githubusercontent.com/CODENOTCH/bbdk_fake_jaime/master/bootcampData.json';
+const programDataPath = 'https://www.codenotch.com/content/programData';
+//const programDataPath = 'https://raw.githubusercontent.com/CODENOTCH/bbdk_fake_jaime/master/programData.json';
+const bootcampDataPath = 'https://www.codenotch.com/bootcamps/getBootcampData';
+//const bootcampDataPath = 'https://raw.githubusercontent.com/CODENOTCH/bbdk_fake_jaime/master/bootcampData.json';
 
 var configData = null;
 var programData = null;

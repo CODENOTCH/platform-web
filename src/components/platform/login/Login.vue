@@ -98,7 +98,7 @@
 
                     /* TEMPORAL */ 
 
-                    let arrayFakeResponse = [
+                    /*let arrayFakeResponse = [
                         {
                             name:"Laura",
                             id:"1.112347",
@@ -154,10 +154,12 @@
                             this.$store.commit('setBootcampId', userSelected.bootcampId);
                             this.$router.push({path: `/${userSelected.route}`});
                         }
-                    };
+                    };*/
+
+                    /* SENDING POST PARAMS */
 
 
-                   /*Axios.post('https://www.codenotch.com/users/login',{
+                   Axios.post('https://www.codenotch.com/users/login',{
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
                             "Access-Control-Allow-Origin": "*"
@@ -168,8 +170,8 @@
                         }
                     })
                     .then( (response) => {
-                        console.log(response);
                         const responseData = response.data;
+                        console.log(responseData.type);
 
                         if(responseData.message === 'unauthorized') {
                             this.typeModal = "wrongUser";
@@ -184,6 +186,8 @@
                         switch (responseData.type) {
                             case "alumno":
                                 this.$router.push({path:'alumno'});
+                                this.$store.commit('setBootcampId', response.data.bootcampId);
+                                break;
                             case "profesor":
                                 this.$router.push({path:'profesor'});
                                 this.$store.commit('setBootcampId', response.data.bootcampId);
@@ -198,7 +202,7 @@
                     })
                     .catch( (error) => {
                         console.log(error);
-                    });*/
+                    });
 
 
                     

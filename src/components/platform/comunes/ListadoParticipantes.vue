@@ -131,6 +131,7 @@ export default {
   beforeCreate() {
     /* TEMPORAL*/
     //this.$store.commit('setBootcampId', '1.1');
+    //console.log('beforeCreate from ListadoParticipantes');
   },
 
   created() {
@@ -148,18 +149,23 @@ export default {
       case "listadoAlumnos":
       case "listadoAlumnosAdmisiones":
       case "listadoAlumnosContabilidad":
+        this.defaultParticipantData = this.bootcampData.bootcamps[indexBootcampMatched].studentList;
         participantsList = [...arrBootcampsData[indexBootcampMatched].studentList];
         this.currentRoute = "alumnos";
         break;
       case "listadoProfesoresAdmisiones":
       case "listadoProfesoresContabilidad":
+        this.defaultParticipantData = this.bootcampData.bootcamps[indexBootcampMatched].teacherList;
         participantsList = [...arrBootcampsData[indexBootcampMatched].teacherList];
         this.currentRoute = "profesores";
         break;
     }
 
     this.currentParticipantData = participantsList;
-    this.defaultParticipantData = [...this.currentParticipantData];
+    
+    //console.log('this.bootcampData.bootcamps[0].studentList[0].name', this.bootcampData.bootcamps[0].studentList[0].name);
+    //console.log('defaultParticipantData from ListadoParticipantes created', this.defaultParticipantData);
+
   },
 
   methods:{
@@ -188,12 +194,13 @@ export default {
       restoreModalHandler(){
           this.onModalMode = false;
           this.editMode = false;
+          //console.log('defaultParticipantData from ListadoParticipantes restoreModalHandler', this.defaultParticipantData);
           this.currentParticipantData = this.defaultParticipantData;
           this.$store.commit('setEditModeActive',false);
       },
 
       editModalHandler(){
-          //this.onModalMode = true;
+          this.onModalMode = false;
       },
 
       deleteParticipantHandler(participant){
