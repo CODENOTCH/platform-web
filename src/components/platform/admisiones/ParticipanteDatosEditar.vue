@@ -67,9 +67,9 @@
             </div>
         </div>
         <participantes-modal v-if="onModalMode"
+                            :type="'confirm'"
                             @onConfirmModal="confirmModalHandler"
                             @onRestoreModal="restoreModalHandler"
-                            @onEditModal="editModalHandler"
         ></participantes-modal>
     </div> 
 </template>
@@ -98,20 +98,13 @@ export default {
       currentBootcampData: [],
       currentParticipantData: {},
       currentFilteredData: {},
-      defaultParticipantData: {},
-      defaultParticipantFilteredData: {},
-      defaultParticipantFilteredDataObjs: {},
-      defaultParticipantDataLinks: [],
-      defaultParticipantDataLinksObjs: [],
-      //defaultFilteredData: {},
       bootcampId: '',
       id: '',
       participantType: '',
       photoPath: '',
       modeLink: 'normal',
       indexSelectedLink: 0,
-      onModalMode: false,
-      firstRestore: false
+      onModalMode: false
     };
   },
 
@@ -166,17 +159,7 @@ export default {
       item => item._id === this.id
     );
 
-    this.defaultParticipantData = participantsList[indexParticipantsMatched];
-    
-    this.defaultParticipantDataLinks = [...this.defaultParticipantData.links];
-
-    this.defaultParticipantDataLinks.forEach( (item,i) => {
-        this.defaultParticipantDataLinksObjs.push({...this.defaultParticipantDataLinks[i]});
-    });
-
-    this.currentParticipantData = {...this.defaultParticipantData};
-
-    this.currentParticipantData.links = [...this.defaultParticipantDataLinks];
+    this.currentParticipantData = participantsList[indexParticipantsMatched];
 
      /* get filtered data by keys */ 
 
@@ -192,14 +175,6 @@ export default {
     } 
 
     else this.currentFilteredData = this.currentParticipantData.data;
-
-    this.defaultParticipantFilteredData = {...this.currentFilteredData};
-
-    _.forIn(this.defaultParticipantFilteredData, (value, key) => {
-        this.defaultParticipantFilteredDataObjs[key] = {...value}
-    });
-
-    console.log('this.defaultParticipantFilteredDataObjs from created', this.defaultParticipantFilteredDataObjs);
 
     this.photoPath = this.currentParticipantData.photoPath;
   },
@@ -252,48 +227,6 @@ export default {
       },
 
       restoreModalHandler(){
-        this.currentParticipantData = {...this.defaultParticipantData};
-        this.defaultParticipantDataLinks = [...this.defaultParticipantDataLinksObjs];
-
-        this.defaultParticipantDataLinks.forEach( (item,i) => {
-            this.defaultParticipantDataLinksObjs.splice(i,1,{...item})
-        });
-
-        /*_.forIn(this.defaultParticipantFilteredData, (value, key) => {
-            this.defaultParticipantFilteredDataObjs[key] = {...value}
-        });*/
-
-
-        if(this.firstRestore){
-            _.forIn(this.defaultParticipantFilteredData, (value, key) => {
-                this.defaultParticipantFilteredDataObjs[key] = {...value}
-            });
-        }
-
-        else{
-            _.forIn(this.defaultParticipantFilteredDataObjs, (value, key) => {
-                value[key] = {...value}
-            });
-        }
-
-        this.firstRestore = true;
-
-        this.currentParticipantData.links = [...this.defaultParticipantDataLinks];
-        this.currentFilteredData = {...this.defaultParticipantFilteredDataObjs};
-
-        this.photoPath = this.currentParticipantData.photoPath; 
-        this.onModalMode = false;
-
-        //this.defaultParticipantDataLinksObjs = [...this.defaultParticipantDataLinksObjs];
-
-        //console.log('defaultParticipantDataLinks from ParticipanteDatosEditar restoreModalHandler',this.defaultParticipantDataLinks);
-        //console.log('this.currentParticipantData.data from ParticipanteDatosEditar restoreModalHandler',this.currentParticipantData.data);
-         console.log('this.defaultParticipantFilteredDataObjs from restoreModalHandler',this.defaultParticipantFilteredDataObjs);
-        //console.log('this.defaultParticipantDataLinksObjs from ParticipanteDatosEditar restoreModalHandler',this.defaultParticipantDataLinksObjs);
-        //console.log('defaultFilteredData from ParticipanteDatosEditar restoreModalHandler',this.defaultFilteredData);
-      },
-
-      editModalHandler(){
         this.onModalMode = false;
       },
   }

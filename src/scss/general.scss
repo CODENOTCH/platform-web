@@ -180,25 +180,3 @@ ul{
   }
 }
 
-/* TRANSITIONS */
-
-.contentTransition-enter-active{
-  @include transition(all,.35s,ease-out,.3s);
-}
-.contentTransition-leave-active{
-  @include transition(all,.35s,ease-out,0);
-}
-
-.contentTransition-enter{
-  opacity: 0;
-}
-.contentTransition-enter-to{
-  opacity: 1;
-}
-.contentTransition-leave{
-  opacity: 1;
-}
-.contentTransition-leave-to{
-  opacity: 0;
-}
-

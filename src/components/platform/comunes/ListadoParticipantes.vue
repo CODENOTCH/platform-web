@@ -79,9 +79,10 @@
             </v-btn>
         </div> 
         <participantes-modal v-if="onModalMode"
+                            :type="modalType"
                             @onConfirmModal="confirmModalHandler"
                             @onRestoreModal="restoreModalHandler"
-                            @onEditModal="editModalHandler"
+                            @onConfirmDeleteParticipantModal="confirmDeleteParticipantHandler"
         ></participantes-modal>
     </div>
 </template>
@@ -101,11 +102,12 @@ export default {
   data() {
     return {
       currentParticipantData: [],
-      defaultParticipantData: [],
       currentRoute: "",
       editMode: false,
       onModalMode: false,
-      isConfirmed: false
+      modalType: "",
+      isConfirmed: false,
+      participantToDelete: null
     };
   },
 
@@ -126,12 +128,6 @@ export default {
     isAdmissionProfile(){
       return this.profile === 'admisiones' ? true : false;
     }
-  },
-
-  beforeCreate() {
-    /* TEMPORAL*/
-    //this.$store.commit('setBootcampId', '1.1');
-    //console.log('beforeCreate from ListadoParticipantes');
   },
 
   created() {
@@ -162,10 +158,8 @@ export default {
     }
 
     this.currentParticipantData = participantsList;
-    
-    //console.log('this.bootcampData.bootcamps[0].studentList[0].name', this.bootcampData.bootcamps[0].studentList[0].name);
-    //console.log('defaultParticipantData from ListadoParticipantes created', this.defaultParticipantData);
 
+    this.modalType = "confirm";
   },
 
   methods:{
@@ -179,6 +173,7 @@ export default {
       },
 
       clickConfirmHandler(){
+          this.modalType = "confirm";
           this.onModalMode = true;
       },
 
@@ -193,19 +188,19 @@ export default {
 
       restoreModalHandler(){
           this.onModalMode = false;
-          this.editMode = false;
-          //console.log('defaultParticipantData from ListadoParticipantes restoreModalHandler', this.defaultParticipantData);
-          this.currentParticipantData = this.defaultParticipantData;
-          this.$store.commit('setEditModeActive',false);
-      },
-
-      editModalHandler(){
-          this.onModalMode = false;
       },
 
       deleteParticipantHandler(participant){
+          this.modalType = "delete";
+          this.onModalMode = true;
+          this.participantToDelete = participant;
+      },
+
+      confirmDeleteParticipantHandler(){
+          this.onModalMode = false;
+
           let indexParticipantMatched = this.currentParticipantData.findIndex(
-            item => item === participant
+            item => item === this.participantToDelete
           );
 
           this.currentParticipantData.splice(indexParticipantMatched,1);

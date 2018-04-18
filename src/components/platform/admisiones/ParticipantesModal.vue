@@ -1,8 +1,7 @@
 <template>
-    <transition name="contentTransition" appear>
         <div class="container-modal confirm">
             <v-card class="block-modal">
-                <v-card-text>¿Quieres confirmar los cambios?</v-card-text>
+                <v-card-text>{{getMessage}}</v-card-text>
                 <v-card-actions>
                     <div class="container-btn">
                         <button @click="confirmHandler" type="button" class="btn btn-success">
@@ -11,37 +10,32 @@
                         <button @click="restoreHandler" type="button" class="btn btn-danger">
                             <v-icon>close</v-icon>
                         </button>
-                        <button @click="editHandler" type="button" class="btn btn-info">
-                            <v-icon>edit</v-icon>
-                        </button>
                     </div>
                 </v-card-actions>
             </v-card>
         </div>
-    </transition>
 </template>
 
 <script>
     export default {
         name:'participantesModal',
 
-        created(){
-        },
+        props: ["type"],
 
-        destroy(){
+        computed: {
+            getMessage(){
+                let message = this.type === 'confirm' ? '¿Quieres confirmar los cambios?' : '¿Seguro que desea eliminar a este usuario?';
+                return message;
+            }
         },
 
         methods: {
             confirmHandler(){
-                this.$emit('onConfirmModal');
+                this.type === 'confirm' ? this.$emit('onConfirmModal') : this.$emit('onConfirmDeleteParticipantModal');
             },
 
             restoreHandler(){
                 this.$emit('onRestoreModal');
-            },
-
-            editHandler(){
-                this.$emit('onEditModal');
             }
         }
     }    
