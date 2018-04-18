@@ -97,9 +97,12 @@ export default {
     return {
       currentBootcampData: [],
       currentParticipantData: {},
-      defaultParticipantData: {},
-      defaultParticipantDataLinks: [],
       currentFilteredData: {},
+      defaultParticipantData: {},
+      defaultParticipantFilteredData: {},
+      defaultParticipantFilteredDataObjs: {},
+      defaultParticipantDataLinks: [],
+      defaultParticipantDataLinksObjs: [],
       //defaultFilteredData: {},
       bootcampId: '',
       id: '',
@@ -107,7 +110,8 @@ export default {
       photoPath: '',
       modeLink: 'normal',
       indexSelectedLink: 0,
-      onModalMode: false
+      onModalMode: false,
+      firstRestore: false
     };
   },
 
@@ -120,7 +124,7 @@ export default {
     }),
 
     isContabilityProfile(){
-        return this.profile === 'contabilidad' ? true : false;
+      return this.profile === 'contabilidad' ? true : false;
     }
   },
 
@@ -163,27 +167,16 @@ export default {
     );
 
     this.defaultParticipantData = participantsList[indexParticipantsMatched];
-    this.defaultParticipantDataLinks = [...participantsList[indexParticipantsMatched].links];
+    
+    this.defaultParticipantDataLinks = [...this.defaultParticipantData.links];
+
+    this.defaultParticipantDataLinks.forEach( (item,i) => {
+        this.defaultParticipantDataLinksObjs.push({...this.defaultParticipantDataLinks[i]});
+    });
 
     this.currentParticipantData = {...this.defaultParticipantData};
 
-    /*this.defaultParticipantDataLinks = participantsList[indexParticipantsMatched].links.forEach( (item) => {
-        console.log('item',item);
-        item = {...item};
-    });*/
-
     this.currentParticipantData.links = [...this.defaultParticipantDataLinks];
-
-    /*this.currentParticipantData = {...this.defaultParticipantData};
-    this.currentParticipantData.links = [...this.defaultParticipantDataLinks];
-    this.currentParticipantData.links.forEach( (item) => {
-        item = {...item};
-    });*/
-
-    console.log('defaultParticipantData from ParticipanteDatosEditar created',this.defaultParticipantData);
-    console.log('defaultParticipantDataLinks from ParticipanteDatosEditar created',this.defaultParticipantDataLinks);
-
-    //console.log('this.currentParticipantData', this.currentParticipantData);
 
      /* get filtered data by keys */ 
 
@@ -195,20 +188,18 @@ export default {
 
         objFiltered = _.merge(_.pickBy(studentData, item => item.type === firstFilterKey),_.pickBy(studentData, item => item.type === secondFilterKey));
 
-       /* this.defaultFilteredData = objFiltered;
-        this.defaultFilteredData.telefono.content = '98899889';
-        this.currentFilteredData = {...this.defaultFilteredData};*/
-
         this.currentFilteredData = objFiltered;
     } 
 
-    else {
-        /*this.defaultFilteredData = this.currentParticipantData.data;
-        this.defaultFilteredData = {...this.currentParticipantData.data};
-        this.currentFilteredData = {...this.defaultFilteredData};*/photoPath
+    else this.currentFilteredData = this.currentParticipantData.data;
 
-         this.currentFilteredData = this.currentParticipantData.data;
-    }
+    this.defaultParticipantFilteredData = {...this.currentFilteredData};
+
+    _.forIn(this.defaultParticipantFilteredData, (value, key) => {
+        this.defaultParticipantFilteredDataObjs[key] = {...value}
+    });
+
+    console.log('this.defaultParticipantFilteredDataObjs from created', this.defaultParticipantFilteredDataObjs);
 
     this.photoPath = this.currentParticipantData.photoPath;
   },
@@ -262,12 +253,43 @@ export default {
 
       restoreModalHandler(){
         this.currentParticipantData = {...this.defaultParticipantData};
+        this.defaultParticipantDataLinks = [...this.defaultParticipantDataLinksObjs];
+
+        this.defaultParticipantDataLinks.forEach( (item,i) => {
+            this.defaultParticipantDataLinksObjs.splice(i,1,{...item})
+        });
+
+        /*_.forIn(this.defaultParticipantFilteredData, (value, key) => {
+            this.defaultParticipantFilteredDataObjs[key] = {...value}
+        });*/
+
+
+        if(this.firstRestore){
+            _.forIn(this.defaultParticipantFilteredData, (value, key) => {
+                this.defaultParticipantFilteredDataObjs[key] = {...value}
+            });
+        }
+
+        else{
+            _.forIn(this.defaultParticipantFilteredDataObjs, (value, key) => {
+                value[key] = {...value}
+            });
+        }
+
+        this.firstRestore = true;
+
         this.currentParticipantData.links = [...this.defaultParticipantDataLinks];
-        //this.currentParticipantData.data = {...this.defaultFilteredData};
+        this.currentFilteredData = {...this.defaultParticipantFilteredDataObjs};
+
         this.photoPath = this.currentParticipantData.photoPath; 
         this.onModalMode = false;
-        console.log('defaultParticipantDataLinks from ParticipanteDatosEditar restoreModalHandler',this.defaultParticipantDataLinks);
-        console.log('defaultParticipantData from ParticipanteDatosEditar restoreModalHandler',this.defaultParticipantData);
+
+        //this.defaultParticipantDataLinksObjs = [...this.defaultParticipantDataLinksObjs];
+
+        //console.log('defaultParticipantDataLinks from ParticipanteDatosEditar restoreModalHandler',this.defaultParticipantDataLinks);
+        //console.log('this.currentParticipantData.data from ParticipanteDatosEditar restoreModalHandler',this.currentParticipantData.data);
+         console.log('this.defaultParticipantFilteredDataObjs from restoreModalHandler',this.defaultParticipantFilteredDataObjs);
+        //console.log('this.defaultParticipantDataLinksObjs from ParticipanteDatosEditar restoreModalHandler',this.defaultParticipantDataLinksObjs);
         //console.log('defaultFilteredData from ParticipanteDatosEditar restoreModalHandler',this.defaultFilteredData);
       },
 

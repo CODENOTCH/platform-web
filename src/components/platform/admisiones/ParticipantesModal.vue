@@ -1,6 +1,6 @@
 <template>
     <transition name="contentTransition" appear>
-        <div class="container-modal confirm">Modal
+        <div class="container-modal confirm">
             <v-card class="block-modal">
                 <v-card-text>¿Quieres confirmar los cambios?</v-card-text>
                 <v-card-actions>
