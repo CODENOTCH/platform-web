@@ -94,28 +94,45 @@
                 }
             }
         }
-        .container-links{
-            .icon{
-                cursor: pointer;
-                font-size: 1.3em;
-                margin-left: .3em;
-                @include transition(all,.35s,ease-out,0);
-                &:first-of-type{
-                    margin-left: .7em;
-                    color: $blue;
-                    &:hover{
-                        color: $darkBlue;
-                    }
-                }
-                &:last-of-type{
-                    color: $red;
-                    &:hover{
-                        color: $darkRed;
+
+        .wrapper-links{
+            width: 100%;
+            @include flexContainer(space-between);
+            .container-links{
+                @include flexContainer(flex-start,$wrap:wrap);
+                .container-link{
+                    .chip-link{
+                        .icon{
+                            cursor: pointer;
+                            font-size: 1.3em;
+                            margin-left: .3em;
+                            @include transition(all,.35s,ease-out,0);
+                            &:first-of-type{
+                                margin-left: .7em;
+                                color: $blue;
+                                &:hover{
+                                    color: $darkBlue;
+                                }
+                            }
+                            &:last-of-type{
+                                color: $red;
+                                &:hover{
+                                    color: $darkRed;
+                                }
+                            }
+                        }
                     }
                 }
             }
+
+            .container-btn-add{
+                .btn{
+                    color: $white;
+                    background: $blue;
+                }
+            }
+            
             .container-link-edit{
-                /*background: $softGrey;*/
                 @include flexContainer();
                 .container-inputs{
                     input:first-child{
@@ -132,6 +149,31 @@
                         }
                     }
                 }
+            }
+
+            .container-link-add{
+                @extend .container-link-edit;
+            }
+        }
+
+        .loading-codenotch{
+            width: 114px;
+            height: 114px;
+            background: $darkWhiteOverlay;
+            position: absolute;
+            left: calc(50% - 57px);
+            top: 0;
+            @include flexContainer();
+            opacity: 0;
+            @include transition(all,.35s,ease-out,0);
+            &.visible{
+                opacity: 1;
+            }
+        }
+          
+        .progress-codenotch{
+            circle{
+                stroke: $purple;
             }
         }
     }

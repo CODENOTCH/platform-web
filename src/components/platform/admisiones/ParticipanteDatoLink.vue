@@ -1,5 +1,5 @@
 <template>
-    <div v-if="isVisible" class="container-link">
+    <div v-if="isVisible" class="chip-link">
         <v-chip>
             {{data.content}}
             <v-icon class="icon" @click="clickEditHandler">edit</v-icon>

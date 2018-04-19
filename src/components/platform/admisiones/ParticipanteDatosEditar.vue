@@ -15,6 +15,9 @@
             <div class="row">
                 <div class="col-xl-2 offset-xl-5 container-img-codenotch">
                     <img class="img-fluid img-codenotch" :src="photoPath" alt="foto alumno" />
+                    <div ref="loading" class="loading-codenotch">
+                         <v-progress-circular indeterminate :width="7" class="progress-codenotch"></v-progress-circular>
+                    </div>
                     <label class="btn-codenotch">
                         SUBIR FOTO 
                         <form enctype="multipart/form-data" method="post" id="form-upload">
@@ -39,24 +42,43 @@
                     <div class="card participant-data container-links">
                         <div class="card-header label-data">LINKS</div>
                         <div class="card-body content-data">
-                            <div class="container-links" v-for="(item,index) of currentParticipantData.links" :key="index">
-                                <participante-dato-link-editar 
-                                                    :data="item"
-                                                    :index="index"
-                                                    :indexSelected="indexSelectedLink"
-                                                    :mode="modeLink"
-                                                    @onClickBtnConfirmLink="confirmLink"
-                                                    >
-                                </participante-dato-link-editar>
-                                <participante-dato-link :data="item"
-                                                        :index="index"
-                                                        :mode="modeLink"
-                                                        @onClickBtnEditLink="editLink"
-                                                        @onClickBtnDeleteLink="deleteLink"
-                                                        >
-                                </participante-dato-link>
+                            <div class="wrapper-links">
+                                <div class="container-links">
+                                    <participante-dato-link-nuevo v-if="modeLink === 'add'" 
+                                                            @onClickBtnConfirmNewLink="confirmNewLink"
+                                                            >
+                                    </participante-dato-link-nuevo>
+                                    <div class="container-link" v-for="(item,index) of currentParticipantData.links" :key="index">
+                                        <participante-dato-link-editar 
+                                                            :data="item"
+                                                            :index="index"
+                                                            :indexSelected="indexSelectedLink"
+                                                            :mode="modeLink"
+                                                            @onClickBtnConfirmLink="confirmLink"
+                                                            >
+                                        </participante-dato-link-editar>
+                                        <participante-dato-link :data="item"
+                                                                :index="index"
+                                                                :mode="modeLink"
+                                                                @onClickBtnEditLink="editLink"
+                                                                @onClickBtnDeleteLink="deleteLink"
+                                                                >
+                                        </participante-dato-link>
+                                    </div>
+                                </div>
+                                <div v-if="isVisibleBtnAddLink" class="container-btn-add">
+                                    <v-btn
+                                        dark
+                                        small
+                                        fab
+                                        class="btn"
+                                        @click="addLink"
+                                        >
+                                        <v-icon>add</v-icon>
+                                    </v-btn>
+                                </div>
                             </div>
-                        </div>
+                        </div>    
                     </div>
                     <participante-dato v-for="(item,index) of currentFilteredData" 
                                         :key="index" 
@@ -81,6 +103,7 @@ import { mapGetters } from 'vuex';
 import ParticipanteDato from '../comunes/ParticipanteDato.vue';
 import ParticipanteDatoLink from './ParticipanteDatoLink.vue';
 import ParticipanteDatoLinkEditar from './ParticipanteDatoLinkEditar.vue';
+import ParticipanteDatoLinkNuevo from './ParticipanteDatoLinkNuevo.vue';
 import ParticipantesModal from './ParticipantesModal.vue';
 
 export default {
@@ -90,6 +113,7 @@ export default {
       participanteDato: ParticipanteDato,
       participanteDatoLink: ParticipanteDatoLink,
       participanteDatoLinkEditar: ParticipanteDatoLinkEditar,
+      participanteDatoLinkNuevo: ParticipanteDatoLinkNuevo,
       participantesModal: ParticipantesModal
   },
 
@@ -118,6 +142,10 @@ export default {
 
     isContabilityProfile(){
       return this.profile === 'contabilidad' ? true : false;
+    },
+
+    isVisibleBtnAddLink(){
+        return this.modeLink === "normal" ? true : false;
     }
   },
 
@@ -193,13 +221,18 @@ export default {
         _data.append(file,file.name);
 
         const config = {
-            headers: { 'content-type': 'multipart/form-data' }
+            headers: { 'content-type': 'multipart/form-data' },
+            onUploadProgress:  (progressEvent) => {
+                this.$refs.loading.classList.add('visible');
+            }
         }
 
         Axios.post('https://www.codenotch.com/docs/upload',_data,config)
         .then( (response) => {
+            this.$refs.loading.classList.remove('visible');
+
             const responseData = response.data;
-            //console.log('responseData',responseData);
+
             this.photoPath = responseData.secure_url;
             this.currentParticipantData.photoPath = this.photoPath;
         })
@@ -212,9 +245,24 @@ export default {
         this.modeLink = 'normal';
       },
 
+      addLink(){
+        this.modeLink = 'add';
+      },
+
       editLink(index){
         this.indexSelectedLink = index;  
         this.modeLink = 'edit';
+      },
+
+      confirmNewLink(label,link){
+        let newLink = {
+            content: label,
+            url: link,
+        };
+
+        this.currentParticipantData.links.push(newLink);
+        
+        this.modeLink = 'normal';
       },
 
       deleteLink(index){
