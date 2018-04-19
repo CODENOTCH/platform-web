@@ -68,15 +68,16 @@
             </div>    
         </div>
         <div class="container-btn-add" v-if="editMode">
-            <v-btn
-                dark
-                small
-                fab
-                @click="clickEditHandler"
-                class="btn"
-                >
-                <v-icon>add</v-icon>
-            </v-btn>
+            <router-link :to="{ path: `${currentRoute}/${newId}/create`}">
+                <v-btn
+                    dark
+                    small
+                    fab
+                    class="btn"
+                    >
+                    <v-icon>add</v-icon>
+                </v-btn>
+            </router-link>
         </div> 
         <participantes-modal v-if="onModalMode"
                             :type="modalType"
@@ -89,6 +90,7 @@
 
 <script>
 import Axios from "axios";
+import { EventBus } from '../../../containers/eventBus.js';
 import { mapGetters } from "vuex";
 import ParticipantesModal from '../admisiones/ParticipantesModal.vue';
 
@@ -107,7 +109,8 @@ export default {
       onModalMode: false,
       modalType: "",
       isConfirmed: false,
-      participantToDelete: null
+      participantToDelete: null,
+      newId: '75324872394858'
     };
   },
 
@@ -145,19 +148,21 @@ export default {
       case "listadoAlumnos":
       case "listadoAlumnosAdmisiones":
       case "listadoAlumnosContabilidad":
-        this.defaultParticipantData = this.bootcampData.bootcamps[indexBootcampMatched].studentList;
-        participantsList = [...arrBootcampsData[indexBootcampMatched].studentList];
+        participantsList = arrBootcampsData[indexBootcampMatched].studentList;
         this.currentRoute = "alumnos";
         break;
       case "listadoProfesoresAdmisiones":
       case "listadoProfesoresContabilidad":
-        this.defaultParticipantData = this.bootcampData.bootcamps[indexBootcampMatched].teacherList;
-        participantsList = [...arrBootcampsData[indexBootcampMatched].teacherList];
+        participantsList = arrBootcampsData[indexBootcampMatched].teacherList;
         this.currentRoute = "profesores";
         break;
     }
 
     this.currentParticipantData = participantsList;
+
+    EventBus.$once('onConfirmNewUser', dataSelected => {
+        this.currentParticipantData.push({...dataSelected});
+    });
 
     this.modalType = "confirm";
   },

@@ -14,6 +14,7 @@ import AdmisionesWrapper from '../components/platform/admisiones/AdmisionesWrapp
 import ContabilidadWrapper from '../components/platform/contabilidad/ContabilidadWrapper.vue';
 import ParticipanteDatos from '../components/platform/comunes/ParticipanteDatos.vue';
 import ParticipanteDatosEditar from '../components/platform/admisiones/ParticipanteDatosEditar.vue';
+import ParticipanteDatosCrear from '../components/platform/admisiones/ParticipanteDatosCrear.vue';
 
 const router = new VueRouter({
     routes : [
@@ -102,6 +103,16 @@ const router = new VueRouter({
                     path: 'bootcamps/:bootcampId/participantes/profesores/:id/edit',
                     name:'profesorDatosEditarAdmisiones',
                     component: ParticipanteDatosEditar
+                },
+                {
+                    path: 'bootcamps/:bootcampId/participantes/alumnos/:id/create',
+                    name:'alumnoDatosCrearAdmisiones',
+                    component: ParticipanteDatosCrear
+                },
+                {
+                    path: 'bootcamps/:bootcampId/participantes/profesores/:id/create',
+                    name:'profesorDatosCrearAdmisiones',
+                    component: ParticipanteDatosCrear
                 }
             ]
         },

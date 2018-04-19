@@ -14,7 +14,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-2 offset-xl-5 container-img-codenotch">
-                    <img class="img-fluid img-codenotch" :src="photoPath" alt="foto alumno" />
+                    <img class="img-fluid img-codenotch" :src="getPhotoPath" alt="foto alumno" />
                     <div ref="loading" class="loading-codenotch">
                          <v-progress-circular indeterminate :width="7" class="progress-codenotch"></v-progress-circular>
                     </div>
@@ -28,7 +28,7 @@
             </div>
             <div class="row">
                 <div class="col-12 container-name">
-                    <input type="text" class="input-edit" v-model.trim="currentParticipantData.name">
+                    <input type="text" class="input-edit" v-model.trim="dataSelected.name">
                 </div> 
             </div>
             <div class="row">
@@ -36,7 +36,7 @@
                     <div class="card participant-data container-description">
                         <div class="card-header label-data">DESCRIPCIÓN</div>
                         <div class="card-body content-data">
-                            <textarea class="textarea-edit" v-model.trim="currentParticipantData.description"></textarea>
+                            <textarea class="textarea-edit" v-model.trim="dataSelected.description"></textarea>
                         </div>
                     </div>
                     <div class="card participant-data container-links">
@@ -48,7 +48,7 @@
                                                             @onClickBtnConfirmNewLink="confirmNewLink"
                                                             >
                                     </participante-dato-link-nuevo>
-                                    <div class="container-link" v-for="(item,index) of currentParticipantData.links" :key="index">
+                                    <div class="container-link" v-for="(item,index) of dataSelected.links" :key="index">
                                         <participante-dato-link-editar 
                                                             :data="item"
                                                             :index="index"
@@ -89,7 +89,8 @@
             </div>
         </div>
         <participantes-modal v-if="onModalMode"
-                            :type="'confirm'"
+                            :type="modalType"
+                            @onConfirmRejectParticipantModal="confirmRejectModalHandler"
                             @onConfirmModal="confirmModalHandler"
                             @onRestoreModal="restoreModalHandler"
         ></participantes-modal>
@@ -99,6 +100,7 @@
 <script>
 import Axios from 'axios';
 import _ from 'lodash';
+import { EventBus } from '../../../containers/eventBus.js';
 import { mapGetters } from 'vuex';
 import ParticipanteDato from '../comunes/ParticipanteDato.vue';
 import ParticipanteDatoLink from './ParticipanteDatoLink.vue';
@@ -107,7 +109,7 @@ import ParticipanteDatoLinkNuevo from './ParticipanteDatoLinkNuevo.vue';
 import ParticipantesModal from './ParticipantesModal.vue';
 
 export default {
-  name: 'participanteDatosEditar',
+  name: 'participanteDatosCrear',
 
   components: {
       participanteDato: ParticipanteDato,
@@ -119,12 +121,12 @@ export default {
 
   data() {
     return {
-      currentParticipantData: {},
+      dataSelected: {},
       currentFilteredData: {},
-      bootcampId: '',
       id: '',
       participantType: '',
       photoPath: '',
+      modalType: "",
       modeLink: 'normal',
       indexSelectedLink: 0,
       onModalMode: false
@@ -133,9 +135,18 @@ export default {
 
   computed: {
     ...mapGetters({
-      bootcampData: 'getBootcampData',
-      profile:'getProfile'
+      config: 'getConfigData',
+      profile:'getProfile',
     }),
+
+    getPhotoPath() {
+      if(!this.photoPath){
+        return process.env.NODE_ENV === 'production'
+            ? this.config.imgPathProduction.imgAnonimo
+            : this.config.imgPathDevelopment.imgAnonimo;
+      }
+      else return this.photoPath;  
+    },
 
     isVisibleBtnAddLink(){
         return this.modeLink === "normal" ? true : false;
@@ -149,41 +160,23 @@ export default {
   created() {
     window.scrollTo(0, 0);
 
-    /* set current Bootcamp */ 
-
-    this.bootcampId = this.$route.params.bootcampId;
-    this.id = this.$route.params.id;
-
-    let arrBootcampsData = [...this.bootcampData.bootcamps];
-    let indexBootcampMatched = arrBootcampsData.findIndex(
-      item => item._id === this.bootcampId
-    );
-
-    /* set current Participant and type of Participant */ 
-
-    let participantsList = null;
+    /* set current Data and type of Participant */ 
 
     switch (this.$route.name) {
-      case "alumnoDatosEditarAdmisiones":
-        participantsList = arrBootcampsData[indexBootcampMatched].studentList;
+      case "alumnoDatosCrearAdmisiones":
         this.participantType = 'student';
+        this.dataSelected = _.cloneDeep(this.config.dataNewStudent);
         break;
-      case "profesorDatosEditarAdmisiones":
-        participantsList = arrBootcampsData[indexBootcampMatched].teacherList;
+      case "profesorDatosCrearAdmisiones":
         this.participantType = 'teacher';
+        this.dataSelected = _.cloneDeep(this.config.dataNewStudent);
         break;
     }
-    
-    let indexParticipantsMatched = participantsList.findIndex(
-      item => item._id === this.id
-    );
-
-    this.currentParticipantData = participantsList[indexParticipantsMatched];
 
      /* get filtered data by keys */ 
 
     if(this.participantType === 'student'){
-        let studentData = participantsList[indexParticipantsMatched].data;
+        let studentData = this.dataSelected.data;
         let firstFilterKey = 'shared';
         let secondFilterKey = this.profile;
         let objFiltered = {};
@@ -193,13 +186,16 @@ export default {
         this.currentFilteredData = objFiltered;
     } 
 
-    else this.currentFilteredData = this.currentParticipantData.data;
+    else this.currentFilteredData = this.dataSelected.data;
 
-    this.photoPath = this.currentParticipantData.photoPath;
+    this.modalType = "confirm";
   },
 
   methods:{
       clickConfirmHandler(){
+          if(this.dataSelected.photoPath === "undefined") {
+                this.modalType = 'reject';
+            }
            this.onModalMode = true;
       },
 
@@ -207,6 +203,7 @@ export default {
         const file = e.target.files[0];
         const formElement = document.getElementById("form-upload");
         const _data = new FormData(formElement);
+        
         _data.append(file,file.name);
 
         const config = {
@@ -223,7 +220,8 @@ export default {
             const responseData = response.data;
 
             this.photoPath = responseData.secure_url;
-            this.currentParticipantData.photoPath = this.photoPath;
+            this.dataSelected.photoPath = this.photoPath;
+            this.modalType = "confirm";
         })
         .catch( (error) => {
             console.log(error);
@@ -249,16 +247,21 @@ export default {
             url: link,
         };
 
-        this.currentParticipantData.links.push(newLink);
+        this.dataSelected.links.push(newLink);
         
         this.modeLink = 'normal';
       },
 
       deleteLink(index){
-        this.currentParticipantData.links.splice(index,1);
+        this.dataSelected.links.splice(index,1);
+      },
+
+      confirmRejectModalHandler(){
+        this.onModalMode = false;
       },
 
       confirmModalHandler(){
+        EventBus.$emit('onConfirmNewUser',this.dataSelected);
         this.onModalMode = false;
         this.$router.back();
       },
