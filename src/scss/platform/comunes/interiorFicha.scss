@@ -33,6 +33,18 @@
         }
     }
 
+    .container-btn-delete{
+        position: fixed;
+        z-index: 4;
+        right: inherit;
+        left: 10px;;
+        top: 20px;
+        .btn{
+            color: $white;
+            background: $red;
+        }
+    }
+
     .participant-data{
         margin-bottom: 3em;
         width: 100%;
@@ -128,7 +140,7 @@
             .container-btn-add{
                 .btn{
                     color: $white;
-                    background: $blue;
+                    background: $darkGrey;
                 }
             }
             

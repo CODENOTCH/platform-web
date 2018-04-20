@@ -10,6 +10,17 @@
                 >
                 <v-icon>done</v-icon>
             </v-btn>
+        </div>
+        <div class="container-btn-delete">
+            <v-btn
+                dark
+                small
+                fab
+                @click="clickDeleteHandler"
+                class="btn"
+                >
+                <v-icon>delete_forever</v-icon>
+            </v-btn>
         </div>  
         <div class="container-fluid">
             <div class="row">
@@ -89,9 +100,10 @@
             </div>
         </div>
         <participantes-modal v-if="onModalMode"
-                            :type="'confirm'"
+                            :type="modalType"
                             @onConfirmModal="confirmModalHandler"
-                            @onRestoreModal="restoreModalHandler"
+                            @onCloseModal="closeModalHandler"
+                            @onConfirmDeleteModal="confirmDeleteModalHandler"
         ></participantes-modal>
     </div> 
 </template>
@@ -124,10 +136,12 @@ export default {
       bootcampId: '',
       id: '',
       participantType: '',
+      participantList: null,
       photoPath: '',
       modeLink: 'normal',
       indexSelectedLink: 0,
-      onModalMode: false
+      onModalMode: false,
+      modalType: ""
     };
   },
 
@@ -161,29 +175,27 @@ export default {
 
     /* set current Participant and type of Participant */ 
 
-    let participantsList = null;
-
     switch (this.$route.name) {
       case "alumnoDatosEditarAdmisiones":
-        participantsList = arrBootcampsData[indexBootcampMatched].studentList;
+        this.participantsList = arrBootcampsData[indexBootcampMatched].studentList;
         this.participantType = 'student';
         break;
       case "profesorDatosEditarAdmisiones":
-        participantsList = arrBootcampsData[indexBootcampMatched].teacherList;
+        this.participantsList = arrBootcampsData[indexBootcampMatched].teacherList;
         this.participantType = 'teacher';
         break;
     }
     
-    let indexParticipantsMatched = participantsList.findIndex(
+    let indexParticipantsMatched = this.participantsList.findIndex(
       item => item._id === this.id
     );
 
-    this.currentParticipantData = participantsList[indexParticipantsMatched];
+    this.currentParticipantData = this.participantsList[indexParticipantsMatched];
 
      /* get filtered data by keys */ 
 
     if(this.participantType === 'student'){
-        let studentData = participantsList[indexParticipantsMatched].data;
+        let studentData = this.participantsList[indexParticipantsMatched].data;
         let firstFilterKey = 'shared';
         let secondFilterKey = this.profile;
         let objFiltered = {};
@@ -200,7 +212,50 @@ export default {
 
   methods:{
       clickConfirmHandler(){
-           this.onModalMode = true;
+          this.modalType = "confirm";
+          this.onModalMode = true;
+      },
+
+      clickDeleteHandler(){
+          this.modalType = "delete";
+          this.onModalMode = true;
+      },
+
+      confirmDeleteModalHandler(){
+
+          /* AXIOS DELETE */  
+
+        Axios.delete('https://www.codenotch.com/students/deleteStudent',{
+            params:{
+                userid: this.currentParticipantData._id
+            }
+        }).then( (response) => {
+            console.log(response);
+        })
+        .catch( (error) => {
+            console.log(error);
+        });
+
+        this.onModalMode = false;
+        
+        let indexParticipantMatched = this.participantsList.findIndex(
+            item => item === this.currentParticipantData
+        );
+
+        this.participantsList.splice(indexParticipantMatched,1);
+        this.$router.back();
+      },
+
+      confirmModalHandler(){
+
+        /* AÑADIR ENVIO POST */  
+
+        this.onModalMode = false;
+        this.$router.back();
+      },
+
+      closeModalHandler(){
+        this.onModalMode = false;
       },
 
       handleFile(e){
@@ -256,16 +311,7 @@ export default {
 
       deleteLink(index){
         this.currentParticipantData.links.splice(index,1);
-      },
-
-      confirmModalHandler(){
-        this.onModalMode = false;
-        this.$router.back();
-      },
-
-      restoreModalHandler(){
-        this.onModalMode = false;
-      },
+      }
   }
 };
 </script>

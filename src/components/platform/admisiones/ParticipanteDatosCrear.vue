@@ -90,9 +90,9 @@
         </div>
         <participantes-modal v-if="onModalMode"
                             :type="modalType"
-                            @onConfirmRejectParticipantModal="confirmRejectModalHandler"
+                            @onRejectModal="rejectModalHandler"
                             @onConfirmModal="confirmModalHandler"
-                            @onRestoreModal="restoreModalHandler"
+                            @onCloseModal="closeModalHandler"
         ></participantes-modal>
     </div> 
 </template>
@@ -199,6 +199,20 @@ export default {
            this.onModalMode = true;
       },
 
+      rejectModalHandler(){
+        this.onModalMode = false;
+      },
+
+      confirmModalHandler(){
+        EventBus.$emit('onConfirmNewUser',this.dataSelected);
+        this.onModalMode = false;
+        this.$router.back();
+      },
+
+      closeModalHandler(){
+        this.onModalMode = false;
+      },
+
       handleFile(e){
         const file = e.target.files[0];
         const formElement = document.getElementById("form-upload");
@@ -254,21 +268,7 @@ export default {
 
       deleteLink(index){
         this.dataSelected.links.splice(index,1);
-      },
-
-      confirmRejectModalHandler(){
-        this.onModalMode = false;
-      },
-
-      confirmModalHandler(){
-        EventBus.$emit('onConfirmNewUser',this.dataSelected);
-        this.onModalMode = false;
-        this.$router.back();
-      },
-
-      restoreModalHandler(){
-        this.onModalMode = false;
-      },
+      }
   }
 };
 </script>

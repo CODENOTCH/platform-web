@@ -16,10 +16,10 @@
                 dark
                 small
                 fab
-                @click="clickConfirmHandler"
-                class="btn-confirm"
+                @click="clickReturnHandler"
+                class="btn-back"
                 >
-                <v-icon>done</v-icon>
+                <v-icon>arrow_back</v-icon>
             </v-btn>
         </div>  
         <div class="container-fluid">
@@ -54,9 +54,9 @@
                             <v-btn class="btn-codenotch">{{getNameBtn}}</v-btn>
                         </router-link>
                         <div v-else class="container-btns-edit">
-                            <button @click="deleteParticipantHandler(item)" type="button" class="btn btn-danger">
+                            <!--button @click="deleteParticipantHandler(item)" type="button" class="btn btn-danger">
                                 <v-icon>delete</v-icon>
-                            </button>
+                            </button-->
                             <router-link :to="{ path: `${currentRoute}/${item._id}/edit`}">
                                 <button type="button" class="btn btn-info">
                                     <v-icon>edit</v-icon>
@@ -68,7 +68,7 @@
             </div>    
         </div>
         <div class="container-btn-add" v-if="editMode">
-            <router-link :to="{ path: `${currentRoute}/${newId}/create`}">
+            <router-link :to="{ path: `${currentRoute}/${genericId}/create`}">
                 <v-btn
                     dark
                     small
@@ -80,10 +80,9 @@
             </router-link>
         </div> 
         <participantes-modal v-if="onModalMode"
-                            :type="modalType"
-                            @onConfirmModal="confirmModalHandler"
-                            @onRestoreModal="restoreModalHandler"
-                            @onConfirmDeleteParticipantModal="confirmDeleteParticipantHandler"
+                            :type="'return'"
+                            @onReturnModal="returnModalHandler"
+                            @onCloseModal="closeModalHandler"
         ></participantes-modal>
     </div>
 </template>
@@ -106,11 +105,10 @@ export default {
       currentParticipantData: [],
       currentRoute: "",
       editMode: false,
-      onModalMode: false,
-      modalType: "",
       isConfirmed: false,
-      participantToDelete: null,
-      newId: '75324872394858'
+      //participantToDelete: null,
+      genericId: '000000000',
+      onModalMode: false,
     };
   },
 
@@ -161,10 +159,11 @@ export default {
     this.currentParticipantData = participantsList;
 
     EventBus.$once('onConfirmNewUser', dataSelected => {
+        console.log('onConfirmNewUser');
         this.currentParticipantData.push({...dataSelected});
     });
 
-    this.modalType = "confirm";
+
   },
 
   methods:{
@@ -172,43 +171,24 @@ export default {
         this.editMode = this.editModeActive;
       },
 
+      clickReturnHandler(){
+          this.onModalMode = true;
+      },
+
       clickEditHandler(){
           this.editMode = true;
           this.$store.commit('setEditModeActive',true);
       },
 
-      clickConfirmHandler(){
-          this.modalType = "confirm";
-          this.onModalMode = true;
-      },
-
-      confirmModalHandler(){
+      returnModalHandler(){
           this.isConfirmed = true;
           this.onModalMode = false;
           this.editMode = false;
           this.$store.commit('setEditModeActive',false);
-
-          /* AÑADIR ENVIO POST DE LOS DATOS DE LOS PARTICIPANTES  */
       },
 
-      restoreModalHandler(){
+      closeModalHandler(){
           this.onModalMode = false;
-      },
-
-      deleteParticipantHandler(participant){
-          this.modalType = "delete";
-          this.onModalMode = true;
-          this.participantToDelete = participant;
-      },
-
-      confirmDeleteParticipantHandler(){
-          this.onModalMode = false;
-
-          let indexParticipantMatched = this.currentParticipantData.findIndex(
-            item => item === this.participantToDelete
-          );
-
-          this.currentParticipantData.splice(indexParticipantMatched,1);
       }
   }
 };
