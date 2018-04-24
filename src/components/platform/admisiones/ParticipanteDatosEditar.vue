@@ -226,7 +226,7 @@ export default {
           /* AXIOS DELETE */  
 
         Axios.delete('https://www.codenotch.com/students/deleteStudent',{
-            params:{
+            data:{
                 userid: this.currentParticipantData._id
             }
         }).then( (response) => {

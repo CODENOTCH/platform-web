@@ -68,10 +68,22 @@
                             this.getSectionData(content.slidesPath),
                             this.getSectionData(content.desarrolloPath) ])
                     .then(Axios.spread( (...params) => {
-                        this.currentContentsData = params[0].data.data;
-                        this.currentSlidesData = params[1].data[0].Routes;
-                        //console.log('this.currentSlidesData',params[1].data[0].Routes);
-                        this.currentDevelopmentsData = params[2].data.data;
+                        let contentsData = params[0].data.data;
+                        let slidesData = params[1].data[0].Routes;
+                        let developmentsData = params[2].data.data;
+
+                        contentsData.sort( (prevItem,nextItem)=>{
+                            return prevItem.position - nextItem.position;
+                        });
+
+                        developmentsData.sort( (prevItem,nextItem)=>{
+                            return prevItem.position - nextItem.position;
+                        });
+
+
+                        this.currentContentsData = contentsData;
+                        this.currentSlidesData = slidesData;
+                        this.currentDevelopmentsData = developmentsData;
                     })
                 );
             },
