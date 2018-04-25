@@ -193,10 +193,8 @@ export default {
 
   methods:{
       clickConfirmHandler(){
-          if(this.dataSelected.photoPath === "undefined") {
-                this.modalType = 'reject';
-            }
-           this.onModalMode = true;
+        if(this.dataSelected.photoPath === "undefined") this.modalType = 'reject';
+        this.onModalMode = true;
       },
 
       rejectModalHandler(){
@@ -205,8 +203,25 @@ export default {
 
       confirmModalHandler(){
         EventBus.$emit('onConfirmNewUser',this.dataSelected);
-        this.onModalMode = false;
-        this.$router.back();
+
+        Axios.post('https://www.codenotch.com/users/register',{
+            params: {
+                username: this.dataSelected.name,
+                password: this.currentFilteredData.dni.content,
+                usertype: this.participantType,
+                mail: this.currentFilteredData.email.content
+            }    
+        })
+        .then( (response) => {
+            console.log(response)
+        })
+        .catch( (error) => {
+            console.log(error);
+        });
+
+
+       // this.onModalMode = false;
+        //this.$router.back();
       },
 
       closeModalHandler(){
