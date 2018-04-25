@@ -248,7 +248,7 @@ export default {
 
       confirmModalHandler(){
 
-        /* AÑADIR ENVIO POST */  
+          /* AXIOS PUT */  
 
         this.onModalMode = false;
         this.$router.back();

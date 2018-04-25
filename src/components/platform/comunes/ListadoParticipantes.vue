@@ -106,7 +106,6 @@ export default {
       currentRoute: "",
       editMode: false,
       isConfirmed: false,
-      //participantToDelete: null,
       genericId: '000000000',
       onModalMode: false,
     };
@@ -157,13 +156,13 @@ export default {
     }
 
     this.currentParticipantData = participantsList;
+  },
 
-    EventBus.$once('onConfirmNewUser', dataSelected => {
+  beforeUpdate(){
+      EventBus.$on('onConfirmNewUser', dataSelected => {
         console.log('onConfirmNewUser');
         this.currentParticipantData.push({...dataSelected});
     });
-
-
   },
 
   methods:{
