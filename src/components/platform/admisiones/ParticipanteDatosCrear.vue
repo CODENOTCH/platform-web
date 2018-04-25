@@ -213,7 +213,18 @@ export default {
             }    
         })
         .then( (response) => {
-            console.log(response)
+            //console.log(response)
+
+            let dataUser = response.data;
+
+            Axios.post('https://www.codenotch.com/students/insertStudent',{
+                params: {
+                    username: this.dataSelected.name,
+                    password: this.currentFilteredData.dni.content,
+                    usertype: this.participantType,
+                    mail: this.currentFilteredData.email.content
+                }    
+            })
         })
         .catch( (error) => {
             console.log(error);

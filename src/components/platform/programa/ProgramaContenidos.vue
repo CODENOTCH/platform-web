@@ -12,6 +12,7 @@
                         <img slot="img" v-if="item.type === 'img'" :src="item.content" alt="imagen contenido"/>
                         <p slot="text" v-if="item.type === 'text'" v-html="item.content"></p>
                         <p slot="list" v-if="item.type === 'list'" class="list-content" v-html="item.content"></p>
+                        <a :href="item.content" slot="link" v-if="item.type === 'link'" class="link-codenotch" v-html="item.content"></a>
                     </data-contenido>
                 </div>
             </div>

@@ -6,6 +6,7 @@
         <slot name="img"></slot>
         <slot name="text"></slot>
         <slot name="list"></slot>
+        <slot name="link"></slot>
     </div>    
 </template>
 
