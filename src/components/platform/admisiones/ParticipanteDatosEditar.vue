@@ -257,8 +257,71 @@ export default {
       },
 
       confirmModalHandler(){
+        if(this.participantType === 'student'){
+            console.log(this.currentParticipantData);
+            //console.log(this.currentFilteredData);
+            Axios.put('https://www.codenotch.com/students/updateStudent',{
+                params: {
+                    username: this.currentParticipantData.name,
+                    DNI: this.currentFilteredData.dni.content,
+                    address: this.currentFilteredData.domicilio.content,
+                    phone: this.currentFilteredData.telefono.content,
+                    mail: this.currentFilteredData.email.content,
+                    description: this.currentParticipantData.description,
+                    photo: this.currentParticipantData.photoPath,
+                    birthdate: this.currentFilteredData.fechaNacimiento.content,
+                    bornplace: this.currentFilteredData.lugarNacimiento.content,
+                    sex: this.currentFilteredData.sexo.content,
+                    postalcode: this.currentFilteredData.codigopostal.content,
+                    nationality: this.currentFilteredData.nacionalidad.content,
+                    coursetype: this.currentFilteredData.modalidadCurso.content,
+                    studies: this.currentFilteredData.estudios.content,
+                    workexp: this.currentFilteredData.experienciaLaboral.content,
+                    meetus: this.currentFilteredData.referenciasCodenotch.content,
+                    interestedon: this.currentFilteredData.interesCodenotch.content,
+                    mainobjectives: this.currentFilteredData.objetivosProgramación.content,
+                    adminotes: this.currentFilteredData.notasAdmisiones.content,
+                    civilstatus: this.currentFilteredData.estadoCivil.content,
+                    hobbies: this.currentFilteredData.hobbies.content,
+                    themesofinterest: this.currentFilteredData.temasInteres.content,
+                    visitedcompanies: this.currentFilteredData.empresas.content,
+                    jobprofile: this.currentFilteredData.perfilCandidato.content,
+                    bootcampid: this.currentParticipantData.bootcampId,
+                    userid: this.currentParticipantData._id
+                }    
+            })
+            .then( (response) => {
+                console.log(response);
+            })
+            .catch( (error) => {
+                console.log(error);
+            }); 
+        }
 
-          /* AXIOS PUT */  
+        else{
+            console.log('this.currentParticipantData',this.currentParticipantData)
+            Axios.put('https://www.codenotch.com/teachers/updateTeacher',{
+                params: {
+                    username: this.currentParticipantData.name,
+                    DNI: this.currentFilteredData.dni.content,
+                    address: this.currentFilteredData.domicilio.content,
+                    phone: this.currentFilteredData.telefono.content,
+                    mail: this.currentFilteredData.email.content,
+                    description: this.currentParticipantData.description,
+                    postalcode: this.currentFilteredData.codigoPostal.content,
+                    photo: this.currentParticipantData.photoPath,
+                    birthdate: this.currentFilteredData.fechaNacimiento.content,
+                    bootcampid: this.currentParticipantData.bootcampId,
+                    userid: this.currentParticipantData._id
+                }    
+            })
+            .then( (response) => {
+                console.log(response);
+            })
+            .catch( (error) => {
+                console.log(error);
+            });
+        }
 
         this.onModalMode = false;
         this.$router.back();

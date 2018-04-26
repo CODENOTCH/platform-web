@@ -219,7 +219,6 @@ export default {
             let dataUser = response.data;
 
             if(dataUser.type === 'alumno'){
-                //console.log('por alumno', this.currentFilteredData.codigoPostal.content);
                 Axios.post('https://www.codenotch.com/students/insertStudent',{
                     params: {
                         DNI: this.currentFilteredData.dni.content,
@@ -248,7 +247,7 @@ export default {
                         factname: this.config.dataNewStudent.data.facturacionEmpresa.content,
                         cif: this.config.dataNewStudent.data.facturacionCib.content,
                         factadress: this.config.dataNewStudent.data.facturacionDireccion.content,
-                        bootcampid: this.dataSelected.content,
+                        bootcampid: this.dataSelected.bootcampId,
                         userid: dataUser._id
                     }    
                 })
