@@ -169,7 +169,7 @@ export default {
         break;
       case "profesorDatosCrearAdmisiones":
         this.participantType = 'teacher';
-        this.dataSelected = _.cloneDeep(this.config.dataNewStudent);
+        this.dataSelected = _.cloneDeep(this.config.dataNewTeacher);
         break;
     }
 
@@ -184,6 +184,7 @@ export default {
         objFiltered = _.merge(_.pickBy(studentData, item => item.type === firstFilterKey),_.pickBy(studentData, item => item.type === secondFilterKey));
 
         this.currentFilteredData = objFiltered;
+        console.log(this.currentFilteredData.domicilio.content);
     } 
 
     else this.currentFilteredData = this.dataSelected.data;
@@ -204,35 +205,92 @@ export default {
       confirmModalHandler(){
         EventBus.$emit('onConfirmNewUser',this.dataSelected);
 
+        let userType = this.participantType === 'student' ? 'alumno' : 'profesor';
+
         Axios.post('https://www.codenotch.com/users/register',{
             params: {
                 username: this.dataSelected.name,
                 password: this.currentFilteredData.dni.content,
-                usertype: this.participantType,
+                usertype: userType,
                 mail: this.currentFilteredData.email.content
             }    
         })
         .then( (response) => {
-            //console.log(response)
-
             let dataUser = response.data;
 
-            Axios.post('https://www.codenotch.com/students/insertStudent',{
-                params: {
-                    username: this.dataSelected.name,
-                    password: this.currentFilteredData.dni.content,
-                    usertype: this.participantType,
-                    mail: this.currentFilteredData.email.content
-                }    
-            })
+            console.log(dataUser.type);
+
+
+            if(dataUser.type === 'alumno'){
+                //console.log('por alumno', this.currentFilteredData.codigoPostal.content);
+                Axios.post('https://www.codenotch.com/students/insertStudent',{
+                    data: {
+                        DNI: this.currentFilteredData.dni.content,
+                        address: this.currentFilteredData.domicilio.content,
+                        phone: this.currentFilteredData.telefono.content,
+                        description: this.dataSelected.description,
+                        photo: this.dataSelected.photoPath,
+                        birthdate: this.currentFilteredData.fechaNacimiento.content,
+                        bornplace: this.currentFilteredData.lugarNacimiento.content,
+                        sex: this.currentFilteredData.sexo.content,
+                        postalcode: this.currentFilteredData.codigoPostal.content,
+                        nationality: this.currentFilteredData.nacionalidad.content,
+                        coursetype: this.currentFilteredData.modalidadCurso.content,
+                        studies: this.currentFilteredData.estudios.content,
+                        workexp: this.currentFilteredData.experienciaLaboral.content,
+                        meetus: this.currentFilteredData.referenciasCodenotch.content,
+                        interestedon: this.currentFilteredData.interesCodenotch.content,
+                        mainobjectives: this.currentFilteredData.objetivosProgramación.content,
+                        adminotes: this.currentFilteredData.notasAdmisiones.content,
+                        civilstatus: this.currentFilteredData.estadoCivil.content,
+                        hobbies: this.currentFilteredData.hobbies.content,
+                        themesofinterest: this.currentFilteredData.temasInteres.content,
+                        visitedcompanies: this.currentFilteredData.empresas.content,
+                        jobprofile: this.currentFilteredData.perfilCandidato.content,
+                        paymethod: this.config.dataNewStudent.data.formaPago.content,
+                        factname: this.config.dataNewStudent.data.facturacionEmpresa.content,
+                        cif: this.config.dataNewStudent.data.facturacionCib.content,
+                        factadress: this.config.dataNewStudent.data.facturacionDireccion.content,
+                        bootcampid: this.dataSelected.content,
+                        userid: dataUser._id
+                    }    
+                })
+                .then( (response) => {
+                    console.log(response);
+                })
+                .catch( (error) => {
+                    console.log(error);
+                });
+            } else {
+                //console.log('por profe', this.dataSelected.photoPath);
+                Axios.post('https://www.codenotch.com/teachers/insertTeacher',{
+                    params: {
+                        DNI: this.currentFilteredData.dni.content,
+                        address: this.currentFilteredData.domicilio.content,
+                        phone: this.currentFilteredData.telefono.content,
+                        description: this.dataSelected.description,
+                        postalcode: this.currentFilteredData.codigopostal.content,
+                        photo: this.dataSelected.photoPath,
+                        birthdate: this.currentFilteredData.fechaNacimiento.content,
+                        bootcampid: this.dataSelected.content,
+                        userid: dataUser._id
+                    }    
+                })
+                .then( (response) => {
+                    console.log(response);
+                })
+                .catch( (error) => {
+                    console.log(error);
+                });
+            }
         })
         .catch( (error) => {
             console.log(error);
         });
 
 
-       // this.onModalMode = false;
-        //this.$router.back();
+        this.onModalMode = false;
+        this.$router.back();
       },
 
       closeModalHandler(){
