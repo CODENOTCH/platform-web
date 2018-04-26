@@ -222,19 +222,29 @@ export default {
       },
 
       confirmDeleteModalHandler(){
-
-          /* AXIOS DELETE */  
-
-        Axios.delete('https://www.codenotch.com/students/deleteStudent',{
+        if(this.participantType === 'student'){
+            Axios.delete('https://www.codenotch.com/students/deleteStudent',{
+                data:{
+                    userid: this.currentParticipantData._id
+                }
+            }).then( (response) => {
+                console.log(response);
+            })
+            .catch( (error) => {
+                console.log(error);
+            });
+        } else{
+            Axios.delete('https://www.codenotch.com/teachers/deleteTeacher',{
             data:{
-                userid: this.currentParticipantData._id
-            }
-        }).then( (response) => {
-            console.log(response);
-        })
-        .catch( (error) => {
-            console.log(error);
-        });
+                    userid: this.currentParticipantData._id
+                }
+            }).then( (response) => {
+                console.log(response);
+            })
+            .catch( (error) => {
+                console.log(error);
+            });
+        }
 
         this.onModalMode = false;
         

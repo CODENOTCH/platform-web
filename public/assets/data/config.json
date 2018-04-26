@@ -43,10 +43,10 @@
         "bootcampId": "undefined",
         "description": "undefined",
         "data":{
-            "telefono":{"label":"teléfono","content":"undefined","type":"shared"},
+            "telefono":{"label":"teléfono","content":0,"type":"shared"},
             "email":{"label":"email","content":"undefined","type":"shared"},
             "domicilio":{"label":"domicilio","content":"undefined","type":"shared"},
-            "codigoPostal":{"label":"código postal","content":"undefined","type":"shared"},
+            "codigoPostal":{"label":"código postal","content":0,"type":"shared"},
             "dni":{"label":"dni / pasaporte","content":"undefined","type":"shared"},
             "fechaNacimiento":{"label":"fecha de nacimiento","content":"undefined","type":"shared"},
             "lugarNacimiento":{"label":"lugar de nacimiento","content":"undefined","type":"shared"},
@@ -101,10 +101,10 @@
         "bootcampId": "undefined",
         "description": "undefined",
         "data":{
-            "telefono":{"label":"teléfono","content":"undefined"},
+            "telefono":{"label":"teléfono","content":0},
             "email":{"label":"email","content":"undefined"},
             "domicilio":{"label":"domicilio","content":"undefined"},
-            "codigoPostal":{"label":"código postal","content":"undefined"},
+            "codigoPostal":{"label":"código postal","content":0},
             "dni":{"label":"dni / pasaporte","content":"undefined"},
             "fechaNacimiento":{"label":"fecha de nacimiento","content":"undefined"}
         },

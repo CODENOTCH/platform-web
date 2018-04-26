@@ -218,13 +218,10 @@ export default {
         .then( (response) => {
             let dataUser = response.data;
 
-            console.log(dataUser.type);
-
-
             if(dataUser.type === 'alumno'){
                 //console.log('por alumno', this.currentFilteredData.codigoPostal.content);
                 Axios.post('https://www.codenotch.com/students/insertStudent',{
-                    data: {
+                    params: {
                         DNI: this.currentFilteredData.dni.content,
                         address: this.currentFilteredData.domicilio.content,
                         phone: this.currentFilteredData.telefono.content,
@@ -262,17 +259,16 @@ export default {
                     console.log(error);
                 });
             } else {
-                //console.log('por profe', this.dataSelected.photoPath);
                 Axios.post('https://www.codenotch.com/teachers/insertTeacher',{
                     params: {
                         DNI: this.currentFilteredData.dni.content,
                         address: this.currentFilteredData.domicilio.content,
                         phone: this.currentFilteredData.telefono.content,
                         description: this.dataSelected.description,
-                        postalcode: this.currentFilteredData.codigopostal.content,
+                        postalcode: this.currentFilteredData.codigoPostal.content,
                         photo: this.dataSelected.photoPath,
                         birthdate: this.currentFilteredData.fechaNacimiento.content,
-                        bootcampid: this.dataSelected.content,
+                        bootcampid: this.dataSelected.bootcampId,
                         userid: dataUser._id
                     }    
                 })
