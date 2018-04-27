@@ -123,6 +123,7 @@ export default {
     return {
       dataSelected: {},
       currentFilteredData: {},
+      arrayComments: [],
       id: '',
       participantType: '',
       photoPath: '',
@@ -184,10 +185,21 @@ export default {
         objFiltered = _.merge(_.pickBy(studentData, item => item.type === firstFilterKey),_.pickBy(studentData, item => item.type === secondFilterKey));
 
         this.currentFilteredData = objFiltered;
-        console.log(this.currentFilteredData.domicilio.content);
+
+        this.arrayComments = [
+            {week: this.dataSelected.weekComments[0].WeekName, comment: this.dataSelected.weekComments[0].comment},
+            {week: this.dataSelected.weekComments[1].WeekName, comment: this.dataSelected.weekComments[1].comment},
+            {week: this.dataSelected.weekComments[2].WeekName, comment: this.dataSelected.weekComments[2].comment},
+            {week: this.dataSelected.weekComments[3].WeekName, comment: this.dataSelected.weekComments[3].comment},
+            {week: this.dataSelected.weekComments[4].WeekName, comment: this.dataSelected.weekComments[4].comment},
+            {week: this.dataSelected.weekComments[5].WeekName, comment: this.dataSelected.weekComments[5].comment},
+            {week: this.dataSelected.weekComments[6].WeekName, comment: this.dataSelected.weekComments[6].comment},
+            {week: this.dataSelected.weekComments[7].WeekName, comment: this.dataSelected.weekComments[7].comment}
+        ]
     } 
 
     else this.currentFilteredData = this.dataSelected.data;
+
 
     this.modalType = "confirm";
   },
@@ -218,7 +230,10 @@ export default {
         .then( (response) => {
             let dataUser = response.data;
 
+            //this.$store.commit('setUserId', dataUser._id);
+
             if(dataUser.type === 'alumno'){
+                console.log('por alumno')
                 Axios.post('https://www.codenotch.com/students/insertStudent',{
                     params: {
                         DNI: this.currentFilteredData.dni.content,
@@ -249,8 +264,7 @@ export default {
                         factadress: this.config.dataNewStudent.data.facturacionDireccion.content,
                         bootcampid: this.dataSelected.bootcampId,
                         userid: dataUser._id,
-                        'Comments[0].week' : this.dataSelected.weekComments[0].WeekName,
-                        'Comments[0].comment' : this.dataSelected.weekComments[0].comment
+                        Comments: this.arrayComments
                     }    
                 })
                 .then( (response) => {
