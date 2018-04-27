@@ -248,7 +248,9 @@ export default {
                         cif: this.config.dataNewStudent.data.facturacionCib.content,
                         factadress: this.config.dataNewStudent.data.facturacionDireccion.content,
                         bootcampid: this.dataSelected.bootcampId,
-                        userid: dataUser._id
+                        userid: dataUser._id,
+                        'Comments[0].week' : this.dataSelected.weekComments[0].WeekName,
+                        'Comments[0].comment' : this.dataSelected.weekComments[0].comment
                     }    
                 })
                 .then( (response) => {
@@ -307,18 +309,18 @@ export default {
         }
 
         Axios.post('https://www.codenotch.com/docs/upload',_data,config)
-        .then( (response) => {
-            this.$refs.loading.classList.remove('visible');
+            .then( (response) => {
+                this.$refs.loading.classList.remove('visible');
 
-            const responseData = response.data;
+                const responseData = response.data;
 
-            this.photoPath = responseData.secure_url;
-            this.dataSelected.photoPath = this.photoPath;
-            this.modalType = "confirm";
-        })
-        .catch( (error) => {
-            console.log(error);
-        });
+                this.photoPath = responseData.secure_url;
+                this.dataSelected.photoPath = this.photoPath;
+                this.modalType = "confirm";
+            })
+            .catch( (error) => {
+                console.log(error);
+            });
       },
 
       confirmLink(){

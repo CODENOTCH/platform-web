@@ -85,13 +85,13 @@
         ],
         "photoPath": "undefined",
         "weekComments":[
-            {"weekName": "semana 1 - 02/09/2018 - 08/09/2018", "comment":""},
-            {"weekName": "semana 2 - 09/09/2018 - 16/09/2018", "comment":""},
-            {"weekName": "semana 3 - 17/09/2018 - 24/09/2018", "comment":""},
-            {"weekName": "semana 4 - 25/09/2018 - 01/10/2018", "comment":""},
-            {"weekName": "semana 5 - 02/10/2018 - 08/10/2018", "comment":""},
-            {"weekName": "semana 6 - 09/10/2018 - 16/10/2018", "comment":""},
-            {"weekName": "semana 7 - 17/10/2018 - 24/10/2018", "comment":""}
+            {"WeekName": "semana 1 - 02/09/2018 - 08/09/2018", "comment":"", "_id":"undefined"},
+            {"WeekName": "semana 2 - 09/09/2018 - 16/09/2018", "comment":"", "_id":"undefined"},
+            {"WeekName": "semana 3 - 17/09/2018 - 24/09/2018", "comment":"", "_id":"undefined"},
+            {"WeekName": "semana 4 - 25/09/2018 - 01/10/2018", "comment":"", "_id":"undefined"},
+            {"WeekName": "semana 5 - 02/10/2018 - 08/10/2018", "comment":"", "_id":"undefined"},
+            {"WeekName": "semana 6 - 09/10/2018 - 16/10/2018", "comment":"", "_id":"undefined"},
+            {"WeekName": "semana 7 - 17/10/2018 - 24/10/2018", "comment":"", "_id":"undefined"}
         ]
     },
 

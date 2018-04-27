@@ -54,6 +54,36 @@
         .content-data{
             @include flexContainer(flex-start,$wrap:wrap);
         }
+        .contability-data-container{
+            width: 100%;
+            @include flexContainer(space-between);
+            .input-edit{
+                width: 90%;
+            }
+            .btn-confirm{
+                color: $white;
+                background: $green;
+            }
+            .btn-edit{
+                color: $white;
+                background: $blue;
+            }
+            .container-alert{
+                background: $darkWhiteOverlay;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 1;
+                @include flexContainer(center,center,column);
+                p{
+                    text-align: center;
+                    font-weight: 600;
+                    line-height: 1.1em;
+                }
+            }
+        }
     }
 
     .alumnos-links{

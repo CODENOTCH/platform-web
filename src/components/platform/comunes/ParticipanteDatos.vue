@@ -17,6 +17,7 @@
                                         :key="index" 
                                         :data="item" 
                                         :type="'noeditable'"
+                                        :defaultType="item.type"
                                         >
                     </participante-dato>
                 </div> 
@@ -54,11 +55,7 @@ export default {
       config: 'getConfigData',
       bootcampData: 'getBootcampData',
       profile:'getProfile'
-    }),
-
-    isContabilityProfile(){
-        return this.profile === 'contabilidad' ? true : false;
-    }
+    })
   },
 
   beforeCreate(){
@@ -67,6 +64,9 @@ export default {
 
   created() {
     window.scrollTo(0, 0);
+
+    console.log('created ParticipanteDatos')
+    console.log(this.isContabilityProfile());
 
     /* set current Bootcamp */ 
 
@@ -117,6 +117,12 @@ export default {
     } 
 
     else this.currentFilteredData = this.currentParticipantData.data;
+  },
+
+  methods:{
+    isContabilityProfile(){
+        return this.profile === 'contabilidad' ? true : false;
+    }
   }
 };
 </script>

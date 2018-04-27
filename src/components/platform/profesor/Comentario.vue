@@ -19,6 +19,7 @@
 </template>
 
 <script>
+    import Axios from 'axios';
     import { mapGetters } from 'vuex';
     import ComentarioHeader from './ComentarioHeader.vue';
     import ComentarioBox from './ComentarioBox.vue';
@@ -31,7 +32,7 @@
             comentarioBox: ComentarioBox,
         },
 
-        props:['weekTitle','weekComment','indexSelected'],
+        props:['weekTitle','weekComment','idComment','indexSelected'],
 
         data(){
             return{
@@ -45,6 +46,7 @@
         computed: {
             ...mapGetters({
                 isProgram: 'getIsProgram',
+                userId: 'getUserId'
             }),
 
             getComment(){
@@ -70,7 +72,24 @@
             },
 
             confirmHandler(){
-                this.$emit('onConfirmComment', this.comment, this.indexSelected);
+                Axios.put('https://www.codenotch.com/students/updateComment',{
+                    params: {
+                        week: this.weekTitle,
+                        comment: this.comment,
+                        userid: this.$route.params.studentId,
+                        id: this.idComment
+                    }    
+                })
+                .then( (response) => {
+                    console.log(response);
+                })
+                .catch( (error) => {
+                    console.log(error);
+                }); 
+
+                console.log('this.comment:',this.comment)
+                console.log('this.weekTitle:',this.weekTitle)
+                console.log('this.userId:',this.$route.params.studentId)
 
                 this.acceptMode = false;
                 this.confirmMode = false;

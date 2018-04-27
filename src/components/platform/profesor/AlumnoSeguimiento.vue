@@ -27,10 +27,10 @@
                 <div class="col-12 col-md-10 offset-md-1 col-lg-10 offset-lg-1 col-xl-6 offset-xl-3 container-comments">
                     <comentario v-for="(item,index) of currentStudentData.weekComments"
                                         :key="index" 
-                                        :weekTitle="item.weekName"
+                                        :weekTitle="item.WeekName"
                                         :weekComment="item.comment"
+                                        :idComment="item._id"
                                         :indexSelected="index"
-                                        @onConfirmComment="onConfirmComment"
                                         >
                     </comentario>
                 </div> 
@@ -95,20 +95,20 @@ export default {
 
     this.currentStudentData = studentList[indexStudentMatched];
 
-    this.comments = [...this.currentStudentData.weekComments];
+    //this.comments = [...this.currentStudentData.weekComments];
   },
 
   methods: {
-      onConfirmComment(comment,index){
+      /*onConfirmComment(comment,index){
           this.comments[index].comment = comment;
 
-          /* TEMPORAL -- HAY QUE ENVIAR LOS COMENTARIOS A LA BASE DE DATOS*/ 
+           TEMPORAL -- HAY QUE ENVIAR LOS COMENTARIOS A LA BASE DE DATOS
 
-            /*Axios.post('/api/submit', {
+            Axios.post('/api/submit', {
                 name: this.name,
                 email: this.email
-            });*/
-      }
+            });
+    }*/
   }
 };
 </script>
