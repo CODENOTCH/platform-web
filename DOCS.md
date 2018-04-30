@@ -4,7 +4,7 @@
 
 Esta aplicación está desarrollada con el framework **Vue.js** (https://vuejs.org/). Además he utilizado una serie de extensiones y librerías:
 * Para el routing, he utilizado **Vue-router** (https://router.vuejs.org/en/)
-* Para el store (manejop de datos globales), he utilizado **Vuex** (https://vuex.vuejs.org/en/)
+* Para el store (manejo de datos globales), he utilizado **Vuex** (https://vuex.vuejs.org/en/)
 * Para ciertas utilidades y programación funcional, he utilizado **Lodash** (https://lodash.com/)
 
 ### ESTRUCTURA
@@ -28,16 +28,16 @@ Todos los archivos fuente están en la carpeta src. Dentro de la misma tenemos:
     * **store.js**: El archivo principal de vuex. Contiene los estados globales con lo que trabajan los componentes
     * **getters.js**: Este archivo contiene los getters para obtener los estados globales
     * **mutations.js**: Este archivo contiene los setters para modificar los estados globales
-    
+
 * **STYLE** FOLDER: Este carpeta contiene un par de archivos stylus:
     * **main.styl**: Punto de entrada
     * **vars.styl**: Contiene distintas variables 
 
 ### ESTILOS
 
-Para dar estilo a la aplicación, además de utilizar scss para la maquetación, también he utlizado el framework CSS **Bootstrap** (https://getbootstrap.com/).
+Para dar estilo a la aplicación, además de utilizar **SCSS** para la maquetación, también he utlizado el framework CSS **Bootstrap** (https://getbootstrap.com/).
 
-Además, he utilizado el framework **Vuetify** (https://vuetifyjs.com/en/). Este framework trabaja con stylus y no con scss, por lo cual he tenido que implementar ciertos estilos directamente con el preprocesador de stylus, dentro de los componentes que utilizan elementos de dicho framework. Por esta razón, también son necesarios los archivos que hay en la carpeta STYLUS.
+Además, he utilizado el framework **Vuetify** (https://vuetifyjs.com/en/). Este framework trabaja con *stylus*, por lo cual he tenido que implementar ciertos estilos directamente con el preprocesador de stylus, dentro de los componentes que utilizan elementos de dicho framework. Por esta razón, también son necesarios los archivos que hay en la carpeta STYLUS.
 
 ### COMANDOS
 
@@ -80,4 +80,4 @@ Todos los componentes relacionados con los comentarios de los alumnos por parte 
 
 ### LIMITACIONES
 
-* Cuando se crea un nuevo usuario, son necesarios como mínimo rellenar los campos de FOTO (subir imagen), NAME, DNI, EMAIL. Respecto al tamaño de la foto tiene que medir 160x160px (si no descuadra la composición). PAra el recorte y remuestreado de imágenes recomiendo usar Photoshop o en su lugar esta aplicación web: **ImageResize** (https://imageresize.org/)
+* Cuando se crea un nuevo usuario, son necesarios como mínimo rellenar los campos de FOTO (subir imagen), NAME, DNI, EMAIL. Respecto al tamaño de la foto tiene que medir 160x160px (si no descuadra la composición). Para el recorte y remuestreado de imágenes recomiendo usar Photoshop o en su lugar esta aplicación web: **ImageResize** (https://imageresize.org/)
