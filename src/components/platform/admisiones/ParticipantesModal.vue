@@ -4,7 +4,7 @@
                 <div class="select-modal">
                     <v-card-text>{{getMessage}}</v-card-text>
                     <v-card-actions>
-                        <div v-if="type !== 'reject'" class="container-btn">
+                        <div v-if="isDoubleButtonModal" class="container-btn">
                             <button @click="confirmHandler" type="button" class="btn btn-success">
                                 <v-icon>done</v-icon>
                             </button>
@@ -30,6 +30,22 @@
         props: ["type"],
 
         computed: {
+            isDoubleButtonModal(){
+                switch (this.type) {
+                    case 'return':
+                    case 'confirm':
+                    case 'delete':
+                        return true;
+                    break;
+                    case 'reject':
+                    case 'rejectName':
+                    case 'rejectDni':
+                    case 'rejectEmail':
+                        return false;
+                    break;
+                }
+            },
+
             getMessage(){
                 let message = '';
 
@@ -45,6 +61,15 @@
                     break;
                     case 'reject':
                         message = 'Para crear un nuevo usuario, debes subir una foto desde tu ordenador';
+                    break;
+                    case 'rejectName':
+                        message = 'Para crear un nuevo usuario, es obligatorio definir un nombre';
+                    break;
+                    case 'rejectDni':
+                        message = 'Para crear un nuevo usuario, es obligatorio definir un DNI';
+                    break;
+                    case 'rejectEmail':
+                        message = 'Para crear un nuevo usuario, es obligatorio definir un email';
                     break;
                 }
 
@@ -76,6 +101,9 @@
                     case 'return':
                     case 'delete':
                     case 'confirm':
+                    case 'rejectName':
+                    case 'rejectEmail':
+                    case 'rejectDni':
                         this.$emit('onCloseModal');
                     break;
                 }

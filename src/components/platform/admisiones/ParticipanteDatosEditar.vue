@@ -192,6 +192,8 @@ export default {
 
     this.currentParticipantData = this.participantsList[indexParticipantsMatched];
 
+    //console.log('this.currentParticipantData.data', this.currentParticipantData.data)
+
      /* get filtered data by keys */ 
 
     if(this.participantType === 'student'){
@@ -235,9 +237,9 @@ export default {
             });
         } else{
             Axios.delete('https://www.codenotch.com/teachers/deleteTeacher',{
-            data:{
-                    userid: this.currentParticipantData._id
-                }
+                data:{
+                        userid: this.currentParticipantData._id
+                    }
             }).then( (response) => {
                 console.log(response);
             })
@@ -272,7 +274,7 @@ export default {
                     birthdate: this.currentFilteredData.fechaNacimiento.content,
                     bornplace: this.currentFilteredData.lugarNacimiento.content,
                     sex: this.currentFilteredData.sexo.content,
-                    postalcode: this.currentFilteredData.codigopostal.content,
+                    postalcode: this.currentFilteredData.codigoPostal.content,
                     nationality: this.currentFilteredData.nacionalidad.content,
                     coursetype: this.currentFilteredData.modalidadCurso.content,
                     studies: this.currentFilteredData.estudios.content,
@@ -299,7 +301,7 @@ export default {
         }
 
         else{
-            console.log('this.currentParticipantData',this.currentParticipantData)
+            //console.log('this.currentParticipantData',this.currentParticipantData)
             Axios.put('https://www.codenotch.com/teachers/updateTeacher',{
                 params: {
                     username: this.currentParticipantData.name,

@@ -194,9 +194,11 @@
                                 break;
                             case "admisiones":
                                 this.$router.push({path:'admisiones/bootcamps'});
+                                this.$store.commit('setBootcampId', response.data.bootcampId);
                                 break;    
                             case "contabilidad":
                                 this.$router.push({path:'contabilidad/bootcamps'});
+                                this.$store.commit('setBootcampId', response.data.bootcampId);
                                 break; 
                         }
                     })

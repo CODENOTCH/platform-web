@@ -127,7 +127,7 @@ export default {
       id: '',
       participantType: '',
       photoPath: '',
-      modalType: "",
+      modalType: '',
       modeLink: 'normal',
       indexSelectedLink: 0,
       onModalMode: false
@@ -138,6 +138,7 @@ export default {
     ...mapGetters({
       config: 'getConfigData',
       profile:'getProfile',
+      bootcampId: 'getBootcampId',
     }),
 
     getPhotoPath() {
@@ -150,7 +151,7 @@ export default {
     },
 
     isVisibleBtnAddLink(){
-        return this.modeLink === "normal" ? true : false;
+        return this.modeLink === 'normal' ? true : false;
     }
   },
 
@@ -164,11 +165,11 @@ export default {
     /* set current Data and type of Participant */ 
 
     switch (this.$route.name) {
-      case "alumnoDatosCrearAdmisiones":
+      case 'alumnoDatosCrearAdmisiones':
         this.participantType = 'student';
         this.dataSelected = _.cloneDeep(this.config.dataNewStudent);
         break;
-      case "profesorDatosCrearAdmisiones":
+      case 'profesorDatosCrearAdmisiones':
         this.participantType = 'teacher';
         this.dataSelected = _.cloneDeep(this.config.dataNewTeacher);
         break;
@@ -201,12 +202,17 @@ export default {
     else this.currentFilteredData = this.dataSelected.data;
 
 
-    this.modalType = "confirm";
+    this.modalType = 'confirm';
   },
 
   methods:{
       clickConfirmHandler(){
-        if(this.dataSelected.photoPath === "undefined") this.modalType = 'reject';
+        if(this.dataSelected.photoPath === 'undefined') this.modalType = 'reject';
+        else if(this.dataSelected.name === 'undefined' || this.dataSelected.name === '') this.modalType = 'rejectName';
+        else if(this.currentFilteredData.email.content === 'undefined' || this.currentFilteredData.email.content === '') this.modalType = 'rejectEmail';
+        else if(this.currentFilteredData.dni.content === 'undefined' || this.currentFilteredData.dni.content === '') this.modalType = 'rejectDni';
+        else this.modalType = 'confirm';
+
         this.onModalMode = true;
       },
 
@@ -215,9 +221,10 @@ export default {
       },
 
       confirmModalHandler(){
-        EventBus.$emit('onConfirmNewUser',this.dataSelected);
-
         let userType = this.participantType === 'student' ? 'alumno' : 'profesor';
+         /*const userNameValid = this.dataSelected.name === 'undefined' ? this.generateRandomString() : this.dataSelected.name;
+        const passwordValid = this.currentFilteredData.dni.content === 'undefined' ? this.generateRandomString() : this.currentFilteredData.dni.content;
+        const emailValid = this.currentFilteredData.email.content === 'undefined' ? this.generateRandomString() : this.currentFilteredData.email.content;*/
 
         Axios.post('https://www.codenotch.com/users/register',{
             params: {
@@ -230,10 +237,11 @@ export default {
         .then( (response) => {
             let dataUser = response.data;
 
-            //this.$store.commit('setUserId', dataUser._id);
+            this.dataSelected.bootcampId = this.bootcampId;
+            this.dataSelected._id = dataUser._id;
 
-            if(dataUser.type === 'alumno'){
-                console.log('por alumno')
+            if(this.participantType === 'student'){
+                //console.log('por alumno')
                 Axios.post('https://www.codenotch.com/students/insertStudent',{
                     params: {
                         DNI: this.currentFilteredData.dni.content,
@@ -263,12 +271,15 @@ export default {
                         cif: this.config.dataNewStudent.data.facturacionCib.content,
                         factadress: this.config.dataNewStudent.data.facturacionDireccion.content,
                         bootcampid: this.dataSelected.bootcampId,
-                        userid: dataUser._id,
+                        userid: this.dataSelected._id,
                         Comments: this.arrayComments
                     }    
                 })
                 .then( (response) => {
-                    console.log(response);
+                    //console.log(response);
+                    EventBus.$emit('onConfirmNewUser',this.dataSelected);
+                    this.onModalMode = false;
+                    this.$router.back();
                 })
                 .catch( (error) => {
                     console.log(error);
@@ -284,11 +295,14 @@ export default {
                         photo: this.dataSelected.photoPath,
                         birthdate: this.currentFilteredData.fechaNacimiento.content,
                         bootcampid: this.dataSelected.bootcampId,
-                        userid: dataUser._id
+                        userid: this.dataSelected._id
                     }    
                 })
                 .then( (response) => {
-                    console.log(response);
+                    //console.log(response);
+                    EventBus.$emit('onConfirmNewUser',this.dataSelected);
+                    this.onModalMode = false;
+                    this.$router.back();
                 })
                 .catch( (error) => {
                     console.log(error);
@@ -298,10 +312,6 @@ export default {
         .catch( (error) => {
             console.log(error);
         });
-
-
-        this.onModalMode = false;
-        this.$router.back();
       },
 
       closeModalHandler(){
@@ -310,7 +320,7 @@ export default {
 
       handleFile(e){
         const file = e.target.files[0];
-        const formElement = document.getElementById("form-upload");
+        const formElement = document.getElementById('form-upload');
         const _data = new FormData(formElement);
         
         _data.append(file,file.name);
@@ -330,7 +340,7 @@ export default {
 
                 this.photoPath = responseData.secure_url;
                 this.dataSelected.photoPath = this.photoPath;
-                this.modalType = "confirm";
+                this.modalType = 'confirm';
             })
             .catch( (error) => {
                 console.log(error);
@@ -363,7 +373,17 @@ export default {
 
       deleteLink(index){
         this.dataSelected.links.splice(index,1);
-      }
+      },
+
+      /*generateRandomString(){
+        let text = '';
+        let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+        for (let i = 0; i < 5; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
+      }*/
   }
 };
 </script>

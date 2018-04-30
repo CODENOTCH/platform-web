@@ -156,11 +156,13 @@ export default {
     }
 
     this.currentParticipantData = participantsList;
+
+    //console.log('currentParticipantData', this.currentParticipantData)
   },
 
   beforeUpdate(){
       EventBus.$on('onConfirmNewUser', dataSelected => {
-        console.log('onConfirmNewUser');
+        //console.log('onConfirmNewUser');
         this.currentParticipantData.push({...dataSelected});
     });
   },
