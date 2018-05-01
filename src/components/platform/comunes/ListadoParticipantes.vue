@@ -24,44 +24,43 @@
         </div>  
         <div class="container-fluid">
             <div class="row" >
-                <div class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-0 col-xl-4 offset-xl-0 block-participant" v-for="(item,index) of currentParticipantData" v-bind:key="index">
-                    <div class="container-img">
-                        <img class="img-fluid img-codenotch" :src="item.photoPath" alt="foto participante" />
-                    </div> 
-                    <div class="container-data">
-                        <h2>{{item.name}}</h2>
-                        <div class="block-data">
-                            <div class="data">
-                                <span class="label">DNI:</span>
-                                <span class="value">{{item.data.dni.content}}</span>
-                            </div>
-                            <div class="data">
-                                <span class="label">DOMICILIO:</span>
-                                <span class="value">{{item.data.domicilio.content}}</span>
-                            </div>
-                            <div class="data">
-                                <span class="label">EMAIL:</span>
-                                <span class="value">{{item.data.email.content}}</span>
-                            </div>
-                            <div class="data">
-                                <span class="label">TELÉFONO:</span>
-                                <span class="value">{{item.data.telefono.content}}</span>
+                <div class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-0 col-xl-4 offset-xl-0 block-participant" v-for="(item,index) of currentFilteredParticipantData" v-bind:key="index">
+                    <div class="wrapper-participant">
+                        <div class="container-img">
+                            <img class="img-fluid img-codenotch" :src="item.photoPath" alt="foto participante" />
+                        </div> 
+                        <div class="container-data">
+                            <h2>{{item.name}}</h2>
+                            <div class="block-data">
+                                <div class="data">
+                                    <span class="label">DNI:</span>
+                                    <span class="value">{{item.data.dni.content}}</span>
+                                </div>
+                                <div class="data">
+                                    <span class="label">DOMICILIO:</span>
+                                    <span class="value">{{item.data.domicilio.content}}</span>
+                                </div>
+                                <div class="data">
+                                    <span class="label">EMAIL:</span>
+                                    <span class="value">{{item.data.email.content}}</span>
+                                </div>
+                                <div class="data">
+                                    <span class="label">TELÉFONO:</span>
+                                    <span class="value">{{item.data.telefono.content}}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="btn-container col-xl-8 offset-xl-2">
-                        <router-link v-if="!editMode" :to="{ path: `${currentRoute}/${item._id}`}">
-                            <v-btn class="btn-codenotch">{{getNameBtn}}</v-btn>
-                        </router-link>
-                        <div v-else class="container-btns-edit">
-                            <!--button @click="deleteParticipantHandler(item)" type="button" class="btn btn-danger">
-                                <v-icon>delete</v-icon>
-                            </button-->
-                            <router-link :to="{ path: `${currentRoute}/${item._id}/edit`}">
-                                <button type="button" class="btn btn-info">
-                                    <v-icon>edit</v-icon>
-                                </button>
+                        <div class="btn-container col-xl-8 offset-xl-2">
+                            <router-link v-if="!editMode" :to="{ path: `${currentRoute}/${item._id}`}">
+                                <v-btn class="btn-codenotch">{{getNameBtn}}</v-btn>
                             </router-link>
+                            <div v-else class="container-btns-edit">
+                                <router-link :to="{ path: `${currentRoute}/${item._id}/edit`}">
+                                    <button type="button" class="btn btn-info">
+                                        <v-icon>edit</v-icon>
+                                    </button>
+                                </router-link>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -89,6 +88,7 @@
 
 <script>
 import Axios from "axios";
+import _ from 'lodash';
 import { EventBus } from '../../../containers/eventBus.js';
 import { mapGetters } from "vuex";
 import ParticipantesModal from '../admisiones/ParticipantesModal.vue';
@@ -103,11 +103,13 @@ export default {
   data() {
     return {
       currentParticipantData: [],
+      currentFilteredParticipantData: [],
       currentRoute: "",
       editMode: false,
       isConfirmed: false,
       genericId: '000000000',
       onModalMode: false,
+      idSelected: ''
     };
   },
 
@@ -156,8 +158,9 @@ export default {
     }
 
     this.currentParticipantData = participantsList;
-
-    //console.log('currentParticipantData', this.currentParticipantData)
+    let clonedCurrentParticipantData =_.cloneDeep(this.currentParticipantData);
+    let filteredCurrentParticipantData = clonedCurrentParticipantData.filter(ele => ele._id !== '');
+    this.currentFilteredParticipantData = filteredCurrentParticipantData;
   },
 
   beforeUpdate(){
