@@ -3,6 +3,7 @@
 ### HERRAMIENTAS DESARROLLO
 
 Esta aplicación está desarrollada con el framework **Vue.js** (https://vuejs.org/). Además he utilizado una serie de extensiones y librerías:
+* Para consumir la API del backend, a través de llamadas asíncronas , he utilizado **Axios** (https://github.com/axios/axios)
 * Para el routing, he utilizado **Vue-router** (https://router.vuejs.org/en/)
 * Para el store (manejo de datos globales), he utilizado **Vuex** (https://vuex.vuejs.org/en/)
 * Para ciertas utilidades y programación funcional, he utilizado **Lodash** (https://lodash.com/)
