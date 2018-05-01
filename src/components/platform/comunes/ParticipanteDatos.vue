@@ -65,9 +65,6 @@ export default {
   created() {
     window.scrollTo(0, 0);
 
-    console.log('created ParticipanteDatos')
-    console.log(this.isContabilityProfile());
-
     /* set current Bootcamp */ 
 
     this.bootcampId = this.$route.params.bootcampId;

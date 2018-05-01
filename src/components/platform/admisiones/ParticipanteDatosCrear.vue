@@ -90,6 +90,7 @@
         </div>
         <participantes-modal v-if="onModalMode"
                             :type="modalType"
+                            ref="modalParticipant"
                             @onRejectModal="rejectModalHandler"
                             @onConfirmModal="confirmModalHandler"
                             @onCloseModal="closeModalHandler"
@@ -222,9 +223,11 @@ export default {
 
       confirmModalHandler(){
         let userType = this.participantType === 'student' ? 'alumno' : 'profesor';
-         /*const userNameValid = this.dataSelected.name === 'undefined' ? this.generateRandomString() : this.dataSelected.name;
-        const passwordValid = this.currentFilteredData.dni.content === 'undefined' ? this.generateRandomString() : this.currentFilteredData.dni.content;
-        const emailValid = this.currentFilteredData.email.content === 'undefined' ? this.generateRandomString() : this.currentFilteredData.email.content;*/
+        const configRegister = {
+            onUploadProgress:  (progressEvent) => {
+                this.$refs.modalParticipant.onLoading();
+            }
+        }
 
         Axios.post('https://www.codenotch.com/users/register',{
             params: {
@@ -233,7 +236,7 @@ export default {
                 usertype: userType,
                 mail: this.currentFilteredData.email.content
             }    
-        })
+        },configRegister)
         .then( (response) => {
             let dataUser = response.data;
 
@@ -252,7 +255,7 @@ export default {
                         birthdate: this.currentFilteredData.fechaNacimiento.content,
                         bornplace: this.currentFilteredData.lugarNacimiento.content,
                         sex: this.currentFilteredData.sexo.content,
-                        postalcode: this.currentFilteredData.codigoPostal.content,
+                        postalcode: this.currentFilteredData.codigopostal.content,
                         nationality: this.currentFilteredData.nacionalidad.content,
                         coursetype: this.currentFilteredData.modalidadCurso.content,
                         studies: this.currentFilteredData.estudios.content,
@@ -373,17 +376,7 @@ export default {
 
       deleteLink(index){
         this.dataSelected.links.splice(index,1);
-      },
-
-      /*generateRandomString(){
-        let text = '';
-        let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-        for (let i = 0; i < 5; i++)
-            text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-        return text;
-      }*/
+      }
   }
 };
 </script>

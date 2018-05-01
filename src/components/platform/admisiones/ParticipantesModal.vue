@@ -1,5 +1,8 @@
 <template>
         <div class="container-modal confirm">
+            <div ref="loadingModal" class="loading-codenotch modal">
+                <v-progress-circular indeterminate :width="7" class="progress-codenotch"></v-progress-circular>
+            </div>
             <v-card class="block-modal">
                 <div class="select-modal">
                     <v-card-text>{{getMessage}}</v-card-text>
@@ -111,6 +114,10 @@
 
             rejectHandler(){
                 this.$emit('onRejectModal')
+            },
+
+            onLoading(){
+                this.$refs.loadingModal.classList.add('visible');
             }
         }
     }    

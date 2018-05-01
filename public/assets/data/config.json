@@ -46,7 +46,7 @@
             "telefono":{"label":"teléfono","content":0,"type":"shared"},
             "email":{"label":"email","content":"undefined","type":"shared"},
             "domicilio":{"label":"domicilio","content":"undefined","type":"shared"},
-            "codigoPostal":{"label":"código postal","content":0,"type":"shared"},
+            "codigopostal":{"label":"código postal","content":0,"type":"shared"},
             "dni":{"label":"dni / pasaporte","content":"undefined","type":"shared"},
             "fechaNacimiento":{"label":"fecha de nacimiento","content":"undefined","type":"shared"},
             "lugarNacimiento":{"label":"lugar de nacimiento","content":"undefined","type":"shared"},
