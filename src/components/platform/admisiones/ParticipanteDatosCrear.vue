@@ -200,6 +200,8 @@ export default {
             {week: this.dataSelected.weekComments[6].WeekName, comment: this.dataSelected.weekComments[6].comment},
             {week: this.dataSelected.weekComments[7].WeekName, comment: this.dataSelected.weekComments[7].comment}
         ]
+
+        console.log('this.arrayComments', this.arrayComments);
     } 
 
     else this.currentFilteredData = this.dataSelected.data;
