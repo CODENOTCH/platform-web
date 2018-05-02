@@ -225,9 +225,6 @@ export default {
       confirmDeleteModalHandler(){
         if(this.participantType === 'student'){
             Axios.delete('https://www.codenotch.com/students/deleteStudent',{
-                headers: {
-                    "Access-Control-Allow-Origin": "*"
-                },
                 data:{
                     userid: this.currentParticipantData._id
                 }

@@ -89,7 +89,7 @@
 <script>
 import Axios from "axios";
 import _ from 'lodash';
-import { EventBus } from '../../../containers/eventBus.js';
+import { EventBus } from '../../../eventBus.js';
 import { mapGetters } from "vuex";
 import ParticipantesModal from '../admisiones/ParticipantesModal.vue';
 

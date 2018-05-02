@@ -101,7 +101,7 @@
 <script>
 import Axios from 'axios';
 import _ from 'lodash';
-import { EventBus } from '../../../containers/eventBus.js';
+import { EventBus } from '../../../eventBus.js';
 import { mapGetters } from 'vuex';
 import ParticipanteDato from '../comunes/ParticipanteDato.vue';
 import ParticipanteDatoLink from './ParticipanteDatoLink.vue';
@@ -247,11 +247,11 @@ export default {
             this.dataSelected._id = dataUser._id;
 
             if(this.participantType === 'student'){
-                //console.log('por alumno')
+                //console.log('this.currentFilteredData.fechaNacimiento.content',this.currentFilteredData.fechaNacimiento.content)
                 Axios.post('https://www.codenotch.com/students/insertStudent',{
                     params: {
                         DNI: this.currentFilteredData.dni.content,
-                        address: this.currentFilteredData.domicilio.content,
+                        adress: this.currentFilteredData.domicilio.content,
                         phone: this.currentFilteredData.telefono.content,
                         description: this.dataSelected.description,
                         photo: this.dataSelected.photoPath,
@@ -295,7 +295,7 @@ export default {
                 Axios.post('https://www.codenotch.com/teachers/insertTeacher',{
                     params: {
                         DNI: this.currentFilteredData.dni.content,
-                        address: this.currentFilteredData.domicilio.content,
+                        adress: this.currentFilteredData.domicilio.content,
                         phone: this.currentFilteredData.telefono.content,
                         description: this.dataSelected.description,
                         postalcode: this.currentFilteredData.codigoPostal.content,

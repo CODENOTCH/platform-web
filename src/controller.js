@@ -1,9 +1,9 @@
 import Vue from 'vue';
-import App from '../components/App.vue';
+import App from './components/App.vue';
 import Vuetify from 'vuetify';
 import VueRouter from 'vue-router';
-import router from '../routing/router';
-import store from '../store/store';
+import router from './routing/router';
+import store from './store/store';
 import Axios from 'axios';
 
 Vue.use(Vuetify);
