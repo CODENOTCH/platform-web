@@ -16,11 +16,12 @@ Todos los archivos fuente están en la carpeta src. Dentro de la misma tenemos:
 
 * **template-app.ejs**: Este archivo sirve para generar la plantilla en html
 
-* **COMPONENTS** FOLDER: Este carpeta contiene todos los componentes de la aplicación, divididos por carpetas
+* **controller.js**: Este archivo se encarga de cargar los controladores, crear el objeto Vue principal y setear los estados globales del store respecto a la configuración general, los datos de los bootcamps y los datos del programa
 
-* **CONTAINERS** FOLDER: Este carpeta contiene dos archivos:
-    * **main.js**: El archivo principal de nuestra aplicación, Este archivo se encarga de cargar los controladores, crear el objeto Vue principal y setear los estados globales del store respecto a la configuración general, los datos de los bootcamps y los datos del programa.
-    * **eventBus.js**: Archivo que actua como un singleton para pasar evento de unos componentes a otros (los cuales no tiene relación padre-hijo)
+* **eventBus.js**: Archivo que actua como un singleton para pasar evento de unos componentes a otros (los cuales no tiene relación padre-hijo)
+
+* **COMPONENTS** FOLDER: Este carpeta contiene todos los componentes de la aplicación, divididos por carpetas
+    
 * **ROUTING** FOLDER: Este carpeta contiene el archivo router.js donde se gestiona todas las rutas de la aplicación
 
 * **SCSS** FOLDER: Este carpeta contiene todos los archivos scss de los que se nutren los diferentes componentes. Están divididos por carpetas
@@ -56,13 +57,13 @@ En la carpeta **PLATFORM**, están contenidos todos los componentes de la plataf
 
 * **ADMISIONES**: En esta carpeta está el componente contenedor de todos los componentes utilizados en el perfil de *Admisiones*. Además, aquí están todos los componentes que se utilizan específicamente en este perfil, como *ParticipanteDatosCrear.vue* o *ParticipantesDatosEditar.vue* (para la creación y edición de usuarios)
 
-* **ALUMNO**: En esta carpeta está el componente contenedor de todos los componentes utilizados en el perfil de *Alumno*.
+* **ALUMNO**: En esta carpeta está el componente contenedor de todos los componentes utilizados en el perfil de *Alumno*
 
 * **COMUNES**: En esta carpeta están todos los componentes que son comunes a varios perfiles, como *ListadoParticipantes.vue* o *FooterPlatform.vue* 
 
-* **CONTABILIDAD**: En esta carpeta está el componente contenedor de todos los componentes utilizados en el perfil de *Contabilidad*.
+* **CONTABILIDAD**: En esta carpeta está el componente contenedor de todos los componentes utilizados en el perfil de *Contabilidad*
 
-* **LOGIN**: En esta carpeta están todos los componentes que se utilizan específicamente en el *Login*.
+* **LOGIN**: En esta carpeta están todos los componentes que se utilizan específicamente en el *Login*
 
 * **PROFESOR**: En esta carpeta está el componente contenedor de todos los componentes utilizados en el perfil de *Profesor*. Además, aquí están todos los componentes que se utilizan específicamente en este perfil, como *AlumnoSeguimiento.vue* o *Comentario.vue* (para la creación y edición de usuarios)
 
@@ -70,9 +71,27 @@ En la carpeta **PLATFORM**, están contenidos todos los componentes de la plataf
 
 ### EDICIÓN Y CREACIÓN DE USUARIOS
 
+Estas dos acciones solo pueden ejecutar desde el perfil de admisiones, tanto para crear estudiantes como para crear profesores:
+
+* *EDICIÓN*: El componente que contiene la lógica de la edición de usuarios es *ParticipanteDatosEditar* (de la carpeta admisiones). Este componente es contenedor del componente *ParticipantesModal* usado para la creación de las ventanas modales.
+* *CREACIÓN*: El componente que contiene la lógica de la creación de usuarios es *ParticipanteDatosCrear* (de la carpeta admisiones). Este componente es contenedor del componente *ParticipantesModal* usado para la creación de las ventanas modales. Por otro lado, el componente *ParticipanteDatosCrear* es contenedor de los componentes *ParticipanteDatoLink*, *ParticipanteDatoLinkEditar* y *ParticipanteDatoLinkNuevo* que se encargan de la lógica para crear y editar nuevos links.
+
 ### PROGRAMA
 
+Al programa solo se puede acceder desde los perfiles de estudiante y profesor. Hay un componente contenedor *Programa* que encapsula otros tres componentes:
+
+* *ProgramaCabecera*: Este componente contiene el menu superior con los botones de CONTENIDOS, SLIDES y DESARROLLOS.
+* *ProgramaIndice*: Este componente contiene el menu lateral con el indice de los contenidos. A su vez contiene el componente *ProgramaItemIndice*
+* *ProgramaCore*: Este componente contiene a su vez otros tes componentes con los datos de los CONTENIDOS, SLIDES y DESARROLLOS:
+    * *ProgramaContenidos*: Este componente se encarga de los datos de los contenidos y a su vez contiene el componente *ProgramaDataContenido*
+    * *ProgramaSlides*: Este componente se encarga de embeber las slides
+    * *ProgramaDesarrollos*: Este componente se encarga de los datos de los desarrollos y a su vez contiene el componente *ProgramaDataContenido*
+
+El componente *Programa* se encarga de pasar datos de unos componentes a otros (por ejemplo de ProgramaCabecera a ProgramaCore)
+
 ### COMENTARIOS PROFESOR
+
+Esta acción solo se puede realizar desde el perfil de profesor.
 
 Todos los componentes relacionados con los comentarios de los alumnos por parte del profesor, están en la carpeta *profesor*. Hay un componente contenedor que es *AlumnoSeguimiento.vue*. En este componenete se cargan varios componentes Comentario (*Comentario.vue*). Dentro de cada componente Comentario. Se cargan dos componentes:
 
@@ -81,4 +100,5 @@ Todos los componentes relacionados con los comentarios de los alumnos por parte 
 
 ### LIMITACIONES
 
+* Es necesario que exista al menos un usuario de cada perfil y un bootcamp para que la plataforma funcione
 * Cuando se crea un nuevo usuario, son necesarios como mínimo rellenar los campos de FOTO (subir imagen), NAME, DNI, EMAIL. Respecto al tamaño de la foto tiene que medir 160x160px (si no descuadra la composición). Para el recorte y remuestreado de imágenes recomiendo usar Photoshop o en su lugar esta aplicación web: **ImageResize** (https://imageresize.org/)
