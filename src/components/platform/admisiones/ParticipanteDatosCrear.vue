@@ -201,7 +201,7 @@ export default {
             {week: this.dataSelected.weekComments[7].WeekName, comment: this.dataSelected.weekComments[7].comment}
         ]
 
-        console.log('this.arrayComments', this.arrayComments);
+        //console.log('this.arrayComments', this.arrayComments);
     } 
 
     else this.currentFilteredData = this.dataSelected.data;
@@ -209,6 +209,10 @@ export default {
 
     this.modalType = 'confirm';
   },
+
+  /*beforeDestroy () {
+    EventBus.$off('onConfirmNewUser');
+  },*/
 
   methods:{
       clickConfirmHandler(){
@@ -249,7 +253,6 @@ export default {
             this.dataSelected._id = dataUser._id;
 
             if(this.participantType === 'student'){
-                //console.log('this.currentFilteredData.fechaNacimiento.content',this.currentFilteredData.fechaNacimiento.content)
                 Axios.post('https://www.codenotch.com/students/insertStudent',{
                     params: {
                         DNI: this.currentFilteredData.dni.content,
@@ -280,12 +283,12 @@ export default {
                         factadress: this.config.dataNewStudent.data.facturacionDireccion.content,
                         bootcampid: this.dataSelected.bootcampId,
                         userid: this.dataSelected._id,
-                        //Comments: this.dataSelected.weekComments
                         Comments: this.arrayComments
                     }    
                 })
                 .then( (response) => {
                     //console.log(response);
+                    //console.log('insert student success');
                     EventBus.$emit('onConfirmNewUser',this.dataSelected);
                     this.onModalMode = false;
                     this.$router.back();

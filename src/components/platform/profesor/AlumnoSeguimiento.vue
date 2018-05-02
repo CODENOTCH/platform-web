@@ -31,6 +31,7 @@
                                         :weekComment="item.comment"
                                         :idComment="item._id"
                                         :indexSelected="index"
+                                        @onConfirmComment="confirmComment"
                                         >
                     </comentario>
                 </div> 
@@ -59,8 +60,7 @@ export default {
       currentStudentData: {},
       bootcampId: "",
       studentId: "",
-      userId: 'getUserId',
-      //comments: []
+      userId: 'getUserId'
     };
   },
 
@@ -94,23 +94,12 @@ export default {
     );
 
     this.currentStudentData = studentList[indexStudentMatched];
-
-    //console.log(this.currentStudentData.weekComments)
-
-    //this.comments = [...this.currentStudentData.weekComments];
   },
 
   methods: {
-      /*onConfirmComment(comment,index){
-          this.comments[index].comment = comment;
-
-           TEMPORAL -- HAY QUE ENVIAR LOS COMENTARIOS A LA BASE DE DATOS
-
-            Axios.post('/api/submit', {
-                name: this.name,
-                email: this.email
-            });
-    }*/
+    confirmComment(newComment,index){
+        this.currentStudentData.weekComments[index].comment = newComment;
+    }
   }
 };
 </script>

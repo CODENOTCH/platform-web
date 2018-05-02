@@ -109,7 +109,8 @@ export default {
       isConfirmed: false,
       genericId: '000000000',
       onModalMode: false,
-      idSelected: ''
+      idSelected: '',
+      firstTimeCreatingUser: false
     };
   },
 
@@ -164,9 +165,15 @@ export default {
   },
 
   beforeUpdate(){
+      console.log('beforeUpdate ListadoParticipantes');
+      
       EventBus.$on('onConfirmNewUser', dataSelected => {
-        //console.log('onConfirmNewUser');
+        console.log('onConfirmNewUser');
         this.currentParticipantData.push({...dataSelected});
+        /*if(!this.firstTimeCreatingUser){
+            this.currentParticipantData.push({...dataSelected});
+            this.firstTimeCreatingUser = true;
+        }*/
     });
   },
 
