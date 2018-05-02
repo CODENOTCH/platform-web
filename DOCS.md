@@ -16,7 +16,7 @@ Todos los archivos fuente están en la carpeta src. Dentro de la misma tenemos:
 
 * **template-app.ejs**: Este archivo sirve para generar la plantilla en html
 
-* **controller.js**: Este archivo se encarga de cargar los controladores, crear el objeto Vue principal y setear los estados globales del store respecto a la configuración general, los datos de los bootcamps y los datos del programa
+* **controller.js**: Este archivo se encarga de cargar los datos, crear el objeto Vue principal y setear los estados globales del store respecto a la configuración general, los datos de los bootcamps y los datos del programa
 
 * **eventBus.js**: Archivo que actua como un singleton para pasar evento de unos componentes a otros (los cuales no tiene relación padre-hijo)
 
@@ -34,6 +34,15 @@ Todos los archivos fuente están en la carpeta src. Dentro de la misma tenemos:
 * **STYLE** FOLDER: Este carpeta contiene un par de archivos stylus:
     * **main.styl**: Punto de entrada
     * **vars.styl**: Contiene distintas variables 
+
+### DATOS
+
+Los datos están divididos en dos grandes grupos:
+
+* **BOOTCAMP DATA**: Para acceder a esta información, el controller.js hace una llamada GET al servidor con el siguiente endpoint: *https://www.codenotch.com/bootcamps/getBootcampData*. Este nos devuelve un JSON que contiene todos los datos de cada Bootcamp, como el nombre del Bootcamp, el id del Bootcamp o las semanas del mismo. Además, también incluye la lista de estudiantes y la lista de profesores. Este JSON se almacena en el STORE y se utiliza posteriormente para rellenar la info de los usuarios.
+
+* **PROGRAM DATA**: Para acceder a esta información, el controller.js hace una llamada GET al servidor con el siguiente endpoint: *https://www.codenotch.com/content/programData*. Este nos devuelve un JSON que contiene todos los datos del programa, tanto los datos del índice, como los datos de cada contenido, de cada slide, y de cada desarrollo. Este JSON se almacena en el STORE y se utiliza posteriormente para rellenar la info de los contenidos y los desarrollos.
+
 
 ### ESTILOS
 

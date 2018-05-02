@@ -188,7 +188,7 @@ export default {
 
         this.currentFilteredData = objFiltered;
 
-        console.log('this.dataSelected', this.dataSelected.weekComments)
+        //console.log('this.dataSelected', this.dataSelected.weekComments)
 
         this.arrayComments = [
             {week: this.dataSelected.weekComments[0].WeekName, comment: this.dataSelected.weekComments[0].comment},

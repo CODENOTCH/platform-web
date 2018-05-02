@@ -270,7 +270,7 @@ export default {
                 params: {
                     username: this.currentParticipantData.name,
                     DNI: this.currentFilteredData.dni.content,
-                    address: this.currentFilteredData.domicilio.content,
+                    adress: this.currentFilteredData.domicilio.content,
                     phone: this.currentFilteredData.telefono.content,
                     mail: this.currentFilteredData.email.content,
                     description: this.currentParticipantData.description,
@@ -311,7 +311,7 @@ export default {
                 params: {
                     username: this.currentParticipantData.name,
                     DNI: this.currentFilteredData.dni.content,
-                    address: this.currentFilteredData.domicilio.content,
+                    adress: this.currentFilteredData.domicilio.content,
                     phone: this.currentFilteredData.telefono.content,
                     mail: this.currentFilteredData.email.content,
                     description: this.currentParticipantData.description,
