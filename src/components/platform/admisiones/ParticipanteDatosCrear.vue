@@ -188,6 +188,8 @@ export default {
 
         this.currentFilteredData = objFiltered;
 
+        console.log('this.dataSelected', this.dataSelected.weekComments)
+
         this.arrayComments = [
             {week: this.dataSelected.weekComments[0].WeekName, comment: this.dataSelected.weekComments[0].comment},
             {week: this.dataSelected.weekComments[1].WeekName, comment: this.dataSelected.weekComments[1].comment},
@@ -225,6 +227,7 @@ export default {
         let userType = this.participantType === 'student' ? 'alumno' : 'profesor';
         const configRegister = {
             onUploadProgress:  (progressEvent) => {
+                console.log('this.$refs: ', this.$refs)
                 this.$refs.modalParticipant.onLoading();
             }
         }
@@ -275,6 +278,7 @@ export default {
                         factadress: this.config.dataNewStudent.data.facturacionDireccion.content,
                         bootcampid: this.dataSelected.bootcampId,
                         userid: this.dataSelected._id,
+                        //Comments: this.dataSelected.weekComments
                         Comments: this.arrayComments
                     }    
                 })

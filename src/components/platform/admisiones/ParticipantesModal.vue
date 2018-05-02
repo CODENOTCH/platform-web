@@ -118,6 +118,10 @@
 
             onLoading(){
                 this.$refs.loadingModal.classList.add('visible');
+            },
+
+            onEditLoading(){
+                this.$refs.loadingModal.classList.add('visible');
             }
         }
     }    

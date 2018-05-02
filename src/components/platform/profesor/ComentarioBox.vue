@@ -9,11 +9,11 @@
                             <button @click="confirmHandler" type="button" class="btn btn-success">
                                 <v-icon>done</v-icon>
                             </button>
-                            <button @click="restoreHandler" type="button" class="btn btn-danger">
+                            <button @click="closeHandler" type="button" class="btn btn-danger">
                                 <v-icon>close</v-icon>
                             </button>
-                            <button @click="editHandler" type="button" class="btn btn-info">
-                                <v-icon>edit</v-icon>
+                            <button @click="restoreHandler" type="button" class="btn btn-dark">
+                                <v-icon>restore</v-icon>
                             </button>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                 this.$emit('onConfirm');
             },
 
-            editHandler(){
+            closeHandler(){
                 this.$emit('onEdit',this.currentComment);
             },
 

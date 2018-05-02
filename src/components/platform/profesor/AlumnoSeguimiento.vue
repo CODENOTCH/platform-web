@@ -60,7 +60,7 @@ export default {
       bootcampId: "",
       studentId: "",
       userId: 'getUserId',
-      comments: []
+      //comments: []
     };
   },
 
@@ -94,6 +94,8 @@ export default {
     );
 
     this.currentStudentData = studentList[indexStudentMatched];
+
+    //console.log(this.currentStudentData.weekComments)
 
     //this.comments = [...this.currentStudentData.weekComments];
   },

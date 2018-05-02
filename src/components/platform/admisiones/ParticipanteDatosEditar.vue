@@ -101,6 +101,7 @@
         </div>
         <participantes-modal v-if="onModalMode"
                             :type="modalType"
+                            ref="modalParticipant"
                             @onConfirmModal="confirmModalHandler"
                             @onCloseModal="closeModalHandler"
                             @onConfirmDeleteModal="confirmDeleteModalHandler"
@@ -224,11 +225,16 @@ export default {
       confirmDeleteModalHandler(){
         if(this.participantType === 'student'){
             Axios.delete('https://www.codenotch.com/students/deleteStudent',{
+                headers: {
+                    "Access-Control-Allow-Origin": "*"
+                },
                 data:{
                     userid: this.currentParticipantData._id
                 }
             }).then( (response) => {
                 console.log(response);
+                this.participantsList.splice(indexParticipantMatched,1);
+                this.$router.back();
             })
             .catch( (error) => {
                 console.log(error);
@@ -236,10 +242,12 @@ export default {
         } else{
             Axios.delete('https://www.codenotch.com/teachers/deleteTeacher',{
                 data:{
-                        userid: this.currentParticipantData._id
-                    }
+                    userid: this.currentParticipantData._id
+                }
             }).then( (response) => {
                 console.log(response);
+                this.participantsList.splice(indexParticipantMatched,1);
+                this.$router.back();
             })
             .catch( (error) => {
                 console.log(error);
@@ -251,12 +259,15 @@ export default {
         let indexParticipantMatched = this.participantsList.findIndex(
             item => item === this.currentParticipantData
         );
-
-        this.participantsList.splice(indexParticipantMatched,1);
-        this.$router.back();
       },
 
       confirmModalHandler(){
+        const configEdit = {
+            onUploadProgress:  (progressEvent) => {
+                //console.log('this.$refs: ', this.$refs.onL)
+                this.$refs.modalParticipant.onLoading();
+            }
+        }
         if(this.participantType === 'student'){
             Axios.put('https://www.codenotch.com/students/updateStudent',{
                 params: {
@@ -287,9 +298,11 @@ export default {
                     bootcampid: this.currentParticipantData.bootcampId,
                     userid: this.currentParticipantData._id
                 }    
-            })
+            },configEdit)
             .then( (response) => {
                 console.log(response);
+                this.onModalMode = false;
+                this.$router.back();
             })
             .catch( (error) => {
                 console.log(error);
@@ -311,17 +324,16 @@ export default {
                     bootcampid: this.currentParticipantData.bootcampId,
                     userid: this.currentParticipantData._id
                 }    
-            })
+            },configEdit)
             .then( (response) => {
                 console.log(response);
+                this.onModalMode = false;
+                this.$router.back();
             })
             .catch( (error) => {
                 console.log(error);
             });
         }
-
-        this.onModalMode = false;
-        this.$router.back();
       },
 
       closeModalHandler(){
