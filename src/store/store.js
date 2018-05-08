@@ -19,9 +19,13 @@ const state = {
     logged: false,
     profile: '',
     isProgram: false,
-    isBootcamp: false,
+    isBootcamp: false, 
     dataStudentSelected: [],
-    editModeActive: false
+    editModeActive: false,
+    dataFactCib: null,
+    dataFactEmpresa: null,
+    dataFactDireccion: null,
+    dataFactPago: null
 };
 
 const store = new Vuex.Store({

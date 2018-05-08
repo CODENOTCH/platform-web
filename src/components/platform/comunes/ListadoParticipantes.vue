@@ -87,120 +87,118 @@
 </template>
 
 <script>
-import Axios from "axios";
-import _ from 'lodash';
-import { EventBus } from '../../../eventBus.js';
-import { mapGetters } from "vuex";
-import ParticipantesModal from '../admisiones/ParticipantesModal.vue';
+    import Axios from "axios";
+    import _ from 'lodash';
+    import { EventBus } from '../../../eventBus.js';
+    import { mapGetters } from "vuex";
+    import ParticipantesModal from '../admisiones/ParticipantesModal.vue';
 
-export default {
-  name: "listadoParticipantes",
+    export default {
+        name: "listadoParticipantes",
 
-  components: {
-    participantesModal: ParticipantesModal
-  },
+        components: {
+            participantesModal: ParticipantesModal
+        },
 
-  data() {
-    return {
-      currentParticipantData: [],
-      currentFilteredParticipantData: [],
-      currentRoute: "",
-      editMode: false,
-      isConfirmed: false,
-      genericId: '000000000',
-      onModalMode: false,
-      idSelected: '',
-      firstTimeCreatingUser: false
+        data() {
+            return {
+            currentParticipantData: [],
+            currentFilteredParticipantData: [],
+            currentRoute: "",
+            editMode: false,
+            isConfirmed: false,
+            genericId: '000000000',
+            onModalMode: false,
+            idSelected: ''
+            };
+        },
+
+        computed: {
+            ...mapGetters({
+                config: "getConfigData",
+                bootcampData: "getBootcampData",
+                bootcampId: "getBootcampId",
+                profile: "getProfile",
+                editModeActive: "getEditModeActive"
+            }),
+
+            getNameBtn() {
+                let name = this.profile === "profesor" ? "SEGUIMIENTO" : "FICHA";
+                return name;
+            },
+
+            isAdmissionProfile(){
+                return this.profile === 'admisiones' ? true : false;
+            }
+        },
+
+        created() {
+            window.scrollTo(0, 0);
+
+            this.setEditMode();
+
+            let arrBootcampsData = [...this.bootcampData.bootcamps];
+            let indexBootcampMatched = arrBootcampsData.findIndex(
+                item => item._id === this.bootcampId
+            );
+            let participantsList = null;
+
+            switch (this.$route.name) {
+                case "listadoAlumnos":
+                case "listadoAlumnosAdmisiones":
+                case "listadoAlumnosContabilidad":
+                    participantsList = arrBootcampsData[indexBootcampMatched].studentList;
+                    this.currentRoute = "alumnos";
+                    break;
+                case "listadoProfesoresAdmisiones":
+                case "listadoProfesoresContabilidad":
+                    participantsList = arrBootcampsData[indexBootcampMatched].teacherList;
+                    this.currentRoute = "profesores";
+                    break;
+            }
+
+            this.currentParticipantData = participantsList;
+            let clonedCurrentParticipantData =_.cloneDeep(this.currentParticipantData);
+            let filteredCurrentParticipantData = clonedCurrentParticipantData.filter(ele => ele._id !== '');
+            this.currentFilteredParticipantData = filteredCurrentParticipantData;
+        },
+
+        beforeMount(){
+            //console.log('beforeMount ListadoParticipantes');
+            EventBus.$off('onConfirmNewUser');
+        },
+
+        mounted(){
+            //console.log('mounted ListadoParticipantes');
+            EventBus.$on('onConfirmNewUser', dataSelected => {
+                this.currentParticipantData.push({...dataSelected});
+            });
+        },
+
+        methods:{
+            setEditMode() {
+                this.editMode = this.editModeActive;
+            },
+
+            clickReturnHandler(){
+                this.onModalMode = true;
+            },
+
+            clickEditHandler(){
+                this.editMode = true;
+                this.$store.commit('setEditModeActive',true);
+            },
+
+            returnModalHandler(){
+                this.isConfirmed = true;
+                this.onModalMode = false;
+                this.editMode = false;
+                this.$store.commit('setEditModeActive',false);
+            },
+
+            closeModalHandler(){
+                this.onModalMode = false;
+            }
+        }
     };
-  },
-
-  computed: {
-    ...mapGetters({
-      config: "getConfigData",
-      bootcampData: "getBootcampData",
-      bootcampId: "getBootcampId",
-      profile: "getProfile",
-      editModeActive: "getEditModeActive"
-    }),
-
-    getNameBtn() {
-      let name = this.profile === "profesor" ? "SEGUIMIENTO" : "FICHA";
-      return name;
-    },
-
-    isAdmissionProfile(){
-      return this.profile === 'admisiones' ? true : false;
-    }
-  },
-
-  created() {
-    window.scrollTo(0, 0);
-
-    this.setEditMode();
-
-    let arrBootcampsData = [...this.bootcampData.bootcamps];
-    let indexBootcampMatched = arrBootcampsData.findIndex(
-      item => item._id === this.bootcampId
-    );
-    let participantsList = null;
-
-    switch (this.$route.name) {
-      case "listadoAlumnos":
-      case "listadoAlumnosAdmisiones":
-      case "listadoAlumnosContabilidad":
-        participantsList = arrBootcampsData[indexBootcampMatched].studentList;
-        this.currentRoute = "alumnos";
-        break;
-      case "listadoProfesoresAdmisiones":
-      case "listadoProfesoresContabilidad":
-        participantsList = arrBootcampsData[indexBootcampMatched].teacherList;
-        this.currentRoute = "profesores";
-        break;
-    }
-
-    this.currentParticipantData = participantsList;
-    let clonedCurrentParticipantData =_.cloneDeep(this.currentParticipantData);
-    let filteredCurrentParticipantData = clonedCurrentParticipantData.filter(ele => ele._id !== '');
-    this.currentFilteredParticipantData = filteredCurrentParticipantData;
-  },
-
-  beforeUpdate(){
-      console.log('beforeUpdate ListadoParticipantes');
-      
-      EventBus.$on('onConfirmNewUser', dataSelected => {
-        console.log('onConfirmNewUser');
-        this.currentParticipantData.push({...dataSelected});
-        /*if(!this.firstTimeCreatingUser){
-            this.currentParticipantData.push({...dataSelected});
-            this.firstTimeCreatingUser = true;
-        }*/
-    });
-  },
-
-  methods:{
-      setEditMode() {
-        this.editMode = this.editModeActive;
-      },
-
-      clickReturnHandler(){
-          this.onModalMode = true;
-      },
-
-      clickEditHandler(){
-          this.editMode = true;
-          this.$store.commit('setEditModeActive',true);
-      },
-
-      returnModalHandler(){
-          this.isConfirmed = true;
-          this.onModalMode = false;
-          this.editMode = false;
-          this.$store.commit('setEditModeActive',false);
-      },
-
-      closeModalHandler(){
-          this.onModalMode = false;
-      }
-  }
-};
 </script>

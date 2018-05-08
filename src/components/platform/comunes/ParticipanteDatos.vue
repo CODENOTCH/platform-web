@@ -18,6 +18,7 @@
                                         :data="item" 
                                         :type="'noeditable'"
                                         :defaultType="item.type"
+                                        @onConfirmFactData="confirmFactData"
                                         >
                     </participante-dato>
                 </div> 
@@ -54,7 +55,11 @@ export default {
     ...mapGetters({
       config: 'getConfigData',
       bootcampData: 'getBootcampData',
-      profile:'getProfile'
+      profile:'getProfile',
+      dataFactCib:'getDataFactCib',
+      dataFactDireccion:'getDataFactDireccion',
+      dataFactEmpresa:'getDataFactEmpresa',
+      dataFactPago:'getDataFactPago'
     })
   },
 
@@ -114,11 +119,42 @@ export default {
     } 
 
     else this.currentFilteredData = this.currentParticipantData.data;
+
+    /* check and update fact data */
+    
+    if(this.dataFactCib !== null) this.currentFilteredData.facturacionCib.content = this.dataFactCib;
+    if(this.dataFactDireccion !== null) this.currentFilteredData.facturacionEmpresa.content = this.dataFactDireccion;
+    if(this.dataFactEmpresa !== null) this.currentFilteredData.facturacionDireccion.content = this.dataFactEmpresa;
+    if(this.dataFactPago !== null) this.currentFilteredData.formaPago.content = this.dataFactPago;
   },
 
   methods:{
     isContabilityProfile(){
         return this.profile === 'contabilidad' ? true : false;
+    },
+
+    confirmFactData(newContent, field){
+        /*console.log(this.currentFilteredData.facturacionCib.content);
+        console.log(this.currentFilteredData.facturacionEmpresa.content);
+        console.log(this.currentFilteredData.facturacionDireccion.content);
+        console.log(this.currentFilteredData.formaPago.content);
+        console.log('newContent: ', newContent);
+        console.log('field: ', field);*/
+
+        switch (field) {
+            case "cif":
+                this.$store.commit('setDataFactCib',newContent);
+                break;
+            case "empresa":
+                 this.$store.commit('setDataFactEmpresa',newContent);
+                break;
+            case "direccion":
+                 this.$store.commit('setDataFactDireccion',newContent);
+                break;
+            case "pago":
+                this.$store.commit('setDataFactPago',newContent);
+                break;
+        }
     }
   }
 };

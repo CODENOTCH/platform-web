@@ -233,7 +233,7 @@ export default {
         let userType = this.participantType === 'student' ? 'alumno' : 'profesor';
         const configRegister = {
             onUploadProgress:  (progressEvent) => {
-                console.log('this.$refs: ', this.$refs)
+                //console.log('this.$refs: ', this.$refs)
                 this.$refs.modalParticipant.onLoading();
             }
         }
@@ -287,11 +287,10 @@ export default {
                     }    
                 })
                 .then( (response) => {
-                    //console.log(response);
-                    //console.log('insert student success');
+                    console.log('response on insert student success',response);
                     EventBus.$emit('onConfirmNewUser',this.dataSelected);
                     this.onModalMode = false;
-                    this.$router.back();
+                    this.$router.back(); 
                 })
                 .catch( (error) => {
                     console.log(error);
@@ -311,7 +310,7 @@ export default {
                     }    
                 })
                 .then( (response) => {
-                    //console.log(response);
+                    console.log('response on insert teacher success',response);
                     EventBus.$emit('onConfirmNewUser',this.dataSelected);
                     this.onModalMode = false;
                     this.$router.back();

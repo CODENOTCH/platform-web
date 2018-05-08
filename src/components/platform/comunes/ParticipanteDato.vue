@@ -48,6 +48,8 @@
 </template>
 
 <script>
+    import Axios from "axios";
+
     export default {
         name: 'participanteDato',
 
@@ -71,10 +73,6 @@
             }
         },
 
-        created(){
-            //console.log('created ParticipanteDato defaultType',this.defaultType);
-        },
-
         methods:{
             clickEditHandler(){
                 this.confirmMode = false;
@@ -89,19 +87,36 @@
             },
 
             confirmModalHandler(){
-                /* AQUI IRIA LA LLAMADA PUT */ 
+                let type = '';
 
-                /*Axios.put('https://www.codenotch.com/students/updateContabilityData',{
+                switch(this.data.label){
+                    case 'datos de facturación - empresa':
+                        type="empresa"
+                    break;
+                    case 'datos de facturación - cif':
+                        type="cif"
+                    break;
+                    case 'datos de facturación - dirección':
+                        type="direccion"
+                    break;
+                    case 'forma de pago':
+                        type="pago"
+                    break;
+                }
+
+                Axios.put('https://www.codenotch.com/students/updateFactdata',{
                     params: {
                        content: this.data.content,
-                       type: this.data.label,
+                       type: type,
                        userid: this.$route.params.id 
                     }
-                });*/
-
-                //console.log('data:',this.data.content)
-                //console.log('type:',this.data.label)
-                //console.log('userId:',this.$route.params.id)
+                }).then( (response) => {
+                    //console.log(response);
+                    this.$emit('onConfirmFactData',this.data.content, type);
+                })
+                .catch( (error) => {
+                    console.log(error);
+                }); 
 
                 this.confirmMode = false;
                 this.defaultMode = true;

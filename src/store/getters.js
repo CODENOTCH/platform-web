@@ -50,6 +50,22 @@ export const getEditModeActive = state => {
     return state.editModeActive;
 };
 
+export const getDataFactCib = state => {
+    return state.dataFactCib;
+};
+
+export const getDataFactEmpresa = state => {
+    return state.dataFactEmpresa;
+};
+
+export const getDataFactDireccion = state => {
+    return state.dataFactDireccion;
+};
+
+export const getDataFactPago = state => {
+    return state.dataFactPago;
+};
+
 export const getVersionIE = state => {
     return state.versionIE;
 };

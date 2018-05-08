@@ -81,16 +81,12 @@
                     }    
                 })
                 .then( (response) => {
-                    console.log(response);
+                    //console.log(response);
                     this.$emit('onConfirmComment',this.comment,this.indexSelected);
                 })
                 .catch( (error) => {
                     console.log(error);
                 }); 
-
-                /*console.log('this.comment:',this.comment)
-                console.log('this.weekTitle:',this.weekTitle)
-                console.log('this.userId:',this.$route.params.studentId)*/
 
                 this.acceptMode = false;
                 this.confirmMode = false;

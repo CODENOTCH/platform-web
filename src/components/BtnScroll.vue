@@ -18,8 +18,6 @@
 
 <script>
     import { mapGetters } from 'vuex';
-    import TweenMax from 'gsap';
-    import ScrollToPlugin from "gsap/ScrollToPlugin";
 
     export default {
         name:'btnScroll',
@@ -37,8 +35,6 @@
         },
 
         computed: mapGetters({
-            config: 'getConfigData',
-            isOnlyMobile: 'getIsOnlyMobile',
             editModeActive: 'getEditModeActive'
         }),
 

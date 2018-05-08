@@ -96,68 +96,7 @@
             submit () {
                 if (this.$refs.form.validate()) {
 
-                    /* TEMPORAL */ 
-
-                    /*let arrayFakeResponse = [
-                        {
-                            name:"Laura",
-                            id:"1.112347",
-                            profile:"alumno", 
-                            user:"alumno", 
-                            password:"alumno",
-                            route:'alumno',
-                            bootcampId:'1.1'
-                        },
-                        {
-                            name:"Alberto",
-                            id:"1.112352",
-                            profile:"profesor", 
-                            user:"profesor", 
-                            password:"profesor",
-                            route: 'profesor',
-                            bootcampId:'1.1'
-                        },
-                        {
-                            name:"Paloma",
-                            id:"1.4",
-                            profile:"admisiones", 
-                            user:"admisiones", 
-                            password:"admisiones",
-                            route: 'admisiones/bootcamps',
-                            bootcampId:'1.1'
-                        },
-                        {
-                            name:"Manuel",
-                            id:"1.5",
-                            profile:"contabilidad", 
-                            user:"contabilidad", 
-                            password:"contabilidad",
-                            route: 'contabilidad/bootcamps',
-                            bootcampId:'1.1'
-                        }
-                    ];
-
-                    let userSelected = arrayFakeResponse.find(user => user.user === this.user);
-
-                    if(!userSelected) {
-                        this.onModalMode = true;
-                        this.typeModal = "wrongUser";
-                    } else {
-                        if(this.password !== userSelected.password) {
-                            this.onModalMode = true;
-                            this.typeModal = "wrongPassword";
-                        }
-                        else{
-                            this.$store.commit('setLogged', true);
-                            this.$store.commit('setProfile', userSelected.profile);
-                            this.$store.commit('setUserId', userSelected.id);
-                            this.$store.commit('setBootcampId', userSelected.bootcampId);
-                            this.$router.push({path: `/${userSelected.route}`});
-                        }
-                    };*/
-
                     /* SENDING POST PARAMS */
-
 
                    Axios.post('https://www.codenotch.com/users/login',{
                         headers: {
@@ -171,7 +110,7 @@
                     })
                     .then( (response) => {
                         const responseData = response.data;
-                        console.log(responseData.type);
+                        //console.log(responseData.type);
 
                         if(responseData.message === 'unauthorized') {
                             this.typeModal = "wrongUser";
