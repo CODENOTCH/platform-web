@@ -50,23 +50,6 @@ export const setEditModeActive = (state,isActive) => {
     state.editModeActive = isActive;
 };
 
-export const setDataFactCib = (state,data) => {
-    state.dataFactCib = data;
-};
-
-export const setDataFactEmpresa = (state,data) => {
-    state.dataFactEmpresa = data;
-};
-
-export const setDataFactDireccion = (state,data) => {
-    state.dataFactDireccion = data;
-};
-
-export const setDataFactPago = (state,data) => {
-    state.dataFactPago = data;
-};
-
-
 export const setVersionIE = (state) => {
     let userAgent = window.navigator.userAgent;
     let msie = userAgent.indexOf('MSIE ');

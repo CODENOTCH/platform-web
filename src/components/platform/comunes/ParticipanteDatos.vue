@@ -47,6 +47,7 @@ export default {
       currentFilteredData: {},
       bootcampId: '',
       id: '',
+      studentData: null,
       participantType: '',
     };
   },
@@ -108,24 +109,17 @@ export default {
      /* get filtered data by keys */ 
 
     if(this.participantType === 'student'){
-        let studentData = participantsList[indexParticipantsMatched].data;
+        this.studentData = participantsList[indexParticipantsMatched].data;
         let firstFilterKey = 'shared';
         let secondFilterKey = this.profile;
         let objFiltered = {};
 
-        objFiltered = _.merge(_.pickBy(studentData, item => item.type === firstFilterKey),_.pickBy(studentData, item => item.type === secondFilterKey));
+        objFiltered = _.merge(_.pickBy(this.studentData, item => item.type === firstFilterKey),_.pickBy(this.studentData, item => item.type === secondFilterKey));
 
         this.currentFilteredData = objFiltered;
     } 
 
     else this.currentFilteredData = this.currentParticipantData.data;
-
-    /* check and update fact data */
-    
-    if(this.dataFactCib !== null) this.currentFilteredData.facturacionCib.content = this.dataFactCib;
-    if(this.dataFactDireccion !== null) this.currentFilteredData.facturacionEmpresa.content = this.dataFactDireccion;
-    if(this.dataFactEmpresa !== null) this.currentFilteredData.facturacionDireccion.content = this.dataFactEmpresa;
-    if(this.dataFactPago !== null) this.currentFilteredData.formaPago.content = this.dataFactPago;
   },
 
   methods:{
@@ -134,25 +128,18 @@ export default {
     },
 
     confirmFactData(newContent, field){
-        /*console.log(this.currentFilteredData.facturacionCib.content);
-        console.log(this.currentFilteredData.facturacionEmpresa.content);
-        console.log(this.currentFilteredData.facturacionDireccion.content);
-        console.log(this.currentFilteredData.formaPago.content);
-        console.log('newContent: ', newContent);
-        console.log('field: ', field);*/
-
         switch (field) {
             case "cif":
-                this.$store.commit('setDataFactCib',newContent);
+                this.studentData.facturacionCib.content = newContent;
                 break;
             case "empresa":
-                 this.$store.commit('setDataFactEmpresa',newContent);
+                this.studentData.facturacionEmpresa.content = newContent;
                 break;
             case "direccion":
-                 this.$store.commit('setDataFactDireccion',newContent);
+                this.studentData.facturacionDireccion.content = newContent;
                 break;
             case "pago":
-                this.$store.commit('setDataFactPago',newContent);
+                this.studentData.formaPago.content = newContent;
                 break;
         }
     }

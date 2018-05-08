@@ -21,11 +21,7 @@ const state = {
     isProgram: false,
     isBootcamp: false, 
     dataStudentSelected: [],
-    editModeActive: false,
-    dataFactCib: null,
-    dataFactEmpresa: null,
-    dataFactDireccion: null,
-    dataFactPago: null
+    editModeActive: false
 };
 
 const store = new Vuex.Store({
