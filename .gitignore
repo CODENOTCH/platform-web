@@ -1,0 +1,12 @@
+.DS_Store
+node_modules/
+resources/
+npm-debug.log
+yarn-error.log
+README.md
+
+# Editor directories and files
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

@@ -1,0 +1,129 @@
+{
+    "imgPathDevelopment":{
+        "logo": "./public/assets/img/logo.svg",
+        "iconSesion": "./public/assets/img/icon-sesion.svg",
+        "iconTema": "./public/assets/img/icon-tema.svg",
+        "iconSubtema": "./public/assets/img/icon-subtema.svg",
+        "iconIndice": "./public/assets/img/icon-indice.svg",
+        "iconContenidos": "./public/assets/img/icon-contenidos.svg",
+        "iconSlides": "./public/assets/img/icon-slides.svg",
+        "iconDesarrollos": "./public/assets/img/icon-desarrollos.svg",
+        "iconEdit": "./public/assets/img/icon-edit.svg",
+        "iconConfirm": "./public/assets/img/icon-confirm.svg",
+        "imgListadoBootcampProfesor": "./public/assets/img/teacher_bootcamp.svg",
+        "imgListadoBootcampAdmisiones": "./public/assets/img/admission_bootcamp.svg",
+        "imgListadoBootcampContabilidad": "./public/assets/img/contability_bootcamp.svg",
+        "imgProfesor": "./public/assets/img/teacher_alone_bootcamp.svg",
+        "imgEstudiante": "./public/assets/img/student_alone_bootcamp.svg",
+        "imgAnonimo": "./public/assets/img/anonimo.png"
+    },
+    
+    "imgPathProduction":{
+        "logo": "./assets/img/logo.svg",
+        "iconSesion": "./assets/img/icon-sesion.svg",
+        "iconTema": "./assets/img/icon-tema.svg",
+        "iconSubtema": "./assets/img/icon-subtema.svg",
+        "iconIndice": "./assets/img/icon-indice.svg",
+        "iconContenidos": "./assets/img/icon-contenidos.svg",
+        "iconSlides": "./assets/img/icon-slides.svg",
+        "iconDesarrollos": "./assets/img/icon-desarrollos.svg",
+        "iconEdit": "./assets/img/icon-edit.svg",
+        "iconConfirm": "./assets/img/icon-confirm.svg",
+        "imgListadoBootcampProfesor": "./assets/img/teacher_bootcamp.svg",
+        "imgListadoBootcampAdmisiones": "./assets/img/admission_bootcamp.svg",
+        "imgListadoBootcampContabilidad": "./assets/img/contability_bootcamp.svg",
+        "imgProfesor": "./assets/img/teacher_alone_bootcamp.svg",
+        "imgEstudiante": "./assets/img/student_alone_bootcamp.svg",
+        "imgAnonimo": "./assets/img/anonimo.png"
+    },
+
+    "dataNewStudent": {
+        "name": "undefined",
+        "_id": "undefined",
+        "bootcampId": "undefined",
+        "description": "undefined",
+        "data":{
+            "telefono":{"label":"teléfono","content":0,"type":"shared"},
+            "email":{"label":"email","content":"undefined","type":"shared"},
+            "domicilio":{"label":"domicilio","content":"undefined","type":"shared"},
+            "codigopostal":{"label":"código postal","content":0,"type":"shared"},
+            "dni":{"label":"dni / pasaporte","content":"undefined","type":"shared"},
+            "fechaNacimiento":{"label":"fecha de nacimiento","content":"undefined","type":"shared"},
+            "lugarNacimiento":{"label":"lugar de nacimiento","content":"undefined","type":"shared"},
+            "sexo":{"label":"sexo","content":"undefined","type":"shared"},
+            "nacionalidad":{"label":"nacionalidad","content":"undefined","type":"shared"},
+            "estadoCivil":{"label":"estado civil","content":"undefined","type":"shared"},
+            "modalidadCurso":{"label":"modalidad del curso","content":"undefined","type":"shared"},
+            "estudios":{"label":"estudios realizados","content":"undefined","type":"admisiones"},
+            "experienciaLaboral":{"label":"experiencia laboral","content":"undefined","type":"admisiones"},
+            "referenciasCodenotch":{"label":"referencias Codenotch","content":"undefined","type":"admisiones"},
+            "interesCodenotch":{"label":"interés por Codenotch","content":"undefined","type":"admisiones"},
+            "objetivosProgramación":{"label":"objetivos de aprender a programar","content":"undefined","type":"admisiones"},
+            "hobbies":{"label":"hobbies","content":"undefined","type":"admisiones"},
+            "temasInteres":{"label":"temas de interés","content":"undefined","type":"admisiones"},
+            "empresas":{"label":"empresas","content":"undefined","type":"admisiones"},
+            "perfilCandidato":{"label":"perfil de candidato","content":"undefined","type":"admisiones"},
+            "formaPago":{"label":"forma de pago","content":"undefined","type":"contabilidad"},
+            "facturacionEmpresa":{"label":"datos de facturación - empresa","content":"undefined","type":"contabilidad"},
+            "facturacionCib":{"label":"datos de facturación - cif","content":"undefined","type":"contabilidad"},
+            "facturacionDireccion":{"label":"datos de facturación - dirección","content":"undefined","type":"contabilidad"},
+            "notasAdmisiones":{"label":"nota de admisiones","content":"undefined","type":"shared"}
+        },
+        "links": [
+            {
+                "content": "undefined",
+                "url": "undefined"
+            },
+            {
+                "content": "undefined",
+                "url": "undefined"
+            },
+            {
+                "content": "undefined",
+                "url": "undefined"
+            }
+        ],
+        "photoPath": "undefined",
+        "weekComments":[
+            {"WeekName": "semana 1 - 02/09/2018 - 08/09/2018", "comment":"", "_id":"undefined"},
+            {"WeekName": "semana 2 - 09/09/2018 - 16/09/2018", "comment":"", "_id":"undefined"},
+            {"WeekName": "semana 3 - 17/09/2018 - 24/09/2018", "comment":"", "_id":"undefined"},
+            {"WeekName": "semana 4 - 25/09/2018 - 01/10/2018", "comment":"", "_id":"undefined"},
+            {"WeekName": "semana 5 - 02/10/2018 - 08/10/2018", "comment":"", "_id":"undefined"},
+            {"WeekName": "semana 6 - 09/10/2018 - 16/10/2018", "comment":"", "_id":"undefined"},
+            {"WeekName": "semana 7 - 17/10/2018 - 24/10/2018", "comment":"", "_id":"undefined"},
+            {"WeekName": "semana 8 - 25/10/2018 - 01/11/2018", "comment":"", "_id":"undefined"}
+        ]
+    },
+
+    "dataNewTeacher": {
+        "name": "undefined",
+        "_id": "undefined",
+        "bootcampId": "undefined",
+        "description": "undefined",
+        "data":{
+            "telefono":{"label":"teléfono","content":0},
+            "email":{"label":"email","content":"undefined"},
+            "domicilio":{"label":"domicilio","content":"undefined"},
+            "codigoPostal":{"label":"código postal","content":0},
+            "dni":{"label":"dni / pasaporte","content":"undefined"},
+            "fechaNacimiento":{"label":"fecha de nacimiento","content":"undefined"}
+        },
+        "links": [
+            {
+                "content": "undefined",
+                "url": "undefined"
+            },
+            {
+                "content": "undefined",
+                "url": "undefined"
+            },
+            {
+                "content": "undefined",
+                "url": "undefined"
+            }
+        ],
+        "photoPath": "undefined"
+    }
+}
+  

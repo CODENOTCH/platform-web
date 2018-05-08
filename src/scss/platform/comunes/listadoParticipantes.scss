@@ -1,0 +1,87 @@
+.home{
+    &.participants{
+        .container-fluid{
+            .row{
+                margin-bottom: 6vh;
+                @media (min-width: 992px){
+                    margin-bottom: 14vh;
+                }
+                @media (min-width: 1200px){
+                    margin-bottom: 16vh;
+                }
+                @media (min-width: 1440px){
+                    margin-bottom: 15vh;
+                }
+            }
+        }
+        h2{
+            text-align: center !important;
+            margin-bottom: 1.5em;
+        }
+        img{
+            margin: 0 auto 2em;
+        }
+        .block-participant{
+            margin-bottom: 5em;
+            @media (min-width: 768px){
+                border-left: 1px solid $softGrey;
+            }
+            @media (min-width: 1200px){
+                margin-bottom: 6em;
+            }
+            @media (min-width: 1440px){
+                margin-bottom: 7em;
+            }
+        }
+        .container-data{
+            text-align: left;
+            color: $darkGrey;
+            @include flexContainer($direction:column);
+        }
+        .block-data{
+            font-size: 1.3em;
+            margin-bottom: 1.4em;
+            max-width: 100%;
+            overflow: hidden;
+            .data{
+                width: 100%;
+                @include flexContainer(flex-start,center);
+                .label{
+                    font-size: .6em;
+                    margin-right: .8em;
+                }
+                .value{
+                    font-size: .95em;
+                }
+            }
+        }
+        .container-btns{
+            position: fixed;
+            z-index: 4;
+            right: 10px;
+            top: 20px;
+            .btn-edit{
+                color: $white;
+                background: $blue;
+            }
+            .btn-back{
+                color: $white;
+                background: $purple;
+            }
+        }
+        .container-btn-add{
+            position: fixed;
+            z-index: 4;
+            left: 10px;
+            bottom: 20px;
+            .btn{
+                color: $white;
+                background: $darkGrey;
+            }
+        }
+        .container-btns-edit{
+            @include flexContainer();
+        }
+    }
+}
+

@@ -1,0 +1,49 @@
+.home{
+    &.bootcamps{
+        .container-fluid{
+            margin-top: 0;
+            .row{
+                &:first-of-type{
+                    margin-bottom: 3vh;
+                    @media (min-width: 768px){
+                        margin-bottom: 6vh;
+                    }
+                }
+            }
+        }
+        img{
+            margin: 0 auto;
+            width: 430px;
+            max-width: 90%;
+        }
+    }
+}
+
+.container-bootcamps{
+    text-align: center;
+    padding: 2em;
+    line-height: 1.5em;
+    margin-bottom: 3em;
+    background: transparent;
+    li{
+        margin-bottom: 3vw;
+        &:last-of-type{
+            margin-bottom: 0;
+        }
+        @media (min-width: 768px){
+            margin-bottom: 1.5vw;
+        }
+        span{
+            text-transform: uppercase;
+        }
+    }
+    .btn-codenotch{
+        font-size: 1.1em;
+        height: auto !important;
+        white-space: pre-wrap;
+        line-height: 1.5em;
+        @media (min-width: 768px){
+            font-size: 1.3em;
+        }
+    }
+}

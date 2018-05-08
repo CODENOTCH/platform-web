@@ -1,0 +1,231 @@
+.interior-ficha{
+    img{
+        width: 114px;
+    }
+
+    .container-img-codenotch{
+        margin-bottom: 3em;
+        @include flexContainer($direction:column);
+        img{
+            margin-bottom: 1.5em;
+        }
+        .btn-codenotch{
+            @include flexContainer();
+            cursor: pointer;
+            width: 114px;
+            font-size: 1.1em !important;
+            @include transition(all,.35s,ease-out,0);
+            background: $blue;
+            &:hover{
+                background: $darkBlue;
+            }
+        }
+    }
+
+    .container-btn-confirm{
+        position: fixed;
+        z-index: 4;
+        right: 10px;
+        top: 20px;
+        .btn{
+            color: $white;
+            background: $green;
+        }
+    }
+
+    .container-btn-delete{
+        position: fixed;
+        z-index: 4;
+        right: inherit;
+        left: 10px;;
+        top: 20px;
+        .btn{
+            color: $white;
+            background: $red;
+        }
+    }
+
+    .participant-data{
+        margin-bottom: 3em;
+        width: 100%;
+        .label-data{
+            text-transform: uppercase;
+        }
+        .content-data{
+            @include flexContainer(flex-start,$wrap:wrap);
+        }
+        .contability-data-container{
+            width: 100%;
+            @include flexContainer(space-between);
+            .input-edit{
+                width: 90%;
+            }
+            .btn-confirm{
+                color: $white;
+                background: $green;
+            }
+            .btn-edit{
+                color: $white;
+                background: $blue;
+            }
+            .container-alert{
+                background: $darkWhiteOverlay;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 1;
+                @include flexContainer(center,center,column);
+                p{
+                    text-align: center;
+                    font-weight: 600;
+                    line-height: 1.1em;
+                }
+            }
+        }
+    }
+
+    .alumnos-links{
+        @include flexContainer();
+    }
+    
+    .container-data{
+        margin-bottom: 3em;
+    }
+
+    .container-name{
+        margin-bottom: 2em;
+        h2{
+            text-align: center;
+        }
+    }
+
+    .container-data-participant{
+        margin-top: 2em;
+        margin-bottom: 16vh;
+        @media (min-width: 567px){
+            margin-bottom: 22vh;
+        }
+        @media (min-width: 768px){
+            margin-bottom: 15vh;
+        }
+        @media (min-width: 992px){
+            margin-bottom: 18vh;
+        }
+        @media (min-width: 1200px){
+            margin-bottom: 5vw;
+        }
+        .input-edit{
+            width: 100%;
+        }
+    }
+
+    &.edit{
+        .container-name{
+            @include flexContainer();
+            .input-edit{
+                font-size: 1.5em;
+                line-height: 1.2em;
+                color: $black;
+                font-weight: 600;
+                text-align: center;
+                text-transform: uppercase;
+                &::placeholder{
+                    color: $black;
+                }
+            }
+        }
+
+        .wrapper-links{
+            width: 100%;
+            @include flexContainer(space-between);
+            .container-links{
+                @include flexContainer(flex-start,$wrap:wrap);
+                .container-link{
+                    .chip-link{
+                        .icon{
+                            cursor: pointer;
+                            font-size: 1.3em;
+                            margin-left: .3em;
+                            @include transition(all,.35s,ease-out,0);
+                            &:first-of-type{
+                                margin-left: .7em;
+                                color: $blue;
+                                &:hover{
+                                    color: $darkBlue;
+                                }
+                            }
+                            &:last-of-type{
+                                color: $red;
+                                &:hover{
+                                    color: $darkRed;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .container-btn-add{
+                .btn{
+                    color: $white;
+                    background: $darkGrey;
+                }
+            }
+            
+            .container-link-edit{
+                @include flexContainer();
+                .container-inputs{
+                    input:first-child{
+                        margin-bottom: .5em;
+                    }
+                }
+                .container-btn{
+                    margin-left: 10px;
+                    .btn{
+                        background: $green;
+                        .icon{
+                            color: $white;
+                            margin-left: 0;
+                        }
+                    }
+                }
+            }
+
+            .container-link-add{
+                @extend .container-link-edit;
+            }
+        }
+
+        .loading-codenotch{
+            width: 114px;
+            height: 114px;
+            background: $darkWhiteOverlay;
+            position: absolute;
+            left: calc(50% - 57px);
+            top: 0;
+            @include flexContainer();
+            opacity: 0;
+            visibility: hidden;
+            @include transition(all,.35s,ease-out,0);
+            &.modal{
+                width: 100%;
+                height: 100vh;
+                left: 0;
+                top: 0;
+            }
+            &.visible{
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+          
+        .progress-codenotch{
+            circle{
+                stroke: $purple;
+            }
+        }
+    }
+}
+
